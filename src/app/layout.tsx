@@ -8,27 +8,23 @@ import ThemeProvider from '@/providers/ThemeProvider';
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
 export const metadata: Metadata = {
-    description: 'Movies App build with NextJS',
-    title: 'Next Movies',
+  description: 'Movies App build with NextJS',
+  title: 'Next Movies',
 };
 
 export default function RootLayout({
-    children,
+  children,
 }: {
-    children: React.ReactNode;
+  children: React.ReactNode;
 }) {
-    return (
-        <html lang="en" className={inter.variable} suppressHydrationWarning>
-            <body className={inter.className}>
-                <ThemeProvider
-                    attribute="class"
-                    defaultTheme="system"
-                    enableSystem
-                >
-                    <Navbar />
-                    {children}
-                </ThemeProvider>
-            </body>
-        </html>
-    );
+  return (
+    <html lang="en" className={inter.variable} suppressHydrationWarning>
+      <body className={inter.className}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <Navbar />
+          <main className="p-4">{children}</main>
+        </ThemeProvider>
+      </body>
+    </html>
+  );
 }

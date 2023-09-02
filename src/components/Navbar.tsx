@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import ThemeToggler from '@/components/ThemeToggler';
 
 import Logo from './Logo';
@@ -5,7 +7,9 @@ import Logo from './Logo';
 export default function Navbar() {
     return (
         <header className="flex items-center justify-between p-4 shadow">
-            <Logo />
+            <Link href="/">
+                <Logo />
+            </Link>
             <ThemeToggler />
         </header>
     );

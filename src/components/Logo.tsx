@@ -1,12 +1,19 @@
-import { ClapperboardIcon } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Logo() {
     return (
         <div className="flex items-center gap-2">
             <div className="text-primary">
-                <ClapperboardIcon size={28} />
+                <Image
+                    src="/logo-image.png"
+                    alt="Next Movies Logo"
+                    width={28}
+                    height={28}
+                />
             </div>
-            <span className="text-xl font-bold uppercase">Next Movies</span>
+            <span className="hidden text-xl font-bold uppercase sm:block">
+                Next Movies
+            </span>
         </div>
     );
 }

@@ -1,22 +1,21 @@
 import { Menu } from 'lucide-react';
 import Link from 'next/link';
 
-import { navOptions } from '@/lib/constants';
-
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from './ui/Accordion';
-import { Button } from './ui/Button';
+} from '@/components/ui/Accordion';
+import { Button } from '@/components/ui/Button';
 import {
   Sheet,
   SheetContent,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from './ui/Sheet';
+} from '@/components/ui/Sheet';
+import { navOptions } from '@/lib/constants';
 
 const navOptionsRender = navOptions.map((option) => (
   <Accordion type="single" key={option.path} collapsible>
@@ -28,10 +27,10 @@ const navOptionsRender = navOptions.map((option) => (
             <li key={child.href}>
               <Link
                 className="hover:underline"
-                key={child.text}
+                key={child.label}
                 href={`${option.path}/${child.href}`}
               >
-                {child.text}
+                {child.label}
               </Link>
             </li>
           ))}

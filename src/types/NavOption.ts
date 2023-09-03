@@ -1,6 +1,6 @@
 interface NavOptionChild {
   href: string;
-  text: string;
+  label: string;
 }
 
 export default interface NavOption {

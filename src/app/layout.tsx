@@ -3,7 +3,7 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
-import Navbar from '@/components/Navbar';
+import Navbar from '@/components/Navbar/Navbar';
 import ThemeProvider from '@/providers/ThemeProvider';
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
@@ -22,7 +22,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Navbar />
-          <main className="p-4">{children}</main>
+          <main className="container p-4">{children}</main>
         </ThemeProvider>
       </body>
     </html>

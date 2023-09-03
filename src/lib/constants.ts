@@ -5,19 +5,19 @@ export const navOptions: NavOption[] = [
     children: [
       {
         href: '/',
-        text: 'Popular',
+        label: 'Popular',
       },
       {
         href: '/now-playing',
-        text: 'Now Playing',
+        label: 'Now Playing',
       },
       {
         href: '/upcoming',
-        text: 'Upcoming',
+        label: 'Upcoming',
       },
       {
         href: '/top-rated',
-        text: 'Top Rated',
+        label: 'Top Rated',
       },
     ],
     label: 'Movies',
@@ -27,19 +27,19 @@ export const navOptions: NavOption[] = [
     children: [
       {
         href: '/',
-        text: 'Popular',
+        label: 'Popular',
       },
       {
         href: '/airing-today',
-        text: 'Airing Today',
+        label: 'Airing Today',
       },
       {
         href: '/on-tv',
-        text: 'On TV',
+        label: 'On TV',
       },
       {
         href: '/top-rated',
-        text: 'Top Rated',
+        label: 'Top Rated',
       },
     ],
     label: 'TV Shows',
@@ -49,7 +49,7 @@ export const navOptions: NavOption[] = [
     children: [
       {
         href: '/',
-        text: 'Popular people',
+        label: 'Popular people',
       },
     ],
     label: 'People',

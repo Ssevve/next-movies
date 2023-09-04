@@ -1,4 +1,13 @@
-import NavOption from '@/types/NavOption';
+interface NavOptionChild {
+  href: string;
+  label: string;
+}
+
+export interface NavOption {
+  label: string;
+  path: string;
+  children: NavOptionChild[];
+}
 
 export const navOptions: NavOption[] = [
   {

@@ -11,8 +11,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/DropdownMenu';
+import { NavOption } from '@/lib/constants';
 import { cn } from '@/lib/utils';
-import NavOption from '@/types/NavOption';
 
 interface DesktopNavDropdownProps {
   option: NavOption;

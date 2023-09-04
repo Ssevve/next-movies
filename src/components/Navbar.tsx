@@ -1,14 +1,13 @@
 import Link from 'next/link';
 
+import DesktopNav from '@/components/DesktopNav';
 import Logo from '@/components/Logo';
-
-import DesktopNav from './components/DesktopNav/DesktopNav';
-import MobileMenu from './components/MobileMenu';
-import ThemeToggler from './components/ThemeToggler';
+import MobileMenu from '@/components/MobileMenu';
+import ThemeToggler from '@/components/ThemeToggler';
 
 export default function Navbar() {
   return (
-    <header className="shadow">
+    <header className="border shadow">
       <div className="container flex items-center justify-between p-4">
         <div className="md:hidden">
           <MobileMenu />

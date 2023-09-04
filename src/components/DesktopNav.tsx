@@ -1,6 +1,5 @@
+import DesktopNavDropdown from '@/components/DesktopNavDropdown';
 import { navOptions } from '@/lib/constants';
-
-import DesktopNavDropdown from './DesktopNavDropdown';
 
 export default function DesktopNavigation() {
   return (

@@ -18,11 +18,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={inter.variable} suppressHydrationWarning>
-      <body className="overflow-x-hidden">
+    <html
+      lang="en"
+      className={`${inter.variable} h-full w-full`}
+      suppressHydrationWarning
+    >
+      <body className="h-full w-full overflow-x-hidden">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Navbar />
-          <main className="container p-4">{children}</main>
+          <main className="container h-full w-full p-4">{children}</main>
         </ThemeProvider>
       </body>
     </html>

@@ -1,13 +1,15 @@
-import Trending from '@/components/Trending';
-import { getTrending } from '@/lib/tmdbAPI';
+import { Suspense } from 'react';
+
+import TrendingShows from '@/components/TrendingShows';
+import { getTrendingShows } from '@/lib/tmdbAPI';
 
 export default async function Home() {
-  const trendingDayPromise = getTrending({
+  const trendingDayPromise = getTrendingShows({
     showType: 'all',
     timeWindow: 'day',
   });
 
-  const trendingWeekPromise = getTrending({
+  const trendingWeekPromise = getTrendingShows({
     showType: 'all',
     timeWindow: 'week',
   });
@@ -23,7 +25,10 @@ export default async function Home() {
         <h1>Unlimited movies, TV shows, and more</h1>
         <p>Find the latest and greatest movies and TV shows.</p>
       </div>
-      <Trending trendingDay={trendingDay} trendingWeek={trendingWeek} />
+      <TrendingShows
+        trendingToday={trendingDay}
+        trendingThisWeek={trendingWeek}
+      />
     </section>
   );
 }

@@ -13,6 +13,9 @@ interface ShowCardProps {
   showType: ShowType;
 }
 
+const POSTER_HEIGHT = 3000;
+const POSTER_WIDTH = 2000;
+
 export default function ShowCard({
   posterPath,
   id,
@@ -21,15 +24,14 @@ export default function ShowCard({
   showType,
 }: ShowCardProps) {
   return (
-    <Card className="h-full w-full overflow-hidden">
+    <Card className="w-[200px] overflow-hidden">
       <Link href={`${showType}/${id}`}>
         <CardContent>
           <Image
-            className="h-auto w-auto"
             src={posterPath}
             alt={title}
-            width={500}
-            height={750}
+            height={POSTER_HEIGHT}
+            width={POSTER_WIDTH}
           />
         </CardContent>
         <CardFooter>

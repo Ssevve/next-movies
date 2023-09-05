@@ -2,7 +2,7 @@ import { env } from '@/config/env';
 import { Show, ShowType } from '@/types/Show';
 
 const TMDB_BASE_URL = 'https://api.themoviedb.org/3';
-const TMDB_IMAGE_URL = 'https://image.tmdb.org/t/p/w500';
+const TMDB_IMAGE_URL = 'https://image.tmdb.org/t/p/original';
 
 export type TimeWindow = 'day' | 'week';
 
@@ -35,7 +35,7 @@ interface TrendingResponse {
   total_results: number;
 }
 
-export const getTrending = async ({
+export const getTrendingShows = async ({
   showType,
   timeWindow,
 }: TrendingArgs): Promise<Show[]> => {
@@ -47,20 +47,20 @@ export const getTrending = async ({
     },
   });
 
-  if (!res.ok) throw new Error('Failed to fetch trending data');
+  if (!res.ok) throw new Error('Data not available');
 
-  const trending: TrendingResponse = await res.json();
+  const trendingShows: TrendingResponse = await res.json();
 
-  const transformedTrending = trending.results.map((result): Show => {
+  const transformedTrendingShows = trendingShows.results.map((show): Show => {
     return {
-      id: result.id,
-      posterPath: TMDB_IMAGE_URL + result.poster_path,
-      rating: result.vote_average,
-      ratingsCount: result.vote_count,
-      showType: result.title ? 'movie' : 'tv',
-      title: result.title || result.name,
+      id: show.id,
+      posterPath: TMDB_IMAGE_URL + show.poster_path,
+      rating: show.vote_average,
+      ratingsCount: show.vote_count,
+      showType: show.title ? 'movie' : 'tv',
+      title: show.title || show.name,
     };
   });
 
-  return transformedTrending;
+  return transformedTrendingShows;
 };

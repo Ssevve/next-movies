@@ -1,6 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+import {
+  TMDB_POSTER_HEIGHT,
+  TMDB_POSTER_WIDTH,
+} from '@/services/tmdb/constants';
 import { ShowType } from '@/types/Show';
 
 import { Card, CardContent, CardFooter } from './ui/Card';
@@ -12,9 +16,6 @@ interface ShowCardProps {
   rating: number;
   showType: ShowType;
 }
-
-const POSTER_HEIGHT = 3000;
-const POSTER_WIDTH = 2000;
 
 export default function ShowCard({
   posterPath,
@@ -30,10 +31,11 @@ export default function ShowCard({
           <Image
             src={posterPath}
             alt={title}
-            height={POSTER_HEIGHT}
-            width={POSTER_WIDTH}
+            height={TMDB_POSTER_HEIGHT}
+            width={TMDB_POSTER_WIDTH}
           />
         </CardContent>
+
         <CardFooter>
           <p>{title}</p>
         </CardFooter>

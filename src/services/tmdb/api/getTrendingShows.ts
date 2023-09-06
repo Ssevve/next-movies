@@ -1,8 +1,7 @@
 import { env } from '@/config/env';
 import { Show, ShowType } from '@/types/Show';
 
-const TMDB_BASE_URL = 'https://api.themoviedb.org/3';
-const TMDB_IMAGE_URL = 'https://image.tmdb.org/t/p/original';
+import { TMDB_BASE_URL, TMDB_IMAGE_URL } from '../constants';
 
 export type TimeWindow = 'day' | 'week';
 

@@ -1,22 +1,20 @@
-import { Suspense } from 'react';
-
 import TrendingShows from '@/components/TrendingShows';
-import { getTrendingShows } from '@/lib/tmdbAPI';
+import { getTrendingShows } from '@/services/tmdb/api';
 
 export default async function Home() {
-  const trendingDayPromise = getTrendingShows({
+  const trendingTodayPromise = getTrendingShows({
     showType: 'all',
     timeWindow: 'day',
   });
 
-  const trendingWeekPromise = getTrendingShows({
+  const trendingThisWeekPromise = getTrendingShows({
     showType: 'all',
     timeWindow: 'week',
   });
 
-  const [trendingDay, trendingWeek] = await Promise.all([
-    trendingDayPromise,
-    trendingWeekPromise,
+  const [trendingToday, trendingThisWeek] = await Promise.all([
+    trendingTodayPromise,
+    trendingThisWeekPromise,
   ]);
 
   return (
@@ -26,8 +24,8 @@ export default async function Home() {
         <p>Find the latest and greatest movies and TV shows.</p>
       </div>
       <TrendingShows
-        trendingToday={trendingDay}
-        trendingThisWeek={trendingWeek}
+        trendingToday={trendingToday}
+        trendingThisWeek={trendingThisWeek}
       />
     </section>
   );

@@ -50,7 +50,7 @@ function DesktopNavDropdown({ option }: DesktopNavDropdownProps) {
 
 export default function DesktopNavigation() {
   return (
-    <nav>
+    <nav className="hidden md:block">
       <ul className="flex gap-2">
         {navOptions.map((option) => (
           <li key={option.path}>

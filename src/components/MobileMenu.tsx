@@ -1,59 +1,41 @@
-import { Menu } from 'lucide-react';
 import Link from 'next/link';
 
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from '@/components/ui/Accordion';
-import { Button } from '@/components/ui/Button';
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from '@/components/ui/Sheet';
+import useLockedBody from '@/hooks/useLockedBody';
 import { navOptions } from '@/lib/constants';
-
-const navOptionsRender = navOptions.map((option) => (
-  <Accordion type="single" key={option.path} collapsible>
-    <AccordionItem value={option.label}>
-      <AccordionTrigger>{option.label}</AccordionTrigger>
-      <AccordionContent>
-        <ul className="space-y-2">
-          {option.children.map((child) => (
-            <li key={child.href}>
-              <Link
-                className="hover:underline"
-                key={child.label}
-                href={`${option.path}/${child.href}`}
-              >
-                {child.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </AccordionContent>
-    </AccordionItem>
-  </Accordion>
-));
+import { cn } from '@/lib/utils';
 
 export default function MobileMenu() {
+  useLockedBody();
+
   return (
-    <Sheet>
-      <SheetTrigger asChild>
-        <Button variant="ghost" size="icon">
-          <Menu />
-        </Button>
-      </SheetTrigger>
-      <SheetContent className="flex flex-col gap-8" side="left">
-        <SheetHeader className="sm:text-center">
-          <SheetTitle>Menu</SheetTitle>
-        </SheetHeader>
-        <section>{navOptionsRender}</section>
-      </SheetContent>
-    </Sheet>
+    <div className="fixed inset-0 top-[72px] z-50 flex h-full w-full">
+      <div className="fixed h-full w-screen bg-background opacity-50 duration-300 animate-in fade-in md:hidden" />
+      <div
+        className={cn(
+          'z-10 w-[90%] max-w-[320px] border-r border-t bg-background p-4 shadow duration-200 animate-in slide-in-from-left md:hidden'
+        )}
+      >
+        {navOptions.map((option) => (
+          <>
+            <h2 className="mb-2 mt-8 text-lg font-semibold tracking-tight text-primary first:mt-0">
+              {option.label}
+            </h2>
+            <ul>
+              <li className="space-y-1">
+                {option.children.map((child) => (
+                  <Link
+                    key={child.href}
+                    href={`${option.path}/${child.href}`}
+                    className="block w-full justify-start hover:underline"
+                  >
+                    {child.label}
+                  </Link>
+                ))}
+              </li>
+            </ul>
+          </>
+        ))}
+      </div>
+    </div>
   );
 }

@@ -23,7 +23,7 @@ export default function RootLayout({
       className={`${inter.variable} h-full w-full`}
       suppressHydrationWarning
     >
-      <body className="h-full w-full overflow-x-hidden">
+      <body id="root" className="h-full w-full overflow-x-hidden">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Navbar />
           <main className="container h-full w-full p-4">{children}</main>

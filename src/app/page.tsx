@@ -1,3 +1,4 @@
+import Hero from '@/components/Hero';
 import TrendingShows from '@/components/TrendingShows';
 import { getTrendingShows } from '@/services/tmdb/api';
 
@@ -19,10 +20,7 @@ export default async function Home() {
 
   return (
     <section className="grid w-full gap-8">
-      <div>
-        <h1>Unlimited movies, TV shows, and more</h1>
-        <p>Find the latest and greatest movies and TV shows.</p>
-      </div>
+      <Hero />
       <TrendingShows
         trendingToday={trendingToday}
         trendingThisWeek={trendingThisWeek}

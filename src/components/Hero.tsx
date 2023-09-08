@@ -13,6 +13,7 @@ export default function Hero() {
             alt=""
             className="pointer-events-none object-cover object-center md:object-top"
             fill
+            priority
           />
           <div className="absolute inset-0 bg-primary opacity-30" />
         </div>

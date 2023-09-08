@@ -10,7 +10,7 @@ interface ShowCarouselProps {
 export default function ShowCarousel({ shows }: ShowCarouselProps) {
   return (
     <ScrollArea>
-      <div className="flex space-x-4 pb-4">
+      <div className="flex space-x-4 px-2 pb-4">
         {shows.map((show) => (
           <ShowCard
             releaseDate={show.releaseDate}

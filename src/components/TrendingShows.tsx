@@ -3,7 +3,7 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs';
 import { Show } from '@/types/Show';
 
-import ScrollableShows from './ScrollableShows';
+import ShowCarousel from './ShowCarousel';
 
 interface TrendingShowsProps {
   trendingToday: Show[];
@@ -29,10 +29,10 @@ export default function TrendingShows({
           </TabsList>
         </div>
         <TabsContent value="today" className="border-none p-0 outline-none">
-          <ScrollableShows shows={trendingToday} />
+          <ShowCarousel shows={trendingToday} />
         </TabsContent>
         <TabsContent value="this-week" className="border-none p-0 outline-none">
-          <ScrollableShows shows={trendingThisWeek} />
+          <ShowCarousel shows={trendingThisWeek} />
         </TabsContent>
       </Tabs>
     </section>

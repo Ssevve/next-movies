@@ -1,5 +1,6 @@
 import Image from 'next/image';
 
+import { Button } from './ui/Button';
 import { Input } from './ui/Input';
 
 export default function Hero() {
@@ -10,14 +11,14 @@ export default function Hero() {
           <Image
             src="/images/hero-bg.jpg"
             alt=""
-            className="pointer-events-none object-cover object-right-top"
+            className="pointer-events-none object-cover object-center md:object-top"
             fill
           />
           <div className="absolute inset-0 bg-primary opacity-30" />
         </div>
 
-        <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 p-4 text-center text-primary-foreground dark:text-foreground md:flex-row md:justify-evenly md:text-left">
-          <div>
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-8 p-4 text-center md:flex-row md:justify-evenly md:text-left">
+          <div className="text-primary-foreground dark:text-foreground md:min-w-[385px]">
             <h1 className="mb-4 max-w-[470px] break-keep text-4xl font-extrabold leading-none tracking-tight md:text-5xl lg:text-5xl">
               Unlimited movies, TV shows, and more
             </h1>
@@ -25,7 +26,18 @@ export default function Hero() {
               Find the latest and greatest movies and TV shows.
             </p>
           </div>
-          <Input />
+          <div className="relative flex w-full max-w-sm items-center">
+            <Input
+              placeholder="Search for a movie, tv show, person..."
+              className="rounded-r-none dark:border-foreground dark:bg-foreground dark:text-background"
+            />
+            <Button
+              type="submit"
+              className="rounded-l-none dark:text-foreground"
+            >
+              Search
+            </Button>
+          </div>
         </div>
       </div>
     </section>

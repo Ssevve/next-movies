@@ -22,7 +22,7 @@ interface DesktopNavDropdownProps {
 function DesktopNavDropdown({ option }: DesktopNavDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <DropdownMenu onOpenChange={() => setIsOpen((prev) => !prev)}>
+    <DropdownMenu modal={false} onOpenChange={() => setIsOpen((prev) => !prev)}>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost">
           <span className="mr-1">{option.label}</span>
@@ -35,7 +35,7 @@ function DesktopNavDropdown({ option }: DesktopNavDropdownProps) {
           />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
+      <DropdownMenuContent hideWhenDetached align="end">
         {option.children.map((child) => (
           <DropdownMenuItem key={child.href}>
             <Link href={`${option.path}/${child.href}`} className="text-sm">

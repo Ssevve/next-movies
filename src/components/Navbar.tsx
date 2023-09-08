@@ -15,7 +15,7 @@ export default function Navbar() {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
 
   return (
-    <header className="border-b shadow">
+    <header className="sticky top-0 z-50 border-b bg-background shadow">
       <div className="container flex items-center justify-between p-4">
         <Button
           onClick={() => setShowMobileMenu((prev) => !prev)}

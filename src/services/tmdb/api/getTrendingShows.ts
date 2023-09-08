@@ -13,11 +13,15 @@ interface TrendingArgs {
 interface MovieTrendingResult {
   title: string;
   name: never;
+  release_date: string;
+  first_air_date: never;
 }
 
 interface TvShowTrendingResult {
   name: string;
   title: never;
+  first_air_date: string;
+  release_date: never;
 }
 
 type TrendingResult = {
@@ -56,6 +60,7 @@ export const getTrendingShows = async ({
       posterPath: TMDB_IMAGE_URL + show.poster_path,
       rating: show.vote_average,
       ratingsCount: show.vote_count,
+      releaseDate: show.release_date || show.first_air_date,
       showType: show.title ? 'movie' : 'tv',
       title: show.title || show.name,
     };

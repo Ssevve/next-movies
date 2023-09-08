@@ -7,4 +7,5 @@ export interface Show {
   rating: number;
   ratingsCount: number;
   showType: ShowType;
+  releaseDate: string;
 }

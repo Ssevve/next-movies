@@ -13,6 +13,7 @@ export default function ShowCarousel({ shows }: ShowCarouselProps) {
       <div className="flex space-x-4 pb-4">
         {shows.map((show) => (
           <ShowCard
+            releaseDate={show.releaseDate}
             key={show.id}
             id={show.id}
             posterPath={show.posterPath}

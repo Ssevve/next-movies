@@ -1,3 +1,5 @@
+import 'server-only';
+
 import { env } from '@/config/env';
 import { Show, ShowType } from '@/types/Show';
 
@@ -50,7 +52,7 @@ export const getTrendingShows = async ({
     },
   });
 
-  if (!res.ok) throw new Error('Data not available');
+  if (!res.ok) throw new Error('No trending shows data available');
 
   const trendingShows: TrendingResponse = await res.json();
 

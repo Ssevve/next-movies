@@ -33,7 +33,7 @@ type TrendingResult = {
   vote_count: number;
 } & (MovieTrendingResult | TvShowTrendingResult);
 
-interface TrendingResponse {
+export interface TrendingResponse {
   page: number;
   results: TrendingResult[];
   total_pages: number;
@@ -46,11 +46,11 @@ export const getTrendingShows = async ({
 }: TrendingArgs): Promise<Show[]> => {
   const url = `${TMDB_BASE_URL}/trending/${showType}/${timeWindow}`;
   const res = await fetch(url, {
+    cache: 'no-cache',
     headers: {
       accept: 'application/json',
       authorization: `Bearer ${env.TMDB_ACCESS_TOKEN}`,
     },
-    next: { revalidate: 3600 }, // 1 hour
   });
 
   if (!res.ok) throw new Error('Data not available');

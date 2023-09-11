@@ -2,7 +2,7 @@ import { Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 
 import { ErrorFallback } from './ErrorFallback';
-import ShowCarouselSkeleton from './skeletons/ShowCarouselSkeleton';
+import ShowScrollerSkeleton from './skeletons/ShowScrollerSkeleton';
 import TrendingShowsTabsContent from './TrendingShowsTabsContent';
 import { Tabs, TabsList, TabsTrigger } from './ui/Tabs';
 
@@ -22,7 +22,7 @@ export default async function TrendingShows() {
           </TabsList>
         </div>
         <ErrorBoundary FallbackComponent={ErrorFallback}>
-          <Suspense fallback={<ShowCarouselSkeleton />}>
+          <Suspense fallback={<ShowScrollerSkeleton />}>
             <TrendingShowsTabsContent />
           </Suspense>
         </ErrorBoundary>

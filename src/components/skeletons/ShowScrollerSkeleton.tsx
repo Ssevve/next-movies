@@ -1,6 +1,6 @@
 import ShowCardSkeleton from './ShowCardSkeleton';
 
-export default function ShowCarouselSkeleton() {
+export default function ShowScrollerSkeleton() {
   return (
     <div className="flex space-x-4 overflow-hidden px-2 pb-4">
       <ShowCardSkeleton />

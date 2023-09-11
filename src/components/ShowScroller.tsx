@@ -3,11 +3,11 @@ import { Show } from '@/types/Show';
 import ShowCard from './ShowCard';
 import { ScrollArea, ScrollBar } from './ui/ScrollArea';
 
-interface ShowCarouselProps {
+interface ShowScrollerProps {
   shows: Show[];
 }
 
-export default function ShowCarousel({ shows }: ShowCarouselProps) {
+export default function ShowScroller({ shows }: ShowScrollerProps) {
   return (
     <ScrollArea>
       <div className="flex space-x-4 px-2 pb-4">

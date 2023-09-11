@@ -1,6 +1,6 @@
 import { getTrendingShows } from '@/services/tmdb/api';
 
-import ShowCarousel from './ShowCarousel';
+import ShowScroller from './ShowScroller';
 import { TabsContent } from './ui/Tabs';
 
 export default async function TrendingShowsTabsContent() {
@@ -22,10 +22,10 @@ export default async function TrendingShowsTabsContent() {
   return (
     <>
       <TabsContent value="today" className="border-none p-0 outline-none">
-        <ShowCarousel shows={trendingToday} />
+        <ShowScroller shows={trendingToday} />
       </TabsContent>
       <TabsContent value="this-week" className="border-none p-0 outline-none">
-        <ShowCarousel shows={trendingThisWeek} />
+        <ShowScroller shows={trendingThisWeek} />
       </TabsContent>
     </>
   );

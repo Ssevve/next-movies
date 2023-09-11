@@ -11,6 +11,7 @@ export default function ShowCarouselSkeleton() {
       <ShowCardSkeleton />
       <ShowCardSkeleton />
       <ShowCardSkeleton />
+      <ShowCardSkeleton />
     </div>
   );
 }

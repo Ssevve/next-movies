@@ -50,9 +50,10 @@ export const getTrendingShows = async ({
       accept: 'application/json',
       authorization: `Bearer ${env.TMDB_ACCESS_TOKEN}`,
     },
+    next: { revalidate: 3600 }, // 1 hour
   });
 
-  if (!res.ok) throw new Error('No trending shows data available');
+  if (!res.ok) throw new Error('Data not available');
 
   const trendingShows: TrendingResponse = await res.json();
 

@@ -1,7 +1,6 @@
 import 'server-only';
 
 import { env } from '@/config/env';
-import { PaginatedShows, transformTrendingData } from '@/lib/helpers';
 import { Show, ShowType } from '@/types/Show';
 
 import { TMDB_BASE_URL, TMDB_IMAGE_URL } from '../constants';
@@ -41,6 +40,13 @@ export interface TrendingResponse {
   total_results: number;
 }
 
+interface PaginatedShows {
+  page: number;
+  results: Show[];
+  totalPages: number;
+  totalResults: number;
+}
+
 export const getTrendingShows = async ({
   showType,
   timeWindow,
@@ -56,7 +62,28 @@ export const getTrendingShows = async ({
 
   if (!res.ok) throw new Error('Data not available');
 
-  const trendingShowsData: TrendingResponse = await res.json();
+  const trendingShowsResponseData: TrendingResponse = await res.json();
 
-  return transformTrendingData(trendingShowsData);
+  const transformedTrendingShows = trendingShowsResponseData.results.map(
+    (show): Show => {
+      return {
+        id: show.id,
+        posterPath: TMDB_IMAGE_URL + show.poster_path,
+        rating: show.vote_average,
+        ratingsCount: show.vote_count,
+        releaseDate: show.release_date || show.first_air_date,
+        showType: show.title ? 'movie' : 'tv',
+        title: show.title || show.name,
+      };
+    }
+  );
+
+  const transformedResponse = {
+    page: trendingShowsResponseData.page,
+    results: transformedTrendingShows,
+    totalPages: trendingShowsResponseData.total_pages,
+    totalResults: trendingShowsResponseData.total_results,
+  };
+
+  return transformedResponse;
 };

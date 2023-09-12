@@ -1,11 +1,12 @@
 import 'server-only';
 
 import { env } from '@/config/env';
+import { PaginatedShows, transformTrendingData } from '@/lib/helpers';
 import { Show, ShowType } from '@/types/Show';
 
 import { TMDB_BASE_URL, TMDB_IMAGE_URL } from '../constants';
 
-export type TimeWindow = 'day' | 'week';
+export type TimeWindow = 'day' | 'week' | 'weeks';
 
 interface TrendingArgs {
   showType: ShowType | 'all';
@@ -43,7 +44,7 @@ export interface TrendingResponse {
 export const getTrendingShows = async ({
   showType,
   timeWindow,
-}: TrendingArgs): Promise<Show[]> => {
+}: TrendingArgs): Promise<PaginatedShows> => {
   const url = `${TMDB_BASE_URL}/trending/${showType}/${timeWindow}`;
   const res = await fetch(url, {
     cache: 'no-cache',
@@ -55,19 +56,7 @@ export const getTrendingShows = async ({
 
   if (!res.ok) throw new Error('Data not available');
 
-  const trendingShows: TrendingResponse = await res.json();
+  const trendingShowsData: TrendingResponse = await res.json();
 
-  const transformedTrendingShows = trendingShows.results.map((show): Show => {
-    return {
-      id: show.id,
-      posterPath: TMDB_IMAGE_URL + show.poster_path,
-      rating: show.vote_average,
-      ratingsCount: show.vote_count,
-      releaseDate: show.release_date || show.first_air_date,
-      showType: show.title ? 'movie' : 'tv',
-      title: show.title || show.name,
-    };
-  });
-
-  return transformedTrendingShows;
+  return transformTrendingData(trendingShowsData);
 };

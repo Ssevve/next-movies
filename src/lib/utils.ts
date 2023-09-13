@@ -5,7 +5,7 @@ import {
   TMDB_CARD_POSTER_PATH,
   TMDB_IMAGE_URL,
 } from '@/services/tmdb/constants';
-import { PaginatedResponse } from '@/types/PaginatedResponse';
+import { PaginatedShowsResponse } from '@/types/PaginatedShowsResponse';
 import { Show } from '@/types/Show';
 
 export function cn(...inputs: ClassValue[]) {
@@ -18,7 +18,7 @@ export function formatDate(dateString: string) {
   );
 }
 
-export function transformTMDBResponse(data: PaginatedResponse) {
+export function transformTMDBResponse(data: PaginatedShowsResponse) {
   const transformedTrendingShows = data.results.map((show): Show => {
     return {
       id: show.id,

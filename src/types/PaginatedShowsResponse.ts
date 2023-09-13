@@ -19,7 +19,7 @@ type Result = {
   vote_count: number;
 } & (MovieResult | TvShowResult);
 
-export interface PaginatedResponse {
+export interface PaginatedShowsResponse {
   page: number;
   results: Result[];
   total_pages: number;

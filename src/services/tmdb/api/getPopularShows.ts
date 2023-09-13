@@ -1,8 +1,8 @@
 import 'server-only';
 
 import { transformTMDBResponse } from '@/lib/utils';
-import { PaginatedResponse } from '@/types/PaginatedResponse';
 import { PaginatedShows } from '@/types/PaginatedShows';
+import { PaginatedShowsResponse } from '@/types/PaginatedShowsResponse';
 import { ShowType } from '@/types/Show';
 
 import tmdbAPI from './client';
@@ -18,7 +18,7 @@ export async function getPopularShows({
 
   if (!res.ok) throw new Error('Data not available');
 
-  const data: PaginatedResponse = await res.json();
+  const data: PaginatedShowsResponse = await res.json();
 
   return transformTMDBResponse(data);
 }

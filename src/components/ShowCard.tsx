@@ -3,8 +3,8 @@ import Link from 'next/link';
 
 import { formatDate } from '@/lib/utils';
 import {
-  TMDB_POSTER_HEIGHT,
-  TMDB_POSTER_WIDTH,
+  TMDB_CARD_POSTER_HEIGHT,
+  TMDB_CARD_POSTER_WIDTH,
 } from '@/services/tmdb/constants';
 import { ShowType } from '@/types/Show';
 
@@ -34,8 +34,8 @@ export default function ShowCard({
           <Image
             src={posterPath}
             alt={title}
-            height={TMDB_POSTER_HEIGHT}
-            width={TMDB_POSTER_WIDTH}
+            height={TMDB_CARD_POSTER_HEIGHT}
+            width={TMDB_CARD_POSTER_WIDTH}
             className="rounded-md"
           />
           <CircularRating

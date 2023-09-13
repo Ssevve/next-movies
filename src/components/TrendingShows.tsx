@@ -8,7 +8,7 @@ import ShowScroller from './ShowScroller';
 import ShowScrollerSkeleton from './skeletons/ShowScrollerSkeleton';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/Tabs';
 
-async function TrendingShowsThisWeek() {
+async function TrendingThisWeek() {
   const trendingThisWeek = await getTrendingShows({
     showType: 'all',
     timeWindow: 'week',
@@ -16,7 +16,7 @@ async function TrendingShowsThisWeek() {
   return <ShowScroller shows={trendingThisWeek.results} />;
 }
 
-async function TrendingShowsToday() {
+async function TrendingToday() {
   const trendingToday = await getTrendingShows({
     showType: 'all',
     timeWindow: 'day',
@@ -42,14 +42,14 @@ export default function TrendingShows() {
         <TabsContent value="today">
           <Suspense fallback={<ShowScrollerSkeleton />}>
             <ErrorBoundary FallbackComponent={ErrorFallback}>
-              <TrendingShowsToday />
+              <TrendingToday />
             </ErrorBoundary>
           </Suspense>
         </TabsContent>
         <TabsContent value="this-week">
           <Suspense fallback={<ShowScrollerSkeleton />}>
             <ErrorBoundary FallbackComponent={ErrorFallback}>
-              <TrendingShowsThisWeek />
+              <TrendingThisWeek />
             </ErrorBoundary>
           </Suspense>
         </TabsContent>

@@ -3,9 +3,13 @@ import 'server-only';
 import { env } from '@/config/env';
 import { Show, ShowType } from '@/types/Show';
 
-import { TMDB_BASE_URL, TMDB_IMAGE_URL } from '../constants';
+import {
+  TMDB_BASE_URL,
+  TMDB_CARD_POSTER_PATH,
+  TMDB_IMAGE_URL,
+} from '../constants';
 
-export type TimeWindow = 'day' | 'week' | 'weeks';
+export type TimeWindow = 'day' | 'week';
 
 interface TrendingArgs {
   showType: ShowType | 'all';
@@ -68,7 +72,7 @@ export const getTrendingShows = async ({
     (show): Show => {
       return {
         id: show.id,
-        posterPath: TMDB_IMAGE_URL + show.poster_path,
+        posterPath: `${TMDB_IMAGE_URL}${TMDB_CARD_POSTER_PATH}${show.poster_path}`,
         rating: show.vote_average,
         ratingsCount: show.vote_count,
         releaseDate: show.release_date || show.first_air_date,

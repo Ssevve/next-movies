@@ -2,9 +2,9 @@ import 'server-only';
 
 import { transformTMDBResponse } from '@/lib/utils';
 import { PaginatedShows } from '@/types/PaginatedShows';
-import { PaginatedShowsResponse } from '@/types/PaginatedShowsResponse';
 import { ShowType } from '@/types/Show';
 
+import { PaginatedShowsResponse } from '../types';
 import tmdbAPI from './client';
 
 export type TimeWindow = 'day' | 'week';

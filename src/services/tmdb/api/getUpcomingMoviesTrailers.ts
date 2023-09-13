@@ -1,8 +1,9 @@
 import 'server-only';
 
-import { MovieTrailer } from '@/types/MovieTrailer';
-import { PaginatedShowsResponse } from '@/types/PaginatedShowsResponse';
+import { Video } from '@/types/Video';
 
+import { TMDB_IMAGE_URL, TMDB_VIDEO_CARD_THUMBNAIL_PATH } from '../constants';
+import { PaginatedShowsResponse } from '../types';
 import tmdbAPI from './client';
 
 interface VideoResult {
@@ -18,14 +19,14 @@ interface VideosResponse {
   results: VideoResult[];
 }
 
-export async function getUpcomingMoviesTrailers(): Promise<MovieTrailer[]> {
+export async function getUpcomingMoviesTrailers(): Promise<Video[]> {
   const upcomingRes = await tmdbAPI(`/movie/upcoming`);
   if (!upcomingRes.ok) throw new Error('Data not available');
   const upcomingData: PaginatedShowsResponse = await upcomingRes.json();
 
   const possibleVideoTypes = ['Trailer', 'Teaser'];
 
-  const trailers: MovieTrailer[] = [];
+  const trailers: Video[] = [];
 
   for await (const movie of upcomingData.results) {
     const videosRes = await tmdbAPI(`/movie/${movie.id}/videos`);
@@ -38,10 +39,12 @@ export async function getUpcomingMoviesTrailers(): Promise<MovieTrailer[]> {
 
     if (trailer) {
       trailers.push({
-        id: trailer.id,
+        id: trailer.key,
         movieTitle: movie.title,
         name: trailer.name,
-        youtubeKey: trailer.key,
+        showId: movie.id,
+        showType: 'movie',
+        thumbnailPath: movie.backdrop_path,
       });
     }
   }

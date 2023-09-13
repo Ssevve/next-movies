@@ -1,14 +1,16 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { formatDate } from '@/lib/utils';
 import {
-  TMDB_CARD_POSTER_HEIGHT,
-  TMDB_CARD_POSTER_WIDTH,
+  TMDB_IMAGE_URL,
+  TMDB_SHOW_CARD_POSTER_HEIGHT,
+  TMDB_SHOW_CARD_POSTER_PATH,
+  TMDB_SHOW_CARD_POSTER_WIDTH,
 } from '@/services/tmdb/constants';
 import { ShowType } from '@/types/Show';
 
 import CircularRating from './CircularRating';
+import Card from './ui/Card';
 
 interface ShowCardProps {
   posterPath: string;
@@ -28,14 +30,14 @@ export default function ShowCard({
   releaseDate,
 }: ShowCardProps) {
   return (
-    <div className="w-[150px] overflow-hidden transition-transform duration-100 hover:scale-105">
+    <Card className="w-[150px]">
       <Link href={`${showType}/${id}`}>
         <div className="relative">
           <Image
-            src={posterPath}
+            src={`${TMDB_IMAGE_URL}${TMDB_SHOW_CARD_POSTER_PATH}${posterPath}`}
             alt={title}
-            height={TMDB_CARD_POSTER_HEIGHT}
-            width={TMDB_CARD_POSTER_WIDTH}
+            height={TMDB_SHOW_CARD_POSTER_HEIGHT}
+            width={TMDB_SHOW_CARD_POSTER_WIDTH}
             className="rounded-md"
           />
           <CircularRating
@@ -44,10 +46,8 @@ export default function ShowCard({
           />
         </div>
         <h3 className="mt-6 text-sm font-bold">{title}</h3>
-        <span className="text-xs text-slate-400">
-          {formatDate(releaseDate)}
-        </span>
+        <span className="text-xs text-slate-400">{releaseDate}</span>
       </Link>
-    </div>
+    </Card>
   );
 }

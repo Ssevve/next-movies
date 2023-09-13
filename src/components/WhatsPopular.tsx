@@ -5,6 +5,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs';
 import { getPopularShows, getTheaterMovies } from '@/services/tmdb/api';
 
 import { ErrorFallback } from './ErrorFallback';
+import SectionHeading from './SectionHeading';
 import ShowScroller from './ShowScroller';
 import ShowScrollerSkeleton from './skeletons/ShowScrollerSkeleton';
 
@@ -32,7 +33,7 @@ export default function WhatsPopular() {
     <section className="w-full overflow-hidden">
       <Tabs defaultValue="movies" className="w-full space-y-4">
         <div className="flex flex-col items-center gap-4 sm:flex-row">
-          <h2 className="text-2xl font-bold">What&apos;s Popular</h2>
+          <SectionHeading>What&apos;s Popular</SectionHeading>
           <TabsList className="flex w-full max-w-xs">
             <TabsTrigger className="flex-1" value="movies">
               Movies

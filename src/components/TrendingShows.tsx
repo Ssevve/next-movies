@@ -5,6 +5,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs';
 import { getTrendingShows } from '@/services/tmdb/api';
 
 import { ErrorFallback } from './ErrorFallback';
+import SectionHeading from './SectionHeading';
 import ShowScroller from './ShowScroller';
 import ShowScrollerSkeleton from './skeletons/ShowScrollerSkeleton';
 
@@ -29,7 +30,7 @@ export default function TrendingShows() {
     <section className="w-full overflow-hidden">
       <Tabs defaultValue="today" className="w-full space-y-4">
         <div className="flex flex-col items-center gap-4 sm:flex-row">
-          <h2 className="text-2xl font-bold">Trending</h2>
+          <SectionHeading>Trending</SectionHeading>
           <TabsList className="flex w-full max-w-xs">
             <TabsTrigger className="flex-1" value="today">
               Today

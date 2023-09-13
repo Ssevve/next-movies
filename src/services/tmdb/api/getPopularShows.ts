@@ -7,18 +7,14 @@ import { ShowType } from '@/types/Show';
 
 import tmdbAPI from './client';
 
-export type TimeWindow = 'day' | 'week';
-
-interface TrendingArgs {
-  showType: ShowType | 'all';
-  timeWindow: TimeWindow;
+interface PopularArgs {
+  showType: ShowType;
 }
 
-export async function getTrendingShows({
+export async function getPopularShows({
   showType,
-  timeWindow,
-}: TrendingArgs): Promise<PaginatedShows> {
-  const res = await tmdbAPI(`/trending/${showType}/${timeWindow}`);
+}: PopularArgs): Promise<PaginatedShows> {
+  const res = await tmdbAPI(`/${showType}/popular`);
 
   if (!res.ok) throw new Error('Data not available');
 

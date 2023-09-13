@@ -1,12 +1,12 @@
 import { Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs';
 import { getTrendingShows } from '@/services/tmdb/api';
 
 import { ErrorFallback } from './ErrorFallback';
 import ShowScroller from './ShowScroller';
 import ShowScrollerSkeleton from './skeletons/ShowScrollerSkeleton';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/Tabs';
 
 async function TrendingThisWeek() {
   const trendingThisWeek = await getTrendingShows({
@@ -28,7 +28,7 @@ export default function TrendingShows() {
   return (
     <section className="w-full overflow-hidden">
       <Tabs defaultValue="today" className="w-full space-y-4">
-        <div className="flex flex-wrap items-center gap-4">
+        <div className="flex flex-col items-center gap-4 sm:flex-row">
           <h2 className="text-2xl font-bold">Trending</h2>
           <TabsList className="flex w-full max-w-xs">
             <TabsTrigger className="flex-1" value="today">

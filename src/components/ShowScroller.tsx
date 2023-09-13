@@ -10,7 +10,7 @@ interface ShowScrollerProps {
 export default function ShowScroller({ shows }: ShowScrollerProps) {
   return (
     <ScrollArea>
-      <div className="flex space-x-4 px-2 pb-4">
+      <div className="flex h-[350px] space-x-4 px-2 pb-4">
         {shows.map((show) => (
           <ShowCard
             releaseDate={show.releaseDate}

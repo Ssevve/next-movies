@@ -9,8 +9,8 @@ export function ErrorFallback() {
   const { resetBoundary } = useErrorBoundary();
 
   return (
-    <div role="alert">
-      <div className="mb-4 flex gap-2 text-red-600">
+    <div role="alert" className="mt-4 space-y-4">
+      <div className="flex gap-2 text-red-600">
         <AlertCircle />
         <span>Something went wrong.</span>
       </div>

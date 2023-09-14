@@ -13,11 +13,13 @@ import { Video } from '@/types/Video';
 
 import VideoScroller from './VideoScroller';
 
+interface UpcomingMoviesTrailersProps {
+  trailersPromise: Promise<Video[]>;
+}
+
 export default function UpcomingMoviesTrailers({
   trailersPromise,
-}: {
-  trailersPromise: Promise<Video[]>;
-}) {
+}: UpcomingMoviesTrailersProps) {
   const trailers = use(trailersPromise);
   const { theme } = useTheme();
   const [currentBackgroundPath, setCurrentBackgroundPath] = useState(
@@ -35,8 +37,6 @@ export default function UpcomingMoviesTrailers({
     setActiveImage((prev) => (prev === 0 ? 1 : 0));
   };
 
-  const isLightTheme = theme === 'light';
-
   const getBackgroundImagePath = (imageIndex: number) => {
     return `${TMDB_IMAGE_URL}${TMDB_SCROLLER_BACKGROUND_PATH}${
       activeImage === imageIndex
@@ -51,6 +51,8 @@ export default function UpcomingMoviesTrailers({
       activeImage === imageIndex && 'opacity-100 dark:opacity-10'
     );
   };
+
+  const isLightTheme = theme === 'light';
 
   return (
     <section className="relative overflow-hidden rounded-md p-4 pb-0">

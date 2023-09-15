@@ -28,7 +28,8 @@ export default function CircularRating({
   className,
 }: CircularRatingProps) {
   const viewBox = `0 0 ${size} ${size}`;
-  const ratingPercentage = +rating.toFixed(1) * 10;
+  const formattedRating = +rating.toFixed(1);
+  const ratingPercentage = formattedRating * 10;
   const circleRadius = (size - strokeWidth) / 2.5;
   const dashDiameter = Math.PI * 2 * circleRadius;
   const dashRatio = rating / 10;
@@ -82,7 +83,7 @@ export default function CircularRating({
           `text-${textSize}`
         )}
       >
-        {ratingPercentage}
+        {formattedRating}
       </span>
     </div>
   );

@@ -9,7 +9,7 @@ import {
   TMDB_IMAGE_URL,
   TMDB_SCROLLER_BACKGROUND_PATH,
 } from '@/services/tmdb/constants';
-import { Video } from '@/types/Video';
+import Video from '@/types/Video';
 
 import VideoScroller from './VideoScroller';
 
@@ -55,7 +55,7 @@ export default function UpcomingMoviesTrailers({
   const isLightTheme = theme === 'light';
 
   return (
-    <section className="relative overflow-hidden rounded-md p-4 pb-0">
+    <section className="relative overflow-hidden rounded-md">
       <Image
         src={getBackgroundImagePath(0)}
         alt=""
@@ -68,8 +68,8 @@ export default function UpcomingMoviesTrailers({
         className={getBackgroundImageClassNames(1)}
         fill
       />
-      {isLightTheme && <div className="absolute inset-0 bg-black opacity-70" />}
       <VideoScroller
+        className={cn('h-full w-full p-4 pb-0', isLightTheme && 'bg-black/70')}
         videos={trailers}
         invertedTextColor={isLightTheme}
         setBackgroundPath={changeActiveImage}

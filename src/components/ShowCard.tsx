@@ -7,7 +7,7 @@ import {
   TMDB_SHOW_CARD_POSTER_PATH,
   TMDB_SHOW_CARD_POSTER_WIDTH,
 } from '@/services/tmdb/constants';
-import { ShowType } from '@/types/Show';
+import ShowType from '@/types/ShowType';
 
 import CircularRating from './CircularRating';
 import Card from './ui/Card';

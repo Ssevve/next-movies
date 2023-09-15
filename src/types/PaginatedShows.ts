@@ -1,6 +1,6 @@
-import { Show } from './Show';
+import Show from './Show';
 
-export interface PaginatedShows {
+export default interface PaginatedShows {
   page: number;
   results: Show[];
   totalPages: number;

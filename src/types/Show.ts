@@ -1,6 +1,6 @@
-export type ShowType = 'movie' | 'tv';
+import ShowType from './ShowType';
 
-export interface Show {
+export default interface Show {
   id: number;
   posterPath: string;
   title: string;

@@ -1,12 +1,11 @@
 import 'server-only';
 
-import { Video } from '@/types/Video';
+import Video from '@/types/Video';
 
-import { TMDB_IMAGE_URL, TMDB_VIDEO_CARD_THUMBNAIL_PATH } from '../constants';
-import { PaginatedShowsResponse } from '../types';
+import { MovieResult, PaginatedShowsResponse } from '../types';
 import tmdbAPI from './client';
 
-interface VideoResult {
+interface VideosResponseResult {
   type: string;
   key: string;
   name: string;
@@ -16,38 +15,47 @@ interface VideoResult {
 
 interface VideosResponse {
   id: number;
-  results: VideoResult[];
+  results: VideosResponseResult[];
 }
 
 export async function getUpcomingMoviesTrailers(): Promise<Video[]> {
   const upcomingRes = await tmdbAPI(`/movie/upcoming`);
-  if (!upcomingRes.ok) throw new Error('Data not available');
-  const upcomingData: PaginatedShowsResponse = await upcomingRes.json();
+  if (!upcomingRes.ok) throw Error('Failed to fetch upcoming movies.');
+  const upcomingData: PaginatedShowsResponse<MovieResult> =
+    await upcomingRes.json();
 
-  const possibleVideoTypes = ['Trailer', 'Teaser'];
+  const allowedVideoTypes = ['Trailer', 'Teaser'];
 
   const trailers: Video[] = [];
 
-  for await (const movie of upcomingData.results) {
+  for (const movie of upcomingData.results) {
     const videosRes = await tmdbAPI(`/movie/${movie.id}/videos`);
-    if (!videosRes.ok) throw new Error('Data not available');
-    const videosData: VideosResponse = await videosRes.json();
-    const trailer = videosData.results.find(
+    if (!videosRes.ok) {
+      console.log(`Failed to fetch videos for ${movie.id}: ${movie.title}`);
+      continue;
+    }
+
+    const videos: VideosResponse = await videosRes.json();
+    const trailer = videos.results.find(
       (video) =>
-        video.site === 'YouTube' && possibleVideoTypes.includes(video.type)
+        video.site === 'YouTube' && allowedVideoTypes.includes(video.type)
     );
 
     if (trailer) {
       trailers.push({
-        id: trailer.key,
+        id: trailer.id,
         movieTitle: movie.title,
         name: trailer.name,
         showId: movie.id,
         showType: 'movie',
         thumbnailPath: movie.backdrop_path,
+        youtubeKey: trailer.key,
       });
     }
   }
+
+  if (!trailers.length)
+    throw Error('No trailers for upcoming movies available.');
 
   return trailers;
 }

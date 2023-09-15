@@ -1,4 +1,4 @@
-import { Show } from '@/types/Show';
+import Show from '@/types/Show';
 
 import ShowCard from './ShowCard';
 import { ScrollArea, ScrollBar } from './ui/ScrollArea';
@@ -9,7 +9,7 @@ interface ShowScrollerProps {
 
 export default function ShowScroller({ shows }: ShowScrollerProps) {
   return (
-    <ScrollArea>
+    <ScrollArea type="always">
       <div className="flex h-[350px] space-x-4 px-2 pb-4">
         {shows.map((show) => (
           <ShowCard

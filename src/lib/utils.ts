@@ -1,8 +1,8 @@
-import { type ClassValue, clsx } from 'clsx';
+import { ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
 import { PaginatedShowsResponse } from '@/services/tmdb/types';
-import { Show } from '@/types/Show';
+import Show from '@/types/Show';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -14,17 +14,19 @@ export function formatDate(dateString: string) {
   );
 }
 
-export function transformTMDBResponse(data: PaginatedShowsResponse) {
+export function transformPaginatedShowsResponse(data: PaginatedShowsResponse) {
   const transformedTrendingShows = data.results.map((show): Show => {
-    const releaseDate = show.release_date || show.first_air_date;
+    const releaseDate =
+      'release_date' in show ? show.release_date : show.first_air_date;
+
     return {
       id: show.id,
       posterPath: show.poster_path,
       rating: show.vote_average,
       ratingsCount: show.vote_count,
       releaseDate: releaseDate ? formatDate(releaseDate) : 'N/A',
-      showType: show.title ? 'movie' : 'tv',
-      title: show.title || show.name,
+      showType: 'title' in show ? 'movie' : 'tv',
+      title: 'title' in show ? show.title : show.name,
     };
   });
 

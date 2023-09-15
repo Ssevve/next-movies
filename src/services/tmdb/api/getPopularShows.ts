@@ -1,8 +1,8 @@
 import 'server-only';
 
-import { transformTMDBResponse } from '@/lib/utils';
-import { PaginatedShows } from '@/types/PaginatedShows';
-import { ShowType } from '@/types/Show';
+import { transformPaginatedShowsResponse } from '@/lib/utils';
+import PaginatedShows from '@/types/PaginatedShows';
+import ShowType from '@/types/ShowType';
 
 import { PaginatedShowsResponse } from '../types';
 import tmdbAPI from './client';
@@ -15,10 +15,8 @@ export async function getPopularShows({
   showType,
 }: PopularArgs): Promise<PaginatedShows> {
   const res = await tmdbAPI(`/${showType}/popular`);
-
-  if (!res.ok) throw new Error('Data not available');
+  if (!res.ok) throw Error(`Failed to fetch popular ${showType}s.`);
 
   const data: PaginatedShowsResponse = await res.json();
-
-  return transformTMDBResponse(data);
+  return transformPaginatedShowsResponse(data);
 }

@@ -36,7 +36,7 @@ function NavOption({ option }: NavOptionProps) {
 }
 
 export default function MobileMenu() {
-  useLockedBody();
+  useLockedBody(true);
 
   return (
     <div className="fixed inset-0 top-[72px] z-50 flex h-full w-full">

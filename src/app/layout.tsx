@@ -3,6 +3,7 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
+import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
 import ThemeProvider from '@/providers/ThemeProvider';
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
@@ -26,7 +27,8 @@ export default function RootLayout({
       <body id="root" className="h-full w-full overflow-x-hidden">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Navbar />
-          <main className="container h-full w-full p-4">{children}</main>
+          <main className="container p-4">{children}</main>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

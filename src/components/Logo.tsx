@@ -5,7 +5,7 @@ export default function Logo() {
     <div className="flex w-max items-center gap-2">
       <div className="text-primary">
         <Image
-          src="/logo-image.svg"
+          src="/images/logo-image.svg"
           alt="Next Movies Logo"
           width={28}
           height={28}

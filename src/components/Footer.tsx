@@ -5,7 +5,7 @@ import Logo from './Logo';
 
 export default function Footer() {
   return (
-    <footer className="rounded-md border-t p-4">
+    <footer className="mt-8 rounded-md border-t p-4">
       <div className="container mx-auto w-full divide-y py-4">
         <div>
           <Link href="/">

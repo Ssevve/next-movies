@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
-import { Button } from './ui/Button';
-import { Input } from './ui/Input';
+import { Button } from '@/components/ui/Button';
+import { Input } from '@/components/ui/Input';
 
 export default function Hero() {
   return (
@@ -29,6 +29,7 @@ export default function Hero() {
           </div>
           <div className="relative flex w-full max-w-sm items-center">
             <Input
+              type="text"
               placeholder="Search for a movie, tv show, person..."
               className="rounded-r-none dark:border-foreground dark:bg-foreground dark:text-background"
             />

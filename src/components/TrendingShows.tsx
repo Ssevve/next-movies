@@ -1,8 +1,7 @@
+import ShowScroller from '@/components/ShowScroller';
+import TabsSection from '@/components/TabsSection';
 import { getTrendingShows } from '@/services/tmdb/api';
 import Tab from '@/types/Tab';
-
-import ShowScroller from './ShowScroller';
-import TabsSection from './TabsSection';
 
 export default async function TrendingShows() {
   const trendingThisWeek = await getTrendingShows({

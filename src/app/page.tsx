@@ -1,14 +1,15 @@
-import Hero from '@/components/Hero';
-import TrendingShows from '@/components/TrendingShows';
+import Hero from '@/components/Hero/Hero';
 import UpcomingMovies from '@/components/UpcomingMovies';
 import WhatsPopular from '@/components/WhatsPopular';
 import YoutubeIframeModal from '@/components/YoutubeIframeModal';
+
+import TrendingShows from '@/components/TrendingShows';
 
 interface HomeProps {
   searchParams: Record<string, string> | undefined | null;
 }
 
-export default async function Home({ searchParams }: HomeProps) {
+export default function Home({ searchParams }: HomeProps) {
   const youtubeModalVideoKey = searchParams?.play;
   return (
     <section className="grid w-full gap-12">

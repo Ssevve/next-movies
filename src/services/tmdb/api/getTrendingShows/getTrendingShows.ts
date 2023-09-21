@@ -19,11 +19,13 @@ export async function getTrendingShows({
 }: TrendingArgs): Promise<PaginatedShows> {
   const res = await tmdbAPI(`/trending/${showType}/${timeWindow}`);
   if (!res.ok) {
-    throw Error(
-      `Failed to fetch trending ${
-        showType === 'all' ? 'shows' : `${showType}s`
-      }.`
-    );
+    if (showType === 'movie') {
+      throw Error('Failed to fetch trending movies.');
+    } else if (showType === 'tv') {
+      throw Error('Failed to fetch trending TV shows.');
+    } else {
+      throw Error('Failed to fetch trending shows.');
+    }
   }
 
   const data: PaginatedShowsResponse = await res.json();

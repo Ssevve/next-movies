@@ -1,10 +1,9 @@
 import 'server-only';
 
 import { transformPaginatedShowsResponse } from '@/lib/utils';
+import tmdbAPI from '@/services/tmdb/api/client';
+import { MovieResult, PaginatedShowsResponse } from '@/services/tmdb/types';
 import PaginatedShows from '@/types/PaginatedShows';
-
-import { MovieResult, PaginatedShowsResponse } from '../types';
-import tmdbAPI from './client';
 
 export async function getTheaterMovies(): Promise<PaginatedShows> {
   const res = await tmdbAPI(`/movie/now_playing`);

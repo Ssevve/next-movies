@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+import CircularRating from '@/components/CircularRating/CircularRating';
 import {
   TMDB_IMAGE_URL,
   TMDB_SHOW_CARD_POSTER_HEIGHT,
@@ -9,7 +10,6 @@ import {
 } from '@/services/tmdb/constants';
 import ShowType from '@/types/ShowType';
 
-import CircularRating from './CircularRating';
 import Card from './ui/Card';
 
 interface ShowCardProps {

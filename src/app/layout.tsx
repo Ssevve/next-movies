@@ -6,7 +6,11 @@ import { Inter } from 'next/font/google';
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
 import ThemeProvider from '@/providers/ThemeProvider';
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
+const inter = Inter({
+  display: 'swap',
+  subsets: ['latin'],
+  variable: '--font-inter',
+});
 
 export const metadata: Metadata = {
   description: 'Movies App build with NextJS',

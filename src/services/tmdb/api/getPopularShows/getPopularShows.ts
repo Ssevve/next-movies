@@ -1,11 +1,10 @@
 import 'server-only';
 
 import { transformPaginatedShowsResponse } from '@/lib/utils';
+import tmdbAPI from '@/services/tmdb/api/client';
+import { PaginatedShowsResponse } from '@/services/tmdb/types';
 import PaginatedShows from '@/types/PaginatedShows';
 import ShowType from '@/types/ShowType';
-
-import { PaginatedShowsResponse } from '../types';
-import tmdbAPI from './client';
 
 interface PopularArgs {
   showType: ShowType;

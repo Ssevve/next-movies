@@ -1,17 +1,19 @@
 import ShowScroller from '@/components/ShowScroller';
 import TabsSection from '@/components/TabsSection';
-import { getTrendingShows } from '@/services/tmdb/api';
+import { getTrendingShows } from '@/services/tmdb/api/getTrendingShows/getTrendingShows';
 import Tab from '@/types/Tab';
 
 export default async function TrendingShows() {
   const trendingThisWeek = await getTrendingShows({
-    showType: 'all',
+    showType: 'movie',
     timeWindow: 'week',
   });
   const trendingToday = await getTrendingShows({
     showType: 'all',
     timeWindow: 'day',
   });
+
+  console.log(trendingThisWeek);
 
   const tabs: Tab[] = [
     {

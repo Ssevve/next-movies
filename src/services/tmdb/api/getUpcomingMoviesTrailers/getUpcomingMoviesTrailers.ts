@@ -1,9 +1,8 @@
 import 'server-only';
 
+import tmdbAPI from '@/services/tmdb/api/client';
+import { MovieResult, PaginatedShowsResponse } from '@/services/tmdb/types';
 import Video from '@/types/Video';
-
-import { MovieResult, PaginatedShowsResponse } from '../types';
-import tmdbAPI from './client';
 
 interface VideosResponseResult {
   type: string;

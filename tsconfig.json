@@ -28,7 +28,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "__mocks__/server-only.js"
+    "__mocks__/server-only.js",
+    "src/__mocks__/server-only.js"
   ],
   "exclude": ["node_modules"]
 }

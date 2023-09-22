@@ -17,8 +17,12 @@ interface UpcomingMoviesTrailersProps {
 export default function UpcomingMoviesTrailers({ trailersPromise }: UpcomingMoviesTrailersProps) {
   const trailers = use(trailersPromise);
   const { theme } = useTheme();
-  const [currentBackgroundPath, setCurrentBackgroundPath] = useState(trailers[0].thumbnailPath);
-  const [previousBackgroundPath, setPreviousBackgroundPath] = useState(trailers[0].thumbnailPath);
+  const [currentBackgroundPath, setCurrentBackgroundPath] = useState(
+    trailers[0].thumbnailPath || ''
+  );
+  const [previousBackgroundPath, setPreviousBackgroundPath] = useState(
+    trailers[0].thumbnailPath || ''
+  );
   const [activeImage, setActiveImage] = useState(0);
 
   const changeActiveImage = (path: string) => {

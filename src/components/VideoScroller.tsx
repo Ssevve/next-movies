@@ -24,7 +24,7 @@ export default function VideoScroller({
             invertedTextColor={invertedTextColor}
             key={video.id}
             videoTitle={video.name}
-            showTitle={video.movieTitle}
+            showTitle={video.showTitle}
             id={video.id}
             thumbnailPath={video.thumbnailPath}
             showType={video.showType}

@@ -8,6 +8,7 @@ import {
   TvShowResult,
 } from '@/services/tmdb/types';
 import Show from '@/types/Show';
+import ShowType from '@/types/ShowType';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -16,6 +17,10 @@ export function cn(...inputs: ClassValue[]) {
 export function formatDate(dateString: string) {
   return new Intl.DateTimeFormat('en-US', { dateStyle: 'medium' }).format(new Date(dateString));
 }
+
+export const isFulfilled = <T>(
+  promise: PromiseSettledResult<T>
+): promise is PromiseFulfilledResult<T> => promise.status === 'fulfilled';
 
 export function transformPaginatedShowsResponse(data: PaginatedShowsResponse) {
   const transformedTrendingShows = transformTMDBResults(data.results);

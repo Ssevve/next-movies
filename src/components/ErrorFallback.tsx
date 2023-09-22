@@ -12,7 +12,7 @@ export function ErrorFallback() {
     <div role="alert" className="mt-4 space-y-4">
       <div className="flex gap-2 text-red-600">
         <AlertCircle />
-        <span>Something went wrong.</span>
+        <span>Data not available.</span>
       </div>
       <Button variant="outline" onClick={resetBoundary}>
         Try again

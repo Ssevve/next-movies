@@ -30,3 +30,15 @@ export interface PaginatedShowsResponse<T = MixedShowsResult> {
   total_pages: number;
   total_results: number;
 }
+
+export interface VideosResponseResult {
+  type: string;
+  key: string;
+  name: string;
+  id: string;
+  site: string;
+}
+
+export interface VideosResponse {
+  results: VideosResponseResult[];
+}

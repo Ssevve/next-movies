@@ -1,7 +1,7 @@
 import ShowType from './ShowType';
 
 export default interface Video {
-  movieTitle: string;
+  showTitle: string;
   showType: ShowType;
   showId: number;
   name: string;

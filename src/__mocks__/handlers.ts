@@ -46,4 +46,10 @@ export const tmdbHandlers = [
       }
     }
   ),
+  rest.get(`${TMDB_BASE_URL}/movie/now_playing`, (req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json(generateMockResponse(mockTMDBMovieResults))
+    );
+  }),
 ];

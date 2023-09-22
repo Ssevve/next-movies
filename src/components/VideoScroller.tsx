@@ -30,9 +30,7 @@ export default function VideoScroller({
             showType={video.showType}
             showId={video.showId}
             youtubeKey={video.youtubeKey}
-            onMouseEnter={() =>
-              setBackgroundPath && setBackgroundPath(video.thumbnailPath)
-            }
+            onMouseEnter={() => setBackgroundPath && setBackgroundPath(video.thumbnailPath)}
           />
         ))}
       </div>

@@ -10,9 +10,6 @@ const customJestConfig = {
     },
   },
   moduleDirectories: ['node_modules', __dirname],
-  // moduleNameMapper: {
-  //   '^@/(.*)$': '<rootDir>/src/$1',
-  // },
   preset: 'ts-jest',
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   testEnvironment: 'jest-environment-jsdom',

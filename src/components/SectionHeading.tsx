@@ -5,9 +5,6 @@ interface SectionHeadingProps {
   className?: string;
 }
 
-export default function SectionHeading({
-  children,
-  className,
-}: SectionHeadingProps) {
+export default function SectionHeading({ children, className }: SectionHeadingProps) {
   return <h2 className={cn('text-2xl font-bold', className)}>{children}</h2>;
 }

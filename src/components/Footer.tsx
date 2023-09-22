@@ -22,9 +22,7 @@ export default function Footer() {
                 height={35}
               />
             </Link>
-            <span className="text-sm">
-              API but is not endorsed or certified by TMDB.
-            </span>
+            <span className="text-sm">API but is not endorsed or certified by TMDB.</span>
           </div>
         </div>
         <span className="block pt-4  text-sm sm:text-center">

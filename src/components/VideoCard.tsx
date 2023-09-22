@@ -46,11 +46,7 @@ export default function VideoCard({
   return (
     <>
       <Card className="w-[275px]" {...props}>
-        <Link
-          href={`${pathname}?${newSearchParams}`}
-          scroll={false}
-          className="relative block"
-        >
+        <Link href={`${pathname}?${newSearchParams}`} scroll={false} className="relative block">
           <Image
             src={`${TMDB_IMAGE_URL}${TMDB_VIDEO_CARD_THUMBNAIL_PATH}${thumbnailPath}`}
             alt={videoTitle}
@@ -66,10 +62,7 @@ export default function VideoCard({
         </Link>
         <Link
           href={`${showType}/${showId}`}
-          className={cn(
-            'mt-6 block text-sm font-bold',
-            invertedTextColor && 'text-background'
-          )}
+          className={cn('mt-6 block text-sm font-bold', invertedTextColor && 'text-background')}
         >
           {showTitle}
         </Link>

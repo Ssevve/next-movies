@@ -12,9 +12,7 @@ export default function UpcomingMovies() {
   const trailersPromise = getUpcomingMoviesTrailers();
   return (
     <section className="w-full space-y-4 overflow-hidden">
-      <SectionHeading className="text-center sm:text-left">
-        Upcoming Movies
-      </SectionHeading>
+      <SectionHeading className="text-center sm:text-left">Upcoming Movies</SectionHeading>
       <Suspense fallback={<VideoScrollerSkeleton />}>
         <ErrorBoundary FallbackComponent={ErrorFallback}>
           <UpcomingMoviesTrailers trailersPromise={trailersPromise} />

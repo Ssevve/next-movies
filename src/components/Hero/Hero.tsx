@@ -23,9 +23,7 @@ export default function Hero() {
             <h1 className="mb-4 max-w-[470px] break-keep text-4xl font-extrabold leading-none tracking-tight md:text-5xl lg:text-5xl">
               Unlimited movies, TV shows, and more
             </h1>
-            <p className="text-lg">
-              Find the latest and greatest movies and TV shows.
-            </p>
+            <p className="text-lg">Find the latest and greatest movies and TV shows.</p>
           </div>
           <div className="relative flex w-full max-w-sm items-center">
             <Input
@@ -33,10 +31,7 @@ export default function Hero() {
               placeholder="Search for a movie, tv show, person..."
               className="rounded-r-none dark:border-foreground dark:bg-foreground dark:text-background"
             />
-            <Button
-              type="submit"
-              className="rounded-l-none dark:text-foreground"
-            >
+            <Button type="submit" className="rounded-l-none dark:text-foreground">
               Search
             </Button>
           </div>

@@ -17,17 +17,9 @@ export const metadata: Metadata = {
   title: 'Next Movies',
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html
-      lang="en"
-      className={`${inter.variable} h-full w-full`}
-      suppressHydrationWarning
-    >
+    <html lang="en" className={`${inter.variable} h-full w-full`} suppressHydrationWarning>
       <body id="root" className="h-full w-full overflow-x-hidden">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Navbar />

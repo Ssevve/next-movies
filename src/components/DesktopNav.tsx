@@ -27,10 +27,7 @@ function DesktopNavDropdown({ option }: DesktopNavDropdownProps) {
         <Button variant="ghost">
           <span className="mr-1">{option.label}</span>
           <ChevronDown
-            className={cn(
-              'rotate-0 transition-transform duration-100',
-              isOpen && 'rotate-180'
-            )}
+            className={cn('rotate-0 transition-transform duration-100', isOpen && 'rotate-180')}
             size={15}
           />
         </Button>

@@ -20,10 +20,7 @@ function NavOption({ option }: NavOptionProps) {
         {option.children.map((child) => (
           <li key={child.href}>
             <Link
-              className={cn(
-                buttonVariants({ variant: 'ghost' }),
-                'w-full justify-start'
-              )}
+              className={cn(buttonVariants({ variant: 'ghost' }), 'w-full justify-start')}
               href={`${option.path}/${child.href}`}
             >
               {child.label}

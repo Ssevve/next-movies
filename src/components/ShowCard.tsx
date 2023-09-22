@@ -40,10 +40,7 @@ export default function ShowCard({
             width={TMDB_SHOW_CARD_POSTER_WIDTH}
             className="rounded-md"
           />
-          <CircularRating
-            className="absolute -bottom-4 left-2 border"
-            rating={rating}
-          />
+          <CircularRating className="absolute -bottom-4 left-2 border" rating={rating} />
         </div>
         <h3 className="mt-6 text-sm font-bold">{title}</h3>
         <span className="text-xs text-slate-400">{releaseDate}</span>

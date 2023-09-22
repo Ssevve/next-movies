@@ -13,8 +13,6 @@ export default async function TrendingShows() {
     timeWindow: 'day',
   });
 
-  console.log(trendingThisWeek);
-
   const tabs: Tab[] = [
     {
       content: <ShowScroller shows={trendingToday.results} />,

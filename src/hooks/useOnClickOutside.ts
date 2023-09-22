@@ -25,6 +25,7 @@ export default function useOnClickOutside<T extends HTMLElement = HTMLElement>(
       document.removeEventListener('mousedown', handler);
       document.removeEventListener('touchstart', handler);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return ref;

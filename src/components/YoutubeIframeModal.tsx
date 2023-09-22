@@ -11,9 +11,7 @@ interface YoutubeIframeModalProps {
   videoKey: string;
 }
 
-export default function YoutubeIframeModal({
-  videoKey,
-}: YoutubeIframeModalProps) {
+export default function YoutubeIframeModal({ videoKey }: YoutubeIframeModalProps) {
   const iframeWrapperRef = useRef(null);
   const router = useRouter();
   const [showVideo, setShowVideo] = useState(false);
@@ -29,10 +27,7 @@ export default function YoutubeIframeModal({
 
   return (
     <div className="fixed left-1/2 top-1/2 z-50 grid h-screen w-screen -translate-x-1/2 -translate-y-1/2 place-items-center bg-black/60 backdrop-grayscale">
-      <div
-        ref={iframeWrapperRef}
-        className="absolute aspect-video w-[1280px] max-w-[90%]"
-      >
+      <div ref={iframeWrapperRef} className="absolute aspect-video w-[1280px] max-w-[90%]">
         {!showVideo && (
           <>
             <Image

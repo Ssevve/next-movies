@@ -14,9 +14,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function formatDate(dateString: string) {
-  return new Intl.DateTimeFormat('en-US', { dateStyle: 'medium' }).format(
-    new Date(dateString)
-  );
+  return new Intl.DateTimeFormat('en-US', { dateStyle: 'medium' }).format(new Date(dateString));
 }
 
 export function transformPaginatedShowsResponse(data: PaginatedShowsResponse) {
@@ -32,21 +30,10 @@ export function transformPaginatedShowsResponse(data: PaginatedShowsResponse) {
   return transformedResponse;
 }
 
-export function transformTMDBResults(
-  results: MixedShowsResult[] | MovieResult[] | TvShowResult[]
-) {
+export function transformTMDBResults(results: MixedShowsResult[] | MovieResult[] | TvShowResult[]) {
   return results.map(
-    ({
-      backdrop_path,
-      id,
-      media_type,
-      poster_path,
-      vote_average,
-      vote_count,
-      ...rest
-    }): Show => {
-      const releaseDate =
-        media_type === 'movie' ? rest.release_date : rest.first_air_date;
+    ({ backdrop_path, id, media_type, poster_path, vote_average, vote_count, ...rest }): Show => {
+      const releaseDate = media_type === 'movie' ? rest.release_date : rest.first_air_date;
 
       const showTitle = media_type === 'movie' ? rest.title : rest.name;
 

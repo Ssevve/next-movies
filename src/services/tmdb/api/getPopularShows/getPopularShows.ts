@@ -6,16 +6,12 @@ import { PaginatedShowsResponse } from '@/services/tmdb/types';
 import PaginatedShows from '@/types/PaginatedShows';
 import ShowType from '@/types/ShowType';
 
-interface PopularArgs {
-  showType: ShowType;
-}
-
-export async function getPopularShows({
-  showType,
-}: PopularArgs): Promise<PaginatedShows> {
+export async function getPopularShows(showType: ShowType): Promise<PaginatedShows> {
   const res = await tmdbAPI(`/${showType}/popular`);
-  if (!res.ok) throw Error(`Failed to fetch popular ${showType}s.`);
+  if (res.ok) {
+    const data: PaginatedShowsResponse = await res.json();
+    return transformPaginatedShowsResponse(data);
+  }
 
-  const data: PaginatedShowsResponse = await res.json();
-  return transformPaginatedShowsResponse(data);
+  throw Error(`Failed to fetch popular ${showType === 'movie' ? 'movies' : 'TV shows'}.`);
 }

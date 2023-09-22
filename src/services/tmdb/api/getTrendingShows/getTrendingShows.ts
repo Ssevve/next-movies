@@ -18,17 +18,15 @@ export async function getTrendingShows({
   timeWindow,
 }: TrendingArgs): Promise<PaginatedShows> {
   const res = await tmdbAPI(`/trending/${showType}/${timeWindow}`);
-  if (!res.ok) {
-    if (showType === 'movie') {
-      throw Error('Failed to fetch trending movies.');
-    } else if (showType === 'tv') {
-      throw Error('Failed to fetch trending TV shows.');
-    } else {
-      throw Error('Failed to fetch trending shows.');
-    }
+  if (res.ok) {
+    const data: PaginatedShowsResponse = await res.json();
+    return transformPaginatedShowsResponse(data);
   }
 
-  const data: PaginatedShowsResponse = await res.json();
+  let errorMessage = 'Failed to fetch trending ';
+  if (showType === 'movie') errorMessage += 'movies.';
+  else if (showType === 'tv') errorMessage += 'TV shows.';
+  else errorMessage += 'shows.';
 
-  return transformPaginatedShowsResponse(data);
+  throw Error(errorMessage);
 }

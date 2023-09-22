@@ -6,12 +6,8 @@ import ShowScroller from './ShowScroller';
 import TabsSection from './TabsSection';
 
 export default async function WhatsPopular() {
-  const popularMovies = await getPopularShows({
-    showType: 'movie',
-  });
-  const popularTvShows = await getPopularShows({
-    showType: 'tv',
-  });
+  const popularMovies = await getPopularShows('movie');
+  const popularTvShows = await getPopularShows('tv');
   const inTheaters = await getTheaterMovies();
 
   const tabs: Tab[] = [

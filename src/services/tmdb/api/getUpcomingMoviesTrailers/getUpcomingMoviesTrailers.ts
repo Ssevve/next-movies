@@ -43,7 +43,7 @@ export async function getUpcomingMoviesTrailers(): Promise<Video[]> {
     if (trailer) {
       trailers.push({
         id: trailer.id,
-        movieTitle: movie.title,
+        movieTitle: movie.title || '',
         name: trailer.name,
         showId: movie.id,
         showType: 'movie',

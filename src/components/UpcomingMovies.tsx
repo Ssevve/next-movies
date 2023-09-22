@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 
-import { getUpcomingMoviesTrailers } from '@/services/tmdb/api';
+import { getUpcomingMoviesTrailers } from '@/services/tmdb/api/getUpcomingMoviesTrailers/getUpcomingMoviesTrailers';
 
 import { ErrorFallback } from './ErrorFallback';
 import SectionHeading from './SectionHeading';

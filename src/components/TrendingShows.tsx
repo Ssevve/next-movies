@@ -5,7 +5,7 @@ import Tab from '@/types/Tab';
 
 export default async function TrendingShows() {
   const trendingThisWeek = await getTrendingShows({
-    showType: 'movie',
+    showType: 'tv',
     timeWindow: 'week',
   });
   const trendingToday = await getTrendingShows({

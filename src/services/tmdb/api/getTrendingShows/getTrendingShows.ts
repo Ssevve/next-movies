@@ -29,5 +29,6 @@ export async function getTrendingShows({
   }
 
   const data: PaginatedShowsResponse = await res.json();
+
   return transformPaginatedShowsResponse(data);
 }

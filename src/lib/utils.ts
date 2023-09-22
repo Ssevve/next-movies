@@ -1,7 +1,12 @@
 import { ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
-import { PaginatedShowsResponse } from '@/services/tmdb/types';
+import {
+  MixedShowsResult,
+  MovieResult,
+  PaginatedShowsResponse,
+  TvShowResult,
+} from '@/services/tmdb/types';
 import Show from '@/types/Show';
 
 export function cn(...inputs: ClassValue[]) {
@@ -15,20 +20,7 @@ export function formatDate(dateString: string) {
 }
 
 export function transformPaginatedShowsResponse(data: PaginatedShowsResponse) {
-  const transformedTrendingShows = data.results.map((show): Show => {
-    const releaseDate =
-      'release_date' in show ? show.release_date : show.first_air_date;
-
-    return {
-      id: show.id,
-      posterPath: show.poster_path,
-      rating: show.vote_average,
-      ratingsCount: show.vote_count,
-      releaseDate: releaseDate ? formatDate(releaseDate) : 'N/A',
-      showType: 'title' in show ? 'movie' : 'tv',
-      title: 'title' in show ? show.title : show.name,
-    };
-  });
+  const transformedTrendingShows = transformTMDBResults(data.results);
 
   const transformedResponse = {
     page: data.page,
@@ -38,4 +30,35 @@ export function transformPaginatedShowsResponse(data: PaginatedShowsResponse) {
   };
 
   return transformedResponse;
+}
+
+export function transformTMDBResults(
+  results: MixedShowsResult[] | MovieResult[] | TvShowResult[]
+) {
+  return results.map(
+    ({
+      backdrop_path,
+      id,
+      media_type,
+      poster_path,
+      vote_average,
+      vote_count,
+      ...rest
+    }): Show => {
+      const releaseDate =
+        media_type === 'movie' ? rest.release_date : rest.first_air_date;
+
+      const showTitle = media_type === 'movie' ? rest.title : rest.name;
+
+      return {
+        id,
+        posterPath: poster_path,
+        rating: vote_average,
+        ratingsCount: vote_count,
+        releaseDate: releaseDate ? formatDate(releaseDate) : 'N/A',
+        showType: media_type,
+        title: showTitle || 'N/A',
+      };
+    }
+  );
 }

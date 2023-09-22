@@ -2,8 +2,11 @@
 
 import { rest } from 'msw';
 
-import mockShows from '@/__mocks__/data/mockShows';
+import mockTMDBMixedResults from '@/__mocks__/data/mockTMDBMixedResults';
+import mockTMDBMovieResults from '@/__mocks__/data/mockTMDBMovieResults';
+import mockTMDBTvShowResults from '@/__mocks__/data/mockTMDBTvShowResults';
 import { server } from '@/__mocks__/server';
+import { transformTMDBResults } from '@/lib/utils';
 import { getTrendingShows } from '@/services/tmdb/api/getTrendingShows/getTrendingShows';
 import { TMDB_BASE_URL } from '@/services/tmdb/constants';
 import PaginatedShows from '@/types/PaginatedShows';
@@ -11,28 +14,49 @@ import PaginatedShows from '@/types/PaginatedShows';
 const endpoint = `${TMDB_BASE_URL}/trending/:showType/:timeWindow`;
 
 describe('getTrendingShows', () => {
-  it('should return correct number of mixed shows', async () => {
-    const shows: PaginatedShows = await getTrendingShows({
+  it('should return correct results for mixed shows', async () => {
+    const expectedResults = transformTMDBResults(mockTMDBMixedResults);
+    const response: PaginatedShows = await getTrendingShows({
       showType: 'all',
       timeWindow: 'day',
     });
-    expect(shows.results.length).toBe(mockShows.length);
+    expect(response.results).toEqual(expectedResults);
   });
 
-  it('should return correct number of movies', async () => {
-    const shows: PaginatedShows = await getTrendingShows({
+  it('should return correct results for movies', async () => {
+    const expectedResults = transformTMDBResults(mockTMDBMovieResults);
+    const response: PaginatedShows = await getTrendingShows({
       showType: 'movie',
       timeWindow: 'day',
     });
-    expect(shows.results.length).toBe(mockShows.length);
+    expect(response.results).toEqual(expectedResults);
   });
 
-  it('should return correct number of tv shows', async () => {
-    const shows: PaginatedShows = await getTrendingShows({
+  it('should return correct results for tv shows', async () => {
+    const expectedResults = transformTMDBResults(mockTMDBTvShowResults);
+    const response: PaginatedShows = await getTrendingShows({
       showType: 'tv',
       timeWindow: 'day',
     });
-    expect(shows.results.length).toBe(mockShows.length);
+    expect(response.results).toEqual(expectedResults);
+  });
+
+  it('should return correct results for day "timeWindow"', async () => {
+    const expectedResults = transformTMDBResults(mockTMDBMixedResults);
+    const response: PaginatedShows = await getTrendingShows({
+      showType: 'all',
+      timeWindow: 'day',
+    });
+    expect(response.results).toEqual(expectedResults);
+  });
+
+  it('should return correct results for week "timeWindow"', async () => {
+    const expectedResults = transformTMDBResults(mockTMDBMixedResults);
+    const response: PaginatedShows = await getTrendingShows({
+      showType: 'all',
+      timeWindow: 'week',
+    });
+    expect(response.results).toEqual(expectedResults);
   });
 
   it('should throw correct error on failed fetch for "all" shows', async () => {

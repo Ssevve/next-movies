@@ -65,3 +65,5 @@ export const navOptions: NavOption[] = [
     path: '/people',
   },
 ];
+
+export const ALLOWED_TRAILER_VIDEO_TYPES = ['Trailer', 'Teaser'];

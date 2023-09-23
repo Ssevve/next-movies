@@ -6,9 +6,13 @@ import {
   MovieResult,
   PaginatedShowsResponse,
   TvShowResult,
+  VideosResponseResult,
 } from '@/services/tmdb/types';
 import Show from '@/types/Show';
 import ShowType from '@/types/ShowType';
+import Video from '@/types/Video';
+
+import { ALLOWED_TRAILER_VIDEO_TYPES } from './constants';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -23,7 +27,7 @@ export const isFulfilled = <T>(
 ): promise is PromiseFulfilledResult<T> => promise.status === 'fulfilled';
 
 export function transformPaginatedShowsResponse(data: PaginatedShowsResponse) {
-  const transformedTrendingShows = transformTMDBResults(data.results);
+  const transformedTrendingShows = transformTMDBShowResults(data.results);
 
   const transformedResponse = {
     page: data.page,
@@ -35,7 +39,9 @@ export function transformPaginatedShowsResponse(data: PaginatedShowsResponse) {
   return transformedResponse;
 }
 
-export function transformTMDBResults(results: MixedShowsResult[] | MovieResult[] | TvShowResult[]) {
+export function transformTMDBShowResults(
+  results: MixedShowsResult[] | MovieResult[] | TvShowResult[]
+) {
   return results.map(
     ({ backdrop_path, id, media_type, poster_path, vote_average, vote_count, ...rest }): Show => {
       const releaseDate = media_type === 'movie' ? rest.release_date : rest.first_air_date;
@@ -53,4 +59,39 @@ export function transformTMDBResults(results: MixedShowsResult[] | MovieResult[]
       };
     }
   );
+}
+
+interface TransformVideosResponseArgs {
+  showId: number;
+  results: VideosResponseResult[];
+  showTitle: string;
+  showType: ShowType;
+  thumbnailPath: string;
+}
+
+export function transformVideosResponse({
+  showId,
+  results,
+  showTitle,
+  showType,
+  thumbnailPath,
+}: TransformVideosResponseArgs) {
+  const transformedResults: Video[] = results.map(({ id, name, key, type }) => {
+    return {
+      id,
+      showId,
+      showTitle,
+      showType,
+      thumbnailPath,
+      title: name,
+      type,
+      youtubeKey: key,
+    };
+  });
+
+  return transformedResults;
+}
+
+export function findTrailer(videos: Video[]) {
+  return videos.find((video) => ALLOWED_TRAILER_VIDEO_TYPES.includes(video.type));
 }

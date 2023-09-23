@@ -1,3 +1,5 @@
+import VideoType from '@/types/VideoType';
+
 export interface Result {
   id: number;
   poster_path: string;
@@ -32,7 +34,7 @@ export interface PaginatedShowsResponse<T = MixedShowsResult> {
 }
 
 export interface VideosResponseResult {
-  type: string;
+  type: VideoType;
   key: string;
   name: string;
   id: string;
@@ -40,5 +42,6 @@ export interface VideosResponseResult {
 }
 
 export interface VideosResponse {
+  id: number;
   results: VideosResponseResult[];
 }

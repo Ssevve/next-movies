@@ -1,5 +1,10 @@
 import { rest } from 'msw';
 
+import mockTMDBMixedResults from '@/__mocks__/data/mockTMDBMixedResults';
+import mockTMDBMovieResults from '@/__mocks__/data/mockTMDBMovieResults';
+import mockTMDBMovieVideos from '@/__mocks__/data/mockTMDBMovieVideos';
+import mockTMDBTvShowResults from '@/__mocks__/data/mockTMDBTvShowResults';
+import mockTMDBTvShowVideos from '@/__mocks__/data/mockTMDBTvShowVideos';
 import { TMDB_BASE_URL } from '@/services/tmdb/constants';
 import {
   MixedShowsResult,
@@ -7,11 +12,6 @@ import {
   PaginatedShowsResponse,
   TvShowResult,
 } from '@/services/tmdb/types';
-
-import mockTMDBMixedResults from './data/mockTMDBMixedResults';
-import mockTMDBMovieResults from './data/mockTMDBMovieResults';
-import mockTMDBTvShowsResults from './data/mockTMDBTvShowResults';
-import mockTMDBTvShowResults from './data/mockTMDBTvShowResults';
 
 const generateMockResponse = (
   shows: MixedShowsResult[] | MovieResult[] | TvShowResult[]
@@ -32,7 +32,7 @@ export const tmdbHandlers = [
     } else if (showType === 'movie') {
       return res(ctx.status(200), ctx.json(generateMockResponse(mockTMDBMovieResults)));
     } else if (showType === 'tv') {
-      return res(ctx.status(200), ctx.json(generateMockResponse(mockTMDBTvShowsResults)));
+      return res(ctx.status(200), ctx.json(generateMockResponse(mockTMDBTvShowResults)));
     }
   }),
   rest.get(`${TMDB_BASE_URL}/movie/now_playing`, (req, res, ctx) => {
@@ -45,6 +45,25 @@ export const tmdbHandlers = [
       return res(ctx.status(200), ctx.json(generateMockResponse(mockTMDBMovieResults)));
     } else if (showType === 'tv') {
       return res(ctx.status(200), ctx.json(generateMockResponse(mockTMDBTvShowResults)));
+    }
+  }),
+  rest.get(`${TMDB_BASE_URL}/:showType/:showId/videos`, (req, res, ctx) => {
+    const { showType } = req.params;
+
+    if (showType === 'movie') {
+      return res(
+        ctx.status(200),
+        ctx.json({
+          results: mockTMDBMovieVideos,
+        })
+      );
+    } else if (showType === 'tv') {
+      return res(
+        ctx.status(200),
+        ctx.json({
+          results: mockTMDBTvShowVideos,
+        })
+      );
     }
   }),
 ];

@@ -2,7 +2,7 @@ import { Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 
 import { isFulfilled } from '@/lib/utils';
-import { getMovieTrailer } from '@/services/tmdb/api/getMovieTrailer/getMovieTrailer';
+import { getTrailer } from '@/services/tmdb/api/getTrailer/getTrailer';
 import { getUpcomingMovies } from '@/services/tmdb/api/getUpcomingMovies/getUpcomingMovies';
 
 import { ErrorFallback } from './ErrorFallback';
@@ -14,9 +14,10 @@ async function getUpcomingMoviesTrailers() {
   const movies = await getUpcomingMovies();
 
   const trailerPromises = movies.results.map((movie) =>
-    getMovieTrailer({
-      movieId: movie.id,
-      movieTitle: movie.title || '',
+    getTrailer({
+      showId: movie.id,
+      showTitle: movie.title || '',
+      showType: 'movie',
       thumbnailPath: movie.backdrop_path,
     })
   );
@@ -24,7 +25,7 @@ async function getUpcomingMoviesTrailers() {
   const result = await Promise.allSettled(trailerPromises);
 
   const trailers = result.filter(isFulfilled).map((promise) => promise.value);
-  if (!trailers.length) throw Error('No trailers data available.');
+  if (!trailers.length) throw Error('No trailers available.');
   return trailers;
 }
 

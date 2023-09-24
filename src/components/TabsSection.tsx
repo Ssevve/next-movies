@@ -1,10 +1,10 @@
 import { Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 
+import ErrorFallback from '@/components/ErrorFallback';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs';
 import Tab from '@/types/Tab';
 
-import { ErrorFallback } from './ErrorFallback';
 import SectionHeading from './SectionHeading';
 import ShowScrollerSkeleton from './skeletons/ShowScrollerSkeleton';
 

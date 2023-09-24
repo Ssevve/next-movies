@@ -20,6 +20,14 @@ function getRatingColor(ratingPercentage: number) {
   return colors.red[500];
 }
 
+export function calculateCircleSize(size: number) {
+  return size / 2;
+}
+
+export function formatRatingText(rating: number) {
+  return +rating.toFixed(1);
+}
+
 export default function CircularRating({
   rating,
   size = 40,
@@ -28,7 +36,7 @@ export default function CircularRating({
   className,
 }: CircularRatingProps) {
   const viewBox = `0 0 ${size} ${size}`;
-  const formattedRating = +rating.toFixed(1);
+  const formattedRating = formatRatingText(rating);
   const ratingPercentage = formattedRating * 10;
   const circleRadius = (size - strokeWidth) / 2.5;
   const dashDiameter = Math.PI * 2 * circleRadius;
@@ -39,6 +47,7 @@ export default function CircularRating({
 
   return (
     <div
+      data-testid="circular-rating-wrapper"
       className={cn(
         'relative rounded-full bg-background',
         `h-[${size}px] w-[${size}px]`,
@@ -47,6 +56,7 @@ export default function CircularRating({
     >
       <div className="-rotate-90">
         <svg
+          data-testid="circular-rating-svg"
           width={size}
           height={size}
           viewBox={viewBox}
@@ -54,27 +64,29 @@ export default function CircularRating({
           xmlns="http://www.w3.org/2000/svg"
         >
           <circle
+            data-testid="circular-rating-track"
             r={circleRadius}
-            cx={size / 2}
-            cy={size / 2}
+            cx={calculateCircleSize(size)}
+            cy={calculateCircleSize(size)}
             fill="transparent"
             strokeWidth={strokeWidth}
             strokeDasharray={dashDiameter}
             strokeDashoffset="0"
             stroke={ratingColor}
             className="opacity-30"
-          ></circle>
+          />
           <circle
+            data-testid="circular-rating-fill"
             r={circleRadius}
-            cx={size / 2}
-            cy={size / 2}
+            cx={calculateCircleSize(size)}
+            cy={calculateCircleSize(size)}
             stroke={ratingColor}
             strokeWidth={strokeWidth}
             strokeLinecap="round"
             strokeDashoffset={gapLength}
             fill="transparent"
             strokeDasharray={dashDiameter}
-          ></circle>
+          />
         </svg>
       </div>
       <span

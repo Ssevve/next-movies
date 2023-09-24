@@ -3,9 +3,9 @@
 import { AlertCircle } from 'lucide-react';
 import { useErrorBoundary } from 'react-error-boundary';
 
-import { Button } from './ui/Button';
+import { Button } from '@/components/ui/Button';
 
-export function ErrorFallback() {
+export default function ErrorFallback() {
   const { resetBoundary } = useErrorBoundary();
 
   return (

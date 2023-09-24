@@ -10,12 +10,14 @@ function isTvShowResult(show: MixedShowsResult): show is TvShowResult {
   return 'name' in show;
 }
 
+type CommonProps = 'title' | 'showType' | 'releaseDate';
+
 export default function transformShowsResults(results: MixedShowsResult[]) {
   if (!results.length) return [];
   return results.map((result) => {
     const { backdrop_path, id, poster_path, vote_average, vote_count } = result;
 
-    const sharedProps: Omit<Show, 'showType' | 'title' | 'releaseDate'> = {
+    const transformedResult: Omit<Show, CommonProps> = {
       backdropPath: backdrop_path,
       id,
       posterPath: poster_path,
@@ -23,22 +25,24 @@ export default function transformShowsResults(results: MixedShowsResult[]) {
       ratingsCount: vote_count,
     };
 
-    const uniqueProps: Partial<Pick<Show, 'showType' | 'title' | 'releaseDate'>> = {};
-
     if (isMovieResult(result)) {
       const { title, release_date } = result;
-      uniqueProps.showType = 'movie';
-      uniqueProps.title = title;
-      uniqueProps.releaseDate = formatDate(release_date) || 'N/A';
+      const movieProps: Pick<Show, CommonProps> = {
+        releaseDate: formatDate(release_date) || 'N/A',
+        showType: 'movie',
+        title: title,
+      };
+      return { ...transformedResult, ...movieProps };
     } else if (isTvShowResult(result)) {
       const { name, first_air_date } = result;
-      uniqueProps.showType = 'tv';
-      uniqueProps.title = name;
-      uniqueProps.releaseDate = first_air_date ? formatDate(first_air_date) : 'N/A';
+      const tvShowProps: Pick<Show, CommonProps> = {
+        releaseDate: first_air_date ? formatDate(first_air_date) : 'N/A',
+        showType: 'tv',
+        title: name,
+      };
+      return { ...transformedResult, ...tvShowProps };
+    } else {
+      throw Error('Incorrect data.');
     }
-
-    const transformedResult = { ...sharedProps, ...uniqueProps } as Show;
-
-    return transformedResult;
   });
 }

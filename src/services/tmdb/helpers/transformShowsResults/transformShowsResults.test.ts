@@ -40,6 +40,7 @@ describe('transformShowsResults', () => {
   it('should return correctly transformed data for movie results', async () => {
     const transformedResults = transformShowsResults(mockTMDBMovieResults);
 
+    // Map
     const expectedResults: Show[] = [
       {
         backdropPath: mockTMDBMovieResults[0].backdrop_path,
@@ -69,6 +70,7 @@ describe('transformShowsResults', () => {
   it('should return correctly transformed data for TV shows results', async () => {
     const transformedResults = transformShowsResults(mockTMDBTvShowResults);
 
+    // Map
     const expectedResults: Show[] = [
       {
         backdropPath: mockTMDBTvShowResults[0].backdrop_path,

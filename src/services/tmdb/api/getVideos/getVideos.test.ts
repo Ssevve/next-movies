@@ -8,22 +8,23 @@ import { server } from '@/__mocks__/server';
 import { getVideos } from '@/services/tmdb/api/getVideos/getVideos';
 import { TMDB_BASE_URL } from '@/services/tmdb/constants';
 import transformVideosResponse from '@/services/tmdb/helpers/transformVideosResponse/transformVideosResponse';
-import ShowType from '@/types/ShowType';
 import Video from '@/types/Video';
 
 const endpoint = `${TMDB_BASE_URL}/:showType/:showId/videos`;
 
-const movieArgs = {
+type ShowArgs = Pick<Video, 'showId' | 'showTitle' | 'showType' | 'thumbnailPath'>;
+
+const movieArgs: ShowArgs = {
   showId: 1,
   showTitle: 'Test Movie Title',
-  showType: 'movie' as ShowType,
+  showType: 'movie',
   thumbnailPath: 'testPath',
 };
 
-const tvShowArgs = {
+const tvShowArgs: ShowArgs = {
   showId: 2,
   showTitle: 'Test Tv Show Title',
-  showType: 'tv' as ShowType,
+  showType: 'tv',
   thumbnailPath: 'testPath',
 };
 

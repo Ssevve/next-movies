@@ -2,13 +2,12 @@
 
 import mockTMDBMovieVideos from '@/__mocks__/data/mockTMDBMovieVideos';
 import transformVideosResponse from '@/services/tmdb/helpers/transformVideosResponse/transformVideosResponse';
-import ShowType from '@/types/ShowType';
 import Video from '@/types/Video';
 
-const showData = {
+const showData: Pick<Video, 'showId' | 'showType' | 'thumbnailPath' | 'showTitle'> = {
   showId: 1,
   showTitle: 'Test Show Title',
-  showType: 'movie' as ShowType,
+  showType: 'movie',
   thumbnailPath: 'testPath',
 };
 

@@ -13,14 +13,15 @@ import UpcomingMoviesTrailers from './UpcomingMoviesTrailers';
 async function getUpcomingMoviesTrailers() {
   const movies = await getUpcomingMovies();
 
-  const trailerPromises = movies.results.map((movie) =>
-    getTrailer({
+  const trailerPromises = movies.map((movie) => {
+    // console.log(movie);
+    return getTrailer({
       showId: movie.id,
       showTitle: movie.title || '',
-      showType: 'movie',
-      thumbnailPath: movie.backdrop_path,
-    })
-  );
+      showType: movie.showType,
+      thumbnailPath: movie.backdropPath,
+    });
+  });
 
   const result = await Promise.allSettled(trailerPromises);
 

@@ -8,4 +8,5 @@ export default interface Show {
   ratingsCount: number;
   showType: ShowType;
   releaseDate: string;
+  backdropPath: string;
 }

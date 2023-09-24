@@ -66,4 +66,7 @@ export const tmdbHandlers = [
       );
     }
   }),
+  rest.get(`${TMDB_BASE_URL}/movie/upcoming`, (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json({ results: mockTMDBMovieResults }));
+  }),
 ];

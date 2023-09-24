@@ -23,7 +23,7 @@ export default function VideoScroller({
           <VideoCard
             invertedTextColor={invertedTextColor}
             key={video.id}
-            videoTitle={video.name}
+            videoTitle={video.title}
             showTitle={video.showTitle}
             id={video.id}
             thumbnailPath={video.thumbnailPath}

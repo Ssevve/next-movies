@@ -10,16 +10,16 @@ export interface Result {
 
 export interface MovieResult extends Result {
   media_type: 'movie';
-  title?: string;
-  release_date?: string;
+  title: string;
+  release_date: string;
   name?: never;
   first_air_date?: never;
 }
 
 export interface TvShowResult extends Result {
   media_type: 'tv';
-  name?: string;
-  first_air_date?: string;
+  name: string;
+  first_air_date: string;
   release_date?: never;
   title?: never;
 }

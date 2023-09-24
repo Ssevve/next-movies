@@ -27,7 +27,7 @@ export const isFulfilled = <T>(
 ): promise is PromiseFulfilledResult<T> => promise.status === 'fulfilled';
 
 export function transformPaginatedShowsResponse(data: PaginatedShowsResponse) {
-  const transformedTrendingShows = transformTMDBShowResults(data.results);
+  const transformedTrendingShows = transformTMDBMixedShowResults(data.results);
 
   const transformedResponse = {
     page: data.page,
@@ -39,16 +39,15 @@ export function transformPaginatedShowsResponse(data: PaginatedShowsResponse) {
   return transformedResponse;
 }
 
-export function transformTMDBShowResults(
-  results: MixedShowsResult[] | MovieResult[] | TvShowResult[]
-) {
+export function transformTMDBMixedShowResults(results: MixedShowsResult[]) {
   return results.map(
-    ({ backdrop_path, id, media_type, poster_path, vote_average, vote_count, ...rest }): Show => {
+    ({ id, media_type, poster_path, vote_average, vote_count, backdrop_path, ...rest }): Show => {
       const releaseDate = media_type === 'movie' ? rest.release_date : rest.first_air_date;
 
       const showTitle = media_type === 'movie' ? rest.title : rest.name;
 
       return {
+        backdropPath: backdrop_path,
         id,
         posterPath: poster_path,
         rating: vote_average,
@@ -56,6 +55,23 @@ export function transformTMDBShowResults(
         releaseDate: releaseDate ? formatDate(releaseDate) : 'N/A',
         showType: media_type,
         title: showTitle || 'N/A',
+      };
+    }
+  );
+}
+
+export function transformTMDBMovieResults(results: MovieResult[]) {
+  return results.map(
+    ({ id, poster_path, vote_average, vote_count, backdrop_path, release_date, title }): Show => {
+      return {
+        backdropPath: backdrop_path,
+        id,
+        posterPath: poster_path,
+        rating: vote_average,
+        ratingsCount: vote_count,
+        releaseDate: formatDate(release_date) || 'N/A',
+        showType: 'movie',
+        title: title || 'N/A',
       };
     }
   );

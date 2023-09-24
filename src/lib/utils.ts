@@ -1,12 +1,13 @@
 import { ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
+import ShowScroller from '@/components/ShowScroller';
 import {
   MixedShowsResult,
   MovieResult,
   PaginatedShowsResponse,
+  Result,
   TvShowResult,
-  VideosResponseResult,
 } from '@/services/tmdb/types';
 import Show from '@/types/Show';
 import ShowType from '@/types/ShowType';
@@ -26,86 +27,69 @@ export const isFulfilled = <T>(
   promise: PromiseSettledResult<T>
 ): promise is PromiseFulfilledResult<T> => promise.status === 'fulfilled';
 
-export function transformPaginatedShowsResponse(data: PaginatedShowsResponse) {
-  const transformedTrendingShows = transformTMDBMixedShowResults(data.results);
+interface TransformPaginatedShowsResponseArgs {
+  page: number;
+  results: MixedShowsResult[];
+  total_pages: number;
+  total_results: number;
+}
+
+export function transformPaginatedShowsResponse({
+  page,
+  results,
+  total_pages,
+  total_results,
+}: TransformPaginatedShowsResponseArgs) {
+  const transformedShows: Show[] = transformTMDBShowsResults(results);
 
   const transformedResponse = {
-    page: data.page,
-    results: transformedTrendingShows,
-    totalPages: data.total_pages,
-    totalResults: data.total_results,
+    page,
+    results: transformedShows,
+    totalPages: total_pages,
+    totalResults: total_results,
   };
 
   return transformedResponse;
 }
 
-export function transformTMDBMixedShowResults(results: MixedShowsResult[]) {
-  return results.map(
-    ({ id, media_type, poster_path, vote_average, vote_count, backdrop_path, ...rest }): Show => {
-      const releaseDate = media_type === 'movie' ? rest.release_date : rest.first_air_date;
-
-      const showTitle = media_type === 'movie' ? rest.title : rest.name;
-
-      return {
-        backdropPath: backdrop_path,
-        id,
-        posterPath: poster_path,
-        rating: vote_average,
-        ratingsCount: vote_count,
-        releaseDate: releaseDate ? formatDate(releaseDate) : 'N/A',
-        showType: media_type,
-        title: showTitle || 'N/A',
-      };
-    }
-  );
+export function isMovieResult(show: MixedShowsResult): show is MovieResult {
+  return 'title' in show;
 }
 
-export function transformTMDBMovieResults(results: MovieResult[]) {
-  return results.map(
-    ({ id, poster_path, vote_average, vote_count, backdrop_path, release_date, title }): Show => {
-      return {
-        backdropPath: backdrop_path,
-        id,
-        posterPath: poster_path,
-        rating: vote_average,
-        ratingsCount: vote_count,
-        releaseDate: formatDate(release_date) || 'N/A',
-        showType: 'movie',
-        title: title || 'N/A',
-      };
-    }
-  );
+export function isTvShowResult(show: MixedShowsResult): show is TvShowResult {
+  return 'name' in show;
 }
 
-interface TransformVideosResponseArgs {
-  showId: number;
-  results: VideosResponseResult[];
-  showTitle: string;
-  showType: ShowType;
-  thumbnailPath: string;
-}
+export function transformTMDBShowsResults(results: MixedShowsResult[]) {
+  return results.map((result) => {
+    const { backdrop_path, id, poster_path, vote_average, vote_count } = result;
 
-export function transformVideosResponse({
-  showId,
-  results,
-  showTitle,
-  showType,
-  thumbnailPath,
-}: TransformVideosResponseArgs) {
-  const transformedResults: Video[] = results.map(({ id, name, key, type }) => {
-    return {
+    const sharedProps: Omit<Show, 'showType' | 'title' | 'releaseDate'> = {
+      backdropPath: backdrop_path,
       id,
-      showId,
-      showTitle,
-      showType,
-      thumbnailPath,
-      title: name,
-      type,
-      youtubeKey: key,
+      posterPath: poster_path,
+      rating: vote_average,
+      ratingsCount: vote_count,
     };
-  });
 
-  return transformedResults;
+    const uniqueProps: Partial<Pick<Show, 'showType' | 'title' | 'releaseDate'>> = {};
+
+    if (isMovieResult(result)) {
+      const { title, release_date } = result;
+      uniqueProps.showType = 'movie';
+      uniqueProps.title = title;
+      uniqueProps.releaseDate = formatDate(release_date) || 'N/A';
+    } else if (isTvShowResult(result)) {
+      const { name, first_air_date } = result;
+      uniqueProps.showType = 'tv';
+      uniqueProps.title = name;
+      uniqueProps.releaseDate = formatDate(first_air_date) || 'N/A';
+    }
+
+    const transformedResult = { ...sharedProps, ...uniqueProps } as Show;
+
+    return transformedResult;
+  });
 }
 
 export function findTrailer(videos: Video[]) {

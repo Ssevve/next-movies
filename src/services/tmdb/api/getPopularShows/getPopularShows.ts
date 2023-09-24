@@ -9,8 +9,8 @@ import ShowType from '@/types/ShowType';
 export async function getPopularShows(showType: ShowType): Promise<PaginatedShows> {
   const res = await tmdbAPI(`/${showType}/popular`);
   if (res.ok) {
-    const data: PaginatedShowsResponse = await res.json();
-    return transformPaginatedShowsResponse(data);
+    const { page, results, total_pages, total_results }: PaginatedShowsResponse = await res.json();
+    return transformPaginatedShowsResponse({ page, results, total_pages, total_results });
   }
 
   throw Error(`Failed to fetch popular ${showType === 'movie' ? 'movies' : 'TV shows'}.`);

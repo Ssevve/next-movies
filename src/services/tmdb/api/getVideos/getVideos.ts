@@ -1,7 +1,7 @@
 import 'server-only';
 
-import { transformVideosResponse } from '@/lib/utils';
 import tmdbAPI from '@/services/tmdb/api/client';
+import transformVideosResponse from '@/services/tmdb/helpers/transformVideosResponse/transformVideosResponse';
 import { VideosResponse } from '@/services/tmdb/types';
 import ShowType from '@/types/ShowType';
 import Video from '@/types/Video';

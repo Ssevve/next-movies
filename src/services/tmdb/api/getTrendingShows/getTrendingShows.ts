@@ -9,7 +9,7 @@ import ShowType from '@/types/ShowType';
 export type TimeWindow = 'day' | 'week';
 
 interface TrendingArgs {
-  showType: ShowType | 'all';
+  showType?: ShowType | 'all';
   timeWindow: TimeWindow;
 }
 
@@ -19,8 +19,8 @@ export async function getTrendingShows({
 }: TrendingArgs): Promise<PaginatedShows> {
   const res = await tmdbAPI(`/trending/${showType}/${timeWindow}`);
   if (res.ok) {
-    const data: PaginatedShowsResponse = await res.json();
-    return transformPaginatedShowsResponse(data);
+    const { page, results, total_pages, total_results }: PaginatedShowsResponse = await res.json();
+    return transformPaginatedShowsResponse({ page, results, total_pages, total_results });
   }
 
   let errorMessage = 'Failed to fetch trending ';

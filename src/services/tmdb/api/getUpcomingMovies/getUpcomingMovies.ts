@@ -1,6 +1,6 @@
 import 'server-only';
 
-import { transformTMDBMovieResults } from '@/lib/utils';
+import { transformTMDBShowsResults } from '@/lib/utils';
 import tmdbAPI from '@/services/tmdb/api/client';
 import Show from '@/types/Show';
 
@@ -10,5 +10,5 @@ export async function getUpcomingMovies(): Promise<Show[]> {
   const res = await tmdbAPI(`/movie/upcoming`);
   if (!res.ok) throw Error('Failed to fetch upcoming movies.');
   const movies: PaginatedShowsResponse<MovieResult> = await res.json();
-  return transformTMDBMovieResults(movies.results);
+  return transformTMDBShowsResults(movies.results);
 }

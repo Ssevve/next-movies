@@ -5,9 +5,9 @@ import { rest } from 'msw';
 import mockTMDBMovieVideos from '@/__mocks__/data/mockTMDBMovieVideos';
 import mockTMDBTvShowVideos from '@/__mocks__/data/mockTMDBTvShowVideos';
 import { server } from '@/__mocks__/server';
-import { transformVideosResponse } from '@/lib/utils';
 import { getVideos } from '@/services/tmdb/api/getVideos/getVideos';
 import { TMDB_BASE_URL } from '@/services/tmdb/constants';
+import transformVideosResponse from '@/services/tmdb/helpers/transformVideosResponse/transformVideosResponse';
 import ShowType from '@/types/ShowType';
 import Video from '@/types/Video';
 

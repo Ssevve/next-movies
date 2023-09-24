@@ -61,12 +61,16 @@ export default function UpcomingMoviesTrailers({ trailersPromise }: UpcomingMovi
         className={getBackgroundImageClassNames(1)}
         fill
       />
-      <VideoScroller
-        className={cn('h-full w-full p-4 pb-0', isLightTheme && 'bg-black/70')}
-        videos={trailers}
-        invertedTextColor={isLightTheme}
-        setBackgroundPath={changeActiveImage}
-      />
+      {trailers.length ? (
+        <VideoScroller
+          className={cn('h-full w-full p-4 pb-0', isLightTheme && 'bg-black/70')}
+          videos={trailers}
+          invertedTextColor={isLightTheme}
+          setBackgroundPath={changeActiveImage}
+        />
+      ) : (
+        <p className="text-center sm:text-left">No upcoming movies to display.</p>
+      )}
     </section>
   );
 }

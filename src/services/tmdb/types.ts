@@ -17,7 +17,7 @@ export interface MovieResult extends Result {
 
 export interface TvShowResult extends Result {
   name: string;
-  first_air_date: string;
+  first_air_date: string | undefined;
   release_date?: never;
   title?: never;
 }

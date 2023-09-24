@@ -19,33 +19,6 @@ const mockTMDBTvShowResults: TvShowResult[] = [
     vote_average: 8.4,
     vote_count: 23,
   },
-  {
-    backdrop_path: '/2OMB0ynKlyIenMJWI2Dy9IWT4c.jpg',
-    first_air_date: '2011-04-17',
-    id: 1399,
-    name: 'Game of Thrones',
-    poster_path: '/1XS1oqL89opfnbLl8WnZY1O1uJx.jpg',
-    vote_average: 8.441,
-    vote_count: 21793,
-  },
-  {
-    backdrop_path: '/gBDQXWpj004yodiUkzm3YhRFMQu.jpg',
-    first_air_date: '2011-10-05',
-    id: 1413,
-    name: 'American Horror Story',
-    poster_path: '/5LLG9bjq0i7V5N4UfRhnab8zHK4.jpg',
-    vote_average: 8.144,
-    vote_count: 5181,
-  },
-  {
-    backdrop_path: '/sa9vB0xb3OMU6iSMkig8RBbdESq.jpg',
-    first_air_date: '2023-07-23',
-    id: 113962,
-    name: 'Special Ops: Lioness',
-    poster_path: '/rXCzevakJoAN1qnZY0nAQPSLVRv.jpg',
-    vote_average: 8.348,
-    vote_count: 315,
-  },
 ];
 
 export default mockTMDBTvShowResults;

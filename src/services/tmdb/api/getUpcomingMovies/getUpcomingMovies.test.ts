@@ -4,13 +4,13 @@ import { rest } from 'msw';
 
 import mockTMDBMovieResults from '@/__mocks__/data/mockTMDBMovieResults';
 import { server } from '@/__mocks__/server';
-import { transformTMDBShowsResults } from '@/lib/utils';
 import { getUpcomingMovies } from '@/services/tmdb/api/getUpcomingMovies/getUpcomingMovies';
 import { TMDB_BASE_URL } from '@/services/tmdb/constants';
+import transformShowsResults from '@/services/tmdb/helpers/transformShowsResults/transformShowsResults';
 
 describe('getUpcomingMovies', () => {
   it('should return correct results', async () => {
-    const expectedResults = transformTMDBShowsResults(mockTMDBMovieResults);
+    const expectedResults = transformShowsResults(mockTMDBMovieResults);
     const movies = await getUpcomingMovies();
     expect(movies).toEqual(expectedResults);
   });

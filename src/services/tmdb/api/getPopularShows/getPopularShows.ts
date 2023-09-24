@@ -1,7 +1,7 @@
 import 'server-only';
 
-import { transformPaginatedShowsResponse } from '@/lib/utils';
 import tmdbAPI from '@/services/tmdb/api/client';
+import transformPaginatedShowsResponse from '@/services/tmdb/helpers/transformPaginatedShowsResponse/transformPaginatedShowsResponse';
 import { PaginatedShowsResponse } from '@/services/tmdb/types';
 import PaginatedShows from '@/types/PaginatedShows';
 import ShowType from '@/types/ShowType';

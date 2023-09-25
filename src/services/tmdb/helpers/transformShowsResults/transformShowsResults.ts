@@ -10,14 +10,14 @@ function isTvShowResult(show: MixedShowsResult): show is TvShowResult {
   return 'name' in show;
 }
 
-type CommonProps = 'title' | 'showType' | 'releaseDate';
+type UniqueShowTypeProps = 'title' | 'showType' | 'releaseDate';
 
 export default function transformShowsResults(results: MixedShowsResult[]) {
   if (!results.length) return [];
   return results.map((result) => {
     const { backdrop_path, id, poster_path, vote_average, vote_count } = result;
 
-    const transformedResult: Omit<Show, CommonProps> = {
+    const transformedResult: Omit<Show, UniqueShowTypeProps> = {
       backdropPath: backdrop_path,
       id,
       posterPath: poster_path,
@@ -27,7 +27,7 @@ export default function transformShowsResults(results: MixedShowsResult[]) {
 
     if (isMovieResult(result)) {
       const { title, release_date } = result;
-      const movieProps: Pick<Show, CommonProps> = {
+      const movieProps: Pick<Show, UniqueShowTypeProps> = {
         releaseDate: formatDate(release_date) || 'N/A',
         showType: 'movie',
         title: title,
@@ -35,7 +35,7 @@ export default function transformShowsResults(results: MixedShowsResult[]) {
       return { ...transformedResult, ...movieProps };
     } else if (isTvShowResult(result)) {
       const { name, first_air_date } = result;
-      const tvShowProps: Pick<Show, CommonProps> = {
+      const tvShowProps: Pick<Show, UniqueShowTypeProps> = {
         releaseDate: first_air_date ? formatDate(first_air_date) : 'N/A',
         showType: 'tv',
         title: name,

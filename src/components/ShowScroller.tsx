@@ -1,6 +1,6 @@
+import ShowCard from '@/components/ShowCard/ShowCard';
 import Show from '@/types/Show';
 
-import ShowCard from './ShowCard';
 import { ScrollArea, ScrollBar } from './ui/ScrollArea';
 
 interface ShowScrollerProps {

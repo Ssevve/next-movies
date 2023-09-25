@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 
 import DesktopNav from '@/components/DesktopNav';
-import Logo from '@/components/Logo';
+import Logo from '@/components/Logo/Logo';
 import MobileMenu from '@/components/MobileMenu';
 import ThemeToggler from '@/components/ThemeToggler';
 

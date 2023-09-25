@@ -1,7 +1,7 @@
+import VideoCard from '@/components/VideoCard/VideoCard';
 import Video from '@/types/Video';
 
 import { ScrollArea, ScrollBar } from './ui/ScrollArea';
-import VideoCard from './VideoCard';
 
 interface ShowScrollerProps {
   videos: Video[];

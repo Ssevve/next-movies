@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
 
+import Card, { CardProps } from '@/components/ui/Card';
 import { cn } from '@/lib/utils';
 import {
   TMDB_IMAGE_URL,
@@ -13,8 +14,6 @@ import {
   TMDB_VIDEO_CARD_THUMBNAIL_WIDTH,
 } from '@/services/tmdb/constants';
 import ShowType from '@/types/ShowType';
-
-import Card, { CardProps } from './ui/Card';
 
 interface VideoCardProps extends Omit<CardProps, 'children'> {
   videoTitle: string;
@@ -46,10 +45,15 @@ export default function VideoCard({
   return (
     <>
       <Card className="w-[275px]" {...props}>
-        <Link href={`${pathname}?${newSearchParams}`} scroll={false} className="relative block">
+        <Link
+          aria-label={`watch ${videoTitle}`}
+          href={`${pathname}?${newSearchParams}`}
+          scroll={false}
+          className="relative block"
+        >
           <Image
             src={`${TMDB_IMAGE_URL}${TMDB_VIDEO_CARD_THUMBNAIL_PATH}${thumbnailPath}`}
-            alt={videoTitle}
+            alt=""
             className="h-full rounded-md"
             width={TMDB_VIDEO_CARD_THUMBNAIL_WIDTH}
             height={TMDB_VIDEO_CARD_THUMBNAIL_HEIGHT}
@@ -58,6 +62,7 @@ export default function VideoCard({
           <Play
             size={50}
             className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-background dark:text-foreground"
+            aria-hidden="true"
           />
         </Link>
         <Link

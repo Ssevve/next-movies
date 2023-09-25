@@ -8,8 +8,7 @@ import DesktopNav from '@/components/DesktopNav';
 import Logo from '@/components/Logo/Logo';
 import MobileMenu from '@/components/MobileMenu';
 import ThemeToggler from '@/components/ThemeToggler';
-
-import { Button } from './ui/Button';
+import { Button } from '@/components/ui/Button';
 
 export default function Navbar() {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
@@ -24,7 +23,7 @@ export default function Navbar() {
           size="icon"
           aria-label={showMobileMenu ? 'Close mobile menu' : 'Show mobile menu'}
         >
-          <Menu />
+          <Menu aria-hidden="true" />
         </Button>
         {showMobileMenu && <MobileMenu />}
         <Link href="/">

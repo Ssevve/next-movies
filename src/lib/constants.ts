@@ -1,67 +1,67 @@
-interface NavOptionChild {
+export interface NavOptionLink {
   href: string;
-  label: string;
+  name: string;
 }
 
 export interface NavOption {
   label: string;
   path: string;
-  children: NavOptionChild[];
+  links: NavOptionLink[];
 }
 
 export const navOptions: NavOption[] = [
   {
-    children: [
+    label: 'Movies',
+    links: [
       {
         href: '/',
-        label: 'Popular',
+        name: 'Popular',
       },
       {
         href: '/now-playing',
-        label: 'Now Playing',
+        name: 'Now Playing',
       },
       {
         href: '/upcoming',
-        label: 'Upcoming',
+        name: 'Upcoming',
       },
       {
         href: '/top-rated',
-        label: 'Top Rated',
+        name: 'Top Rated',
       },
     ],
-    label: 'Movies',
     path: '/movies',
   },
   {
-    children: [
+    label: 'TV Shows',
+    links: [
       {
         href: '/',
-        label: 'Popular',
+        name: 'Popular',
       },
       {
         href: '/airing-today',
-        label: 'Airing Today',
+        name: 'Airing Today',
       },
       {
         href: '/on-tv',
-        label: 'On TV',
+        name: 'On TV',
       },
       {
         href: '/top-rated',
-        label: 'Top Rated',
+        name: 'Top Rated',
       },
     ],
-    label: 'TV Shows',
     path: '/shows',
   },
   {
-    children: [
+    label: 'People',
+    links: [
       {
         href: '/',
-        label: 'Popular people',
+        name: 'Popular people',
       },
     ],
-    label: 'People',
     path: '/people',
   },
 ];

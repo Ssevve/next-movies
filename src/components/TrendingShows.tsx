@@ -1,4 +1,4 @@
-import ShowScroller from '@/components/ShowScroller';
+import ShowScroller from '@/components/ShowScroller/ShowScroller';
 import TabsSection from '@/components/TabsSection';
 import { getTrendingShows } from '@/services/tmdb/api/getTrendingShows/getTrendingShows';
 import Tab from '@/types/Tab';

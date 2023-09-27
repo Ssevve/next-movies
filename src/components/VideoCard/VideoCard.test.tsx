@@ -3,13 +3,6 @@ import { render, screen } from '@testing-library/react';
 import mockVideos from '@/__mocks__/data/mockVideos';
 import VideoCard from '@/components/VideoCard/VideoCard';
 
-jest.mock('next/navigation', () => {
-  return {
-    ...jest.requireActual('next/navigation'),
-    useSearchParams: jest.fn(() => ({ param: 'test' })),
-  };
-});
-
 describe('VideoCard', () => {
   it('should render a link to open a video player', () => {
     const expectedVideo = mockVideos[0];

@@ -3,10 +3,9 @@ import { ErrorBoundary } from 'react-error-boundary';
 
 import ErrorFallback from '@/components/ErrorFallback';
 import SectionHeading from '@/components/SectionHeading/SectionHeading';
+import ShowScrollerSkeleton from '@/components/skeletons/ShowScrollerSkeleton';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs';
 import Tab from '@/types/Tab';
-
-import ShowScrollerSkeleton from './skeletons/ShowScrollerSkeleton';
 
 interface TabsSectionProps {
   title: string;

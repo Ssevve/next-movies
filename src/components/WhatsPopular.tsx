@@ -1,9 +1,8 @@
 import ShowScroller from '@/components/ShowScroller/ShowScroller';
+import TabsSection from '@/components/TabsSection/TabsSection';
 import { getPopularShows } from '@/services/tmdb/api/getPopularShows/getPopularShows';
 import { getTheaterMovies } from '@/services/tmdb/api/getTheaterMovies/getTheaterMovies';
 import Tab from '@/types/Tab';
-
-import TabsSection from './TabsSection';
 
 export default async function WhatsPopular() {
   const popularMovies = await getPopularShows('movie');

@@ -1,15 +1,6 @@
-export interface NavOptionLink {
-  href: string;
-  name: string;
-}
+import { NavItem } from '@/types/NavItem';
 
-export interface NavOption {
-  label: string;
-  path: string;
-  links: NavOptionLink[];
-}
-
-export const navOptions: NavOption[] = [
+export const navItems: NavItem[] = [
   {
     label: 'Movies',
     links: [

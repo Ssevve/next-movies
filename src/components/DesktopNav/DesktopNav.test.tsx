@@ -1,11 +1,11 @@
 import { render, screen } from '@testing-library/react';
 
-import DesktopNavigation from '@/components/DesktopNav/DesktopNav';
-import { navOptions } from '@/lib/constants';
+import DesktopNav from '@/components/DesktopNav/DesktopNav';
+import { navItems } from '@/lib/constants';
 
 describe('DesktopNav', () => {
   it('should render correct amount of dropdown menus', () => {
-    render(<DesktopNavigation />);
-    expect(screen.getAllByTestId('desktop-nav-dropdown')).toHaveLength(navOptions.length);
+    render(<DesktopNav />);
+    expect(screen.getAllByTestId('desktop-nav-item')).toHaveLength(navItems.length);
   });
 });

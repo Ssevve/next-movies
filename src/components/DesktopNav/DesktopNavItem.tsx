@@ -9,19 +9,19 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/DropdownMenu';
-import { NavOptionLink } from '@/lib/constants';
 import { cn } from '@/lib/utils';
+import { NavItemLink } from '@/types/NavItem';
 
 interface DesktopNavDropdownProps {
   label: string;
   path: string;
-  links: NavOptionLink[];
+  links: NavItemLink[];
 }
 
-export default function DesktopNavDropdown({ label, path, links }: DesktopNavDropdownProps) {
+export default function DesktopNavItem({ label, path, links }: DesktopNavDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div data-testid="desktop-nav-dropdown">
+    <div data-testid="desktop-nav-item">
       <DropdownMenu modal={false} onOpenChange={() => setIsOpen((prev) => !prev)}>
         <DropdownMenuTrigger asChild>
           <Button variant="ghost">
@@ -33,7 +33,7 @@ export default function DesktopNavDropdown({ label, path, links }: DesktopNavDro
             />
           </Button>
         </DropdownMenuTrigger>
-        <div data-testid="desktop-nav-dropdown-menu">
+        <div data-testid="desktop-nav-item-menu">
           <DropdownMenuContent hideWhenDetached align="end">
             {links.map(({ href, name }) => (
               <DropdownMenuItem key={href}>

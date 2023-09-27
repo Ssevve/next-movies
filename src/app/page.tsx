@@ -1,5 +1,5 @@
 import Hero from '@/components/Hero/Hero';
-import TrendingShows from '@/components/TrendingShows';
+import TrendingShows from '@/components/TrendingShows/TrendingShows';
 import UpcomingMovies from '@/components/UpcomingMovies';
 import WhatsPopular from '@/components/WhatsPopular';
 import YoutubeIframeModal from '@/components/YoutubeIframeModal';

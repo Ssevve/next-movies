@@ -11,6 +11,6 @@ describe('ShowScroller', () => {
 
   it('should render "No shows to display" if shows array is empty', () => {
     render(<ShowScroller shows={[]} />);
-    expect(screen.getByText('No shows to display.')).toBeInTheDocument();
+    expect(screen.getByText('No shows to display')).toBeInTheDocument();
   });
 });

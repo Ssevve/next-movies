@@ -4,11 +4,10 @@ import Image from 'next/image';
 import { useTheme } from 'next-themes';
 import { use, useState } from 'react';
 
+import VideoScroller from '@/components/VideoScroller/VideoScroller';
 import { cn } from '@/lib/utils';
 import { TMDB_IMAGE_URL, TMDB_SCROLLER_BACKGROUND_PATH } from '@/services/tmdb/constants';
 import Video from '@/types/Video';
-
-import VideoScroller from './VideoScroller';
 
 interface UpcomingMoviesTrailersProps {
   trailersPromise: Promise<Video[]>;
@@ -66,7 +65,7 @@ export default function UpcomingMoviesTrailers({ trailersPromise }: UpcomingMovi
           className={cn('h-full w-full p-4 pb-0', isLightTheme && 'bg-black/70')}
           videos={trailers}
           invertedTextColor={isLightTheme}
-          setBackgroundPath={changeActiveImage}
+          onMouseEnter={changeActiveImage}
         />
       ) : (
         <p className="text-center sm:text-left">No upcoming movies to display.</p>

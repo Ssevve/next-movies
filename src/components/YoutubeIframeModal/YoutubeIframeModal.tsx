@@ -31,19 +31,21 @@ export default function YoutubeIframeModal({ videoKey }: YoutubeIframeModalProps
         {!showVideo && (
           <>
             <Image
+              data-testid="youtube-video-thumbnail"
               className="absolute left-0 top-0 h-full w-full"
               src={`https://i.ytimg.com/vi/${videoKey}/hqdefault.jpg`}
               alt=""
               fill
             />
             <button
+              aria-label="Play video"
               className="absolute left-0 right-0 top-0 h-full"
               onClick={() => setShowVideo(true)}
             >
               <Image
                 className="mx-auto"
+                alt="YouTube play button"
                 src="/images/yt-play-button.png"
-                alt="Play video"
                 width={68}
                 height={48}
               />
@@ -52,6 +54,7 @@ export default function YoutubeIframeModal({ videoKey }: YoutubeIframeModalProps
         )}
         {showVideo && (
           <iframe
+            data-testid="youtube-iframe"
             src={`https://www.youtube-nocookie.com/embed/${videoKey}?autoplay=1`}
             className="aspect-video h-full w-full p-0"
             allow="autoplay; encrypted-media; gyroscope; picture-in-picture"

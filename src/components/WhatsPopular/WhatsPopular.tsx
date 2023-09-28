@@ -24,5 +24,5 @@ export default async function WhatsPopular() {
     },
   ];
 
-  return <TabsSection title="What's popular" tabs={tabs} />;
+  return <TabsSection title="What's Popular" tabs={tabs} />;
 }

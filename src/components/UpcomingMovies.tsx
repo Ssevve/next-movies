@@ -3,11 +3,10 @@ import { ErrorBoundary } from 'react-error-boundary';
 
 import ErrorFallback from '@/components/ErrorFallback';
 import SectionHeading from '@/components/SectionHeading/SectionHeading';
+import VideoScrollerSkeleton from '@/components/skeletons/VideoScrollerSkeleton';
+import UpcomingMoviesTrailers from '@/components/UpcomingMoviesTrailers';
 import { getTrailer } from '@/services/tmdb/api/getTrailer/getTrailer';
 import { getUpcomingMovies } from '@/services/tmdb/api/getUpcomingMovies/getUpcomingMovies';
-
-import VideoScrollerSkeleton from './skeletons/VideoScrollerSkeleton';
-import UpcomingMoviesTrailers from './UpcomingMoviesTrailers';
 
 function isFulfilled<T>(promise: PromiseSettledResult<T>): promise is PromiseFulfilledResult<T> {
   return promise.status === 'fulfilled';

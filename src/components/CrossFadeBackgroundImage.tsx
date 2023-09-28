@@ -23,11 +23,11 @@ export default function CrossFadeBackgroundImage({
   const getBackgroundImageClassNames = (imageIndex: number) => {
     return cn(
       'opacity-0 transition-opacity duration-500',
-      activeImage === imageIndex && 'opacity-100 dark:opacity-10'
+      activeImage === imageIndex && 'opacity-100 dark:opacity-10 duration-200'
     );
   };
   return (
-    <div>
+    <>
       <Image
         src={getBackgroundImagePath(0)}
         alt=""
@@ -40,6 +40,6 @@ export default function CrossFadeBackgroundImage({
         className={getBackgroundImageClassNames(1)}
         fill
       />
-    </div>
+    </>
   );
 }

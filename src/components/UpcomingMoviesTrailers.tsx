@@ -1,12 +1,11 @@
 'use client';
 
-import Image from 'next/image';
 import { useTheme } from 'next-themes';
 import { use, useState } from 'react';
 
+import CrossFadeBackgroundImage from '@/components/CrossFadeBackgroundImage';
 import VideoScroller from '@/components/VideoScroller/VideoScroller';
 import { cn } from '@/lib/utils';
-import { TMDB_IMAGE_URL, TMDB_SCROLLER_BACKGROUND_PATH } from '@/services/tmdb/constants';
 import Video from '@/types/Video';
 
 interface UpcomingMoviesTrailersProps {
@@ -16,12 +15,10 @@ interface UpcomingMoviesTrailersProps {
 export default function UpcomingMoviesTrailers({ trailersPromise }: UpcomingMoviesTrailersProps) {
   const trailers = use(trailersPromise);
   const { theme } = useTheme();
-  const [currentBackgroundPath, setCurrentBackgroundPath] = useState(
-    trailers[0].thumbnailPath || ''
-  );
-  const [previousBackgroundPath, setPreviousBackgroundPath] = useState(
-    trailers[0].thumbnailPath || ''
-  );
+
+  const initialBackgroundPath = trailers[0].thumbnailPath;
+  const [currentBackgroundPath, setCurrentBackgroundPath] = useState(initialBackgroundPath || '');
+  const [previousBackgroundPath, setPreviousBackgroundPath] = useState(initialBackgroundPath || '');
   const [activeImage, setActiveImage] = useState(0);
 
   const changeActiveImage = (path: string) => {
@@ -31,34 +28,14 @@ export default function UpcomingMoviesTrailers({ trailersPromise }: UpcomingMovi
     setActiveImage((prev) => (prev === 0 ? 1 : 0));
   };
 
-  const getBackgroundImagePath = (imageIndex: number) => {
-    return `${TMDB_IMAGE_URL}${TMDB_SCROLLER_BACKGROUND_PATH}${
-      activeImage === imageIndex ? currentBackgroundPath : previousBackgroundPath
-    }`;
-  };
-
-  const getBackgroundImageClassNames = (imageIndex: number) => {
-    return cn(
-      'opacity-0 transition-opacity duration-500',
-      activeImage === imageIndex && 'opacity-100 dark:opacity-10'
-    );
-  };
-
   const isLightTheme = theme === 'light';
 
   return (
     <section className="relative overflow-hidden rounded-md">
-      <Image
-        src={getBackgroundImagePath(0)}
-        alt=""
-        className={getBackgroundImageClassNames(0)}
-        fill
-      />
-      <Image
-        src={getBackgroundImagePath(1)}
-        alt=""
-        className={getBackgroundImageClassNames(1)}
-        fill
+      <CrossFadeBackgroundImage
+        currentBackgroundPath={currentBackgroundPath}
+        previousBackgroundPath={previousBackgroundPath}
+        activeImage={activeImage}
       />
       {trailers.length ? (
         <VideoScroller
@@ -68,7 +45,7 @@ export default function UpcomingMoviesTrailers({ trailersPromise }: UpcomingMovi
           onMouseEnter={changeActiveImage}
         />
       ) : (
-        <p className="text-center sm:text-left">No upcoming movies to display.</p>
+        <p className="text-center sm:text-left">No upcoming movies to display</p>
       )}
     </section>
   );

@@ -1,8 +1,13 @@
+import dynamic from 'next/dynamic';
+
 import Hero from '@/components/Hero/Hero';
 import TrendingShows from '@/components/TrendingShows/TrendingShows';
 import UpcomingMovies from '@/components/UpcomingMovies';
 import WhatsPopular from '@/components/WhatsPopular/WhatsPopular';
-import YoutubeIframeModal from '@/components/YoutubeIframeModal/YoutubeIframeModal';
+
+const YoutubeIframeModal = dynamic(
+  () => import('@/components/YoutubeIframeModal/YoutubeIframeModal')
+);
 
 interface HomeProps {
   searchParams: Record<string, string> | undefined | null;

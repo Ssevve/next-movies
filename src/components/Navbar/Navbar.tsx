@@ -1,14 +1,16 @@
 'use client';
 
 import { Menu } from 'lucide-react';
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { useState } from 'react';
 
 import DesktopNav from '@/components/DesktopNav/DesktopNav';
 import Logo from '@/components/Logo/Logo';
-import MobileMenu from '@/components/MobileMenu/MobileMenu';
 import ThemeToggler from '@/components/ThemeToggler';
 import { Button } from '@/components/ui/Button';
+
+const MobileMenu = dynamic(() => import('@/components/MobileMenu/MobileMenu'));
 
 export default function Navbar() {
   const [showMobileMenu, setShowMobileMenu] = useState(false);

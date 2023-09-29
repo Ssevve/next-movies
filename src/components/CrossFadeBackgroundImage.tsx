@@ -22,7 +22,7 @@ export default function CrossFadeBackgroundImage({
 
   const getBackgroundImageClassNames = (imageIndex: number) => {
     return cn(
-      'opacity-0 transition-opacity duration-500',
+      'opacity-0 transition-opacity duration-500 object-cover',
       activeImage === imageIndex && 'opacity-100 dark:opacity-10 duration-200'
     );
   };

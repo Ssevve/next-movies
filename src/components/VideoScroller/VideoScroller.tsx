@@ -19,7 +19,7 @@ export default function VideoScroller({
     <ScrollArea type="always" className={className}>
       <ul className="flex space-x-4 px-2 pb-4">
         {videos.map(({ id, title, showTitle, thumbnailPath, showType, showId, youtubeKey }) => (
-          <li key={id}>
+          <li key={showId}>
             <VideoCard
               invertedTextColor={invertedTextColor}
               videoTitle={title}

@@ -1,7 +1,7 @@
 'use client';
 
 import { useTheme } from 'next-themes';
-import { use, useState } from 'react';
+import { useState } from 'react';
 
 import CrossFadeBackgroundImage from '@/components/CrossFadeBackgroundImage';
 import VideoScroller from '@/components/VideoScroller/VideoScroller';
@@ -9,11 +9,10 @@ import { cn } from '@/lib/utils';
 import Video from '@/types/Video';
 
 interface UpcomingMoviesTrailersProps {
-  trailersPromise: Promise<Video[]>;
+  trailers: Video[];
 }
 
-export default function UpcomingMoviesTrailers({ trailersPromise }: UpcomingMoviesTrailersProps) {
-  const trailers = use(trailersPromise);
+export default function UpcomingMoviesTrailers({ trailers }: UpcomingMoviesTrailersProps) {
   const { theme } = useTheme();
 
   const initialBackgroundPath = trailers[0].thumbnailPath;

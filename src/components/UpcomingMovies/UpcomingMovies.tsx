@@ -7,14 +7,17 @@ import VideoScrollerSkeleton from '@/components/skeletons/VideoScrollerSkeleton'
 import { getTrailer } from '@/services/tmdb/api/getTrailer/getTrailer';
 import { getUpcomingMovies } from '@/services/tmdb/api/getUpcomingMovies/getUpcomingMovies';
 
-const UpcomingMoviesTrailers = dynamic(() => import('@/components/UpcomingMoviesTrailers'), {
-  loading: () => (
-    <div className="p-4">
-      <VideoScrollerSkeleton />
-    </div>
-  ),
-  ssr: false,
-});
+const UpcomingMoviesTrailers = dynamic(
+  () => import('@/components/UpcomingMoviesTrailers/UpcomingMoviesTrailers'),
+  {
+    loading: () => (
+      <div className="p-4">
+        <VideoScrollerSkeleton />
+      </div>
+    ),
+    ssr: false,
+  }
+);
 
 function isFulfilled<T>(promise: PromiseSettledResult<T>): promise is PromiseFulfilledResult<T> {
   return promise.status === 'fulfilled';

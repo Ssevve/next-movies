@@ -7,7 +7,7 @@ import mockTMDBTvShowVideos from '@/__mocks__/data/mockTMDBTvShowVideos';
 import { server } from '@/__mocks__/server';
 import { findTrailer, getTrailer } from '@/services/tmdb/api/getTrailer/getTrailer';
 import { TMDB_BASE_URL } from '@/services/tmdb/constants';
-import transformVideosResponse from '@/services/tmdb/helpers/transformVideosResponse/transformVideosResponse';
+import transformVideos from '@/services/tmdb/helpers/transformVideos/transformVideos';
 import Video from '@/types/Video';
 
 const endpoint = `${TMDB_BASE_URL}/:showType/:showId/videos`;
@@ -30,7 +30,7 @@ const tvShowArgs: SharedProps = {
 
 describe('getTrailer', () => {
   it('should return correct results for movies', async () => {
-    const videos = transformVideosResponse({
+    const videos = transformVideos({
       results: mockTMDBMovieVideos,
       ...movieArgs,
     });
@@ -40,7 +40,7 @@ describe('getTrailer', () => {
   });
 
   it('should return correct results for TV shows', async () => {
-    const videos = transformVideosResponse({
+    const videos = transformVideos({
       results: mockTMDBTvShowVideos,
       ...tvShowArgs,
     });

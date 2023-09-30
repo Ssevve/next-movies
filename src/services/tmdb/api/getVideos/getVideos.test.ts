@@ -7,7 +7,7 @@ import mockTMDBTvShowVideos from '@/__mocks__/data/mockTMDBTvShowVideos';
 import { server } from '@/__mocks__/server';
 import { getVideos } from '@/services/tmdb/api/getVideos/getVideos';
 import { TMDB_BASE_URL } from '@/services/tmdb/constants';
-import transformVideosResponse from '@/services/tmdb/helpers/transformVideosResponse/transformVideosResponse';
+import transformVideos from '@/services/tmdb/helpers/transformVideos/transformVideos';
 import Video from '@/types/Video';
 
 const endpoint = `${TMDB_BASE_URL}/:showType/:showId/videos`;
@@ -30,13 +30,13 @@ const tvShowArgs: ShowArgs = {
 
 describe('geVideos', () => {
   it('should return correct results for movies', async () => {
-    const expectedVideos = transformVideosResponse({ results: mockTMDBMovieVideos, ...movieArgs });
+    const expectedVideos = transformVideos({ results: mockTMDBMovieVideos, ...movieArgs });
     const response: Video[] = await getVideos(movieArgs);
     expect(response).toEqual(expectedVideos);
   });
 
   it('should return correct results for TV shows', async () => {
-    const expectedVideos = transformVideosResponse({
+    const expectedVideos = transformVideos({
       results: mockTMDBTvShowVideos,
       ...tvShowArgs,
     });
@@ -68,7 +68,7 @@ describe('geVideos', () => {
   });
 
   it('should return correct results for TV shows', async () => {
-    const expectedVideos = transformVideosResponse({
+    const expectedVideos = transformVideos({
       results: mockTMDBTvShowVideos,
       ...tvShowArgs,
     });

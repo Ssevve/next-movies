@@ -1,6 +1,6 @@
-import { MixedShowsResult } from '@/services/tmdb/types';
+import { TMDBUnknownShow } from '@/services/tmdb/types';
 
-const mockTMDBMixedResults: MixedShowsResult[] = [
+const mockTMDBMixedResults: TMDBUnknownShow[] = [
   {
     backdrop_path: '/1syW9SNna38rSl9fnXwc9fP7POW.jpg',
     id: 565770,

@@ -6,11 +6,11 @@ import mockTMDBMovieResults from '@/__mocks__/data/mockTMDBMovieResults';
 import { server } from '@/__mocks__/server';
 import { getUpcomingMovies } from '@/services/tmdb/api/getUpcomingMovies/getUpcomingMovies';
 import { TMDB_BASE_URL } from '@/services/tmdb/constants';
-import transformShowsResults from '@/services/tmdb/helpers/transformShowsResults/transformShowsResults';
+import transformShows from '@/services/tmdb/helpers/transformShows/transformShows';
 
 describe('getUpcomingMovies', () => {
   it('should return correct results', async () => {
-    const expectedResults = transformShowsResults(mockTMDBMovieResults);
+    const expectedResults = transformShows(mockTMDBMovieResults);
     const movies = await getUpcomingMovies();
     expect(movies).toEqual(expectedResults);
   });

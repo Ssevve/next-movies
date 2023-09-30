@@ -9,11 +9,11 @@ const YoutubeIframeModal = dynamic(
   () => import('@/components/YoutubeIframeModal/YoutubeIframeModal')
 );
 
-interface HomeProps {
+interface HomePageProps {
   searchParams: Record<string, string> | undefined | null;
 }
 
-export default function Home({ searchParams }: HomeProps) {
+export default function HomePage({ searchParams }: HomePageProps) {
   const youtubeModalVideoKey = searchParams?.play;
   return (
     <section className="grid w-full gap-12">

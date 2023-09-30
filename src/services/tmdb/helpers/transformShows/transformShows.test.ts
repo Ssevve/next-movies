@@ -4,12 +4,12 @@ import mockTMDBMixedResults from '@/__mocks__/data/mockTMDBMixedResults';
 import mockTMDBMovieResults from '@/__mocks__/data/mockTMDBMovieResults';
 import mockTMDBTvShowResults from '@/__mocks__/data/mockTMDBTvShowResults';
 import { formatDate } from '@/lib/utils';
-import transformShowsResults from '@/services/tmdb/helpers/transformShowsResults/transformShowsResults';
+import transformShows from '@/services/tmdb/helpers/transformShows/transformShows';
 import Show from '@/types/Show';
 
 describe('transformShowsResults', () => {
   it('should return correctly transformed data for mixed results', async () => {
-    const transformedResults = transformShowsResults(mockTMDBMixedResults);
+    const transformedResults = transformShows(mockTMDBMixedResults);
 
     const expectedResults: Show[] = [
       {
@@ -38,7 +38,7 @@ describe('transformShowsResults', () => {
   });
 
   it('should return correctly transformed data for movie results', async () => {
-    const transformedResults = transformShowsResults(mockTMDBMovieResults);
+    const transformedResults = transformShows(mockTMDBMovieResults);
 
     const expectedResults: Show[] = mockTMDBMovieResults.map((result) => ({
       backdropPath: result.backdrop_path,
@@ -55,7 +55,7 @@ describe('transformShowsResults', () => {
   });
 
   it('should return correctly transformed data for TV shows results', async () => {
-    const transformedResults = transformShowsResults(mockTMDBTvShowResults);
+    const transformedResults = transformShows(mockTMDBTvShowResults);
 
     const expectedResults: Show[] = mockTMDBTvShowResults.map((result) => ({
       backdropPath: result.backdrop_path,
@@ -72,7 +72,7 @@ describe('transformShowsResults', () => {
   });
 
   it('should return correctly transformed data if release date is undefined', async () => {
-    const transformedResults = transformShowsResults([
+    const transformedResults = transformShows([
       {
         backdrop_path: '/rqbCbjB19amtOtFQbb3K2lgm2zv.jpg',
         first_air_date: undefined,
@@ -101,7 +101,7 @@ describe('transformShowsResults', () => {
   });
 
   it('should return an empty array if results array is empty', async () => {
-    const transformedResults = transformShowsResults([]);
+    const transformedResults = transformShows([]);
     expect(transformedResults).toEqual([]);
   });
 });

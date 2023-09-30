@@ -1,7 +1,7 @@
 /** @jest-environment node */
 
 import mockTMDBMovieVideos from '@/__mocks__/data/mockTMDBMovieVideos';
-import transformVideosResponse from '@/services/tmdb/helpers/transformVideosResponse/transformVideosResponse';
+import transformVideos from '@/services/tmdb/helpers/transformVideos/transformVideos';
 import Video from '@/types/Video';
 
 const showData: Pick<Video, 'showId' | 'showType' | 'thumbnailPath' | 'showTitle'> = {
@@ -11,10 +11,10 @@ const showData: Pick<Video, 'showId' | 'showType' | 'thumbnailPath' | 'showTitle
   thumbnailPath: 'testPath',
 };
 
-describe('transformVideosResponse', () => {
+describe('transformVideos', () => {
   it('should return correctly transformed data for a single result', async () => {
     const expectedVideo = mockTMDBMovieVideos[0];
-    const transformedData = transformVideosResponse({
+    const transformedData = transformVideos({
       results: [expectedVideo],
       ...showData,
     });
@@ -32,7 +32,7 @@ describe('transformVideosResponse', () => {
   });
 
   it('should return correctly transformed data for multiple results', async () => {
-    const transformedData = transformVideosResponse({
+    const transformedData = transformVideos({
       results: mockTMDBMovieVideos,
       ...showData,
     });
@@ -57,7 +57,7 @@ describe('transformVideosResponse', () => {
   });
 
   it('should return an empty array for no results', async () => {
-    const transformedData = transformVideosResponse({
+    const transformedData = transformVideos({
       results: [],
       ...showData,
     });

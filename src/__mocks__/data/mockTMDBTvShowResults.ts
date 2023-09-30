@@ -1,6 +1,6 @@
-import { TvShowResult } from '@/services/tmdb/types';
+import { TMDBTvShow } from '@/services/tmdb/types';
 
-const mockTMDBTvShowResults: TvShowResult[] = [
+const mockTMDBTvShowResults: TMDBTvShow[] = [
   {
     backdrop_path: '/rqbCbjB19amtOtFQbb3K2lgm2zv.jpg',
     first_air_date: '2013-04-07',

@@ -1,14 +1,13 @@
 /** @jest-environment node */
 
 import mockTMDBMixedResults from '@/__mocks__/data/mockTMDBMixedResults';
-import transformShowsResults from '@/services/tmdb/helpers/transformShowsResults/transformShowsResults';
+import transformPaginatedShows from '@/services/tmdb/helpers/transformPaginatedShows/transformPaginatedShows';
+import transformShows from '@/services/tmdb/helpers/transformShows/transformShows';
 import PaginatedShows from '@/types/PaginatedShows';
 
-import transformPaginatedShowsResponse from './transformPaginatedShowsResponse';
-
-describe('transformPaginatedShowsResponse', () => {
+describe('transformPaginatedShows', () => {
   it('should return correctly transformed data', async () => {
-    const transformedResults = transformPaginatedShowsResponse({
+    const transformedResults = transformPaginatedShows({
       page: 1,
       results: mockTMDBMixedResults,
       total_pages: 1,
@@ -17,7 +16,7 @@ describe('transformPaginatedShowsResponse', () => {
 
     const expectedResults: PaginatedShows = {
       page: 1,
-      results: transformShowsResults(mockTMDBMixedResults),
+      results: transformShows(mockTMDBMixedResults),
       totalPages: 1,
       totalResults: mockTMDBMixedResults.length,
     };

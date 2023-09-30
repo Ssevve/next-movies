@@ -1,6 +1,6 @@
-import { VideosResponseResult } from '@/services/tmdb/types';
+import { TMDBVideo } from '@/services/tmdb/types';
 
-const mockTMDBMovieVideos: VideosResponseResult[] = [
+const mockTMDBMovieVideos: TMDBVideo[] = [
   {
     id: '6502385defea7a00e0360f7c',
     key: 'CvzlxfEz4hQ',

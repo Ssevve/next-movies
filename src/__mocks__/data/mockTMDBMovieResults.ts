@@ -1,6 +1,6 @@
-import { MovieResult } from '@/services/tmdb/types';
+import { TMDBMovie } from '@/services/tmdb/types';
 
-const mockTMDBMovieResults: MovieResult[] = [
+const mockTMDBMovieResults: TMDBMovie[] = [
   {
     backdrop_path: '/n47trh6SChgncx2GUmwsvry6DLb.jpg',
     id: 991708,

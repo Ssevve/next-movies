@@ -6,7 +6,7 @@ import mockTMDBMixedResults from '@/__mocks__/data/mockTMDBMixedResults';
 import mockTMDBMovieResults from '@/__mocks__/data/mockTMDBMovieResults';
 import mockTMDBTvShowResults from '@/__mocks__/data/mockTMDBTvShowResults';
 import { server } from '@/__mocks__/server';
-import { getTrendingShows } from '@/services/tmdb/api/getTrendingShows/getTrendingShows';
+import getTrendingShows from '@/services/tmdb/api/getTrendingShows/getTrendingShows';
 import { TMDB_BASE_URL } from '@/services/tmdb/constants';
 import transformShows from '@/services/tmdb/helpers/transformShows/transformShows';
 import PaginatedShows from '@/types/PaginatedShows';

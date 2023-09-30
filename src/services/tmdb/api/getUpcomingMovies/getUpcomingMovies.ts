@@ -6,7 +6,7 @@ import Show from '@/types/Show';
 
 import { TMDBMovie, TMDBPaginatedShows } from '../../types';
 
-export async function getUpcomingMovies(): Promise<Show[]> {
+export default async function getUpcomingMovies(): Promise<Show[]> {
   const res = await tmdbAPI(`/movie/upcoming`);
   if (!res.ok) throw Error('Failed to fetch upcoming movies.');
   const movies: TMDBPaginatedShows<TMDBMovie> = await res.json();

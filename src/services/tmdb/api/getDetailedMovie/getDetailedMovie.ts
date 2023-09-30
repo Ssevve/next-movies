@@ -1,7 +1,9 @@
+import 'server-only';
+
 import { TMDBDetailedMovie } from '../../types';
 import tmdbAPI from '../client';
 
-export async function getDetailedMovieData(movieId: number) {
+export default async function getDetailedMovie(movieId: number) {
   const appendToResponseString = [
     'videos',
     'images',

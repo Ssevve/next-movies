@@ -1,6 +1,6 @@
 import ShowScroller from '@/components/ShowScroller/ShowScroller';
 import TabsSection from '@/components/TabsSection/TabsSection';
-import { getTrendingShows } from '@/services/tmdb/api/getTrendingShows/getTrendingShows';
+import getTrendingShows from '@/services/tmdb/api/getTrendingShows/getTrendingShows';
 import Tab from '@/types/Tab';
 
 export default async function TrendingShows() {

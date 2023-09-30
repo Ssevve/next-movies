@@ -6,7 +6,7 @@ import { TMDBPaginatedShows } from '@/services/tmdb/types';
 import PaginatedShows from '@/types/PaginatedShows';
 import ShowType from '@/types/ShowType';
 
-export async function getPopularShows(showType: ShowType): Promise<PaginatedShows> {
+export default async function getPopularShows(showType: ShowType): Promise<PaginatedShows> {
   const res = await tmdbAPI(`/${showType}/popular`);
   if (res.ok) {
     const { page, results, total_pages, total_results }: TMDBPaginatedShows = await res.json();

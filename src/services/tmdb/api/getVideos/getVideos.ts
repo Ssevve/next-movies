@@ -13,7 +13,7 @@ interface GetVideosParams {
   thumbnailPath: string;
 }
 
-export async function getVideos({
+export default async function getVideos({
   showType,
   showTitle,
   thumbnailPath,

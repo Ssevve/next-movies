@@ -13,7 +13,7 @@ interface TrendingArgs {
   timeWindow: TimeWindow;
 }
 
-export async function getTrendingShows({
+export default async function getTrendingShows({
   showType,
   timeWindow,
 }: TrendingArgs): Promise<PaginatedShows> {

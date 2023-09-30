@@ -1,4 +1,6 @@
-import { getVideos } from '@/services/tmdb/api/getVideos/getVideos';
+import 'server-only';
+
+import getVideos from '@/services/tmdb/api/getVideos/getVideos';
 import ShowType from '@/types/ShowType';
 import Video from '@/types/Video';
 
@@ -14,7 +16,7 @@ interface GetTrailerArgs {
   showType: ShowType;
   showId: number;
 }
-export async function getTrailer({
+export default async function getTrailer({
   showId,
   showTitle,
   showType,

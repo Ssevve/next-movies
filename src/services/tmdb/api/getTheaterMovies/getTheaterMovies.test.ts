@@ -4,7 +4,7 @@ import { rest } from 'msw';
 
 import mockTMDBMovieResults from '@/__mocks__/data/mockTMDBMovieResults';
 import { server } from '@/__mocks__/server';
-import { getTheaterMovies } from '@/services/tmdb/api/getTheaterMovies/getTheaterMovies';
+import getTheaterMovies from '@/services/tmdb/api/getTheaterMovies/getTheaterMovies';
 import { TMDB_BASE_URL } from '@/services/tmdb/constants';
 import transformShows from '@/services/tmdb/helpers/transformShows/transformShows';
 import PaginatedShows from '@/types/PaginatedShows';

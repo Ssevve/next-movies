@@ -1,9 +1,8 @@
 import Link from 'next/link';
 
+import { buttonVariants } from '@/components/ui/Button';
 import { cn } from '@/lib/utils';
 import { NavItemLink } from '@/types/NavItem';
-
-import { buttonVariants } from '../ui/Button';
 
 interface MobileNavItemProps {
   path: string;

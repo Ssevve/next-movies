@@ -1,10 +1,9 @@
+import TMDBGenre from '@/services/tmdb/types/TMDBGenre';
+import TMDBImages from '@/services/tmdb/types/TMDBImages';
+import TMDBKeyword from '@/services/tmdb/types/TMDBKeyword';
+import TMDBPaginatedShows from '@/services/tmdb/types/TMDBPaginatedShows';
 import TMDBShow from '@/services/tmdb/types/TMDBShow';
-
-import TMDBGenre from './TMDBGenre';
-import TMDBImages from './TMDBImages';
-import TMDBKeyword from './TMDBKeyword';
-import TMDBPaginatedShows from './TMDBPaginatedShows';
-import TMDBVideos from './TMDBVideos';
+import TMDBVideos from '@/services/tmdb/types/TMDBVideos';
 
 interface TMDBExternalIds {
   twitter_id?: string;

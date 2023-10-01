@@ -1,4 +1,4 @@
-import Show from './Show';
+import Show from '@/types/Show';
 
 export default interface PaginatedShows {
   page: number;

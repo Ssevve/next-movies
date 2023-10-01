@@ -1,4 +1,4 @@
-import ShowCardSkeleton from './ShowCardSkeleton';
+import ShowCardSkeleton from '@/components/skeletons/ShowCardSkeleton';
 
 export default function ShowScrollerSkeleton() {
   return (

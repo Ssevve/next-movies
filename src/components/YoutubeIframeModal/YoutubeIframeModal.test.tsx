@@ -1,7 +1,7 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import YoutubeIframeModal from './YoutubeIframeModal';
+import YoutubeIframeModal from '@/components/YoutubeIframeModal/YoutubeIframeModal';
 
 jest.mock('next/navigation', () => {
   return {

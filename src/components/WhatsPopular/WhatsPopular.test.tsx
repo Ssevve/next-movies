@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 
-import WhatsPopular from './WhatsPopular';
+import WhatsPopular from '@/components/WhatsPopular/WhatsPopular';
 
 describe('WhatsPopular', () => {
   it('should render <TabsSection /> component with correct title', async () => {

@@ -1,6 +1,5 @@
 import { env } from '@/config/env';
-
-import { TMDB_BASE_URL } from '../constants';
+import { TMDB_BASE_URL } from '@/services/tmdb/constants';
 
 function mergeOptions(options?: RequestInit) {
   const mergedOptions = { ...options };

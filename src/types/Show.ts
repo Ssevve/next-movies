@@ -1,4 +1,4 @@
-import ShowType from './ShowType';
+import ShowType from '@/types/ShowType';
 
 export default interface Show {
   id: number;

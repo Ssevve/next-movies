@@ -1,4 +1,4 @@
-import VideoCardSkeleton from './VideoCardSkeleton';
+import VideoCardSkeleton from '@/components/skeletons/VideoCardSkeleton';
 
 export default function VideoScrollerSkeleton() {
   return (

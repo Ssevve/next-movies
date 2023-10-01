@@ -1,10 +1,10 @@
 import { rest } from 'msw';
 
-import mockTMDBMixedResults from '@/__mocks__/data/mockTMDBMixedResults';
-import mockTMDBMovieResults from '@/__mocks__/data/mockTMDBMovieResults';
+import mockTMDBMovies from '@/__mocks__/data/mockTMDBMovies';
 import mockTMDBMovieVideos from '@/__mocks__/data/mockTMDBMovieVideos';
-import mockTMDBTvShowResults from '@/__mocks__/data/mockTMDBTvShowResults';
+import mockTMDBTvShows from '@/__mocks__/data/mockTMDBTvShows';
 import mockTMDBTvShowVideos from '@/__mocks__/data/mockTMDBTvShowVideos';
+import mockTMDBUnknownShows from '@/__mocks__/data/mockTMDBUnknownShows';
 import { TMDB_BASE_URL } from '@/services/tmdb/constants';
 import TMDBMovie from '@/services/tmdb/types/TMDBMovie';
 import TMDBPaginatedShows from '@/services/tmdb/types/TMDBPaginatedShows';
@@ -26,23 +26,23 @@ export const tmdbHandlers = [
   rest.get(`${TMDB_BASE_URL}/trending/:showType/:timeWindow`, (req, res, ctx) => {
     const { showType } = req.params;
     if (showType === 'all') {
-      return res(ctx.status(200), ctx.json(generateMockResponse(mockTMDBMixedResults)));
+      return res(ctx.status(200), ctx.json(generateMockResponse(mockTMDBUnknownShows)));
     } else if (showType === 'movie') {
-      return res(ctx.status(200), ctx.json(generateMockResponse(mockTMDBMovieResults)));
+      return res(ctx.status(200), ctx.json(generateMockResponse(mockTMDBMovies)));
     } else if (showType === 'tv') {
-      return res(ctx.status(200), ctx.json(generateMockResponse(mockTMDBTvShowResults)));
+      return res(ctx.status(200), ctx.json(generateMockResponse(mockTMDBTvShows)));
     }
   }),
   rest.get(`${TMDB_BASE_URL}/movie/now_playing`, (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json(generateMockResponse(mockTMDBMovieResults)));
+    return res(ctx.status(200), ctx.json(generateMockResponse(mockTMDBMovies)));
   }),
   rest.get(`${TMDB_BASE_URL}/:showType/popular`, (req, res, ctx) => {
     const { showType } = req.params;
 
     if (showType === 'movie') {
-      return res(ctx.status(200), ctx.json(generateMockResponse(mockTMDBMovieResults)));
+      return res(ctx.status(200), ctx.json(generateMockResponse(mockTMDBMovies)));
     } else if (showType === 'tv') {
-      return res(ctx.status(200), ctx.json(generateMockResponse(mockTMDBTvShowResults)));
+      return res(ctx.status(200), ctx.json(generateMockResponse(mockTMDBTvShows)));
     }
   }),
   rest.get(`${TMDB_BASE_URL}/:showType/:showId/videos`, (req, res, ctx) => {
@@ -65,6 +65,6 @@ export const tmdbHandlers = [
     }
   }),
   rest.get(`${TMDB_BASE_URL}/movie/upcoming`, (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json({ results: mockTMDBMovieResults }));
+    return res(ctx.status(200), ctx.json({ results: mockTMDBMovies }));
   }),
 ];

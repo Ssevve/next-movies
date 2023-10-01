@@ -29,6 +29,7 @@ export default async function MoviePage({ searchParams, params }: MoviePageProps
     <section className="grid w-full gap-12">
       {youtubeModalVideoKey && <YoutubeIframeModal videoKey={youtubeModalVideoKey} />}
       <h1>Movie page</h1>
+      <p>{JSON.stringify(JSON.parse(JSON.stringify(movieDetails)), null, 2)}</p>
     </section>
   );
 }

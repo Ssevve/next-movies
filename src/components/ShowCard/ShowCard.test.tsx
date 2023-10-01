@@ -10,7 +10,7 @@ describe('ShowCard', () => {
       <ShowCard
         id={expectedShow.id}
         posterPath={expectedShow.posterPath}
-        rating={expectedShow.rating}
+        userScore={expectedShow.userScore}
         releaseDate={expectedShow.releaseDate}
         showType={expectedShow.showType}
         title={expectedShow.title}
@@ -25,7 +25,7 @@ describe('ShowCard', () => {
       <ShowCard
         id={expectedShow.id}
         posterPath={expectedShow.posterPath}
-        rating={expectedShow.rating}
+        userScore={expectedShow.userScore}
         releaseDate={expectedShow.releaseDate}
         showType={expectedShow.showType}
         title={expectedShow.title}
@@ -43,7 +43,7 @@ describe('ShowCard', () => {
       <ShowCard
         id={expectedShow.id}
         posterPath={expectedShow.posterPath}
-        rating={expectedShow.rating}
+        userScore={expectedShow.userScore}
         releaseDate={expectedShow.releaseDate}
         showType={expectedShow.showType}
         title={expectedShow.title}
@@ -58,7 +58,7 @@ describe('ShowCard', () => {
       <ShowCard
         id={expectedShow.id}
         posterPath={expectedShow.posterPath}
-        rating={expectedShow.rating}
+        userScore={expectedShow.userScore}
         releaseDate={expectedShow.releaseDate}
         showType={expectedShow.showType}
         title={expectedShow.title}
@@ -69,35 +69,35 @@ describe('ShowCard', () => {
     expect(showPoster.src).toContain(expectedShow.posterPath.slice(1));
   });
 
-  it('should render <CircularRating /> component', () => {
+  it('should render <UserScore /> component', () => {
     const expectedShow = mockShows[0];
     render(
       <ShowCard
         id={expectedShow.id}
         posterPath={expectedShow.posterPath}
-        rating={expectedShow.rating}
+        userScore={expectedShow.userScore}
         releaseDate={expectedShow.releaseDate}
         showType={expectedShow.showType}
         title={expectedShow.title}
       />
     );
-    expect(screen.getByTestId('circular-rating-wrapper')).toBeInTheDocument();
+    expect(screen.getByTestId('circular-user-score-wrapper')).toBeInTheDocument();
   });
 
-  it('should render <CircularRating /> component with correct rating', () => {
+  it('should render <UserScore /> component with correct userScore', () => {
     const expectedShow = mockShows[0];
     render(
       <ShowCard
         id={expectedShow.id}
         posterPath={expectedShow.posterPath}
-        rating={expectedShow.rating}
+        userScore={expectedShow.userScore}
         releaseDate={expectedShow.releaseDate}
         showType={expectedShow.showType}
         title={expectedShow.title}
       />
     );
-    expect(screen.getByTestId('circular-rating-wrapper')).toHaveTextContent(
-      expectedShow.rating.toString()
+    expect(screen.getByTestId('circular-user-score-wrapper')).toHaveTextContent(
+      expectedShow.userScore.toString()
     );
   });
 
@@ -107,7 +107,7 @@ describe('ShowCard', () => {
       <ShowCard
         id={expectedShow.id}
         posterPath={expectedShow.posterPath}
-        rating={expectedShow.rating}
+        userScore={expectedShow.userScore}
         releaseDate={expectedShow.releaseDate}
         showType={expectedShow.showType}
         title={expectedShow.title}
@@ -122,7 +122,7 @@ describe('ShowCard', () => {
       <ShowCard
         id={expectedShow.id}
         posterPath={expectedShow.posterPath}
-        rating={expectedShow.rating}
+        userScore={expectedShow.userScore}
         releaseDate={expectedShow.releaseDate}
         showType={expectedShow.showType}
         title={expectedShow.title}

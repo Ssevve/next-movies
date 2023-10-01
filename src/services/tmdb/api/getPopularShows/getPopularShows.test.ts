@@ -2,8 +2,8 @@
 
 import { rest } from 'msw';
 
-import mockTMDBMovieResults from '@/__mocks__/data/mockTMDBMovieResults';
-import mockTMDBTvShowResults from '@/__mocks__/data/mockTMDBTvShowResults';
+import mockTMDBMovies from '@/__mocks__/data/mockTMDBMovies';
+import mockTMDBTvShows from '@/__mocks__/data/mockTMDBTvShows';
 import { server } from '@/__mocks__/server';
 import getPopularShows from '@/services/tmdb/api/getPopularShows/getPopularShows';
 import { TMDB_BASE_URL } from '@/services/tmdb/constants';
@@ -14,13 +14,13 @@ const endpoint = `${TMDB_BASE_URL}/:showType/popular`;
 
 describe('getPopularShows', () => {
   it('should return correct results for movies', async () => {
-    const expectedResults = transformShows(mockTMDBMovieResults);
+    const expectedResults = transformShows(mockTMDBMovies);
     const response: PaginatedShows = await getPopularShows('movie');
     expect(response.results).toEqual(expectedResults);
   });
 
   it('should return correct results for TV shows', async () => {
-    const expectedResults = transformShows(mockTMDBTvShowResults);
+    const expectedResults = transformShows(mockTMDBTvShows);
     const response: PaginatedShows = await getPopularShows('tv');
     expect(response.results).toEqual(expectedResults);
   });

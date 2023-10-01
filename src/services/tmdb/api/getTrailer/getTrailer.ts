@@ -12,7 +12,7 @@ export function findTrailer(videos: Video[]) {
 
 interface GetTrailerArgs {
   showTitle: string;
-  thumbnailPath: string;
+  thumbnailPath?: string;
   showType: ShowType;
   showId: number;
 }
@@ -20,7 +20,7 @@ export default async function getTrailer({
   showId,
   showTitle,
   showType,
-  thumbnailPath,
+  thumbnailPath = '',
 }: GetTrailerArgs): Promise<Video> {
   const videos = await getVideos({ showId, showTitle, showType, thumbnailPath });
 

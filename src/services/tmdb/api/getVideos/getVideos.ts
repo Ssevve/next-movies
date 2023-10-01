@@ -10,13 +10,13 @@ interface GetVideosParams {
   showType: ShowType;
   showId: number;
   showTitle: string;
-  thumbnailPath: string;
+  thumbnailPath?: string;
 }
 
 export default async function getVideos({
   showType,
   showTitle,
-  thumbnailPath,
+  thumbnailPath = '',
   showId,
 }: GetVideosParams): Promise<Video[]> {
   const res = await tmdbAPI(`/${showType}/${showId}/videos`);

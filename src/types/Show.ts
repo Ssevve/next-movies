@@ -4,8 +4,8 @@ export default interface Show {
   id: number;
   posterPath: string;
   title: string;
-  rating: number;
-  ratingsCount: number;
+  userScore: number;
+  userScoreCount: number;
   showType: ShowType;
   releaseDate: string;
   backdropPath: string;

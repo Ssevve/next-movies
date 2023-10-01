@@ -22,8 +22,8 @@ export default function transformShows(shows: TMDBUnknownShow[]) {
       backdropPath: backdrop_path,
       id,
       posterPath: poster_path,
-      rating: vote_average,
-      ratingsCount: vote_count,
+      userScore: vote_average,
+      userScoreCount: vote_count,
     };
 
     if (isTMDBMovie(show)) {

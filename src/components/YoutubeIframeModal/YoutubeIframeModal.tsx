@@ -6,6 +6,7 @@ import { useRef, useState } from 'react';
 
 import useLockedBody from '@/hooks/useLockedBody';
 import useOnClickOutside from '@/hooks/useOnClickOutside';
+import { getYoutubeThumbnail } from '@/lib/utils';
 
 interface YoutubeIframeModalProps {
   videoKey: string;
@@ -33,7 +34,7 @@ export default function YoutubeIframeModal({ videoKey }: YoutubeIframeModalProps
             <Image
               data-testid="youtube-video-thumbnail"
               className="absolute left-0 top-0 h-full w-full"
-              src={`https://i.ytimg.com/vi/${videoKey}/hqdefault.jpg`}
+              src={getYoutubeThumbnail(videoKey)}
               alt=""
               fill
             />

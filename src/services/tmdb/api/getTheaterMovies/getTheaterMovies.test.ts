@@ -2,7 +2,7 @@
 
 import { rest } from 'msw';
 
-import mockTMDBMovieResults from '@/__mocks__/data/mockTMDBMovieResults';
+import mockTMDBMovies from '@/__mocks__/data/mockTMDBMovies';
 import { server } from '@/__mocks__/server';
 import getTheaterMovies from '@/services/tmdb/api/getTheaterMovies/getTheaterMovies';
 import { TMDB_BASE_URL } from '@/services/tmdb/constants';
@@ -11,7 +11,7 @@ import PaginatedShows from '@/types/PaginatedShows';
 
 describe('getTheaterMovies', () => {
   it('should return correct results', async () => {
-    const expectedResults = transformShows(mockTMDBMovieResults);
+    const expectedResults = transformShows(mockTMDBMovies);
     const response: PaginatedShows = await getTheaterMovies();
     expect(response.results).toEqual(expectedResults);
   });

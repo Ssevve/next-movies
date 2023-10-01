@@ -1,6 +1,6 @@
 export default interface TMDBCastPerson {
   id: number;
   name: string;
-  imagePath: string;
+  profile_path: string;
   character: string;
 }

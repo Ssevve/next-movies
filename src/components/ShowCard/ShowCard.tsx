@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import CircularRating from '@/components/CircularRating/CircularRating';
 import Card from '@/components/ui/Card';
+import UserScore from '@/components/UserScore/UserScore';
 import {
   TMDB_IMAGE_URL,
   TMDB_SHOW_CARD_POSTER_HEIGHT,
@@ -15,7 +15,7 @@ interface ShowCardProps {
   posterPath: string;
   id: number;
   title: string;
-  rating: number;
+  userScore: number;
   showType: ShowType;
   releaseDate: string;
 }
@@ -24,7 +24,7 @@ export default function ShowCard({
   posterPath,
   id,
   title,
-  rating,
+  userScore,
   showType,
   releaseDate,
 }: ShowCardProps) {
@@ -39,7 +39,7 @@ export default function ShowCard({
             width={TMDB_SHOW_CARD_POSTER_WIDTH}
             className="rounded-md"
           />
-          <CircularRating className="absolute -bottom-4 left-2 border" rating={rating} />
+          <UserScore className="absolute -bottom-4 left-2 border" userScore={userScore} />
         </div>
         <h3 className="mt-6 text-sm font-bold">{title}</h3>
         <span className="text-xs text-slate-400">{releaseDate}</span>

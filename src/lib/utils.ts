@@ -8,3 +8,7 @@ export function cn(...inputs: ClassValue[]) {
 export function formatDate(dateString: string) {
   return new Intl.DateTimeFormat('en-US', { dateStyle: 'medium' }).format(new Date(dateString));
 }
+
+export function getYoutubeThumbnail(videoKey: string) {
+  return `https://i.ytimg.com/vi/${videoKey}/hqdefault.jpg`;
+}

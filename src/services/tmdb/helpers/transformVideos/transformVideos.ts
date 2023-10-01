@@ -1,12 +1,14 @@
+import { getYoutubeThumbnail } from '@/lib/utils';
 import TMDBVideo from '@/services/tmdb/types/TMDBVideo';
 import ShowType from '@/types/ShowType';
+import Video from '@/types/Video';
 
 interface TransformVideosArgs {
   showId: number;
   videos: TMDBVideo[];
   showTitle: string;
   showType: ShowType;
-  thumbnailPath: string;
+  thumbnailPath?: string;
 }
 
 export default function transformVideos({
@@ -14,16 +16,19 @@ export default function transformVideos({
   videos,
   showTitle,
   showType,
-  thumbnailPath,
+  thumbnailPath = '',
 }: TransformVideosArgs) {
-  return videos.map(({ id, key, name, type }) => ({
-    id,
-    showId,
-    showTitle,
-    showType,
-    thumbnailPath,
-    title: name,
-    type,
-    youtubeKey: key,
-  }));
+  if (!videos.length) return [];
+  return videos.map(
+    ({ id, key, name, type }): Video => ({
+      id,
+      showId,
+      showTitle,
+      showType,
+      thumbnailPath: thumbnailPath || getYoutubeThumbnail(key),
+      title: name,
+      type,
+      youtubeKey: key,
+    })
+  );
 }

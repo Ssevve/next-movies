@@ -1,36 +1,36 @@
 /** @jest-environment node */
 
-import mockTMDBMixedResults from '@/__mocks__/data/mockTMDBMixedResults';
-import mockTMDBMovieResults from '@/__mocks__/data/mockTMDBMovieResults';
-import mockTMDBTvShowResults from '@/__mocks__/data/mockTMDBTvShowResults';
+import mockTMDBMovies from '@/__mocks__/data/mockTMDBMovies';
+import mockTMDBTvShows from '@/__mocks__/data/mockTMDBTvShows';
+import mockTMDBUnknownShows from '@/__mocks__/data/mockTMDBUnknownShows';
 import { formatDate } from '@/lib/utils';
 import transformShows from '@/services/tmdb/helpers/transformShows/transformShows';
 import Show from '@/types/Show';
 
 describe('transformShowsResults', () => {
   it('should return correctly transformed data for mixed shows', async () => {
-    const transformedResults = transformShows(mockTMDBMixedResults);
+    const transformedResults = transformShows(mockTMDBUnknownShows);
 
     const expectedResults: Show[] = [
       {
-        backdropPath: mockTMDBMixedResults[0].backdrop_path,
-        id: mockTMDBMixedResults[0].id,
-        posterPath: mockTMDBMixedResults[0].poster_path,
-        rating: mockTMDBMixedResults[0].vote_average,
-        ratingsCount: mockTMDBMixedResults[0].vote_count,
-        releaseDate: formatDate(mockTMDBMixedResults[0].release_date!),
+        backdropPath: mockTMDBUnknownShows[0].backdrop_path,
+        id: mockTMDBUnknownShows[0].id,
+        posterPath: mockTMDBUnknownShows[0].poster_path,
+        releaseDate: formatDate(mockTMDBUnknownShows[0].release_date!),
         showType: 'movie',
-        title: mockTMDBMixedResults[0].title!,
+        title: mockTMDBUnknownShows[0].title!,
+        userScore: mockTMDBUnknownShows[0].vote_average,
+        userScoreCount: mockTMDBUnknownShows[0].vote_count,
       },
       {
-        backdropPath: mockTMDBMixedResults[1].backdrop_path,
-        id: mockTMDBMixedResults[1].id,
-        posterPath: mockTMDBMixedResults[1].poster_path,
-        rating: mockTMDBMixedResults[1].vote_average,
-        ratingsCount: mockTMDBMixedResults[1].vote_count,
-        releaseDate: formatDate(mockTMDBMixedResults[1].first_air_date!),
+        backdropPath: mockTMDBUnknownShows[1].backdrop_path,
+        id: mockTMDBUnknownShows[1].id,
+        posterPath: mockTMDBUnknownShows[1].poster_path,
+        releaseDate: formatDate(mockTMDBUnknownShows[1].first_air_date!),
         showType: 'tv',
-        title: mockTMDBMixedResults[1].name!,
+        title: mockTMDBUnknownShows[1].name!,
+        userScore: mockTMDBUnknownShows[1].vote_average,
+        userScoreCount: mockTMDBUnknownShows[1].vote_count,
       },
     ];
 
@@ -38,34 +38,34 @@ describe('transformShowsResults', () => {
   });
 
   it('should return correctly transformed data for movies', async () => {
-    const transformedResults = transformShows(mockTMDBMovieResults);
+    const transformedResults = transformShows(mockTMDBMovies);
 
-    const expectedResults: Show[] = mockTMDBMovieResults.map((result) => ({
+    const expectedResults: Show[] = mockTMDBMovies.map((result) => ({
       backdropPath: result.backdrop_path,
       id: result.id,
       posterPath: result.poster_path,
-      rating: result.vote_average,
-      ratingsCount: result.vote_count,
       releaseDate: formatDate(result.release_date!),
       showType: 'movie',
       title: result.title!,
+      userScore: result.vote_average,
+      userScoreCount: result.vote_count,
     }));
 
     expect(transformedResults).toEqual(expectedResults);
   });
 
   it('should return correctly transformed data for TV shows', async () => {
-    const transformedResults = transformShows(mockTMDBTvShowResults);
+    const transformedResults = transformShows(mockTMDBTvShows);
 
-    const expectedResults: Show[] = mockTMDBTvShowResults.map((result) => ({
+    const expectedResults: Show[] = mockTMDBTvShows.map((result) => ({
       backdropPath: result.backdrop_path,
       id: result.id,
       posterPath: result.poster_path,
-      rating: result.vote_average,
-      ratingsCount: result.vote_count,
       releaseDate: formatDate(result.first_air_date!),
       showType: 'tv',
       title: result.name!,
+      userScore: result.vote_average,
+      userScoreCount: result.vote_count,
     }));
 
     expect(transformedResults).toEqual(expectedResults);
@@ -86,14 +86,14 @@ describe('transformShowsResults', () => {
 
     const expectedResults: Show[] = [
       {
-        backdropPath: mockTMDBTvShowResults[0].backdrop_path,
-        id: mockTMDBTvShowResults[0].id,
-        posterPath: mockTMDBTvShowResults[0].poster_path,
-        rating: mockTMDBTvShowResults[0].vote_average,
-        ratingsCount: mockTMDBTvShowResults[0].vote_count,
+        backdropPath: mockTMDBTvShows[0].backdrop_path,
+        id: mockTMDBTvShows[0].id,
+        posterPath: mockTMDBTvShows[0].poster_path,
         releaseDate: 'N/A',
         showType: 'tv',
-        title: mockTMDBTvShowResults[0].name!,
+        title: mockTMDBTvShows[0].name!,
+        userScore: mockTMDBTvShows[0].vote_average,
+        userScoreCount: mockTMDBTvShows[0].vote_count,
       },
     ];
 

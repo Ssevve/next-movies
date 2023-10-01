@@ -5,18 +5,18 @@ import { cn } from '@/lib/utils';
 
 type TextSize = keyof typeof fontSize;
 
-interface CircularRatingProps {
-  rating: number;
+interface UserScoreProps {
+  userScore: number;
   size?: number;
   strokeWidth?: number;
   textSize?: TextSize;
   className?: string;
 }
 
-function getRatingColor(ratingPercentage: number) {
-  if (ratingPercentage >= 75) return colors.green[500];
-  if (ratingPercentage >= 50) return colors.lime[500];
-  if (ratingPercentage >= 25) return colors.yellow[500];
+function getUserScoreColor(userScorePercentage: number) {
+  if (userScorePercentage >= 75) return colors.green[500];
+  if (userScorePercentage >= 50) return colors.lime[500];
+  if (userScorePercentage >= 25) return colors.yellow[500];
   return colors.red[500];
 }
 
@@ -24,30 +24,28 @@ export function calculateCircleSize(size: number) {
   return size / 2;
 }
 
-export function formatRatingText(rating: number) {
-  return +rating.toFixed(1);
+export function formatUserScoreText(userScore: number) {
+  return +userScore.toFixed(1);
 }
 
-export default function CircularRating({
-  rating,
+export default function UserScore({
+  userScore,
   size = 40,
   strokeWidth = 3,
   textSize = 'xs',
   className,
-}: CircularRatingProps) {
+}: UserScoreProps) {
   const viewBox = `0 0 ${size} ${size}`;
-  const formattedRating = formatRatingText(rating);
-  const ratingPercentage = formattedRating * 10;
+  const formattedUserScore = formatUserScoreText(userScore);
+  const userScorePercentage = formattedUserScore * 10;
   const circleRadius = (size - strokeWidth) / 2.5;
   const dashDiameter = Math.PI * 2 * circleRadius;
-  const dashRatio = rating / 10;
+  const dashRatio = userScore / 10;
   const gapLength = (1 - dashRatio) * dashDiameter;
-
-  const ratingColor = getRatingColor(ratingPercentage) as string;
 
   return (
     <div
-      data-testid="circular-rating-wrapper"
+      data-testid="circular-user-score-wrapper"
       className={cn(
         'relative rounded-full bg-background',
         `h-[${size}px] w-[${size}px]`,
@@ -56,7 +54,7 @@ export default function CircularRating({
     >
       <div className="-rotate-90">
         <svg
-          data-testid="circular-rating-svg"
+          data-testid="circular-user-score-svg"
           width={size}
           height={size}
           viewBox={viewBox}
@@ -64,7 +62,7 @@ export default function CircularRating({
           xmlns="http://www.w3.org/2000/svg"
         >
           <circle
-            data-testid="circular-rating-track"
+            data-testid="circular-user-score-track"
             r={circleRadius}
             cx={calculateCircleSize(size)}
             cy={calculateCircleSize(size)}
@@ -72,15 +70,15 @@ export default function CircularRating({
             strokeWidth={strokeWidth}
             strokeDasharray={dashDiameter}
             strokeDashoffset="0"
-            stroke={ratingColor}
+            stroke={getUserScoreColor(userScorePercentage)}
             className="opacity-30"
           />
           <circle
-            data-testid="circular-rating-fill"
+            data-testid="circular-user-score-fill"
             r={circleRadius}
             cx={calculateCircleSize(size)}
             cy={calculateCircleSize(size)}
-            stroke={ratingColor}
+            stroke={getUserScoreColor(userScorePercentage)}
             strokeWidth={strokeWidth}
             strokeLinecap="round"
             strokeDashoffset={gapLength}
@@ -95,7 +93,7 @@ export default function CircularRating({
           `text-${textSize}`
         )}
       >
-        {formattedRating}
+        {formattedUserScore}
       </span>
     </div>
   );

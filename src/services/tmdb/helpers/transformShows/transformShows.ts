@@ -31,7 +31,7 @@ export default function transformShows(shows: TMDBUnknownShow[]) {
       const movieProps: Pick<Show, UniqueShowTypeProps> = {
         releaseDate: formatDate(release_date) || 'N/A',
         showType: 'movie',
-        title: title,
+        title,
       };
       return { ...transformedShow, ...movieProps };
     } else if (isTMDBTvShow(show)) {

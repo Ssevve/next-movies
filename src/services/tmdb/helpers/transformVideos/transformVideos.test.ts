@@ -1,5 +1,3 @@
-/** @jest-environment node */
-
 import mockTMDBMovieVideos from '@/__mocks__/data/mockTMDBMovieVideos';
 import transformVideos from '@/services/tmdb/helpers/transformVideos/transformVideos';
 import Video from '@/types/Video';
@@ -13,30 +11,26 @@ const showData: Pick<Video, 'showId' | 'showType' | 'thumbnailPath' | 'showTitle
 
 describe('transformVideos', () => {
   it('should return correctly transformed data for a single video', async () => {
-    const expectedVideo = mockTMDBMovieVideos[0];
+    const testVideo = mockTMDBMovieVideos[0];
+    const expectedData: Video[] = [
+      {
+        id: testVideo.id,
+        ...showData,
+        title: testVideo.name,
+        type: testVideo.type,
+        youtubeKey: testVideo.key,
+      },
+    ];
+
     const transformedData = transformVideos({
-      videos: [expectedVideo],
+      videos: [testVideo],
       ...showData,
     });
 
-    const expectedData: Video[] = [
-      {
-        id: expectedVideo.id,
-        ...showData,
-        title: expectedVideo.name,
-        type: expectedVideo.type,
-        youtubeKey: expectedVideo.key,
-      },
-    ];
     expect(transformedData).toEqual(expectedData);
   });
 
   it('should return correctly transformed data for multiple videos', async () => {
-    const transformedData = transformVideos({
-      videos: mockTMDBMovieVideos,
-      ...showData,
-    });
-
     const expectedData: Video[] = [
       {
         id: mockTMDBMovieVideos[0].id,
@@ -53,6 +47,12 @@ describe('transformVideos', () => {
         youtubeKey: mockTMDBMovieVideos[1].key,
       },
     ];
+
+    const transformedData = transformVideos({
+      videos: mockTMDBMovieVideos,
+      ...showData,
+    });
+
     expect(transformedData).toEqual(expectedData);
   });
 

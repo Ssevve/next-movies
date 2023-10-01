@@ -15,7 +15,7 @@ describe('getUpcomingMovies', () => {
     expect(movies).toEqual(expectedResults);
   });
 
-  it('should throw correct error on failed fetch', async () => {
+  it('should throw correct error on failed fetch', () => {
     server.use(
       rest.get(`${TMDB_BASE_URL}/movie/upcoming`, (req, res, ctx) => {
         return res(ctx.status(500));

@@ -1,5 +1,6 @@
 import { rest } from 'msw';
 
+import mockTMDBDetailedMovie from '@/__mocks__/data/mockTMDBDetailedMovie';
 import mockTMDBMovies from '@/__mocks__/data/mockTMDBMovies';
 import mockTMDBMovieVideos from '@/__mocks__/data/mockTMDBMovieVideos';
 import mockTMDBTvShows from '@/__mocks__/data/mockTMDBTvShows';
@@ -66,5 +67,8 @@ export const tmdbHandlers = [
   }),
   rest.get(`${TMDB_BASE_URL}/movie/upcoming`, (req, res, ctx) => {
     return res(ctx.status(200), ctx.json({ results: mockTMDBMovies }));
+  }),
+  rest.get(`${TMDB_BASE_URL}/movie/:movieId`, (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json(mockTMDBDetailedMovie));
   }),
 ];

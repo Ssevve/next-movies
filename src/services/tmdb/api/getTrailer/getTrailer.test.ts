@@ -35,7 +35,7 @@ describe('getTrailer', () => {
       ...movieArgs,
     });
     const expectedTrailer = findTrailer(videos);
-    const trailer: Video = await getTrailer(movieArgs);
+    const trailer = await getTrailer(movieArgs);
     expect(trailer).toEqual(expectedTrailer);
   });
 
@@ -45,11 +45,11 @@ describe('getTrailer', () => {
       ...tvShowArgs,
     });
     const expectedTrailer = findTrailer(videos);
-    const trailer: Video = await getTrailer(tvShowArgs);
+    const trailer = await getTrailer(tvShowArgs);
     expect(trailer).toEqual(expectedTrailer);
   });
 
-  it('should throw correct error if trailer for a movie could not be found', async () => {
+  it('should throw correct error if trailer for a movie could not be found', () => {
     server.use(
       rest.get(endpoint, (req, res, ctx) => {
         return res(ctx.status(200), ctx.json([]));
@@ -63,7 +63,7 @@ describe('getTrailer', () => {
     );
   });
 
-  it('should throw correct error if trailer for a TV show could not be found', async () => {
+  it('should throw correct error if trailer for a TV show could not be found', () => {
     server.use(
       rest.get(endpoint, (req, res, ctx) => {
         return res(ctx.status(200), ctx.json([]));

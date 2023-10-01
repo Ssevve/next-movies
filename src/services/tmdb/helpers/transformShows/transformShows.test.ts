@@ -1,5 +1,3 @@
-/** @jest-environment node */
-
 import mockTMDBMovies from '@/__mocks__/data/mockTMDBMovies';
 import mockTMDBTvShows from '@/__mocks__/data/mockTMDBTvShows';
 import mockTMDBUnknownShows from '@/__mocks__/data/mockTMDBUnknownShows';
@@ -9,8 +7,6 @@ import Show from '@/types/Show';
 
 describe('transformShowsResults', () => {
   it('should return correctly transformed data for mixed shows', async () => {
-    const transformedResults = transformShows(mockTMDBUnknownShows);
-
     const expectedResults: Show[] = [
       {
         backdropPath: mockTMDBUnknownShows[0].backdrop_path,
@@ -34,12 +30,11 @@ describe('transformShowsResults', () => {
       },
     ];
 
+    const transformedResults = transformShows(mockTMDBUnknownShows);
     expect(transformedResults).toEqual(expectedResults);
   });
 
   it('should return correctly transformed data for movies', async () => {
-    const transformedResults = transformShows(mockTMDBMovies);
-
     const expectedResults: Show[] = mockTMDBMovies.map((result) => ({
       backdropPath: result.backdrop_path,
       id: result.id,
@@ -51,12 +46,11 @@ describe('transformShowsResults', () => {
       userScoreCount: result.vote_count,
     }));
 
+    const transformedResults = transformShows(mockTMDBMovies);
     expect(transformedResults).toEqual(expectedResults);
   });
 
   it('should return correctly transformed data for TV shows', async () => {
-    const transformedResults = transformShows(mockTMDBTvShows);
-
     const expectedResults: Show[] = mockTMDBTvShows.map((result) => ({
       backdropPath: result.backdrop_path,
       id: result.id,
@@ -68,22 +62,11 @@ describe('transformShowsResults', () => {
       userScoreCount: result.vote_count,
     }));
 
+    const transformedResults = transformShows(mockTMDBTvShows);
     expect(transformedResults).toEqual(expectedResults);
   });
 
   it('should return correctly transformed data if release date is undefined', async () => {
-    const transformedResults = transformShows([
-      {
-        backdrop_path: '/rqbCbjB19amtOtFQbb3K2lgm2zv.jpg',
-        first_air_date: undefined,
-        id: 1429,
-        name: 'Attack on Titan',
-        poster_path: '/8C5gYahMFmzHKGNID8QrG5t25WU.jpg',
-        vote_average: 8.7,
-        vote_count: 5474,
-      },
-    ]);
-
     const expectedResults: Show[] = [
       {
         backdropPath: mockTMDBTvShows[0].backdrop_path,
@@ -96,6 +79,18 @@ describe('transformShowsResults', () => {
         userScoreCount: mockTMDBTvShows[0].vote_count,
       },
     ];
+
+    const transformedResults = transformShows([
+      {
+        backdrop_path: '/rqbCbjB19amtOtFQbb3K2lgm2zv.jpg',
+        first_air_date: undefined,
+        id: 1429,
+        name: 'Attack on Titan',
+        poster_path: '/8C5gYahMFmzHKGNID8QrG5t25WU.jpg',
+        vote_average: 8.7,
+        vote_count: 5474,
+      },
+    ]);
 
     expect(transformedResults).toEqual(expectedResults);
   });

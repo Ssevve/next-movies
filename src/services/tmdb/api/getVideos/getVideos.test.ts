@@ -31,7 +31,7 @@ const tvShowArgs: ShowArgs = {
 describe('geVideos', () => {
   it('should return correct results for movies', async () => {
     const expectedVideos = transformVideos({ videos: mockTMDBMovieVideos, ...movieArgs });
-    const response: Video[] = await getVideos(movieArgs);
+    const response = await getVideos(movieArgs);
     expect(response).toEqual(expectedVideos);
   });
 
@@ -40,11 +40,21 @@ describe('geVideos', () => {
       videos: mockTMDBTvShowVideos,
       ...tvShowArgs,
     });
-    const response: Video[] = await getVideos(tvShowArgs);
+    const response = await getVideos(tvShowArgs);
     expect(response).toEqual(expectedVideos);
   });
 
-  it('should throw correct error on failed fetch for movies', async () => {
+  it('should return empty array if no videos found', async () => {
+    server.use(
+      rest.get(endpoint, (req, res, ctx) => {
+        return res(ctx.status(200), ctx.json([]));
+      })
+    );
+    const response = await getVideos(movieArgs);
+    expect(response).toEqual([]);
+  });
+
+  it('should throw correct error on failed fetch for movies', () => {
     server.use(
       rest.get(endpoint, (req, res, ctx) => {
         return res(ctx.status(500));
@@ -57,26 +67,7 @@ describe('geVideos', () => {
     }).rejects.toThrow(`Failed to fetch videos for: ${showId}.`);
   });
 
-  it('should return empty array if no videos found', async () => {
-    server.use(
-      rest.get(endpoint, (req, res, ctx) => {
-        return res(ctx.status(200), ctx.json([]));
-      })
-    );
-    const response: Video[] = await getVideos(movieArgs);
-    expect(response).toEqual([]);
-  });
-
-  it('should return correct results for TV shows', async () => {
-    const expectedVideos = transformVideos({
-      videos: mockTMDBTvShowVideos,
-      ...tvShowArgs,
-    });
-    const response: Video[] = await getVideos(tvShowArgs);
-    expect(response).toEqual(expectedVideos);
-  });
-
-  it('should throw correct error on failed fetch for TV shows', async () => {
+  it('should throw correct error on failed fetch for TV shows', () => {
     server.use(
       rest.get(endpoint, (req, res, ctx) => {
         return res(ctx.status(500));

@@ -1,4 +1,4 @@
-import { TMDBTvShow } from '@/services/tmdb/types';
+import TMDBTvShow from '@/services/tmdb/types/TMDBTvShow';
 
 const mockTMDBTvShowResults: TMDBTvShow[] = [
   {

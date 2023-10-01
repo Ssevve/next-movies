@@ -1,8 +1,6 @@
 import transformShows from '@/services/tmdb/helpers/transformShows/transformShows';
-import { TMDBUnknownShow } from '@/services/tmdb/types';
+import TMDBUnknownShow from '@/services/tmdb/types/TMDBUnknownShow';
 import PaginatedShows from '@/types/PaginatedShows';
-
-import { transformShow } from '../transformShow/transformShow';
 
 interface TransformPaginatedShowsArgs {
   page: number;

@@ -8,7 +8,7 @@ import transformShows from '@/services/tmdb/helpers/transformShows/transformShow
 import Show from '@/types/Show';
 
 describe('transformShowsResults', () => {
-  it('should return correctly transformed data for mixed results', async () => {
+  it('should return correctly transformed data for mixed shows', async () => {
     const transformedResults = transformShows(mockTMDBMixedResults);
 
     const expectedResults: Show[] = [
@@ -37,7 +37,7 @@ describe('transformShowsResults', () => {
     expect(transformedResults).toEqual(expectedResults);
   });
 
-  it('should return correctly transformed data for movie results', async () => {
+  it('should return correctly transformed data for movies', async () => {
     const transformedResults = transformShows(mockTMDBMovieResults);
 
     const expectedResults: Show[] = mockTMDBMovieResults.map((result) => ({
@@ -54,7 +54,7 @@ describe('transformShowsResults', () => {
     expect(transformedResults).toEqual(expectedResults);
   });
 
-  it('should return correctly transformed data for TV shows results', async () => {
+  it('should return correctly transformed data for TV shows', async () => {
     const transformedResults = transformShows(mockTMDBTvShowResults);
 
     const expectedResults: Show[] = mockTMDBTvShowResults.map((result) => ({

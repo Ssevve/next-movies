@@ -2,7 +2,8 @@ import 'server-only';
 
 import tmdbAPI from '@/services/tmdb/api/client';
 import transformPaginatedShowsResponse from '@/services/tmdb/helpers/transformPaginatedShows/transformPaginatedShows';
-import { TMDBMovie, TMDBPaginatedShows } from '@/services/tmdb/types';
+import TMDBMovie from '@/services/tmdb/types/TMDBMovie';
+import TMDBPaginatedShows from '@/services/tmdb/types/TMDBPaginatedShows';
 import PaginatedShows from '@/types/PaginatedShows';
 
 export default async function getTheaterMovies(): Promise<PaginatedShows> {

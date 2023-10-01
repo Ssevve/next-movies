@@ -6,7 +6,10 @@ import mockTMDBMovieVideos from '@/__mocks__/data/mockTMDBMovieVideos';
 import mockTMDBTvShowResults from '@/__mocks__/data/mockTMDBTvShowResults';
 import mockTMDBTvShowVideos from '@/__mocks__/data/mockTMDBTvShowVideos';
 import { TMDB_BASE_URL } from '@/services/tmdb/constants';
-import { TMDBMovie, TMDBPaginatedShows, TMDBTvShow, TMDBUnknownShow } from '@/services/tmdb/types';
+import TMDBMovie from '@/services/tmdb/types/TMDBMovie';
+import TMDBPaginatedShows from '@/services/tmdb/types/TMDBPaginatedShows';
+import TMDBTvShow from '@/services/tmdb/types/TMDBTvShow';
+import TMDBUnknownShow from '@/services/tmdb/types/TMDBUnknownShow';
 
 const generateMockResponse = (
   shows: TMDBUnknownShow[] | TMDBMovie[] | TMDBTvShow[]

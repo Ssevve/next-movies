@@ -30,14 +30,14 @@ const tvShowArgs: ShowArgs = {
 
 describe('geVideos', () => {
   it('should return correct results for movies', async () => {
-    const expectedVideos = transformVideos({ results: mockTMDBMovieVideos, ...movieArgs });
+    const expectedVideos = transformVideos({ videos: mockTMDBMovieVideos, ...movieArgs });
     const response: Video[] = await getVideos(movieArgs);
     expect(response).toEqual(expectedVideos);
   });
 
   it('should return correct results for TV shows', async () => {
     const expectedVideos = transformVideos({
-      results: mockTMDBTvShowVideos,
+      videos: mockTMDBTvShowVideos,
       ...tvShowArgs,
     });
     const response: Video[] = await getVideos(tvShowArgs);
@@ -69,7 +69,7 @@ describe('geVideos', () => {
 
   it('should return correct results for TV shows', async () => {
     const expectedVideos = transformVideos({
-      results: mockTMDBTvShowVideos,
+      videos: mockTMDBTvShowVideos,
       ...tvShowArgs,
     });
     const response: Video[] = await getVideos(tvShowArgs);

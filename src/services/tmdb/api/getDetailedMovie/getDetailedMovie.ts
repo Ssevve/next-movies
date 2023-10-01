@@ -1,7 +1,7 @@
 import 'server-only';
 
-import { TMDBDetailedMovie } from '../../types';
-import tmdbAPI from '../client';
+import tmdbAPI from '@/services/tmdb/api/client';
+import TMDBDetailedMovie from '@/services/tmdb/types/TMDBDetailedMovie';
 
 export default async function getDetailedMovie(movieId: number) {
   const appendToResponseString = [

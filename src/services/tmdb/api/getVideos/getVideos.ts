@@ -2,7 +2,7 @@ import 'server-only';
 
 import tmdbAPI from '@/services/tmdb/api/client';
 import transformVideos from '@/services/tmdb/helpers/transformVideos/transformVideos';
-import { TMDBVideos } from '@/services/tmdb/types';
+import TMDBVideos from '@/services/tmdb/types/TMDBVideos';
 import ShowType from '@/types/ShowType';
 import Video from '@/types/Video';
 
@@ -26,10 +26,10 @@ export default async function getVideos({
   if (!videos.results?.length) return [];
 
   return transformVideos({
-    results: videos.results,
     showId,
     showTitle,
     showType,
     thumbnailPath,
+    videos: videos.results,
   });
 }

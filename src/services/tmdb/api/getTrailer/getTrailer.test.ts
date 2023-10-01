@@ -31,7 +31,7 @@ const tvShowArgs: SharedProps = {
 describe('getTrailer', () => {
   it('should return correct results for movies', async () => {
     const videos = transformVideos({
-      results: mockTMDBMovieVideos,
+      videos: mockTMDBMovieVideos,
       ...movieArgs,
     });
     const expectedTrailer = findTrailer(videos);
@@ -41,7 +41,7 @@ describe('getTrailer', () => {
 
   it('should return correct results for TV shows', async () => {
     const videos = transformVideos({
-      results: mockTMDBTvShowVideos,
+      videos: mockTMDBTvShowVideos,
       ...tvShowArgs,
     });
     const expectedTrailer = findTrailer(videos);

@@ -2,7 +2,7 @@ import 'server-only';
 
 import tmdbAPI from '@/services/tmdb/api/client';
 import transformPaginatedShows from '@/services/tmdb/helpers/transformPaginatedShows/transformPaginatedShows';
-import { TMDBPaginatedShows } from '@/services/tmdb/types';
+import TMDBPaginatedShows from '@/services/tmdb/types/TMDBPaginatedShows';
 import PaginatedShows from '@/types/PaginatedShows';
 import ShowType from '@/types/ShowType';
 

@@ -1,11 +1,9 @@
-import { TMDBVideo } from '@/services/tmdb/types';
+import TMDBVideo from '@/services/tmdb/types/TMDBVideo';
 import ShowType from '@/types/ShowType';
-
-import transformVideo from '../transformVideo/transformVideo';
 
 interface TransformVideosArgs {
   showId: number;
-  results: TMDBVideo[];
+  videos: TMDBVideo[];
   showTitle: string;
   showType: ShowType;
   thumbnailPath: string;
@@ -13,21 +11,19 @@ interface TransformVideosArgs {
 
 export default function transformVideos({
   showId,
-  results,
+  videos,
   showTitle,
   showType,
   thumbnailPath,
 }: TransformVideosArgs) {
-  return results.map(({ id, key, name, type }) =>
-    transformVideo({
-      id,
-      key,
-      name,
-      showId,
-      showTitle,
-      showType,
-      thumbnailPath,
-      type,
-    })
-  );
+  return videos.map(({ id, key, name, type }) => ({
+    id,
+    showId,
+    showTitle,
+    showType,
+    thumbnailPath,
+    title: name,
+    type,
+    youtubeKey: key,
+  }));
 }

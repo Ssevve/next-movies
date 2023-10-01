@@ -1,4 +1,4 @@
-type VideoType =
+type TMDBVideoType =
   | 'Trailer'
   | 'Teaser'
   | 'Featurette'
@@ -7,4 +7,4 @@ type VideoType =
   | 'Bloopers'
   | 'Opening Credits';
 
-export default VideoType;
+export default TMDBVideoType;

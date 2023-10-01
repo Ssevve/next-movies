@@ -1,4 +1,4 @@
-import { TMDBUnknownShow } from '@/services/tmdb/types';
+import TMDBUnknownShow from '@/services/tmdb/types/TMDBUnknownShow';
 
 const mockTMDBMixedResults: TMDBUnknownShow[] = [
   {

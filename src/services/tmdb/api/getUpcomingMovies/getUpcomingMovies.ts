@@ -2,9 +2,9 @@ import 'server-only';
 
 import tmdbAPI from '@/services/tmdb/api/client';
 import transformShows from '@/services/tmdb/helpers/transformShows/transformShows';
+import TMDBMovie from '@/services/tmdb/types/TMDBMovie';
+import TMDBPaginatedShows from '@/services/tmdb/types/TMDBPaginatedShows';
 import Show from '@/types/Show';
-
-import { TMDBMovie, TMDBPaginatedShows } from '../../types';
 
 export default async function getUpcomingMovies(): Promise<Show[]> {
   const res = await tmdbAPI(`/movie/upcoming`);

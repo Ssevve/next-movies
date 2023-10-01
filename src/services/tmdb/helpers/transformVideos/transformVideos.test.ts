@@ -12,10 +12,10 @@ const showData: Pick<Video, 'showId' | 'showType' | 'thumbnailPath' | 'showTitle
 };
 
 describe('transformVideos', () => {
-  it('should return correctly transformed data for a single result', async () => {
+  it('should return correctly transformed data for a single video', async () => {
     const expectedVideo = mockTMDBMovieVideos[0];
     const transformedData = transformVideos({
-      results: [expectedVideo],
+      videos: [expectedVideo],
       ...showData,
     });
 
@@ -31,9 +31,9 @@ describe('transformVideos', () => {
     expect(transformedData).toEqual(expectedData);
   });
 
-  it('should return correctly transformed data for multiple results', async () => {
+  it('should return correctly transformed data for multiple videos', async () => {
     const transformedData = transformVideos({
-      results: mockTMDBMovieVideos,
+      videos: mockTMDBMovieVideos,
       ...showData,
     });
 
@@ -56,9 +56,9 @@ describe('transformVideos', () => {
     expect(transformedData).toEqual(expectedData);
   });
 
-  it('should return an empty array for no results', async () => {
+  it('should return an empty array for no videos', async () => {
     const transformedData = transformVideos({
-      results: [],
+      videos: [],
       ...showData,
     });
 

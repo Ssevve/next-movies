@@ -16,7 +16,7 @@ interface HomePageProps {
 export default function HomePage({ searchParams }: HomePageProps) {
   const youtubeModalVideoKey = searchParams?.play;
   return (
-    <section className="grid w-full gap-12">
+    <section className="container grid w-full gap-12 p-4">
       {youtubeModalVideoKey && <YoutubeIframeModal videoKey={youtubeModalVideoKey} />}
       <Hero />
       <TrendingShows />

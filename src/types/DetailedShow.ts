@@ -13,7 +13,7 @@ export default interface DetailedShow extends Show {
   originalLanguage: string;
   recommendations: Show[];
   keywords: Keyword[];
-  tagline: string;
+  tagline?: string;
   overview: string;
   homepage: string;
   originalTitle: string;

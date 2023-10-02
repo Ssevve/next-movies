@@ -23,7 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body id="root" className="h-full w-full overflow-x-hidden">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Navbar />
-          <main className="container p-4">{children}</main>
+          <main>{children}</main>
           <Footer />
         </ThemeProvider>
       </body>

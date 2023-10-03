@@ -42,6 +42,9 @@ export default function transformDetailedMovie({
     backdropPath: backdrop_path,
     budget,
     cast: transformMovieCast(credits.cast),
+    directedBy: credits.crew
+      .filter((person) => person.job === 'Director')
+      .map(({ name, id }) => ({ id, name })),
     genres,
     homepage,
     id,

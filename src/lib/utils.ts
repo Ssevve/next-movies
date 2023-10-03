@@ -6,6 +6,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function formatDate(dateString: string) {
+  console.log(dateString);
   return new Intl.DateTimeFormat('en-US', { dateStyle: 'medium' }).format(new Date(dateString));
 }
 

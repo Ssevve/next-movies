@@ -1,3 +1,4 @@
+import Creator from '@/types/Creator';
 import Genre from '@/types/Genre';
 import Images from '@/types/Images';
 import Keyword from '@/types/Keyword';
@@ -19,4 +20,5 @@ export default interface DetailedShow extends Show {
   originalTitle: string;
   status: string;
   rating?: string;
+  createdBy: Creator[];
 }

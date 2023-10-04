@@ -7,7 +7,7 @@ export default function transformMovieCast(cast: TMDBCastPerson[]) {
     ({ character, id, name, profile_path }): CastPerson => ({
       character,
       id,
-      imagePath: profile_path,
+      imagePath: profile_path || '',
       name,
     })
   );

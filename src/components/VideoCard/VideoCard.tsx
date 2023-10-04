@@ -1,11 +1,9 @@
-'use client';
-
 import { Play } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname, useSearchParams } from 'next/navigation';
 
 import Card, { CardProps } from '@/components/ui/Card';
+import VideoLink from '@/components/VideoLink/VideoLink';
 import { cn } from '@/lib/utils';
 import {
   TMDB_IMAGE_URL,
@@ -37,20 +35,10 @@ export default function VideoCard({
   invertedTextColor = false,
   ...props
 }: VideoCardProps) {
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const newSearchParams = new URLSearchParams(searchParams.toString());
-  newSearchParams.set('play', youtubeKey);
-
   return (
     <>
       <Card className="w-[275px]" {...props}>
-        <Link
-          aria-label={`watch ${videoTitle}`}
-          href={`${pathname}?${newSearchParams}`}
-          scroll={false}
-          className="relative block"
-        >
+        <VideoLink youtubeKey={youtubeKey} title={videoTitle}>
           <Image
             src={`${TMDB_IMAGE_URL}${TMDB_VIDEO_CARD_THUMBNAIL_PATH}${thumbnailPath}`}
             alt=""
@@ -64,7 +52,7 @@ export default function VideoCard({
             className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-background dark:text-foreground"
             aria-hidden="true"
           />
-        </Link>
+        </VideoLink>
         <Link
           href={`${showType}/${showId}`}
           className={cn('mt-6 block text-sm font-bold', invertedTextColor && 'text-background')}

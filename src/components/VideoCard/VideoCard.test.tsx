@@ -4,7 +4,7 @@ import mockVideos from '@/__mocks__/data/mockVideos';
 import VideoCard from '@/components/VideoCard/VideoCard';
 
 describe('VideoCard', () => {
-  it('should render a link to open a video player', () => {
+  it('should render <VideoLink /> component', () => {
     const expectedVideo = mockVideos[0];
     render(
       <VideoCard
@@ -18,27 +18,6 @@ describe('VideoCard', () => {
       />
     );
     expect(screen.getByRole('link', { name: `watch ${expectedVideo.title}` })).toBeInTheDocument();
-  });
-
-  it('should render a link to open a video player with correct "play" search param', () => {
-    const expectedVideo = mockVideos[0];
-    render(
-      <VideoCard
-        id={expectedVideo.id}
-        showId={expectedVideo.showId}
-        showTitle={expectedVideo.showTitle}
-        showType={expectedVideo.showType}
-        thumbnailPath={expectedVideo.thumbnailPath}
-        videoTitle={expectedVideo.title}
-        youtubeKey={expectedVideo.youtubeKey}
-      />
-    );
-
-    const linkElement: HTMLAnchorElement = screen.getByRole('link', {
-      name: `watch ${expectedVideo.title}`,
-    });
-
-    expect(linkElement.href.endsWith(`play=${expectedVideo.youtubeKey}`)).toBeTruthy();
   });
 
   it('should render video thumbnail', () => {

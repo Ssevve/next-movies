@@ -1,7 +1,7 @@
 import MobileNavItem from '@/components/MobileMenu/MobileNavItem';
 import useLockedBody from '@/hooks/useLockedBody';
 import { navItems } from '@/lib/constants';
-import { cn } from '@/lib/utils';
+import cn from '@/utils/cn';
 
 export default function MobileMenu() {
   useLockedBody(true);

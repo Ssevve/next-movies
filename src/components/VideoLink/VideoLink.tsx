@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
 
-import { cn } from '@/lib/utils';
+import cn from '@/utils/cn';
 
 interface VideoLinkProps
   extends Omit<React.PropsWithChildren<React.ComponentProps<typeof Link>>, 'href'> {

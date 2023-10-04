@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
-import { cn } from '@/lib/utils';
 import { TMDB_IMAGE_URL, TMDB_SCROLLER_BACKGROUND_PATH } from '@/services/tmdb/constants';
+import cn from '@/utils/cn';
 
 interface CrossFadeBackgroundImageProps {
   currentBackgroundPath: string;

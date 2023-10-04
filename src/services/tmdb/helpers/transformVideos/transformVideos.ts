@@ -1,7 +1,7 @@
-import { getYoutubeThumbnail } from '@/lib/utils';
 import TMDBVideo from '@/services/tmdb/types/TMDBVideo';
 import ShowType from '@/types/ShowType';
 import Video from '@/types/Video';
+import getYoutubeThumbnail from '@/utils/getYoutubeThumbnail';
 
 interface TransformVideosArgs {
   showId: number;

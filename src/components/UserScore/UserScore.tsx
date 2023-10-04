@@ -1,7 +1,7 @@
 import colors from 'tailwindcss/colors';
 import { fontSize } from 'tailwindcss/defaultTheme';
 
-import { cn } from '@/lib/utils';
+import cn from '@/utils/cn';
 
 type TextSize = keyof typeof fontSize;
 

@@ -21,6 +21,7 @@ describe('transformVideos', () => {
           name: 'Adriana Barraza',
         },
       ],
+      createdBy: [],
       genres: [
         {
           id: 28,

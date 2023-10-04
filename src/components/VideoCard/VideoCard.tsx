@@ -4,7 +4,6 @@ import Link from 'next/link';
 
 import Card, { CardProps } from '@/components/ui/Card';
 import VideoLink from '@/components/VideoLink/VideoLink';
-import { cn } from '@/lib/utils';
 import {
   TMDB_IMAGE_URL,
   TMDB_VIDEO_CARD_THUMBNAIL_HEIGHT,
@@ -12,6 +11,7 @@ import {
   TMDB_VIDEO_CARD_THUMBNAIL_WIDTH,
 } from '@/services/tmdb/constants';
 import ShowType from '@/types/ShowType';
+import cn from '@/utils/cn';
 
 interface VideoCardProps extends Omit<CardProps, 'children'> {
   videoTitle: string;

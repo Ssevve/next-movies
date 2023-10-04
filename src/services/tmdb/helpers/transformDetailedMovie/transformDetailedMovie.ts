@@ -1,4 +1,3 @@
-import { formatDate } from '@/lib/utils';
 import transformImages from '@/services/tmdb/helpers/transformImages/transformImages';
 import transformMovieCast from '@/services/tmdb/helpers/transformMovieCast/transformMovieCast';
 import transformShows from '@/services/tmdb/helpers/transformShows/transformShows';
@@ -6,6 +5,7 @@ import transformVideos from '@/services/tmdb/helpers/transformVideos/transformVi
 import TMDBDetailedMovie from '@/services/tmdb/types/TMDBDetailedMovie';
 import TMDBReleaseDates from '@/services/tmdb/types/TMDBReleaseDates';
 import DetailedMovie from '@/types/DetailedMovie';
+import formatDate from '@/utils/formatDate';
 
 function getMovieRating(releaseDates: TMDBReleaseDates) {
   return releaseDates.results.find((release) => release.iso_3166_1 === 'US')?.release_dates[0]
@@ -42,7 +42,7 @@ export default function transformDetailedMovie({
     backdropPath: backdrop_path,
     budget,
     cast: transformMovieCast(credits.cast),
-    directedBy: credits.crew
+    createdBy: credits.crew
       .filter((person) => person.job === 'Director')
       .map(({ name, id }) => ({ id, name })),
     genres,

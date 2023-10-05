@@ -1,4 +1,4 @@
-import joinCreators from '@/components/ShowPageHeader/utils/joinCreators/joinCreators';
+import joinCreators from '@/components/Creators/utils/joinCreators/joinCreators';
 import Creator from '@/types/Creator';
 
 describe('joinCreators', () => {

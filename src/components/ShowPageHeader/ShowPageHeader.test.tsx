@@ -5,7 +5,7 @@ import ShowPageHeader from '@/components/ShowPageHeader/ShowPageHeader';
 import formatRuntime from '@/components/ShowPageHeader/utils/formatRuntime/formatRuntime';
 import getReleaseYear from '@/components/ShowPageHeader/utils/getReleaseYear/getReleaseYear';
 import joinCreators from '@/components/ShowPageHeader/utils/joinCreators/joinCreators';
-import joinGenres from '@/components/ShowPageHeader/utils/joinGenres';
+import joinGenres from '@/components/ShowPageHeader/utils/joinGenres/joinGenres';
 import { findTrailer } from '@/services/tmdb/api/getTrailer/getTrailer';
 
 describe('ShowPageHeader', () => {

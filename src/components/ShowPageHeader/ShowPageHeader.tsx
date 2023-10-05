@@ -4,7 +4,7 @@ import Image from 'next/image';
 import formatRuntime from '@/components/ShowPageHeader/utils/formatRuntime/formatRuntime';
 import getReleaseYear from '@/components/ShowPageHeader/utils/getReleaseYear/getReleaseYear';
 import joinCreators from '@/components/ShowPageHeader/utils/joinCreators/joinCreators';
-import joinGenres from '@/components/ShowPageHeader/utils/joinGenres';
+import joinGenres from '@/components/ShowPageHeader/utils/joinGenres/joinGenres';
 import UserScore from '@/components/UserScore/UserScore';
 import VideoLink from '@/components/VideoLink/VideoLink';
 import {
@@ -90,8 +90,12 @@ export default function ShowPageHeader({
                 )}
                 <span className="text-center text-sm">{releaseDate}</span>
               </div>
-              <span className="my-auto hidden h-max sm:block">&#x2022;</span>
-              <span className="text-center text-sm">{joinGenres(genres)}</span>
+              {genres.length && (
+                <>
+                  <span className="my-auto hidden h-max sm:block">&#x2022;</span>
+                  <span className="text-center text-sm">{joinGenres(genres)}</span>
+                </>
+              )}
               {hasRuntime && (
                 <>
                   <span className="my-auto hidden h-max sm:block">&#x2022;</span>

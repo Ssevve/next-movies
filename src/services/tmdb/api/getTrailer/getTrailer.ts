@@ -3,12 +3,7 @@ import 'server-only';
 import getVideos from '@/services/tmdb/api/getVideos/getVideos';
 import ShowType from '@/types/ShowType';
 import Video from '@/types/Video';
-
-const ALLOWED_TRAILER_VIDEO_TYPES = ['Trailer', 'Teaser'];
-
-export function findTrailer(videos: Video[]) {
-  return videos.find((video) => ALLOWED_TRAILER_VIDEO_TYPES.includes(video.type));
-}
+import findTrailer from '@/utils/findTrailer';
 
 interface GetTrailerArgs {
   showTitle: string;

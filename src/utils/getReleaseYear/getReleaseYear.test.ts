@@ -1,4 +1,4 @@
-import getReleaseYear from '@/components/ShowPageHeader/utils/getReleaseYear/getReleaseYear';
+import getReleaseYear from '@/utils/getReleaseYear/getReleaseYear';
 
 describe('getReleaseYear', () => {
   it('should return correct release year', () => {

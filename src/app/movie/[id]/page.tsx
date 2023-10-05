@@ -3,7 +3,7 @@ import dynamic from 'next/dynamic';
 import SectionHeading from '@/components/SectionHeading/SectionHeading';
 import ShowPageHeader from '@/components/ShowPageHeader/ShowPageHeader';
 import getDetailedMovie from '@/services/tmdb/api/getDetailedMovie/getDetailedMovie';
-import { findTrailer } from '@/services/tmdb/api/getTrailer/getTrailer';
+import findTrailer from '@/utils/findTrailer';
 
 const YoutubeIframeModal = dynamic(
   () => import('@/components/YoutubeIframeModal/YoutubeIframeModal')
@@ -12,7 +12,6 @@ const YoutubeIframeModal = dynamic(
 interface MoviePageSearchParams {
   play?: string;
 }
-
 interface MoviePageParams {
   id: string;
 }
@@ -45,6 +44,10 @@ export default async function MoviePage({ searchParams, params }: MoviePageProps
         showType="movie"
         runtime={movie.runtime}
         previewVideo={previewVideo}
+        facebookHandle={movie.socialHandles.facebook}
+        twitterHandle={movie.socialHandles.twitter}
+        homepage={movie.homepage}
+        instagramHandle={movie.socialHandles.instagram}
       />
 
       <section className="container px-4">

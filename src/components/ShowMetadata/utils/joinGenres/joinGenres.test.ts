@@ -1,4 +1,4 @@
-import joinGenres from '@/components/ShowPageHeader/utils/joinGenres/joinGenres';
+import joinGenres from '@/components/ShowMetadata/utils/joinGenres/joinGenres';
 import Genre from '@/types/Genre';
 
 describe('joinGenres', () => {

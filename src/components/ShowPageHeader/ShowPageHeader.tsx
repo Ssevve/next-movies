@@ -1,10 +1,9 @@
 import { Play } from 'lucide-react';
 import Image from 'next/image';
 
-import formatRuntime from '@/components/ShowPageHeader/utils/formatRuntime/formatRuntime';
-import getReleaseYear from '@/components/ShowPageHeader/utils/getReleaseYear/getReleaseYear';
-import joinCreators from '@/components/ShowPageHeader/utils/joinCreators/joinCreators';
-import joinGenres from '@/components/ShowPageHeader/utils/joinGenres/joinGenres';
+import Creators from '@/components/Creators/Creators';
+import ShowExternalLinks from '@/components/ShowExternalLinks';
+import ShowMetadata from '@/components/ShowMetadata/ShowMetadata';
 import UserScore from '@/components/UserScore/UserScore';
 import VideoLink from '@/components/VideoLink/VideoLink';
 import {
@@ -28,7 +27,13 @@ type SharedProps = Pick<
   | 'releaseDate'
   | 'backdropPath'
   | 'showType'
-> & { previewVideo?: Video };
+> & {
+  previewVideo?: Video;
+  instagramHandle: string;
+  facebookHandle: string;
+  twitterHandle: string;
+  homepage: string;
+};
 
 interface TvShowProps extends SharedProps {
   showType: 'tv';
@@ -55,9 +60,11 @@ export default function ShowPageHeader({
   showType,
   previewVideo,
   runtime,
+  facebookHandle,
+  twitterHandle,
+  instagramHandle,
+  homepage,
 }: ShowPageHeaderProps) {
-  const isMovie = showType === 'movie';
-  const hasRuntime = isMovie && runtime;
   return (
     <section className="relative w-screen">
       <Image
@@ -77,35 +84,24 @@ export default function ShowPageHeader({
           className="mx-auto h-auto w-1/4 min-w-[150px] rounded-md shadow sm:mx-0"
         />
         <section className="flex flex-col flex-wrap gap-8 font-semibold sm:mt-8">
-          <div className="space-y-2">
-            <h1 className="text-center text-2xl font-bold sm:text-left sm:text-3xl md:text-4xl lg:text-5xl">
-              {title} ({getReleaseYear(releaseDate)})
-            </h1>
-            <div className="flex w-full flex-col flex-nowrap items-center justify-center gap-2 leading-none sm:flex-row sm:justify-start">
-              <div className="flex items-center gap-2">
-                {rating && (
-                  <span className=" my-auto rounded-md border border-foreground px-1 py-0.5 text-xs">
-                    {rating}
-                  </span>
-                )}
-                <span className="text-center text-sm">{releaseDate}</span>
-              </div>
-              {genres.length && (
-                <>
-                  <span className="my-auto hidden h-max sm:block">&#x2022;</span>
-                  <span className="text-center text-sm">{joinGenres(genres)}</span>
-                </>
-              )}
-              {hasRuntime && (
-                <>
-                  <span className="my-auto hidden h-max sm:block">&#x2022;</span>
-                  <span className="text-center text-sm">{formatRuntime(runtime)}</span>
-                </>
-              )}
-            </div>
-          </div>
+          <section className="space-y-2">
+            <ShowExternalLinks
+              className="sm:mb-4"
+              facebookHandle={facebookHandle}
+              homepage={homepage}
+              instagramHandle={instagramHandle}
+              twitterHandle={twitterHandle}
+            />
+            <ShowMetadata
+              genres={genres}
+              rating={rating}
+              releaseDate={releaseDate}
+              runtime={runtime}
+              title={title}
+            />
+          </section>
           <span className="mx-auto text-center italic sm:mx-0 sm:text-left">{tagline}</span>
-          <div className="flex flex-wrap items-center justify-center gap-12 sm:justify-start">
+          <section className="flex flex-wrap items-center justify-center gap-12 sm:justify-start">
             <div className="flex items-center gap-2">
               <UserScore size={70} textSize="lg" strokeWidth={4} userScore={userScore} />
               <span className="break-keep font-semibold">User Score</span>
@@ -120,13 +116,8 @@ export default function ShowPageHeader({
                 <span className="break-keep font-semibold">Play {previewVideo.type}</span>
               </VideoLink>
             )}
-          </div>
-          {createdBy.length && (
-            <div className="mx-auto text-center sm:mx-0 sm:text-left">
-              <span>{isMovie ? 'Directed' : 'Created'} by:</span>
-              <span className="ml-2 font-normal">{joinCreators(createdBy)}</span>
-            </div>
-          )}
+          </section>
+          <Creators creators={createdBy} showType={showType} />
         </section>
       </section>
     </section>

@@ -1,5 +1,5 @@
-import joinCreators from '@/components/Creators/utils/joinCreators/joinCreators';
 import Creator from '@/types/Creator';
+import joinCreators from '@/utils/joinCreators/joinCreators';
 
 describe('joinCreators', () => {
   it('should return correct string for single creator', () => {

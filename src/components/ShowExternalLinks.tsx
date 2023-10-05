@@ -3,7 +3,7 @@ import { Facebook, Instagram, Link, Twitter } from 'lucide-react';
 import LinkWithTooltip from '@/components/LinkWithTooltip';
 import cn from '@/utils/cn';
 
-interface ShowLinksProps {
+interface ShowExternalLinksProps {
   twitterHandle: string;
   facebookHandle: string;
   instagramHandle: string;
@@ -11,13 +11,13 @@ interface ShowLinksProps {
   className: string;
 }
 
-export default function ShowLinks({
+export default function ShowExternalLinks({
   twitterHandle,
   facebookHandle,
   instagramHandle,
   homepage,
   className,
-}: ShowLinksProps) {
+}: ShowExternalLinksProps) {
   return (
     <section
       className={cn(
@@ -32,7 +32,7 @@ export default function ShowLinks({
               href={`https://www.twitter.com/${twitterHandle}`}
               tooltipText="Visit Twitter"
             >
-              <Twitter />
+              <Twitter aria-hidden="true" />
             </LinkWithTooltip>
           </li>
         )}
@@ -42,7 +42,7 @@ export default function ShowLinks({
               href={`https://www.facebook.com/${facebookHandle}`}
               tooltipText="Visit Facebook"
             >
-              <Facebook />
+              <Facebook aria-hidden="true" />
             </LinkWithTooltip>
           </li>
         )}
@@ -52,7 +52,7 @@ export default function ShowLinks({
               href={`https://www.instagram.com/${instagramHandle}`}
               tooltipText="Visit Instagram"
             >
-              <Instagram />
+              <Instagram aria-hidden="true" />
             </LinkWithTooltip>
           </li>
         )}
@@ -60,7 +60,7 @@ export default function ShowLinks({
       {homepage && (
         <div className="pl-2">
           <LinkWithTooltip tooltipText="Visit Homepage" href={homepage}>
-            <Link />
+            <Link aria-hidden="true" />
           </LinkWithTooltip>
         </div>
       )}

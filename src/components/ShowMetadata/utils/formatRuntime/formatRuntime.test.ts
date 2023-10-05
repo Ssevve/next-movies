@@ -1,4 +1,4 @@
-import formatRuntime from '@/components/ShowPageHeader/utils/formatRuntime/formatRuntime';
+import formatRuntime from '@/components/ShowMetadata/utils/formatRuntime/formatRuntime';
 
 describe('formatRuntime', () => {
   it('should return correctly formatted runtime with hours and minutes', () => {

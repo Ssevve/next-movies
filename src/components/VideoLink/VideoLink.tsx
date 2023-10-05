@@ -11,7 +11,13 @@ interface VideoLinkProps
   title: string;
 }
 
-export default function VideoLink({ youtubeKey, title, children, className }: VideoLinkProps) {
+export default function VideoLink({
+  youtubeKey,
+  title,
+  children,
+  className,
+  ...props
+}: VideoLinkProps) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const newSearchParams = new URLSearchParams(searchParams.toString());
@@ -23,6 +29,7 @@ export default function VideoLink({ youtubeKey, title, children, className }: Vi
       href={`${pathname}?${newSearchParams}`}
       scroll={false}
       className={cn('relative block', className)}
+      {...props}
     >
       {children}
     </Link>

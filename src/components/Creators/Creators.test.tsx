@@ -48,4 +48,10 @@ describe('Creators', () => {
     render(<Creators creators={expectedCreators} showType="tv" />);
     expect(screen.getByText('Created by:')).toBeInTheDocument();
   });
+
+  it('should not render if "creators" array is empty', () => {
+    render(<Creators creators={[]} showType="movie" />);
+    expect(screen.queryByText('Directed by:')).not.toBeInTheDocument();
+    expect(screen.queryByText('Created by:')).not.toBeInTheDocument();
+  });
 });

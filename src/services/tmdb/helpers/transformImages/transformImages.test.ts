@@ -2,7 +2,7 @@ import mockTMDBImages from '@/__mocks__/data/mockTMDBImages';
 import transformImages from '@/services/tmdb/helpers/transformImages/transformImages';
 import Image from '@/types/Image';
 
-describe('transformVideos', () => {
+describe('transformImages', () => {
   it('should return correctly transformed data for single image', async () => {
     const testImage = mockTMDBImages.backdrops[0];
     const expectedImage: Image[] = [

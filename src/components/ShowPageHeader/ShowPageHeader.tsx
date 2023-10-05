@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 import formatRuntime from '@/components/ShowPageHeader/utils/formatRuntime/formatRuntime';
 import getReleaseYear from '@/components/ShowPageHeader/utils/getReleaseYear/getReleaseYear';
-import joinCreators from '@/components/ShowPageHeader/utils/joinCreators';
+import joinCreators from '@/components/ShowPageHeader/utils/joinCreators/joinCreators';
 import joinGenres from '@/components/ShowPageHeader/utils/joinGenres';
 import UserScore from '@/components/UserScore/UserScore';
 import VideoLink from '@/components/VideoLink/VideoLink';
@@ -117,10 +117,12 @@ export default function ShowPageHeader({
               </VideoLink>
             )}
           </div>
-          <div className="mx-auto text-center sm:mx-0 sm:text-left">
-            <span>{isMovie ? 'Directed' : 'Created'} by:</span>
-            <span className="ml-2 font-normal">{joinCreators(createdBy)}</span>
-          </div>
+          {createdBy.length && (
+            <div className="mx-auto text-center sm:mx-0 sm:text-left">
+              <span>{isMovie ? 'Directed' : 'Created'} by:</span>
+              <span className="ml-2 font-normal">{joinCreators(createdBy)}</span>
+            </div>
+          )}
         </section>
       </section>
     </section>

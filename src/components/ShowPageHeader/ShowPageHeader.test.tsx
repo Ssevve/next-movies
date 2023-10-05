@@ -4,6 +4,7 @@ import mockDetailedMovie from '@/__mocks__/data/mockDetailedMovie';
 import ShowPageHeader from '@/components/ShowPageHeader/ShowPageHeader';
 import formatRuntime from '@/components/ShowPageHeader/utils/formatRuntime/formatRuntime';
 import getReleaseYear from '@/components/ShowPageHeader/utils/getReleaseYear/getReleaseYear';
+import joinCreators from '@/components/ShowPageHeader/utils/joinCreators/joinCreators';
 import joinGenres from '@/components/ShowPageHeader/utils/joinGenres';
 import { findTrailer } from '@/services/tmdb/api/getTrailer/getTrailer';
 
@@ -218,6 +219,52 @@ describe('ShowPageHeader', () => {
       />
     );
     expect(screen.getByRole('link', { name: `watch ${expectedVideo!.title}` })).toBeInTheDocument();
+  });
+
+  it('should render creators', () => {
+    const expectedShow = mockDetailedMovie;
+    const expectedVideo = findTrailer(expectedShow.videos);
+    const expectedCreators = joinCreators(expectedShow.createdBy);
+    render(
+      <ShowPageHeader
+        tagline={expectedShow.tagline}
+        backdropPath={expectedShow.backdropPath}
+        createdBy={expectedShow.createdBy}
+        genres={expectedShow.genres}
+        posterPath={expectedShow.posterPath}
+        releaseDate={expectedShow.releaseDate}
+        runtime={expectedShow.runtime}
+        title={expectedShow.title}
+        userScore={expectedShow.userScore}
+        showType="movie"
+        previewVideo={expectedVideo}
+        rating={expectedShow.rating}
+      />
+    );
+    expect(screen.getByText(expectedCreators)).toBeInTheDocument();
+  });
+
+  it('should try to render creators if "createdBy" array is empty', () => {
+    const expectedShow = mockDetailedMovie;
+    const expectedVideo = findTrailer(expectedShow.videos);
+    render(
+      <ShowPageHeader
+        tagline={expectedShow.tagline}
+        backdropPath={expectedShow.backdropPath}
+        createdBy={[]}
+        genres={expectedShow.genres}
+        posterPath={expectedShow.posterPath}
+        releaseDate={expectedShow.releaseDate}
+        runtime={expectedShow.runtime}
+        title={expectedShow.title}
+        userScore={expectedShow.userScore}
+        showType="movie"
+        previewVideo={expectedVideo}
+        rating={expectedShow.rating}
+      />
+    );
+    expect(screen.queryByText('Directed by:')).not.toBeInTheDocument();
+    expect(screen.queryByText('Created by:')).not.toBeInTheDocument();
   });
 
   it('should render "Directed by" for movies', () => {

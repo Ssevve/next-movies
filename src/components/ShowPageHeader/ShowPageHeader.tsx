@@ -1,7 +1,7 @@
 import { Play } from 'lucide-react';
 import Image from 'next/image';
 
-import formatRuntime from '@/components/ShowPageHeader/utils/formatRuntime';
+import formatRuntime from '@/components/ShowPageHeader/utils/formatRuntime/formatRuntime';
 import getReleaseYear from '@/components/ShowPageHeader/utils/getReleaseYear';
 import joinCreators from '@/components/ShowPageHeader/utils/joinCreators';
 import joinGenres from '@/components/ShowPageHeader/utils/joinGenres';

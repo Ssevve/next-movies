@@ -2,11 +2,10 @@ import { render, screen } from '@testing-library/react';
 
 import mockDetailedMovie from '@/__mocks__/data/mockDetailedMovie';
 import ShowPageHeader from '@/components/ShowPageHeader/ShowPageHeader';
+import formatRuntime from '@/components/ShowPageHeader/utils/formatRuntime/formatRuntime';
+import getReleaseYear from '@/components/ShowPageHeader/utils/getReleaseYear';
+import joinGenres from '@/components/ShowPageHeader/utils/joinGenres';
 import { findTrailer } from '@/services/tmdb/api/getTrailer/getTrailer';
-
-import formatRuntime from './utils/formatRuntime';
-import getReleaseYear from './utils/getReleaseYear';
-import joinGenres from './utils/joinGenres';
 
 describe('ShowPageHeader', () => {
   it('should render title with release year', () => {

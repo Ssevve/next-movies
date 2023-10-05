@@ -57,7 +57,7 @@ export default function transformDetailedMovie({
     originalTitle: original_title,
     overview,
     posterPath: poster_path,
-    rating: getMovieRating(release_dates),
+    rating: getMovieRating(release_dates) || '',
     recommendations: transformShows(recommendations.results),
     releaseDate: formatDate(release_date) || 'N/A',
     revenue,

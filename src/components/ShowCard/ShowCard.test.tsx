@@ -81,7 +81,7 @@ describe('ShowCard', () => {
         title={expectedShow.title}
       />
     );
-    expect(screen.getByTestId('circular-user-score-wrapper')).toBeInTheDocument();
+    expect(screen.getByTestId('user-score-wrapper')).toBeInTheDocument();
   });
 
   it('should render <UserScore /> component with correct userScore', () => {
@@ -96,7 +96,7 @@ describe('ShowCard', () => {
         title={expectedShow.title}
       />
     );
-    expect(screen.getByTestId('circular-user-score-wrapper')).toHaveTextContent(
+    expect(screen.getByTestId('user-score-wrapper')).toHaveTextContent(
       expectedShow.userScore.toString()
     );
   });

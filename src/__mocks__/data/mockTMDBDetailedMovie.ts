@@ -20,6 +20,18 @@ const mockTMDBDetailedMovie: TMDBDetailedMovie = {
         profile_path: '/1aE7wu22bdgVTa0PMKXbAOSLiZn.jpg',
       },
     ],
+    crew: [
+      {
+        id: 1597,
+        job: 'Sound Effects Editor',
+        name: 'Michael Payne',
+      },
+      {
+        id: 3504,
+        job: 'Sound Designer',
+        name: 'David Farmer',
+      },
+    ],
   },
   external_ids: {
     facebook_id: 'DCBlueBeetle',

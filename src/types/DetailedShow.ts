@@ -19,6 +19,6 @@ export default interface DetailedShow extends Show {
   homepage: string;
   originalTitle: string;
   status: string;
-  rating?: string;
+  rating: string;
   createdBy: Creator[];
 }

@@ -45,7 +45,7 @@ export default function UserScore({
 
   return (
     <div
-      data-testid="circular-user-score-wrapper"
+      data-testid="user-score-wrapper"
       className={cn(
         'relative rounded-full bg-background',
         `h-[${size}px] w-[${size}px]`,
@@ -54,7 +54,7 @@ export default function UserScore({
     >
       <div className="-rotate-90">
         <svg
-          data-testid="circular-user-score-svg"
+          data-testid="user-score-svg"
           width={size}
           height={size}
           viewBox={viewBox}
@@ -62,7 +62,7 @@ export default function UserScore({
           xmlns="http://www.w3.org/2000/svg"
         >
           <circle
-            data-testid="circular-user-score-track"
+            data-testid="user-score-track"
             r={circleRadius}
             cx={calculateCircleSize(size)}
             cy={calculateCircleSize(size)}
@@ -74,7 +74,7 @@ export default function UserScore({
             className="opacity-30"
           />
           <circle
-            data-testid="circular-user-score-fill"
+            data-testid="user-score-fill"
             r={circleRadius}
             cx={calculateCircleSize(size)}
             cy={calculateCircleSize(size)}

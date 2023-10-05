@@ -1,8 +1,8 @@
 import 'server-only';
 
 import tmdbAPI from '@/services/tmdb/api/client';
-import transformDetailedMovie from '@/services/tmdb/helpers/transformDetailedMovie/transformDetailedMovie';
 import TMDBDetailedMovie from '@/services/tmdb/types/TMDBDetailedMovie';
+import transformDetailedMovie from '@/services/tmdb/utils/transformDetailedMovie/transformDetailedMovie';
 import DetailedMovie from '@/types/DetailedMovie';
 
 export default async function getDetailedMovie(movieId: number): Promise<DetailedMovie> {

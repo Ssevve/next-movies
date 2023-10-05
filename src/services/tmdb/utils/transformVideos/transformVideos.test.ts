@@ -1,5 +1,5 @@
 import mockTMDBMovieVideos from '@/__mocks__/data/mockTMDBMovieVideos';
-import transformVideos from '@/services/tmdb/helpers/transformVideos/transformVideos';
+import transformVideos from '@/services/tmdb/utils/transformVideos/transformVideos';
 import Video from '@/types/Video';
 
 const showData: Pick<Video, 'showId' | 'showType' | 'thumbnailPath' | 'showTitle'> = {

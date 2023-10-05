@@ -1,8 +1,8 @@
 import 'server-only';
 
 import tmdbAPI from '@/services/tmdb/api/client';
-import transformVideos from '@/services/tmdb/helpers/transformVideos/transformVideos';
 import TMDBVideos from '@/services/tmdb/types/TMDBVideos';
+import transformVideos from '@/services/tmdb/utils/transformVideos/transformVideos';
 import ShowType from '@/types/ShowType';
 import Video from '@/types/Video';
 

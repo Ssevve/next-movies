@@ -1,5 +1,5 @@
 import mockTMDBMovieCast from '@/__mocks__/data/mockTMDBMovieCast';
-import transformMovieCast from '@/services/tmdb/helpers/transformMovieCast/transformMovieCast';
+import transformMovieCast from '@/services/tmdb/utils/transformMovieCast/transformMovieCast';
 import CastPerson from '@/types/CastPerson';
 
 describe('transformVideos', () => {

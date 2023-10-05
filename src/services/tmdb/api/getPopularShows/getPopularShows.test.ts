@@ -7,7 +7,7 @@ import mockTMDBTvShows from '@/__mocks__/data/mockTMDBTvShows';
 import { server } from '@/__mocks__/server';
 import getPopularShows from '@/services/tmdb/api/getPopularShows/getPopularShows';
 import { TMDB_BASE_URL } from '@/services/tmdb/constants';
-import transformShows from '@/services/tmdb/helpers/transformShows/transformShows';
+import transformShows from '@/services/tmdb/utils/transformShows/transformShows';
 
 const endpoint = `${TMDB_BASE_URL}/:showType/popular`;
 

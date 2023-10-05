@@ -1,5 +1,5 @@
 import mockTMDBImages from '@/__mocks__/data/mockTMDBImages';
-import transformImages from '@/services/tmdb/helpers/transformImages/transformImages';
+import transformImages from '@/services/tmdb/utils/transformImages/transformImages';
 import Image from '@/types/Image';
 
 describe('transformImages', () => {

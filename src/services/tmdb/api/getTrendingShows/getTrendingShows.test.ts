@@ -8,7 +8,7 @@ import mockTMDBUnknownShows from '@/__mocks__/data/mockTMDBUnknownShows';
 import { server } from '@/__mocks__/server';
 import getTrendingShows from '@/services/tmdb/api/getTrendingShows/getTrendingShows';
 import { TMDB_BASE_URL } from '@/services/tmdb/constants';
-import transformShows from '@/services/tmdb/helpers/transformShows/transformShows';
+import transformShows from '@/services/tmdb/utils/transformShows/transformShows';
 
 const endpoint = `${TMDB_BASE_URL}/trending/:showType/:timeWindow`;
 

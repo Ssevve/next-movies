@@ -7,7 +7,7 @@ import mockTMDBTvShowVideos from '@/__mocks__/data/mockTMDBTvShowVideos';
 import { server } from '@/__mocks__/server';
 import getTrailer, { findTrailer } from '@/services/tmdb/api/getTrailer/getTrailer';
 import { TMDB_BASE_URL } from '@/services/tmdb/constants';
-import transformVideos from '@/services/tmdb/helpers/transformVideos/transformVideos';
+import transformVideos from '@/services/tmdb/utils/transformVideos/transformVideos';
 import Video from '@/types/Video';
 
 const endpoint = `${TMDB_BASE_URL}/:showType/:showId/videos`;

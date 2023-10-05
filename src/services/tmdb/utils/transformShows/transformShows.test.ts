@@ -1,7 +1,7 @@
 import mockTMDBMovies from '@/__mocks__/data/mockTMDBMovies';
 import mockTMDBTvShows from '@/__mocks__/data/mockTMDBTvShows';
 import mockTMDBUnknownShows from '@/__mocks__/data/mockTMDBUnknownShows';
-import transformShows from '@/services/tmdb/helpers/transformShows/transformShows';
+import transformShows from '@/services/tmdb/utils/transformShows/transformShows';
 import Show from '@/types/Show';
 import formatDate from '@/utils/formatDate';
 

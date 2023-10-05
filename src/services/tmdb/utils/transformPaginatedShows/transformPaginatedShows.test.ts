@@ -1,6 +1,6 @@
 import mockTMDBUnknownShows from '@/__mocks__/data/mockTMDBUnknownShows';
-import transformPaginatedShows from '@/services/tmdb/helpers/transformPaginatedShows/transformPaginatedShows';
-import transformShows from '@/services/tmdb/helpers/transformShows/transformShows';
+import transformPaginatedShows from '@/services/tmdb/utils/transformPaginatedShows/transformPaginatedShows';
+import transformShows from '@/services/tmdb/utils/transformShows/transformShows';
 import PaginatedShows from '@/types/PaginatedShows';
 
 describe('transformPaginatedShows', () => {

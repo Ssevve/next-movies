@@ -1,5 +1,5 @@
-import transformShows from '@/services/tmdb/helpers/transformShows/transformShows';
 import TMDBUnknownShow from '@/services/tmdb/types/TMDBUnknownShow';
+import transformShows from '@/services/tmdb/utils/transformShows/transformShows';
 import PaginatedShows from '@/types/PaginatedShows';
 
 interface TransformPaginatedShowsArgs {

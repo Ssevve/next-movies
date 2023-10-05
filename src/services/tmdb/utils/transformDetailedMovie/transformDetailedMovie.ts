@@ -1,9 +1,9 @@
-import transformImages from '@/services/tmdb/helpers/transformImages/transformImages';
-import transformMovieCast from '@/services/tmdb/helpers/transformMovieCast/transformMovieCast';
-import transformShows from '@/services/tmdb/helpers/transformShows/transformShows';
-import transformVideos from '@/services/tmdb/helpers/transformVideos/transformVideos';
 import TMDBDetailedMovie from '@/services/tmdb/types/TMDBDetailedMovie';
 import TMDBReleaseDates from '@/services/tmdb/types/TMDBReleaseDates';
+import transformImages from '@/services/tmdb/utils/transformImages/transformImages';
+import transformMovieCast from '@/services/tmdb/utils/transformMovieCast/transformMovieCast';
+import transformShows from '@/services/tmdb/utils/transformShows/transformShows';
+import transformVideos from '@/services/tmdb/utils/transformVideos/transformVideos';
 import DetailedMovie from '@/types/DetailedMovie';
 import formatDate from '@/utils/formatDate';
 

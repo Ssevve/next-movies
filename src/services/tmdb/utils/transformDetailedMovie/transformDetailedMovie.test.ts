@@ -1,6 +1,6 @@
 import mockTMDBDetailedMovie from '@/__mocks__/data/mockTMDBDetailedMovie';
-import transformDetailedMovie from '@/services/tmdb/helpers/transformDetailedMovie/transformDetailedMovie';
-import transformMovieCast from '@/services/tmdb/helpers/transformMovieCast/transformMovieCast';
+import transformDetailedMovie from '@/services/tmdb/utils/transformDetailedMovie/transformDetailedMovie';
+import transformMovieCast from '@/services/tmdb/utils/transformMovieCast/transformMovieCast';
 
 describe('transformVideos', () => {
   it('should return correctly transformed data', async () => {

@@ -6,7 +6,7 @@ import mockTMDBDetailedMovie from '@/__mocks__/data/mockTMDBDetailedMovie';
 import { server } from '@/__mocks__/server';
 import getDetailedMovie from '@/services/tmdb/api/getDetailedMovie/getDetailedMovie';
 import { TMDB_BASE_URL } from '@/services/tmdb/constants';
-import transformDetailedMovie from '@/services/tmdb/helpers/transformDetailedMovie/transformDetailedMovie';
+import transformDetailedMovie from '@/services/tmdb/utils/transformDetailedMovie/transformDetailedMovie';
 
 describe('getDetailedMovie', () => {
   it('should return correct result', async () => {

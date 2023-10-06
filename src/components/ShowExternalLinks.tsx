@@ -1,7 +1,7 @@
 import { Facebook, Instagram, Link, Twitter } from 'lucide-react';
 
 import LinkWithTooltip from '@/components/LinkWithTooltip';
-import cn from '@/utils/cn';
+import cn from '@/lib/cn';
 
 interface ShowExternalLinksProps {
   twitterHandle: string;

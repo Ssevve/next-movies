@@ -4,6 +4,7 @@ import Link from 'next/link';
 
 import Hoverable, { HoverableProps } from '@/components/ui/Hoverable';
 import VideoLink from '@/components/VideoLink/VideoLink';
+import cn from '@/lib/cn';
 import {
   TMDB_IMAGE_URL,
   TMDB_VIDEO_CARD_THUMBNAIL_HEIGHT,
@@ -11,7 +12,6 @@ import {
   TMDB_VIDEO_CARD_THUMBNAIL_WIDTH,
 } from '@/services/tmdb/constants';
 import ShowType from '@/types/ShowType';
-import cn from '@/utils/cn';
 
 interface VideoCardProps extends Omit<HoverableProps, 'children'> {
   videoTitle: string;

@@ -2,7 +2,7 @@ import colors from 'tailwindcss/colors';
 import { fontSize } from 'tailwindcss/defaultTheme';
 
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/Tooltip';
-import cn from '@/utils/cn';
+import cn from '@/lib/cn';
 
 function getUserScoreColor(userScorePercentage: number) {
   if (userScorePercentage >= 75) return colors.green[500];

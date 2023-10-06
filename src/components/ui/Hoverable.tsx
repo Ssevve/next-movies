@@ -1,4 +1,4 @@
-import cn from '@/utils/cn';
+import cn from '@/lib/cn';
 
 export interface HoverableProps extends React.ComponentProps<'div'> {
   children: React.ReactNode;

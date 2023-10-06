@@ -5,8 +5,8 @@ import { useState } from 'react';
 
 import CrossFadeBackgroundImage from '@/components/CrossFadeBackgroundImage';
 import VideoScroller from '@/components/VideoScroller/VideoScroller';
+import cn from '@/lib/cn';
 import Video from '@/types/Video';
-import cn from '@/utils/cn';
 
 interface UpcomingMoviesTrailersProps {
   trailers: Video[];

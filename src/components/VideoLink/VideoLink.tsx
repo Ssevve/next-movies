@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
 
 import Hoverable from '@/components/ui/Hoverable';
-import cn from '@/utils/cn';
+import cn from '@/lib/cn';
 
 interface VideoLinkProps
   extends Omit<React.PropsWithChildren<React.ComponentProps<typeof Link>>, 'href'> {

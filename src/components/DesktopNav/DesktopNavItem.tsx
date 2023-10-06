@@ -9,8 +9,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/DropdownMenu';
+import cn from '@/lib/cn';
 import { NavItemLink } from '@/types/NavItem';
-import cn from '@/utils/cn';
 
 interface DesktopNavDropdownProps {
   label: string;

@@ -24,6 +24,7 @@ type SharedProps = Pick<
   | 'createdBy'
   | 'posterPath'
   | 'userScore'
+  | 'userScoreCount'
   | 'releaseDate'
   | 'backdropPath'
   | 'showType'
@@ -64,6 +65,7 @@ export default function ShowPageHeader({
   twitterHandle,
   instagramHandle,
   homepage,
+  userScoreCount,
 }: ShowPageHeaderProps) {
   return (
     <section className="relative w-screen">
@@ -103,7 +105,14 @@ export default function ShowPageHeader({
           <span className="mx-auto text-center italic sm:mx-0 sm:text-left">{tagline}</span>
           <section className="flex flex-wrap items-center justify-center gap-12 sm:justify-start">
             <div className="flex items-center gap-2">
-              <UserScore size={70} textSize="lg" strokeWidth={4} userScore={userScore} />
+              <UserScore
+                withTooltip
+                size={70}
+                textSize="lg"
+                strokeWidth={4}
+                userScore={userScore}
+                userScoreCount={userScoreCount}
+              />
               <span className="break-keep font-semibold">User Score</span>
             </div>
             {previewVideo && (

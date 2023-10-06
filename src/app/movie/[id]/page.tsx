@@ -41,6 +41,7 @@ export default async function MoviePage({ searchParams, params }: MoviePageProps
         tagline={movie.tagline}
         title={movie.title}
         userScore={movie.userScore}
+        userScoreCount={movie.userScoreCount}
         showType="movie"
         runtime={movie.runtime}
         previewVideo={previewVideo}

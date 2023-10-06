@@ -1,4 +1,5 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 import UserScore, { calculateCircleSize } from '@/components/UserScore/UserScore';
 
@@ -82,5 +83,19 @@ describe('UserScore', () => {
     render(<UserScore userScore={3.5} className={expectedClassName} />);
 
     expect(screen.getByTestId('user-score-wrapper')).toHaveClass(expectedClassName);
+  });
+
+  it('should render a tooltip with "userScoreCount" on hover if "withTooltip" prop is true', async () => {
+    const user = await userEvent.setup();
+    const expectedCount = 367;
+    const expectedTooltip = `${expectedCount} votes`;
+    render(<UserScore userScore={3.5} withTooltip userScoreCount={expectedCount} />);
+
+    await user.hover(screen.getByTestId('user-score-wrapper'));
+
+    await waitFor(() => {
+      // Shadcn tooltip content renders twice for some reason
+      expect(screen.getAllByText(expectedTooltip)).toHaveLength(2);
+    });
   });
 });

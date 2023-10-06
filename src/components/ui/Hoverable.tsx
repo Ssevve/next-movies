@@ -1,10 +1,10 @@
 import cn from '@/utils/cn';
 
-export interface CardProps extends React.ComponentProps<'div'> {
+export interface HoverableProps extends React.ComponentProps<'div'> {
   children: React.ReactNode;
 }
 
-export default function Card({ children, className, ...props }: CardProps) {
+export default function Hoverable({ children, className, ...props }: HoverableProps) {
   return (
     <div
       className={cn(

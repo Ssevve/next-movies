@@ -110,7 +110,7 @@ export default function ShowPageHeader({
               <VideoLink
                 youtubeKey={previewVideo.youtubeKey}
                 title={previewVideo.title}
-                className="flex cursor-pointer items-center gap-2 rounded-md border-2 border-foreground p-2 hover:scale-105"
+                className="flex cursor-pointer items-center gap-2 rounded-md border-2 border-foreground p-2"
               >
                 <Play />
                 <span className="break-keep font-semibold">Play {previewVideo.type}</span>

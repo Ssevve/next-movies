@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import Card from '@/components/ui/Card';
+import Hoverable from '@/components/ui/Hoverable';
 import UserScore from '@/components/UserScore/UserScore';
 import {
   TMDB_IMAGE_URL,
@@ -29,7 +29,7 @@ export default function ShowCard({
   releaseDate,
 }: ShowCardProps) {
   return (
-    <Card className="w-[150px]">
+    <Hoverable className="w-[150px]">
       <Link href={`${showType}/${id}`}>
         <div className="relative">
           <Image
@@ -44,6 +44,6 @@ export default function ShowCard({
         <h3 className="mt-6 text-sm font-bold">{title}</h3>
         <span className="text-xs text-slate-400">{releaseDate}</span>
       </Link>
-    </Card>
+    </Hoverable>
   );
 }

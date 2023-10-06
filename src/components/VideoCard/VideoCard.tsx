@@ -2,7 +2,7 @@ import { Play } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import Card, { CardProps } from '@/components/ui/Card';
+import Hoverable, { HoverableProps } from '@/components/ui/Hoverable';
 import VideoLink from '@/components/VideoLink/VideoLink';
 import {
   TMDB_IMAGE_URL,
@@ -13,7 +13,7 @@ import {
 import ShowType from '@/types/ShowType';
 import cn from '@/utils/cn';
 
-interface VideoCardProps extends Omit<CardProps, 'children'> {
+interface VideoCardProps extends Omit<HoverableProps, 'children'> {
   videoTitle: string;
   showTitle: string;
   id: string;
@@ -37,7 +37,7 @@ export default function VideoCard({
 }: VideoCardProps) {
   return (
     <>
-      <Card className="w-[275px]" {...props}>
+      <Hoverable className="w-[275px]" {...props}>
         <VideoLink youtubeKey={youtubeKey} title={videoTitle}>
           <Image
             src={`${TMDB_IMAGE_URL}${TMDB_VIDEO_CARD_THUMBNAIL_PATH}${thumbnailPath}`}
@@ -60,7 +60,7 @@ export default function VideoCard({
           {showTitle}
         </Link>
         <span className="text-xs text-slate-400">{videoTitle}</span>
-      </Card>
+      </Hoverable>
     </>
   );
 }

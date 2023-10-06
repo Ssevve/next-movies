@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
 
+import Hoverable from '@/components/ui/Hoverable';
 import cn from '@/utils/cn';
 
 interface VideoLinkProps
@@ -24,14 +25,16 @@ export default function VideoLink({
   newSearchParams.set('play', youtubeKey);
 
   return (
-    <Link
-      aria-label={`watch ${title}`}
-      href={`${pathname}?${newSearchParams}`}
-      scroll={false}
-      className={cn('relative block', className)}
-      {...props}
-    >
-      {children}
-    </Link>
+    <Hoverable>
+      <Link
+        aria-label={`watch ${title}`}
+        href={`${pathname}?${newSearchParams}`}
+        scroll={false}
+        className={cn('relative block', className)}
+        {...props}
+      >
+        {children}
+      </Link>
+    </Hoverable>
   );
 }

@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 
 import mockDetailedMovie from '@/__mocks__/data/mockDetailedMovie';
 import ShowPageHeader from '@/components/ShowPageHeader/ShowPageHeader';
-import findTrailer from '@/utils/findTrailer';
+import findTrailer from '@/utils/findTrailer/findTrailer';
 import getReleaseYear from '@/utils/getReleaseYear/getReleaseYear';
 import joinCreators from '@/utils/joinCreators/joinCreators';
 

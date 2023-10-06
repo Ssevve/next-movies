@@ -3,7 +3,7 @@ import 'server-only';
 import getVideos from '@/services/tmdb/api/getVideos/getVideos';
 import ShowType from '@/types/ShowType';
 import Video from '@/types/Video';
-import findTrailer from '@/utils/findTrailer';
+import findTrailer from '@/utils/findTrailer/findTrailer';
 
 interface GetTrailerArgs {
   showTitle: string;

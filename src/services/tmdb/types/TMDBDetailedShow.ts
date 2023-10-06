@@ -6,9 +6,9 @@ import TMDBShow from '@/services/tmdb/types/TMDBShow';
 import TMDBVideos from '@/services/tmdb/types/TMDBVideos';
 
 interface TMDBExternalIds {
-  twitter_id?: string;
-  facebook_id?: string;
-  instagram_id?: string;
+  twitter_id: string;
+  facebook_id: string;
+  instagram_id: string;
 }
 
 interface TMDBKeywords {

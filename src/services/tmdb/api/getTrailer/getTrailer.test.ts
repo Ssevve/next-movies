@@ -9,7 +9,7 @@ import getTrailer from '@/services/tmdb/api/getTrailer/getTrailer';
 import { TMDB_BASE_URL } from '@/services/tmdb/constants';
 import transformVideos from '@/services/tmdb/utils/transformVideos/transformVideos';
 import Video from '@/types/Video';
-import findTrailer from '@/utils/findTrailer';
+import findTrailer from '@/utils/findTrailer/findTrailer';
 
 const endpoint = `${TMDB_BASE_URL}/:showType/:showId/videos`;
 

@@ -28,7 +28,7 @@ type SharedProps = Pick<
   | 'backdropPath'
   | 'showType'
 > & {
-  previewVideo?: Video;
+  previewVideo?: Video | null;
   instagramHandle: string;
   facebookHandle: string;
   twitterHandle: string;

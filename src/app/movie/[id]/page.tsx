@@ -3,7 +3,7 @@ import dynamic from 'next/dynamic';
 import SectionHeading from '@/components/SectionHeading/SectionHeading';
 import ShowPageHeader from '@/components/ShowPageHeader/ShowPageHeader';
 import getDetailedMovie from '@/services/tmdb/api/getDetailedMovie/getDetailedMovie';
-import findTrailer from '@/utils/findTrailer';
+import findTrailer from '@/utils/findTrailer/findTrailer';
 
 const YoutubeIframeModal = dynamic(
   () => import('@/components/YoutubeIframeModal/YoutubeIframeModal')

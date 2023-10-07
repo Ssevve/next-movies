@@ -1,3 +1,4 @@
+import ShowType from '@/types//ShowType';
 import Creator from '@/types/Creator';
 import Genre from '@/types/Genre';
 import Images from '@/types/Images';
@@ -21,4 +22,5 @@ export default interface DetailedShow extends Show {
   status: string;
   rating: string;
   createdBy: Creator[];
+  showType: ShowType;
 }

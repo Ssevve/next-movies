@@ -27,7 +27,6 @@ type SharedProps = Pick<
   | 'userScoreCount'
   | 'releaseDate'
   | 'backdropPath'
-  | 'showType'
 > & {
   previewVideo?: Video | null;
   instagramHandle: string;

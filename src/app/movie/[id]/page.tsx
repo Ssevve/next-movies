@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 
-import SectionHeading from '@/components/SectionHeading/SectionHeading';
+import ShowOverview from '@/components/ShowOverview/ShowOverview';
 import ShowPageHeader from '@/components/ShowPageHeader/ShowPageHeader';
 import getDetailedMovie from '@/services/tmdb/api/getDetailedMovie/getDetailedMovie';
 import findTrailer from '@/utils/findTrailer/findTrailer';
@@ -25,11 +25,11 @@ interface MoviePageProps {
 export async function generateMetadata({ params }: MoviePageProps): Promise<Metadata> {
   const movieId = params.id;
 
-  const movie = await getDetailedMovie(Number(movieId));
+  const { title, overview } = await getDetailedMovie(Number(movieId));
 
   return {
-    description: movie.overview,
-    title: `${movie.title} | Next Movies`,
+    description: overview,
+    title: `${title} | Next Movies`,
   };
 }
 
@@ -37,35 +37,49 @@ export default async function MoviePage({ searchParams, params }: MoviePageProps
   const youtubeModalVideoKey = searchParams?.play;
   const movieId = params.id;
 
-  const movie = await getDetailedMovie(Number(movieId));
-  const previewVideo = findTrailer(movie.videos);
-
+  const {
+    backdropPath,
+    createdBy,
+    genres,
+    posterPath,
+    rating,
+    releaseDate,
+    tagline,
+    title,
+    userScore,
+    userScoreCount,
+    runtime,
+    socialHandles,
+    homepage,
+    overview,
+    videos,
+  } = await getDetailedMovie(Number(movieId));
+  const previewVideo = findTrailer(videos);
   return (
     <section className="grid gap-12">
       {youtubeModalVideoKey && <YoutubeIframeModal videoKey={youtubeModalVideoKey} />}
       <ShowPageHeader
-        backdropPath={movie.backdropPath}
-        createdBy={movie.createdBy}
-        genres={movie.genres}
-        posterPath={movie.posterPath}
-        rating={movie.rating}
-        releaseDate={movie.releaseDate}
-        tagline={movie.tagline}
-        title={movie.title}
-        userScore={movie.userScore}
-        userScoreCount={movie.userScoreCount}
+        backdropPath={backdropPath}
+        createdBy={createdBy}
+        genres={genres}
+        posterPath={posterPath}
+        rating={rating}
+        releaseDate={releaseDate}
+        tagline={tagline}
+        title={title}
+        userScore={userScore}
+        userScoreCount={userScoreCount}
         showType="movie"
-        runtime={movie.runtime}
+        runtime={runtime}
         previewVideo={previewVideo}
-        facebookHandle={movie.socialHandles.facebook}
-        twitterHandle={movie.socialHandles.twitter}
-        homepage={movie.homepage}
-        instagramHandle={movie.socialHandles.instagram}
+        facebookHandle={socialHandles.facebook}
+        twitterHandle={socialHandles.twitter}
+        homepage={homepage}
+        instagramHandle={socialHandles.instagram}
       />
 
       <section className="container px-4">
-        <SectionHeading>Overview</SectionHeading>
-        <p className="mt-2 max-w-4xl">{movie.overview}</p>
+        <ShowOverview overview={overview} />
       </section>
     </section>
   );

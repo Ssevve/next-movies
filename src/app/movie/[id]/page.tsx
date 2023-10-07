@@ -1,3 +1,4 @@
+import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 
 import SectionHeading from '@/components/SectionHeading/SectionHeading';
@@ -19,6 +20,17 @@ interface MoviePageParams {
 interface MoviePageProps {
   searchParams: MoviePageSearchParams;
   params: MoviePageParams;
+}
+
+export async function generateMetadata({ params }: MoviePageProps): Promise<Metadata> {
+  const movieId = params.id;
+
+  const movie = await getDetailedMovie(Number(movieId));
+
+  return {
+    description: movie.overview,
+    title: `${movie.title} | Next Movies`,
+  };
 }
 
 export default async function MoviePage({ searchParams, params }: MoviePageProps) {

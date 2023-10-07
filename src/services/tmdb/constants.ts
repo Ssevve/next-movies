@@ -17,3 +17,10 @@ export const TMDB_SHOW_CARD_POSTER_PATH = `/w${TMDB_SHOW_CARD_POSTER_WIDTH}_and_
 export const TMDB_VIDEO_CARD_THUMBNAIL_PATH = `/w${TMDB_VIDEO_CARD_THUMBNAIL_WIDTH}_and_h${TMDB_VIDEO_CARD_THUMBNAIL_HEIGHT}_face`;
 export const TMDB_SCROLLER_BACKGROUND_PATH = `/w${TMDB_SCROLLER_BACKGROUND_WIDTH}_and_h${TMDB_SCROLLER_BACKGROUND_HEIGHT}_multi_faces`;
 export const TMDB_SHOW_PAGE_POSTER_PATH = `/original`;
+
+export const genderMap = {
+  0: 'N/A',
+  1: 'Female',
+  2: 'Male',
+  3: 'Non-binary',
+} as const;

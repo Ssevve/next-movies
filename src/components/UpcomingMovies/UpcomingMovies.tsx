@@ -45,7 +45,7 @@ export default async function UpcomingMovies() {
   const trailers = await getUpcomingMoviesTrailers();
   return (
     <section className="w-full space-y-4 overflow-hidden">
-      <SectionHeading className="text-center sm:text-left">Upcoming Movies</SectionHeading>
+      <SectionHeading>Upcoming Movies</SectionHeading>
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <UpcomingMoviesTrailers trailers={trailers} />
       </ErrorBoundary>

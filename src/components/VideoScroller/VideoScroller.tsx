@@ -17,7 +17,7 @@ export default function VideoScroller({
 }: VideoScrollerProps) {
   return videos.length ? (
     <ScrollArea type="always" className={className}>
-      <ul className="flex space-x-4 px-2 pb-4">
+      <ul className="flex h-max space-x-4 px-2 pb-4">
         {videos.map(({ id, title, showTitle, thumbnailPath, showType, showId, youtubeKey }) => (
           <li key={showId}>
             <VideoCard

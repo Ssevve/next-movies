@@ -8,7 +8,7 @@ export default function Hoverable({ children, className, ...props }: HoverablePr
   return (
     <div
       className={cn(
-        'overflow-hidden rounded-md transition-transform duration-100 hover:scale-105',
+        'cursor-pointer overflow-hidden rounded-md transition-transform duration-100 hover:scale-105',
         className
       )}
       {...props}

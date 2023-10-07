@@ -1,10 +1,11 @@
 import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 
+import ShowCast from '@/components/ShowCast/ShowCast';
+import ShowFacts from '@/components/ShowFacts/ShowFacts';
 import ShowPageHeader from '@/components/ShowPageHeader/ShowPageHeader';
 import getDetailedMovie from '@/services/tmdb/api/getDetailedMovie/getDetailedMovie';
 import findTrailer from '@/utils/findTrailer/findTrailer';
-import formatUSDString from '@/utils/formatUSDString/formatUSDString';
 
 const YoutubeIframeModal = dynamic(
   () => import('@/components/YoutubeIframeModal/YoutubeIframeModal')
@@ -56,10 +57,11 @@ export default async function MoviePage({ searchParams, params }: MoviePageProps
     revenue,
     videos,
     status,
+    cast,
   } = await getDetailedMovie(Number(movieId));
   const previewVideo = findTrailer(videos);
   return (
-    <section className="grid gap-12">
+    <section className="flex w-full flex-col gap-12">
       {youtubeModalVideoKey && <YoutubeIframeModal videoKey={youtubeModalVideoKey} />}
       <ShowPageHeader
         backdropPath={backdropPath}
@@ -82,20 +84,12 @@ export default async function MoviePage({ searchParams, params }: MoviePageProps
         overview={overview}
       />
 
-      <section className="container flex justify-between px-4">
-        <div className="grid gap-2">
-          <div>
-            <h3 className="font-semibold">Status</h3>
-            <span className="text-sm">{status}</span>
-          </div>
-          <div>
-            <h3 className="font-semibold">Budget</h3>
-            <span className="text-sm">{formatUSDString(budget)}</span>
-          </div>
-          <div>
-            <h3 className="font-semibold">Revenue</h3>
-            <span className="text-sm">{formatUSDString(revenue)}</span>
-          </div>
+      <section className="container flex w-full flex-col gap-12 overflow-hidden px-4 lg:flex-row lg:justify-between lg:gap-4">
+        <div className="w-full lg:w-[85%]">
+          <ShowCast cast={cast} />
+        </div>
+        <div className="mb-8 flex w-full lg:w-[15%] lg:justify-end">
+          <ShowFacts budget={budget} revenue={revenue} status={status} />
         </div>
       </section>
     </section>

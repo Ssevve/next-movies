@@ -3,4 +3,5 @@ export default interface TMDBCastPerson {
   name: string;
   profile_path: string;
   character: string;
+  gender: 0 | 1 | 2 | 3;
 }

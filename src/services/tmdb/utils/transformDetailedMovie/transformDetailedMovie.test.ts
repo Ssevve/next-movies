@@ -1,21 +1,24 @@
 import mockTMDBDetailedMovie from '@/__mocks__/data/mockTMDBDetailedMovie';
 import transformDetailedMovie from '@/services/tmdb/utils/transformDetailedMovie/transformDetailedMovie';
 import transformMovieCast from '@/services/tmdb/utils/transformMovieCast/transformMovieCast';
+import DetailedMovie from '@/types/DetailedMovie';
 
 describe('transformVideos', () => {
   it('should return correctly transformed data', async () => {
-    const expectedData = {
+    const expectedData: DetailedMovie = {
       backdropPath: '/1syW9SNna38rSl9fnXwc9fP7POW.jpg',
       budget: 120000000,
       cast: [
         {
           character: 'Jaime Reyes / Blue Beetle',
+          gender: 'Male',
           id: 1185997,
           imagePath: '/tJMI7BpjlhHSMpzSz9e1XxygnKd.jpg',
           name: 'Xolo Mariduena',
         },
         {
           character: 'Nana Reyes',
+          gender: 'Female',
           id: 270,
           imagePath: '/1aE7wu22bdgVTa0PMKXbAOSLiZn.jpg',
           name: 'Adriana Barraza',

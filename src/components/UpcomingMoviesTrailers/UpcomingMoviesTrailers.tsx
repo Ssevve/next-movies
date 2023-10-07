@@ -44,7 +44,7 @@ export default function UpcomingMoviesTrailers({ trailers }: UpcomingMoviesTrail
           onMouseEnter={changeActiveImage}
         />
       ) : (
-        <p className="text-center sm:text-left">No upcoming movies to display</p>
+        <p>No upcoming movies to display</p>
       )}
     </section>
   );

@@ -86,7 +86,7 @@ export default function ShowPageHeader({
           width={TMDB_SHOW_PAGE_POSTER_WIDTH}
           height={TMDB_SHOW_PAGE_POSTER_HEIGHT}
           priority
-          className="mx-auto h-auto w-1/4 min-w-[150px] rounded-md shadow sm:mx-0"
+          className="mx-auto h-auto w-1/3 min-w-[150px] rounded-md shadow sm:mx-0"
         />
         <section className="flex flex-col flex-wrap gap-8 font-semibold sm:mt-8">
           <section className="space-y-2">
@@ -105,7 +105,7 @@ export default function ShowPageHeader({
               title={title}
             />
           </section>
-          <span className="mx-auto text-center italic sm:mx-0 sm:text-left">{tagline}</span>
+          <span className="mx-auto italic sm:mx-0">{tagline}</span>
           <section className="flex flex-wrap items-center justify-center gap-12 sm:justify-start">
             <div className="flex items-center gap-2">
               <UserScore

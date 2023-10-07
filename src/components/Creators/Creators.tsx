@@ -1,6 +1,6 @@
-import joinCreators from '@/utils/joinCreators/joinCreators';
 import Creator from '@/types/Creator';
 import ShowType from '@/types/ShowType';
+import joinCreators from '@/utils/joinCreators/joinCreators';
 
 interface CreatorsProps {
   creators: Creator[];
@@ -10,7 +10,7 @@ interface CreatorsProps {
 export default function Creators({ creators, showType }: CreatorsProps) {
   const isMovie = showType === 'movie';
   return creators.length ? (
-    <div className="mx-auto text-center sm:mx-0 sm:text-left">
+    <div>
       <span>{isMovie ? 'Directed' : 'Created'} by:</span>
       <span className="ml-2 font-normal">{joinCreators(creators)}</span>
     </div>

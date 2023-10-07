@@ -2,7 +2,7 @@ import TMDBMovie from '@/services/tmdb/types/TMDBMovie';
 import TMDBTvShow from '@/services/tmdb/types/TMDBTvShow';
 import TMDBUnknownShow from '@/services/tmdb/types/TMDBUnknownShow';
 import Show from '@/types/Show';
-import formatDate from '@/utils/formatDate';
+import formatDate from '@/utils/formatDate/formatDate';
 
 function isTMDBMovie(show: TMDBUnknownShow): show is TMDBMovie {
   return 'title' in show;

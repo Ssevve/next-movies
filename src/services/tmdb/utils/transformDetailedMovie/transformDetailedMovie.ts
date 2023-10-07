@@ -5,7 +5,7 @@ import transformMovieCast from '@/services/tmdb/utils/transformMovieCast/transfo
 import transformShows from '@/services/tmdb/utils/transformShows/transformShows';
 import transformVideos from '@/services/tmdb/utils/transformVideos/transformVideos';
 import DetailedMovie from '@/types/DetailedMovie';
-import formatDate from '@/utils/formatDate';
+import formatDate from '@/utils/formatDate/formatDate';
 
 function getMovieRating(releaseDates: TMDBReleaseDates) {
   return releaseDates.results.find((release) => release.iso_3166_1 === 'US')?.release_dates[0]

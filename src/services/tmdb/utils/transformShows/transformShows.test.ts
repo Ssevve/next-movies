@@ -1,9 +1,9 @@
 import mockTMDBMovies from '@/__mocks__/data/mockTMDBMovies';
 import mockTMDBTvShows from '@/__mocks__/data/mockTMDBTvShows';
 import mockTMDBUnknownShows from '@/__mocks__/data/mockTMDBUnknownShows';
+import formatDate from '@/services/tmdb/utils/formatDate/formatDate';
 import transformShows from '@/services/tmdb/utils/transformShows/transformShows';
 import Show from '@/types/Show';
-import formatDate from '@/utils/formatDate/formatDate';
 
 describe('transformShowsResults', () => {
   it('should return correctly transformed data for mixed shows', async () => {

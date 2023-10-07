@@ -1,4 +1,4 @@
-import './globals.css';
+import '@/app/globals.css';
 
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
@@ -13,13 +13,13 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  description: 'Movies App build with NextJS',
+  description: 'Movies App build with NextJS and TMDB API',
   title: 'Next Movies',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} h-full w-full`} suppressHydrationWarning>
+    <html lang="en" className={`${inter.variable}`} suppressHydrationWarning>
       <body id="root" className="h-full w-full overflow-x-hidden">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Navbar />

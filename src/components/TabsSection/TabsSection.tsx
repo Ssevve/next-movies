@@ -16,7 +16,7 @@ export default function TabsSection({ title, tabs }: TabsSectionProps) {
   return (
     <section className="w-full overflow-hidden">
       <Tabs defaultValue={tabs[0].label} className="w-full space-y-4">
-        <div className="flex flex-col items-center gap-4 sm:flex-row">
+        <div className="flex flex-col gap-4 sm:flex-row">
           <SectionHeading>{title}</SectionHeading>
           <TabsList className="flex w-full max-w-xs">
             {tabs.map(({ label }) => (

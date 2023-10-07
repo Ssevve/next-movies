@@ -2,7 +2,7 @@ import { Play } from 'lucide-react';
 import Image from 'next/image';
 
 import Creators from '@/components/Creators/Creators';
-import ShowExternalLinks from '@/components/ShowExternalLinks';
+import ShowExternalLinks from '@/components/ShowExternalLinks/ShowExternalLinks';
 import ShowMetadata from '@/components/ShowMetadata/ShowMetadata';
 import UserScore from '@/components/UserScore/UserScore';
 import VideoLink from '@/components/VideoLink/VideoLink';
@@ -14,6 +14,8 @@ import {
 } from '@/services/tmdb/constants';
 import DetailedShow from '@/types/DetailedShow';
 import Video from '@/types/Video';
+
+import ShowOverview from '../ShowOverview/ShowOverview';
 
 type SharedProps = Pick<
   DetailedShow,
@@ -27,6 +29,7 @@ type SharedProps = Pick<
   | 'userScoreCount'
   | 'releaseDate'
   | 'backdropPath'
+  | 'overview'
 > & {
   previewVideo?: Video | null;
   instagramHandle: string;
@@ -65,6 +68,7 @@ export default function ShowPageHeader({
   instagramHandle,
   homepage,
   userScoreCount,
+  overview,
 }: ShowPageHeaderProps) {
   return (
     <section className="relative w-screen">
@@ -125,6 +129,7 @@ export default function ShowPageHeader({
               </VideoLink>
             )}
           </section>
+          <ShowOverview overview={overview} />
           <Creators creators={createdBy} showType={showType} />
         </section>
       </section>

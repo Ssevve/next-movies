@@ -27,6 +27,7 @@ describe('ShowPageHeader', () => {
         showType="movie"
         rating={expectedShow.rating}
         previewVideo={findTrailer(expectedShow.videos)}
+        overview={expectedShow.overview}
       />
     );
     expect(screen.getByRole('img', { name: expectedShow.title })).toBeInTheDocument();
@@ -52,6 +53,7 @@ describe('ShowPageHeader', () => {
         showType="movie"
         rating={expectedShow.rating}
         previewVideo={findTrailer(expectedShow.videos)}
+        overview={expectedShow.overview}
       />
     );
 
@@ -80,6 +82,7 @@ describe('ShowPageHeader', () => {
         userScoreCount={expectedShow.userScoreCount}
         showType="movie"
         previewVideo={findTrailer(expectedShow.videos)}
+        overview={expectedShow.overview}
         rating={expectedShow.rating}
       />
     );
@@ -108,6 +111,7 @@ describe('ShowPageHeader', () => {
         userScoreCount={expectedShow.userScoreCount}
         showType="movie"
         previewVideo={findTrailer(expectedShow.videos)}
+        overview={expectedShow.overview}
         rating={expectedShow.rating}
       />
     );
@@ -134,6 +138,7 @@ describe('ShowPageHeader', () => {
         userScoreCount={expectedShow.userScoreCount}
         showType="movie"
         previewVideo={findTrailer(expectedShow.videos)}
+        overview={expectedShow.overview}
         rating={expectedShow.rating}
       />
     );
@@ -161,6 +166,7 @@ describe('ShowPageHeader', () => {
         userScoreCount={expectedShow.userScoreCount}
         showType="movie"
         previewVideo={expectedVideo}
+        overview={expectedShow.overview}
         rating={expectedShow.rating}
       />
     );
@@ -189,6 +195,7 @@ describe('ShowPageHeader', () => {
         userScoreCount={expectedShow.userScoreCount}
         showType="movie"
         previewVideo={expectedVideo}
+        overview={expectedShow.overview}
         rating={expectedShow.rating}
       />
     );

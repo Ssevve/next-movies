@@ -1,10 +1,10 @@
 import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 
-import ShowOverview from '@/components/ShowOverview/ShowOverview';
 import ShowPageHeader from '@/components/ShowPageHeader/ShowPageHeader';
 import getDetailedMovie from '@/services/tmdb/api/getDetailedMovie/getDetailedMovie';
 import findTrailer from '@/utils/findTrailer/findTrailer';
+import formatUSDString from '@/utils/formatUSDString/formatUSDString';
 
 const YoutubeIframeModal = dynamic(
   () => import('@/components/YoutubeIframeModal/YoutubeIframeModal')
@@ -52,7 +52,10 @@ export default async function MoviePage({ searchParams, params }: MoviePageProps
     socialHandles,
     homepage,
     overview,
+    budget,
+    revenue,
     videos,
+    status,
   } = await getDetailedMovie(Number(movieId));
   const previewVideo = findTrailer(videos);
   return (
@@ -76,10 +79,24 @@ export default async function MoviePage({ searchParams, params }: MoviePageProps
         twitterHandle={socialHandles.twitter}
         homepage={homepage}
         instagramHandle={socialHandles.instagram}
+        overview={overview}
       />
 
-      <section className="container px-4">
-        <ShowOverview overview={overview} />
+      <section className="container flex justify-between px-4">
+        <div className="grid gap-2">
+          <div>
+            <h3 className="font-semibold">Status</h3>
+            <span className="text-sm">{status}</span>
+          </div>
+          <div>
+            <h3 className="font-semibold">Budget</h3>
+            <span className="text-sm">{formatUSDString(budget)}</span>
+          </div>
+          <div>
+            <h3 className="font-semibold">Revenue</h3>
+            <span className="text-sm">{formatUSDString(revenue)}</span>
+          </div>
+        </div>
       </section>
     </section>
   );

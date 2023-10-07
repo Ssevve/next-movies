@@ -6,7 +6,7 @@ import { useRef, useState } from 'react';
 
 import useLockedBody from '@/hooks/useLockedBody';
 import useOnClickOutside from '@/hooks/useOnClickOutside';
-import getYoutubeThumbnail from '@/utils/getYoutubeThumbnail';
+import getYoutubeThumbnail from '@/utils/getYoutubeThumbnail/getYoutubeThumbnail';
 
 interface YoutubeIframeModalProps {
   videoKey: string;

@@ -1,4 +1,4 @@
-import DesktopNavItem from '@/components/DesktopNav/DesktopNavItem';
+import DesktopNavItem from '@/components/DesktopNav/components/DesktopNavItem/DesktopNavItem';
 import { navItems } from '@/lib/constants';
 
 export default function DesktopNav() {

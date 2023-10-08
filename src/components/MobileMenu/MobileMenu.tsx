@@ -1,4 +1,4 @@
-import MobileNavItem from '@/components/MobileMenu/MobileNavItem';
+import MobileNavItem from '@/components/MobileMenu/components/MobileNavItem/MobileNavItem';
 import useLockedBody from '@/hooks/useLockedBody';
 import cn from '@/lib/cn';
 import { navItems } from '@/lib/constants';

@@ -1,9 +1,9 @@
 import { Play } from 'lucide-react';
 import Image from 'next/image';
 
-import Creators from '@/components/Creators/Creators';
-import ShowExternalLinks from '@/components/ShowExternalLinks/ShowExternalLinks';
-import ShowMetadata from '@/components/ShowMetadata/ShowMetadata';
+import Creators from '@/components/ShowPageHeader/components/Creators/Creators';
+import ShowExternalLinks from '@/components/ShowPageHeader/components/ShowExternalLinks/ShowExternalLinks';
+import ShowMetadata from '@/components/ShowPageHeader/components/ShowMetadata/ShowMetadata';
 import UserScore from '@/components/UserScore/UserScore';
 import VideoLink from '@/components/VideoLink/VideoLink';
 import {
@@ -15,7 +15,7 @@ import {
 import DetailedShow from '@/types/DetailedShow';
 import Video from '@/types/Video';
 
-import ShowOverview from '../ShowOverview/ShowOverview';
+import ShowOverview from './components/ShowOverview/ShowOverview';
 
 type SharedProps = Pick<
   DetailedShow,

@@ -14,7 +14,7 @@ export default function Footer() {
           <div className="flex flex-wrap items-center py-4">
             <small data-testid="tmdb-disclaimer" className="flex flex-wrap text-sm">
               This product uses the
-              <span className="flex items-center">
+              <span className="mr-1 flex items-center">
                 <Link aria-label="TMDB link" href="https://developer.themoviedb.org/docs">
                   <Image
                     src="/images/tmdb-logo.svg"
@@ -25,8 +25,8 @@ export default function Footer() {
                   />
                 </Link>
                 <span className="sr-only"> TMDB </span>
-                API{' '}
-              </span>
+                API
+              </span>{' '}
               but is not endorsed or certified by TMDB.
             </small>
           </div>

@@ -1,9 +1,9 @@
 import dynamic from 'next/dynamic';
 
 import Hero from '@/components/Hero/Hero';
-import TrendingShows from '@/components/TrendingShows/TrendingShows';
-import UpcomingMovies from '@/components/UpcomingMovies/UpcomingMovies';
-import WhatsPopular from '@/components/WhatsPopular/WhatsPopular';
+import TrendingShows from '@/app/_components/TrendingShows/TrendingShows';
+import UpcomingMovies from '@/app/_components/UpcomingMovies/UpcomingMovies';
+import WhatsPopular from '@/app/_components/WhatsPopular/WhatsPopular';
 
 const YoutubeIframeModal = dynamic(
   () => import('@/components/YoutubeIframeModal/YoutubeIframeModal')

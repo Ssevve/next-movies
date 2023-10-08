@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 
-import MovieFacts from '@/components/MovieFacts/MovieFacts';
+import MovieFacts from '@/app/movie/[id]/_components/MovieFacts/MovieFacts';
 import ShowCast from '@/components/ShowCast/ShowCast';
 import ShowPageHeader from '@/components/ShowPageHeader/ShowPageHeader';
 import getDetailedMovie from '@/services/tmdb/api/getDetailedMovie/getDetailedMovie';

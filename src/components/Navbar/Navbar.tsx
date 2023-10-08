@@ -7,7 +7,7 @@ import { useState } from 'react';
 
 import DesktopNav from '@/components/DesktopNav/DesktopNav';
 import Logo from '@/components/Logo/Logo';
-import ThemeToggler from '@/components/ThemeToggler';
+import ThemeToggler from '@/components/Navbar/components/ThemeToggler';
 import { Button } from '@/components/ui/Button';
 
 const MobileMenu = dynamic(() => import('@/components/MobileMenu/MobileMenu'));

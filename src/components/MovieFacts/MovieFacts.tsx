@@ -1,12 +1,12 @@
 import formatUSDString from '@/utils/formatUSDString/formatUSDString';
 
-interface ShowFactsProps {
+interface MovieFactsProps {
   status: string;
   budget: number;
   revenue: number;
 }
 
-export default function ShowFacts({ status, budget, revenue }: ShowFactsProps) {
+export default function MovieFacts({ status, budget, revenue }: MovieFactsProps) {
   return (
     <div className="flex w-full max-w-lg justify-between gap-8 lg:w-max lg:flex-col lg:justify-center">
       <div>

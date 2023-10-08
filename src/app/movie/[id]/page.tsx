@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 
+import MovieFacts from '@/components/MovieFacts/MovieFacts';
 import ShowCast from '@/components/ShowCast/ShowCast';
-import ShowFacts from '@/components/ShowFacts/ShowFacts';
 import ShowPageHeader from '@/components/ShowPageHeader/ShowPageHeader';
 import getDetailedMovie from '@/services/tmdb/api/getDetailedMovie/getDetailedMovie';
 import findTrailer from '@/utils/findTrailer/findTrailer';
@@ -89,7 +89,7 @@ export default async function MoviePage({ searchParams, params }: MoviePageProps
           <ShowCast cast={cast} />
         </div>
         <div className="mb-8 flex w-full lg:w-[15%] lg:justify-end">
-          <ShowFacts budget={budget} revenue={revenue} status={status} />
+          <MovieFacts budget={budget} revenue={revenue} status={status} />
         </div>
       </section>
     </section>

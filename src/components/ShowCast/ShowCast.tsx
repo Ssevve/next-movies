@@ -1,7 +1,6 @@
+import CastScroller from '@/components/CastScroller/CastScroller';
+import SectionHeading from '@/components/SectionHeading/SectionHeading';
 import CastPerson from '@/types/CastPerson';
-
-import CastScroller from '../CastScroller/CastScroller';
-import SectionHeading from '../SectionHeading/SectionHeading';
 
 interface ShowCastProps {
   cast: CastPerson[];

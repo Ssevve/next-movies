@@ -1,4 +1,3 @@
-import cn from '@/lib/cn';
 import CastPerson from '@/types/CastPerson';
 
 import CastScroller from '../CastScroller/CastScroller';

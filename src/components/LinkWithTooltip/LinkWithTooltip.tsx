@@ -1,10 +1,12 @@
 import Link from 'next/link';
+import { ReactNode } from 'react';
 
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/Tooltip';
 import cn from '@/lib/cn';
 
-interface LinkWithTooltipProps extends React.PropsWithChildren<React.ComponentProps<typeof Link>> {
+interface LinkWithTooltipProps extends React.ComponentProps<typeof Link> {
   tooltipText: string;
+  children: ReactNode;
 }
 
 export default function LinkWithTooltip({

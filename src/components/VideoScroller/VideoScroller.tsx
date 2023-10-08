@@ -1,6 +1,7 @@
-import { ScrollArea, ScrollBar } from '@/components/ui/ScrollArea';
 import VideoCard from '@/components/VideoCard/VideoCard';
 import Video from '@/types/Video';
+
+import Scroller from '../Scroller/Scroller';
 
 interface VideoScrollerProps {
   videos: Video[];
@@ -15,28 +16,26 @@ export default function VideoScroller({
   onMouseEnter,
   invertedTextColor = false,
 }: VideoScrollerProps) {
-  return videos.length ? (
-    <ScrollArea type="always" className={className}>
-      <ul className="flex h-max space-x-4 px-2 pb-4">
-        {videos.map(({ id, title, showTitle, thumbnailPath, showType, showId, youtubeKey }) => (
-          <li key={showId}>
-            <VideoCard
-              invertedTextColor={invertedTextColor}
-              videoTitle={title}
-              showTitle={showTitle}
-              id={id}
-              thumbnailPath={thumbnailPath}
-              showType={showType}
-              showId={showId}
-              youtubeKey={youtubeKey}
-              onMouseEnter={() => onMouseEnter && onMouseEnter(thumbnailPath)}
-            />
-          </li>
-        ))}
-      </ul>
-      <ScrollBar orientation="horizontal" />
-    </ScrollArea>
-  ) : (
-    <p>No videos to display</p>
+  return (
+    <Scroller
+      wrapperClassName={className}
+      emptyMessage="No videos to display"
+      listClassName="flex h-max space-x-4 px-2 pb-4"
+    >
+      {videos.map(({ id, title, showTitle, thumbnailPath, showType, showId, youtubeKey }) => (
+        <VideoCard
+          key={id}
+          invertedTextColor={invertedTextColor}
+          videoTitle={title}
+          showTitle={showTitle}
+          id={id}
+          thumbnailPath={thumbnailPath}
+          showType={showType}
+          showId={showId}
+          youtubeKey={youtubeKey}
+          onMouseEnter={() => onMouseEnter && onMouseEnter(thumbnailPath)}
+        />
+      ))}
+    </Scroller>
   );
 }

@@ -6,10 +6,10 @@ import { usePathname, useSearchParams } from 'next/navigation';
 import Hoverable from '@/components/ui/Hoverable';
 import cn from '@/lib/cn';
 
-interface VideoLinkProps
-  extends Omit<React.PropsWithChildren<React.ComponentProps<typeof Link>>, 'href'> {
+interface VideoLinkProps extends Omit<React.ComponentProps<typeof Link>, 'href'> {
   youtubeKey: string;
   title: string;
+  children: React.ReactNode;
 }
 
 export default function VideoLink({

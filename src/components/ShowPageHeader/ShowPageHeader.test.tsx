@@ -4,7 +4,7 @@ import mockDetailedMovie from '@/__mocks__/data/mockDetailedMovie';
 import ShowPageHeader from '@/components/ShowPageHeader/ShowPageHeader';
 import findTrailer from '@/utils/findTrailer/findTrailer';
 import getReleaseYear from '@/utils/getReleaseYear/getReleaseYear';
-import joinCreators from '@/utils/joinCreators/joinCreators';
+import joinCreators from '@/components/ShowPageHeader/utils/joinCreators/joinCreators';
 
 describe('ShowPageHeader', () => {
   it('should render poster', () => {

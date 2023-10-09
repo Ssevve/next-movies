@@ -1,3 +1,4 @@
+import { TMDB_IMAGE_URL, TMDB_VIDEO_CARD_THUMBNAIL_PATH } from '@/services/tmdb/constants';
 import Video from '@/types/Video';
 
 const mockVideos: Video[] = [
@@ -6,7 +7,11 @@ const mockVideos: Video[] = [
     showId: 635910,
     showTitle: 'The Last Voyage of the Demeter',
     showType: 'movie',
-    thumbnailPath: '/qEm4FrkGh7kGoEiBOyGYNielYVc.jpg',
+    thumbnail: {
+      height: 100,
+      path: `${TMDB_IMAGE_URL}${TMDB_VIDEO_CARD_THUMBNAIL_PATH}/qEm4FrkGh7kGoEiBOyGYNielYVc.jpg`,
+      width: 200,
+    },
     title: 'Official Trailer',
     type: 'Trailer',
     youtubeKey: '6FgUUO9Ztd0',
@@ -16,7 +21,11 @@ const mockVideos: Video[] = [
     showId: 939338,
     showTitle: 'Epic Tails',
     showType: 'movie',
-    thumbnailPath: '/qZOuoBoKCDLSm1EvYz2eBub8Cto.jpg',
+    thumbnail: {
+      height: 100,
+      path: `${TMDB_IMAGE_URL}${TMDB_VIDEO_CARD_THUMBNAIL_PATH}/qZOuoBoKCDLSm1EvYz2eBub8Cto.jpg`,
+      width: 200,
+    },
     title: 'ARGONUTS - Official Australian Trailer',
     type: 'Trailer',
     youtubeKey: 'LiVyhdxLYFc',

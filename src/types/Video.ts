@@ -1,5 +1,6 @@
 import TMDBVideoType from '@/services/tmdb/types/TMDBVideoType';
 import ShowType from '@/types/ShowType';
+import Thumbnail from '@/types/Thumbnail';
 
 export default interface Video {
   showTitle: string;
@@ -8,6 +9,6 @@ export default interface Video {
   title: string;
   id: string;
   youtubeKey: string;
-  thumbnailPath: string;
+  thumbnail: Thumbnail;
   type: TMDBVideoType;
 }

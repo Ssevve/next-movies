@@ -77,6 +77,7 @@ export default function transformDetailedMovie({
       showId: id,
       showTitle: title,
       showType: 'movie',
+      thumbnailSource: 'YouTube',
       videos: videos.results,
     }),
   };

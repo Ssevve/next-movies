@@ -6,18 +6,17 @@ import Hoverable, { HoverableProps } from '@/components/ui/Hoverable';
 import VideoLink from '@/components/VideoLink/VideoLink';
 import cn from '@/lib/cn';
 import {
-  TMDB_IMAGE_URL,
   TMDB_VIDEO_CARD_THUMBNAIL_HEIGHT,
-  TMDB_VIDEO_CARD_THUMBNAIL_PATH,
   TMDB_VIDEO_CARD_THUMBNAIL_WIDTH,
 } from '@/services/tmdb/constants';
 import ShowType from '@/types/ShowType';
+import Thumbnail from '@/types/Thumbnail';
 
 interface VideoCardProps extends Omit<HoverableProps, 'children'> {
   videoTitle: string;
   showTitle: string;
   id: string;
-  thumbnailPath: string;
+  thumbnail: Thumbnail;
   showType: ShowType;
   showId: number;
   youtubeKey: string;
@@ -28,7 +27,7 @@ export default function VideoCard({
   videoTitle,
   showTitle,
   id,
-  thumbnailPath,
+  thumbnail,
   showType,
   showId,
   youtubeKey,
@@ -40,11 +39,11 @@ export default function VideoCard({
       <Hoverable className="w-[275px]" {...props}>
         <VideoLink youtubeKey={youtubeKey} title={videoTitle}>
           <Image
-            src={`${TMDB_IMAGE_URL}${TMDB_VIDEO_CARD_THUMBNAIL_PATH}${thumbnailPath}`}
+            src={thumbnail.path}
             alt=""
-            className="h-full rounded-md"
-            width={TMDB_VIDEO_CARD_THUMBNAIL_WIDTH}
-            height={TMDB_VIDEO_CARD_THUMBNAIL_HEIGHT}
+            className="aspect-video h-full rounded-md object-cover"
+            width={thumbnail.width}
+            height={thumbnail.height}
           />
           <div className="absolute inset-0 bg-black opacity-50" />
           <Play

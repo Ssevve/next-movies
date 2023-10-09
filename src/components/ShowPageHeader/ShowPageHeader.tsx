@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Creators from '@/components/ShowPageHeader/components/Creators/Creators';
 import ShowExternalLinks from '@/components/ShowPageHeader/components/ShowExternalLinks/ShowExternalLinks';
 import ShowMetadata from '@/components/ShowPageHeader/components/ShowMetadata/ShowMetadata';
+import ShowOverview from '@/components/ShowPageHeader/components/ShowOverview/ShowOverview';
 import UserScore from '@/components/UserScore/UserScore';
 import VideoLink from '@/components/VideoLink/VideoLink';
 import {
@@ -14,8 +15,6 @@ import {
 } from '@/services/tmdb/constants';
 import DetailedShow from '@/types/DetailedShow';
 import Video from '@/types/Video';
-
-import ShowOverview from './components/ShowOverview/ShowOverview';
 
 type SharedProps = Pick<
   DetailedShow,

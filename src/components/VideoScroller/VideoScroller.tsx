@@ -1,7 +1,8 @@
+'use client';
+
+import Scroller from '@/components/Scroller/Scroller';
 import VideoCard from '@/components/VideoCard/VideoCard';
 import Video from '@/types/Video';
-
-import Scroller from '../Scroller/Scroller';
 
 interface VideoScrollerProps {
   videos: Video[];
@@ -22,18 +23,18 @@ export default function VideoScroller({
       emptyMessage="No videos to display"
       listClassName="flex h-max space-x-4 px-2 pb-4"
     >
-      {videos.map(({ id, title, showTitle, thumbnailPath, showType, showId, youtubeKey }) => (
+      {videos.map(({ id, title, showTitle, thumbnail, showType, showId, youtubeKey }) => (
         <VideoCard
           key={id}
           invertedTextColor={invertedTextColor}
           videoTitle={title}
           showTitle={showTitle}
           id={id}
-          thumbnailPath={thumbnailPath}
+          thumbnail={thumbnail}
           showType={showType}
           showId={showId}
           youtubeKey={youtubeKey}
-          onMouseEnter={() => onMouseEnter && onMouseEnter(thumbnailPath)}
+          onMouseEnter={() => onMouseEnter && onMouseEnter(thumbnail.path)}
         />
       ))}
     </Scroller>

@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic';
 
 import MovieFacts from '@/app/movie/[id]/_components/MovieFacts/MovieFacts';
 import ShowCast from '@/components/ShowCast/ShowCast';
+import ShowMedia from '@/components/ShowMedia/ShowMedia';
 import ShowPageHeader from '@/components/ShowPageHeader/ShowPageHeader';
 import getDetailedMovie from '@/services/tmdb/api/getDetailedMovie/getDetailedMovie';
 import findTrailer from '@/utils/findTrailer/findTrailer';
@@ -58,6 +59,7 @@ export default async function MoviePage({ searchParams, params }: MoviePageProps
     videos,
     status,
     cast,
+    images,
   } = await getDetailedMovie(Number(movieId));
   const previewVideo = findTrailer(videos);
   return (
@@ -87,6 +89,7 @@ export default async function MoviePage({ searchParams, params }: MoviePageProps
       <section className="container flex w-full flex-col gap-12 px-4">
         <MovieFacts budget={budget} revenue={revenue} status={status} />
         <ShowCast cast={cast} />
+        <ShowMedia posters={images.posters} backdrops={images.backdrops} videos={videos} />
       </section>
     </section>
   );

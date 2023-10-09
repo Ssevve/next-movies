@@ -13,30 +13,32 @@ import findTrailer from '@/utils/findTrailer/findTrailer';
 
 const endpoint = `${TMDB_BASE_URL}/:showType/:showId/videos`;
 
-type SharedProps = Pick<Video, 'showId' | 'showTitle' | 'showType' | 'thumbnailPath'>;
+type SharedProps = Pick<Video, 'showId' | 'showTitle' | 'showType'>;
 
 const movieArgs: SharedProps = {
   showId: 1,
   showTitle: 'Test Movie Title',
   showType: 'movie',
-  thumbnailPath: 'testPath',
 };
 
 const tvShowArgs: SharedProps = {
   showId: 2,
   showTitle: 'Test Tv Show Title',
   showType: 'tv',
-  thumbnailPath: 'testPath',
 };
+
+const expectedTMDBThumbnailPath = '/testThumbnailPath';
 
 describe('getTrailer', () => {
   it('should return correct results for movies', async () => {
     const videos = transformVideos({
       videos: mockTMDBMovieVideos,
       ...movieArgs,
+      thumbnailPath: expectedTMDBThumbnailPath,
+      thumbnailSource: 'TMDB',
     });
     const expectedTrailer = findTrailer(videos);
-    const trailer = await getTrailer(movieArgs);
+    const trailer = await getTrailer({ ...movieArgs, thumbnailPath: expectedTMDBThumbnailPath });
     expect(trailer).toEqual(expectedTrailer);
   });
 
@@ -44,9 +46,11 @@ describe('getTrailer', () => {
     const videos = transformVideos({
       videos: mockTMDBTvShowVideos,
       ...tvShowArgs,
+      thumbnailPath: expectedTMDBThumbnailPath,
+      thumbnailSource: 'TMDB',
     });
     const expectedTrailer = findTrailer(videos);
-    const trailer = await getTrailer(tvShowArgs);
+    const trailer = await getTrailer({ ...tvShowArgs, thumbnailPath: expectedTMDBThumbnailPath });
     expect(trailer).toEqual(expectedTrailer);
   });
 
@@ -58,7 +62,7 @@ describe('getTrailer', () => {
     );
 
     expect(async () => {
-      await getTrailer(movieArgs);
+      await getTrailer({ ...movieArgs, thumbnailPath: expectedTMDBThumbnailPath });
     }).rejects.toThrow(
       `Failed to get trailer for ${movieArgs.showTitle} (id: ${movieArgs.showId}).`
     );

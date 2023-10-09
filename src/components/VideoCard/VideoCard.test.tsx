@@ -12,7 +12,7 @@ describe('VideoCard', () => {
         showId={expectedVideo.showId}
         showTitle={expectedVideo.showTitle}
         showType={expectedVideo.showType}
-        thumbnailPath={expectedVideo.thumbnailPath}
+        thumbnail={expectedVideo.thumbnail}
         videoTitle={expectedVideo.title}
         youtubeKey={expectedVideo.youtubeKey}
       />
@@ -28,7 +28,7 @@ describe('VideoCard', () => {
         showId={expectedVideo.showId}
         showTitle={expectedVideo.showTitle}
         showType={expectedVideo.showType}
-        thumbnailPath={expectedVideo.thumbnailPath}
+        thumbnail={expectedVideo.thumbnail}
         videoTitle={expectedVideo.title}
         youtubeKey={expectedVideo.youtubeKey}
       />
@@ -44,7 +44,7 @@ describe('VideoCard', () => {
         showId={expectedVideo.showId}
         showTitle={expectedVideo.showTitle}
         showType={expectedVideo.showType}
-        thumbnailPath={expectedVideo.thumbnailPath}
+        thumbnail={expectedVideo.thumbnail}
         videoTitle={expectedVideo.title}
         youtubeKey={expectedVideo.youtubeKey}
       />
@@ -52,7 +52,8 @@ describe('VideoCard', () => {
 
     const thumbnail: HTMLImageElement = screen.getByRole('img');
 
-    expect(thumbnail.src).toContain(expectedVideo.thumbnailPath.slice(1));
+    const expectedThumbnailImage = expectedVideo.thumbnail.path.split('/').slice(-1)[0];
+    expect(thumbnail.src).toContain(expectedThumbnailImage);
   });
 
   it('should render a link to the show page', () => {
@@ -63,7 +64,7 @@ describe('VideoCard', () => {
         showId={expectedVideo.showId}
         showTitle={expectedVideo.showTitle}
         showType={expectedVideo.showType}
-        thumbnailPath={expectedVideo.thumbnailPath}
+        thumbnail={expectedVideo.thumbnail}
         videoTitle={expectedVideo.title}
         youtubeKey={expectedVideo.youtubeKey}
       />
@@ -80,7 +81,7 @@ describe('VideoCard', () => {
         showId={expectedVideo.showId}
         showTitle={expectedVideo.showTitle}
         showType={expectedVideo.showType}
-        thumbnailPath={expectedVideo.thumbnailPath}
+        thumbnail={expectedVideo.thumbnail}
         videoTitle={expectedVideo.title}
         youtubeKey={expectedVideo.youtubeKey}
       />
@@ -100,7 +101,7 @@ describe('VideoCard', () => {
         showId={expectedVideo.showId}
         showTitle={expectedVideo.showTitle}
         showType={expectedVideo.showType}
-        thumbnailPath={expectedVideo.thumbnailPath}
+        thumbnail={expectedVideo.thumbnail}
         videoTitle={expectedVideo.title}
         youtubeKey={expectedVideo.youtubeKey}
       />

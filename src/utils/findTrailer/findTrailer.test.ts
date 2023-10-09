@@ -1,3 +1,7 @@
+import {
+  TMDB_VIDEO_CARD_THUMBNAIL_HEIGHT,
+  TMDB_VIDEO_CARD_THUMBNAIL_WIDTH,
+} from '@/services/tmdb/constants';
 import Video from '@/types/Video';
 import findTrailer from '@/utils/findTrailer/findTrailer';
 
@@ -9,7 +13,11 @@ describe('findTrailer', () => {
         showId: 635910,
         showTitle: 'The Last Voyage of the Demeter',
         showType: 'movie',
-        thumbnailPath: '/qEm4FrkGh7kGoEiBOyGYNielYVc.jpg',
+        thumbnail: {
+          height: TMDB_VIDEO_CARD_THUMBNAIL_HEIGHT,
+          path: '/qEm4FrkGh7kGoEiBOyGYNielYVc.jpg',
+          width: TMDB_VIDEO_CARD_THUMBNAIL_WIDTH,
+        },
         title: 'Official Teaser',
         type: 'Teaser',
         youtubeKey: '6FgUUO9Ztd0',
@@ -19,7 +27,11 @@ describe('findTrailer', () => {
         showId: 939338,
         showTitle: 'Epic Tails',
         showType: 'movie',
-        thumbnailPath: '/qZOuoBoKCDLSm1EvYz2eBub8Cto.jpg',
+        thumbnail: {
+          height: TMDB_VIDEO_CARD_THUMBNAIL_HEIGHT,
+          path: '/qZOuoBoKCDLSm1EvYz2eBub8Cto.jpg',
+          width: TMDB_VIDEO_CARD_THUMBNAIL_WIDTH,
+        },
         title: 'ARGONUTS - Official Australian Trailer',
         type: 'Trailer',
         youtubeKey: 'LiVyhdxLYFc',
@@ -35,7 +47,11 @@ describe('findTrailer', () => {
         showId: 635910,
         showTitle: 'The Last Voyage of the Demeter',
         showType: 'movie',
-        thumbnailPath: '/qEm4FrkGh7kGoEiBOyGYNielYVc.jpg',
+        thumbnail: {
+          height: TMDB_VIDEO_CARD_THUMBNAIL_HEIGHT,
+          path: '/qEm4FrkGh7kGoEiBOyGYNielYVc.jpg',
+          width: TMDB_VIDEO_CARD_THUMBNAIL_WIDTH,
+        },
         title: 'Official Featurette',
         type: 'Featurette',
         youtubeKey: '6FgUUO9Ztd0',
@@ -45,7 +61,11 @@ describe('findTrailer', () => {
         showId: 939338,
         showTitle: 'Epic Tails',
         showType: 'movie',
-        thumbnailPath: '/qZOuoBoKCDLSm1EvYz2eBub8Cto.jpg',
+        thumbnail: {
+          height: TMDB_VIDEO_CARD_THUMBNAIL_HEIGHT,
+          path: '/qZOuoBoKCDLSm1EvYz2eBub8Cto.jpg',
+          width: TMDB_VIDEO_CARD_THUMBNAIL_WIDTH,
+        },
         title: 'ARGONUTS - Official Australian Trailer',
         type: 'Teaser',
         youtubeKey: 'LiVyhdxLYFc',
@@ -62,7 +82,11 @@ describe('findTrailer', () => {
         showId: 635910,
         showTitle: 'The Last Voyage of the Demeter',
         showType: 'movie',
-        thumbnailPath: '/qEm4FrkGh7kGoEiBOyGYNielYVc.jpg',
+        thumbnail: {
+          height: TMDB_VIDEO_CARD_THUMBNAIL_HEIGHT,
+          path: '/qEm4FrkGh7kGoEiBOyGYNielYVc.jpg',
+          width: TMDB_VIDEO_CARD_THUMBNAIL_WIDTH,
+        },
         title: 'Official Featurette',
         type: 'Featurette',
         youtubeKey: '6FgUUO9Ztd0',
@@ -72,7 +96,11 @@ describe('findTrailer', () => {
         showId: 939338,
         showTitle: 'Epic Tails',
         showType: 'movie',
-        thumbnailPath: '/qZOuoBoKCDLSm1EvYz2eBub8Cto.jpg',
+        thumbnail: {
+          height: TMDB_VIDEO_CARD_THUMBNAIL_HEIGHT,
+          path: '/qZOuoBoKCDLSm1EvYz2eBub8Cto.jpg',
+          width: TMDB_VIDEO_CARD_THUMBNAIL_WIDTH,
+        },
         title: 'ARGONUTS - Official Australian Trailer',
         type: 'Featurette',
         youtubeKey: 'LiVyhdxLYFc',

@@ -1,8 +1,7 @@
 import mockTMDBMovieCast from '@/__mocks__/data/mockTMDBMovieCast';
+import { genderMap } from '@/services/tmdb/constants';
 import transformMovieCast from '@/services/tmdb/utils/transformMovieCast/transformMovieCast';
 import CastPerson from '@/types/CastPerson';
-
-import { genderMap } from '../../constants';
 
 describe('transformVideos', () => {
   it('should return correctly transformed data for single person', async () => {

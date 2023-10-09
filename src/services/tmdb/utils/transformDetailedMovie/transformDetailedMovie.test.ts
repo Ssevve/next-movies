@@ -1,4 +1,8 @@
 import mockTMDBDetailedMovie from '@/__mocks__/data/mockTMDBDetailedMovie';
+import {
+  TMDB_VIDEO_CARD_THUMBNAIL_HEIGHT,
+  TMDB_VIDEO_CARD_THUMBNAIL_WIDTH,
+} from '@/services/tmdb/constants';
 import transformDetailedMovie from '@/services/tmdb/utils/transformDetailedMovie/transformDetailedMovie';
 import transformMovieCast from '@/services/tmdb/utils/transformMovieCast/transformMovieCast';
 import DetailedMovie from '@/types/DetailedMovie';
@@ -120,7 +124,11 @@ describe('transformVideos', () => {
           showId: 565770,
           showTitle: 'Blue Beetle',
           showType: 'movie',
-          thumbnailPath: 'https://i.ytimg.com/vi/CvzlxfEz4hQ/hqdefault.jpg',
+          thumbnail: {
+            height: TMDB_VIDEO_CARD_THUMBNAIL_HEIGHT,
+            path: 'https://i.ytimg.com/vi/CvzlxfEz4hQ/hqdefault.jpg',
+            width: TMDB_VIDEO_CARD_THUMBNAIL_WIDTH,
+          },
           title: 'Brynn',
           type: 'Featurette',
           youtubeKey: 'CvzlxfEz4hQ',
@@ -130,7 +138,11 @@ describe('transformVideos', () => {
           showId: 565770,
           showTitle: 'Blue Beetle',
           showType: 'movie',
-          thumbnailPath: 'https://i.ytimg.com/vi/IcA02w6rm44/hqdefault.jpg',
+          thumbnail: {
+            height: TMDB_VIDEO_CARD_THUMBNAIL_HEIGHT,
+            path: 'https://i.ytimg.com/vi/IcA02w6rm44/hqdefault.jpg',
+            width: TMDB_VIDEO_CARD_THUMBNAIL_WIDTH,
+          },
           title: 'Official Trailer',
           type: 'Trailer',
           youtubeKey: 'IcA02w6rm44',

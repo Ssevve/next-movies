@@ -84,13 +84,9 @@ export default async function MoviePage({ searchParams, params }: MoviePageProps
         overview={overview}
       />
 
-      <section className="container flex w-full flex-col gap-12 overflow-hidden px-4 lg:flex-row lg:justify-between lg:gap-4">
-        <div className="w-full lg:w-[85%]">
-          <ShowCast cast={cast} />
-        </div>
-        <div className="mb-8 flex w-full lg:w-[15%] lg:justify-end">
-          <MovieFacts budget={budget} revenue={revenue} status={status} />
-        </div>
+      <section className="container flex w-full flex-col gap-12 px-4">
+        <MovieFacts budget={budget} revenue={revenue} status={status} />
+        <ShowCast cast={cast} />
       </section>
     </section>
   );

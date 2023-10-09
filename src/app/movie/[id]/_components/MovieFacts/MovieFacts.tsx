@@ -8,7 +8,7 @@ interface MovieFactsProps {
 
 export default function MovieFacts({ status, budget, revenue }: MovieFactsProps) {
   return (
-    <div className="flex w-full max-w-lg justify-between gap-8 lg:w-max lg:flex-col lg:justify-center">
+    <div className="flex w-full max-w-lg flex-col justify-between gap-8 sm:flex-row">
       <div>
         <h3 className="font-semibold">Status</h3>
         <span>{status}</span>

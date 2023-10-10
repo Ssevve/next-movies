@@ -59,6 +59,7 @@ export default async function MoviePage({ searchParams, params }: MoviePageProps
     videos,
     status,
     cast,
+    originalLanguage,
     images,
   } = await getDetailedMovie(Number(movieId));
   const previewVideo = findTrailer(videos);
@@ -87,7 +88,12 @@ export default async function MoviePage({ searchParams, params }: MoviePageProps
       />
 
       <section className="container flex w-full flex-col gap-12 px-4">
-        <MovieFacts budget={budget} revenue={revenue} status={status} />
+        <MovieFacts
+          budget={budget}
+          revenue={revenue}
+          status={status}
+          originalLanguage={originalLanguage}
+        />
         <ShowCast cast={cast} />
         <ShowMedia posters={images.posters} backdrops={images.backdrops} videos={videos} />
       </section>

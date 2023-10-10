@@ -2,7 +2,7 @@
 
 import { rest } from 'msw';
 
-import mockTMDBDetailedMovie from '@/__mocks__/data/mockTMDBDetailedMovie';
+import mockTMDBDetailedMovies from '@/__mocks__/data/mockTMDBDetailedMovies';
 import { server } from '@/__mocks__/server';
 import getDetailedMovie from '@/services/tmdb/api/getDetailedMovie/getDetailedMovie';
 import { TMDB_BASE_URL } from '@/services/tmdb/constants';
@@ -10,12 +10,21 @@ import transformDetailedMovie from '@/services/tmdb/utils/transformDetailedMovie
 
 describe('getDetailedMovie', () => {
   it('should return correct result', async () => {
-    const expectedResult = transformDetailedMovie(mockTMDBDetailedMovie);
-    const result = await getDetailedMovie(mockTMDBDetailedMovie.id);
+    const testMovie = mockTMDBDetailedMovies.withOriginalLanguage;
+    const expectedResult = transformDetailedMovie({ ...testMovie, original_language: 'English' });
+    const result = await getDetailedMovie(testMovie.id);
+    expect(result).toEqual(expectedResult);
+  });
+
+  it('should return correct result if original language is not specified', async () => {
+    const testMovie = mockTMDBDetailedMovies.withoutOriginalLanguage;
+    const expectedResult = transformDetailedMovie(testMovie);
+    const result = await getDetailedMovie(testMovie.id);
     expect(result).toEqual(expectedResult);
   });
 
   it('should throw correct error on failed fetch', () => {
+    const testMovie = mockTMDBDetailedMovies.withOriginalLanguage;
     server.use(
       rest.get(`${TMDB_BASE_URL}/movie/:movieId`, (req, res, ctx) => {
         return res(ctx.status(500));
@@ -23,7 +32,7 @@ describe('getDetailedMovie', () => {
     );
 
     expect(async () => {
-      await getDetailedMovie(mockTMDBDetailedMovie.id);
+      await getDetailedMovie(testMovie.id);
     }).rejects.toThrow('Could not get movie data.');
   });
 });

@@ -1,4 +1,4 @@
-import mockTMDBDetailedMovie from '@/__mocks__/data/mockTMDBDetailedMovie';
+import mockTMDBDetailedMovies from '@/__mocks__/data/mockTMDBDetailedMovies';
 import {
   TMDB_DETAILED_SHOW_POSTER_HEIGHT,
   TMDB_DETAILED_SHOW_POSTER_WIDTH,
@@ -9,11 +9,10 @@ import {
   TMDB_VIDEO_THUMBNAIL_HEIGHT,
   TMDB_VIDEO_THUMBNAIL_WIDTH,
 } from '@/services/tmdb/constants';
+import getTMDBImagePath from '@/services/tmdb/utils/getTMDBImagePath/getTMDBImagePath';
 import transformDetailedMovie from '@/services/tmdb/utils/transformDetailedMovie/transformDetailedMovie';
 import transformMovieCast from '@/services/tmdb/utils/transformMovieCast/transformMovieCast';
 import DetailedMovie from '@/types/DetailedMovie';
-
-import getTMDBImagePath from '../getTMDBImagePath/getTMDBImagePath';
 
 describe('transformVideos', () => {
   it('should return correctly transformed data', async () => {
@@ -187,7 +186,9 @@ describe('transformVideos', () => {
         },
       ],
     };
-    const transformedData = transformDetailedMovie({ ...mockTMDBDetailedMovie });
+    const transformedData = transformDetailedMovie({
+      ...mockTMDBDetailedMovies.withOriginalLanguage,
+    });
     expect(transformedData).toEqual(expectedData);
   });
 

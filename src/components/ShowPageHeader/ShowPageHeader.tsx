@@ -79,9 +79,9 @@ export default function ShowPageHeader({
           width={poster.width}
           height={poster.height}
           priority
-          className="mx-auto h-auto w-1/3 min-w-[150px] rounded-md shadow sm:mx-0"
+          className="mx-auto h-auto w-1/3 min-w-[150px] max-w-[275px] rounded-md shadow sm:mx-0 md:min-w-[275px]"
         />
-        <section className="flex flex-col flex-wrap gap-8 font-semibold sm:mt-8">
+        <section className="flex flex-col flex-wrap  gap-8 font-semibold sm:mt-8">
           <section className="space-y-2">
             <ShowExternalLinks
               className="sm:mb-4"
@@ -122,7 +122,9 @@ export default function ShowPageHeader({
               </VideoLink>
             )}
           </section>
-          <ShowOverview overview={overview} />
+          <div className="pr-4">
+            <ShowOverview overview={overview} />
+          </div>
           <Creators creators={createdBy} showType={showType} />
         </section>
       </section>

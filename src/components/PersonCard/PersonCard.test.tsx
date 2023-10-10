@@ -1,7 +1,17 @@
 import { render, screen } from '@testing-library/react';
 
 import PersonCard from '@/components/PersonCard/PersonCard';
+import { TMDB_PERSON_IMAGE_HEIGHT, TMDB_PERSON_IMAGE_WIDTH } from '@/services/tmdb/constants';
+import getTMDBImagePath from '@/services/tmdb/utils/getTMDBImagePath/getTMDBImagePath';
 import CastPerson from '@/types/CastPerson';
+
+const testImageName = '/testImage.jpg';
+
+const testImagePath = getTMDBImagePath({
+  height: TMDB_PERSON_IMAGE_HEIGHT,
+  image: testImageName,
+  width: TMDB_PERSON_IMAGE_WIDTH,
+});
 
 describe('PersonCard', () => {
   it("should render person's image", () => {
@@ -9,7 +19,7 @@ describe('PersonCard', () => {
       character: 'Test character',
       gender: 'Male',
       id: 1,
-      imagePath: 'testImagePath',
+      imagePath: testImagePath,
       name: 'Test name',
     };
 
@@ -31,7 +41,7 @@ describe('PersonCard', () => {
       character: 'Test character',
       gender: 'Male',
       id: 1,
-      imagePath: 'testImagePath',
+      imagePath: testImagePath,
       name: 'Test name',
     };
 
@@ -46,7 +56,7 @@ describe('PersonCard', () => {
     );
 
     const image: HTMLImageElement = screen.getByRole('img', { name: expectedPerson.name });
-    expect(image.src).toContain(expectedPerson.imagePath);
+    expect(image.src).toContain(testImageName.slice(1));
   });
 
   it('should render correct placeholder for male if imagePath is not present', () => {
@@ -150,7 +160,7 @@ describe('PersonCard', () => {
       character: 'Test character',
       gender: 'Male',
       id: 1,
-      imagePath: 'testImagePath',
+      imagePath: testImagePath,
       name: 'Test name',
     };
 
@@ -172,7 +182,7 @@ describe('PersonCard', () => {
       character: 'Test character',
       gender: 'Male',
       id: 1,
-      imagePath: 'testImagePath',
+      imagePath: testImagePath,
       name: 'Test name',
     };
 

@@ -40,10 +40,10 @@ export default async function MoviePage({ searchParams, params }: MoviePageProps
   const movieId = params.id;
 
   const {
-    backdropPath,
+    backdrop,
     createdBy,
     genres,
-    posterPath,
+    poster,
     rating,
     releaseDate,
     tagline,
@@ -66,10 +66,10 @@ export default async function MoviePage({ searchParams, params }: MoviePageProps
     <section className="flex w-full flex-col gap-12">
       {youtubeModalVideoKey && <YoutubeIframeModal videoKey={youtubeModalVideoKey} />}
       <ShowPageHeader
-        backdropPath={backdropPath}
+        backdrop={backdrop}
         createdBy={createdBy}
         genres={genres}
-        posterPath={posterPath}
+        poster={poster}
         rating={rating}
         releaseDate={releaseDate}
         tagline={tagline}

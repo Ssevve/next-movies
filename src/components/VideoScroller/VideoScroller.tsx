@@ -23,7 +23,7 @@ export default function VideoScroller({
       emptyMessage="No videos to display"
       listClassName="flex h-max space-x-4 px-2 pb-4"
     >
-      {videos.map(({ id, title, showTitle, thumbnail, showType, showId, youtubeKey }) => (
+      {videos.map(({ id, title, showTitle, thumbnail, showType, showId, youtubeKey, backdrop }) => (
         <VideoCard
           key={id}
           invertedTextColor={invertedTextColor}
@@ -34,7 +34,7 @@ export default function VideoScroller({
           showType={showType}
           showId={showId}
           youtubeKey={youtubeKey}
-          onMouseEnter={() => onMouseEnter && onMouseEnter(thumbnail.path)}
+          onMouseEnter={() => onMouseEnter && onMouseEnter(backdrop.path)}
         />
       ))}
     </Scroller>

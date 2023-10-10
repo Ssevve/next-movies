@@ -6,11 +6,17 @@ import mockTMDBMovies from '@/__mocks__/data/mockTMDBMovies';
 import { server } from '@/__mocks__/server';
 import getUpcomingMovies from '@/services/tmdb/api/getUpcomingMovies/getUpcomingMovies';
 import { TMDB_BASE_URL } from '@/services/tmdb/constants';
-import transformShows from '@/services/tmdb/utils/transformShows/transformShows';
+import formatDate from '@/services/tmdb/utils/formatDate/formatDate';
 
 describe('getUpcomingMovies', () => {
-  it('should return correct results', async () => {
-    const expectedResults = transformShows(mockTMDBMovies);
+  it('should return correct results with correct release date', async () => {
+    const expectedResults = mockTMDBMovies.map(({ id, release_date, backdrop_path, title }) => ({
+      id,
+      releaseDate: release_date ? formatDate(release_date) : 'N/A',
+      showType: 'movie',
+      thumbnailPath: backdrop_path,
+      title,
+    }));
     const movies = await getUpcomingMovies();
     expect(movies).toEqual(expectedResults);
   });

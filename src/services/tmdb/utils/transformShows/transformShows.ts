@@ -1,7 +1,9 @@
+import { TMDB_SHOW_POSTER_HEIGHT, TMDB_SHOW_POSTER_WIDTH } from '@/services/tmdb/constants';
 import TMDBMovie from '@/services/tmdb/types/TMDBMovie';
 import TMDBTvShow from '@/services/tmdb/types/TMDBTvShow';
 import TMDBUnknownShow from '@/services/tmdb/types/TMDBUnknownShow';
 import formatDate from '@/services/tmdb/utils/formatDate/formatDate';
+import getTMDBImagePath from '@/services/tmdb/utils/getTMDBImagePath/getTMDBImagePath';
 import Show from '@/types/Show';
 
 function isTMDBMovie(show: TMDBUnknownShow): show is TMDBMovie {
@@ -15,21 +17,29 @@ function isTMDBTvShow(show: TMDBUnknownShow): show is TMDBTvShow {
 type UniqueShowTypeProps = 'title' | 'showType' | 'releaseDate';
 
 export default function transformShows(shows: TMDBUnknownShow[]) {
-  return shows.map((show) => {
-    const { backdrop_path, id, poster_path, vote_average, vote_count } = show;
+  return shows.map((show): Show => {
+    const { id, poster_path, vote_average } = show;
+
+    const posterPath = getTMDBImagePath({
+      height: TMDB_SHOW_POSTER_HEIGHT,
+      image: poster_path,
+      width: TMDB_SHOW_POSTER_WIDTH,
+    });
 
     const transformedShow: Omit<Show, UniqueShowTypeProps> = {
-      backdropPath: backdrop_path,
       id,
-      posterPath: poster_path,
+      poster: {
+        height: TMDB_SHOW_POSTER_HEIGHT,
+        path: posterPath,
+        width: TMDB_SHOW_POSTER_WIDTH,
+      },
       userScore: vote_average,
-      userScoreCount: vote_count,
     };
 
     if (isTMDBMovie(show)) {
       const { title, release_date } = show;
       const movieProps: Pick<Show, UniqueShowTypeProps> = {
-        releaseDate: formatDate(release_date) || 'N/A',
+        releaseDate: release_date ? formatDate(release_date) : 'N/A',
         showType: 'movie',
         title,
       };
@@ -43,7 +53,7 @@ export default function transformShows(shows: TMDBUnknownShow[]) {
       };
       return { ...transformedShow, ...tvShowProps };
     } else {
-      throw Error('Incorrect data.');
+      throw Error('Could not transform show: incorrect data.');
     }
   });
 }

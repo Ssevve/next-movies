@@ -1,6 +1,6 @@
+import joinCreators from '@/components/ShowPageHeader/utils/joinCreators/joinCreators';
 import Creator from '@/types/Creator';
 import ShowType from '@/types/ShowType';
-import joinCreators from '@/components/ShowPageHeader/utils/joinCreators/joinCreators';
 
 interface CreatorsProps {
   creators: Creator[];

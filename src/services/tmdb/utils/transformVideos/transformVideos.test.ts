@@ -1,10 +1,11 @@
 import mockTMDBMovieVideos from '@/__mocks__/data/mockTMDBMovieVideos';
 import {
-  TMDB_IMAGE_URL,
-  TMDB_VIDEO_CARD_THUMBNAIL_HEIGHT,
-  TMDB_VIDEO_CARD_THUMBNAIL_PATH,
-  TMDB_VIDEO_CARD_THUMBNAIL_WIDTH,
+  TMDB_VIDEO_BACKDROP_HEIGHT,
+  TMDB_VIDEO_BACKDROP_WIDTH,
+  TMDB_VIDEO_THUMBNAIL_HEIGHT,
+  TMDB_VIDEO_THUMBNAIL_WIDTH,
 } from '@/services/tmdb/constants';
+import getTMDBImagePath from '@/services/tmdb/utils/getTMDBImagePath/getTMDBImagePath';
 import transformVideos from '@/services/tmdb/utils/transformVideos/transformVideos';
 import Video from '@/types/Video';
 import getYoutubeThumbnail from '@/utils/getYoutubeThumbnail/getYoutubeThumbnail';
@@ -14,19 +15,34 @@ const expectedShowData: Pick<Video, 'showId' | 'showType' | 'showTitle'> = {
   showTitle: 'Test Show Title',
   showType: 'movie',
 };
-const expectedTMDBThumbnailPath = '/testPath';
+
+const testTMDBImage = '/testImage.jpg';
+
+const expectedTMDBThumbnailPath = getTMDBImagePath({
+  height: TMDB_VIDEO_THUMBNAIL_HEIGHT,
+  image: testTMDBImage,
+  width: TMDB_VIDEO_THUMBNAIL_WIDTH,
+});
+
+const expectedTMDBBackdropPath = getTMDBImagePath({
+  height: TMDB_VIDEO_BACKDROP_HEIGHT,
+  image: testTMDBImage,
+  width: TMDB_VIDEO_BACKDROP_WIDTH,
+});
 
 describe('transformVideos', () => {
   it('should return correctly transformed data for a single video', async () => {
     const testVideo = mockTMDBMovieVideos[0];
+
     const expectedData: Video[] = [
       {
+        backdrop: { path: expectedTMDBBackdropPath },
         id: testVideo.id,
         ...expectedShowData,
         thumbnail: {
-          height: TMDB_VIDEO_CARD_THUMBNAIL_HEIGHT,
-          path: `${TMDB_IMAGE_URL}${TMDB_VIDEO_CARD_THUMBNAIL_PATH}${expectedTMDBThumbnailPath}`,
-          width: TMDB_VIDEO_CARD_THUMBNAIL_WIDTH,
+          height: TMDB_VIDEO_THUMBNAIL_HEIGHT,
+          path: expectedTMDBThumbnailPath,
+          width: TMDB_VIDEO_THUMBNAIL_WIDTH,
         },
         title: testVideo.name,
         type: testVideo.type,
@@ -37,7 +53,7 @@ describe('transformVideos', () => {
     const transformedData = transformVideos({
       videos: [testVideo],
       ...expectedShowData,
-      thumbnailPath: expectedTMDBThumbnailPath,
+      thumbnailPath: testTMDBImage,
       thumbnailSource: 'TMDB',
     });
 
@@ -48,12 +64,13 @@ describe('transformVideos', () => {
     const testVideo = mockTMDBMovieVideos[0];
     const expectedData: Video[] = [
       {
+        backdrop: { path: expectedTMDBBackdropPath },
         id: testVideo.id,
         ...expectedShowData,
         thumbnail: {
-          height: TMDB_VIDEO_CARD_THUMBNAIL_HEIGHT,
-          path: `${TMDB_IMAGE_URL}${TMDB_VIDEO_CARD_THUMBNAIL_PATH}${expectedTMDBThumbnailPath}`,
-          width: TMDB_VIDEO_CARD_THUMBNAIL_WIDTH,
+          height: TMDB_VIDEO_THUMBNAIL_HEIGHT,
+          path: expectedTMDBThumbnailPath,
+          width: TMDB_VIDEO_THUMBNAIL_WIDTH,
         },
         title: testVideo.name,
         type: testVideo.type,
@@ -64,7 +81,7 @@ describe('transformVideos', () => {
     const transformedData = transformVideos({
       videos: [testVideo],
       ...expectedShowData,
-      thumbnailPath: expectedTMDBThumbnailPath,
+      thumbnailPath: testTMDBImage,
       thumbnailSource: 'TMDB',
     });
 
@@ -75,12 +92,13 @@ describe('transformVideos', () => {
     const testVideo = mockTMDBMovieVideos[0];
     const expectedData: Video[] = [
       {
+        backdrop: { path: getYoutubeThumbnail(testVideo.key) },
         id: testVideo.id,
         ...expectedShowData,
         thumbnail: {
-          height: TMDB_VIDEO_CARD_THUMBNAIL_HEIGHT,
+          height: TMDB_VIDEO_THUMBNAIL_HEIGHT,
           path: getYoutubeThumbnail(testVideo.key),
-          width: TMDB_VIDEO_CARD_THUMBNAIL_WIDTH,
+          width: TMDB_VIDEO_THUMBNAIL_WIDTH,
         },
         title: testVideo.name,
         type: testVideo.type,
@@ -99,11 +117,14 @@ describe('transformVideos', () => {
 
   it('should return correctly transformed data for multiple videos', async () => {
     const expectedData: Video[] = mockTMDBMovieVideos.map((video) => ({
+      backdrop: {
+        path: expectedTMDBBackdropPath,
+      },
       id: video.id,
       thumbnail: {
-        height: TMDB_VIDEO_CARD_THUMBNAIL_HEIGHT,
-        path: `${TMDB_IMAGE_URL}${TMDB_VIDEO_CARD_THUMBNAIL_PATH}${expectedTMDBThumbnailPath}`,
-        width: TMDB_VIDEO_CARD_THUMBNAIL_WIDTH,
+        height: TMDB_VIDEO_THUMBNAIL_HEIGHT,
+        path: expectedTMDBThumbnailPath,
+        width: TMDB_VIDEO_THUMBNAIL_WIDTH,
       },
       title: video.name,
       type: video.type,
@@ -114,7 +135,7 @@ describe('transformVideos', () => {
     const transformedData = transformVideos({
       videos: mockTMDBMovieVideos,
       ...expectedShowData,
-      thumbnailPath: expectedTMDBThumbnailPath,
+      thumbnailPath: testTMDBImage,
       thumbnailSource: 'TMDB',
     });
 
@@ -126,7 +147,7 @@ describe('transformVideos', () => {
       showId: 1,
       showTitle: 'Test Show Title',
       showType: 'movie',
-      thumbnailPath: '/testPath',
+      thumbnailPath: testTMDBImage,
       thumbnailSource: 'TMDB',
       videos: [],
     });

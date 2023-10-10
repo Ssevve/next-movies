@@ -7,12 +7,6 @@ import ShowMetadata from '@/components/ShowPageHeader/components/ShowMetadata/Sh
 import ShowOverview from '@/components/ShowPageHeader/components/ShowOverview/ShowOverview';
 import UserScore from '@/components/UserScore/UserScore';
 import VideoLink from '@/components/VideoLink/VideoLink';
-import {
-  TMDB_IMAGE_URL,
-  TMDB_SHOW_PAGE_POSTER_HEIGHT,
-  TMDB_SHOW_PAGE_POSTER_PATH,
-  TMDB_SHOW_PAGE_POSTER_WIDTH,
-} from '@/services/tmdb/constants';
 import DetailedShow from '@/types/DetailedShow';
 import Video from '@/types/Video';
 
@@ -23,11 +17,11 @@ type SharedProps = Pick<
   | 'tagline'
   | 'rating'
   | 'createdBy'
-  | 'posterPath'
+  | 'poster'
   | 'userScore'
   | 'userScoreCount'
   | 'releaseDate'
-  | 'backdropPath'
+  | 'backdrop'
   | 'overview'
 > & {
   previewVideo?: Video | null;
@@ -50,9 +44,9 @@ interface MovieProps extends SharedProps {
 type ShowPageHeaderProps = TvShowProps | MovieProps;
 
 export default function ShowPageHeader({
-  backdropPath,
+  backdrop,
   title,
-  posterPath,
+  poster,
   releaseDate,
   rating,
   userScore,
@@ -72,7 +66,7 @@ export default function ShowPageHeader({
   return (
     <section className="relative w-screen">
       <Image
-        src={`${TMDB_IMAGE_URL}${TMDB_SHOW_PAGE_POSTER_PATH}${backdropPath}`}
+        src={backdrop.path}
         alt=""
         fill
         priority
@@ -80,10 +74,10 @@ export default function ShowPageHeader({
       />
       <section className="container relative flex flex-col gap-8 px-4 py-8 sm:flex-row sm:items-center">
         <Image
-          src={`${TMDB_IMAGE_URL}${TMDB_SHOW_PAGE_POSTER_PATH}${posterPath}`}
+          src={poster.path}
           alt={title}
-          width={TMDB_SHOW_PAGE_POSTER_WIDTH}
-          height={TMDB_SHOW_PAGE_POSTER_HEIGHT}
+          width={poster.width}
+          height={poster.height}
           priority
           className="mx-auto h-auto w-1/3 min-w-[150px] rounded-md shadow sm:mx-0"
         />

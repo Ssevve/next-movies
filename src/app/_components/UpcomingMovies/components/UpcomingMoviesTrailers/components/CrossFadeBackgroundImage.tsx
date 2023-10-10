@@ -1,7 +1,6 @@
 import Image from 'next/image';
 
 import cn from '@/lib/cn';
-import { TMDB_IMAGE_URL, TMDB_SCROLLER_BACKGROUND_PATH } from '@/services/tmdb/constants';
 
 interface CrossFadeBackgroundImageProps {
   currentBackgroundPath: string;
@@ -15,9 +14,7 @@ export default function CrossFadeBackgroundImage({
   activeImage,
 }: CrossFadeBackgroundImageProps) {
   const getBackgroundImagePath = (imageIndex: number) => {
-    return `${TMDB_IMAGE_URL}${TMDB_SCROLLER_BACKGROUND_PATH}${
-      activeImage === imageIndex ? currentBackgroundPath : previousBackgroundPath
-    }`;
+    return activeImage === imageIndex ? currentBackgroundPath : previousBackgroundPath;
   };
 
   const getBackgroundImageClassNames = (imageIndex: number) => {
@@ -26,6 +23,7 @@ export default function CrossFadeBackgroundImage({
       activeImage === imageIndex && 'opacity-100 dark:opacity-10 duration-200'
     );
   };
+
   return (
     <>
       <Image

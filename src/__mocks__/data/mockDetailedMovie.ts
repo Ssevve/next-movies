@@ -1,7 +1,13 @@
+import {
+  TMDB_DETAILED_SHOW_POSTER_HEIGHT,
+  TMDB_DETAILED_SHOW_POSTER_WIDTH,
+  TMDB_SHOW_POSTER_HEIGHT,
+  TMDB_SHOW_POSTER_WIDTH,
+} from '@/services/tmdb/constants';
 import DetailedMovie from '@/types/DetailedMovie';
 
 const mockDetailedMovie: DetailedMovie = {
-  backdropPath: '/pA3vdhadJPxF5GA1uo8OPTiNQDT.jpg',
+  backdrop: { path: '/pA3vdhadJPxF5GA1uo8OPTiNQDT.jpg' },
   budget: 15000000,
   cast: [
     {
@@ -77,28 +83,36 @@ const mockDetailedMovie: DetailedMovie = {
   originalTitle: 'Sound of Freedom',
   overview:
     'The story of Tim Ballard, a former US government agent, who quits his job in order to devote his life to rescuing children from global sex traffickers.',
-  posterPath: '/qA5kPYZA7FkVvqcEfJRoOy4kpHg.jpg',
+  poster: {
+    height: TMDB_DETAILED_SHOW_POSTER_HEIGHT,
+    path: '/qA5kPYZA7FkVvqcEfJRoOy4kpHg.jpg',
+    width: TMDB_DETAILED_SHOW_POSTER_WIDTH,
+  },
   rating: 'PG-13',
   recommendations: [
     {
-      backdropPath: '/qe0oK0A5ovrlgH39Ga13dxxw9MU.jpg',
       id: 1130818,
-      posterPath: '/itUAkQmihFmRxMYTa3AkvIzMCV4.jpg',
+      poster: {
+        height: TMDB_SHOW_POSTER_HEIGHT,
+        path: '/itUAkQmihFmRxMYTa3AkvIzMCV4.jpg',
+        width: TMDB_SHOW_POSTER_WIDTH,
+      },
       releaseDate: 'Jun 23, 2023',
       showType: 'movie',
       title: 'Sheroes',
       userScore: 6.484,
-      userScoreCount: 95,
     },
     {
-      backdropPath: '/2vFuG6bWGyQUzYS9d69E5l85nIz.jpg',
       id: 667538,
-      posterPath: '/gPbM0MK8CP8A174rmUwGsADNYKD.jpg',
+      poster: {
+        height: TMDB_SHOW_POSTER_HEIGHT,
+        path: '/gPbM0MK8CP8A174rmUwGsADNYKD.jpg',
+        width: TMDB_SHOW_POSTER_WIDTH,
+      },
       releaseDate: 'Jun 6, 2023',
       showType: 'movie',
       title: 'Transformers: Rise of the Beasts',
       userScore: 7.493,
-      userScoreCount: 3295,
     },
   ],
   releaseDate: 'Jul 3, 2023',
@@ -117,6 +131,7 @@ const mockDetailedMovie: DetailedMovie = {
   userScoreCount: 580,
   videos: [
     {
+      backdrop: { path: 'https://i.ytimg.com/vi/hyyyKcfJRGQ/hqdefault.jpg' },
       id: '645e47e288b1480158f2e037',
       showId: 678512,
       showTitle: 'Sound of Freedom',
@@ -131,6 +146,7 @@ const mockDetailedMovie: DetailedMovie = {
       youtubeKey: 'hyyyKcfJRGQ',
     },
     {
+      backdrop: { path: 'https://i.ytimg.com/vi/UwSBQWI-bek/hqdefault.jpg' },
       id: '645046a1e942ee012100f35b',
       showId: 678512,
       showTitle: 'Sound of Freedom',

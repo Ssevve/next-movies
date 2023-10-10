@@ -1,7 +1,13 @@
 import mockTMDBMovieCast from '@/__mocks__/data/mockTMDBMovieCast';
-import { genderMap } from '@/services/tmdb/constants';
+import {
+  genderMap,
+  TMDB_PERSON_IMAGE_HEIGHT,
+  TMDB_PERSON_IMAGE_WIDTH,
+} from '@/services/tmdb/constants';
 import transformMovieCast from '@/services/tmdb/utils/transformMovieCast/transformMovieCast';
 import CastPerson from '@/types/CastPerson';
+
+import getTMDBImagePath from '../getTMDBImagePath/getTMDBImagePath';
 
 describe('transformVideos', () => {
   it('should return correctly transformed data for single person', async () => {
@@ -11,7 +17,11 @@ describe('transformVideos', () => {
         character: testCastPerson.character,
         gender: genderMap[testCastPerson.gender],
         id: testCastPerson.id,
-        imagePath: testCastPerson.profile_path,
+        imagePath: getTMDBImagePath({
+          height: TMDB_PERSON_IMAGE_HEIGHT,
+          image: testCastPerson.profile_path,
+          width: TMDB_PERSON_IMAGE_WIDTH,
+        }),
         name: testCastPerson.name,
       },
     ];
@@ -25,7 +35,11 @@ describe('transformVideos', () => {
       character: person.character,
       gender: genderMap[person.gender],
       id: person.id,
-      imagePath: person.profile_path,
+      imagePath: getTMDBImagePath({
+        height: TMDB_PERSON_IMAGE_HEIGHT,
+        image: person.profile_path,
+        width: TMDB_PERSON_IMAGE_WIDTH,
+      }),
       name: person.name,
     }));
 

@@ -14,7 +14,7 @@ const mockTMDBMovieResults: TMDBMovie[] = [
     backdrop_path: '/4fLZUr1e65hKPPVw0R3PmKFKxj1.jpg',
     id: 976573,
     poster_path: '/4Y1WNkd88JXmGfhtWR7dmDAo1T2.jpg',
-    release_date: '2023-06-14',
+    release_date: '',
     title: 'Elemental',
     vote_average: 7.778,
     vote_count: 2166,

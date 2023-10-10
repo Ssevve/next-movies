@@ -9,12 +9,12 @@ interface ShowScrollerProps {
 export default function ShowScroller({ shows }: ShowScrollerProps) {
   return (
     <Scroller emptyMessage="No shows to display" listClassName="flex h-max space-x-4 px-2 pb-4">
-      {shows.map(({ id, releaseDate, posterPath, userScore, showType, title }) => (
+      {shows.map(({ id, releaseDate, poster, userScore, showType, title }) => (
         <ShowCard
           key={id}
           releaseDate={releaseDate}
           id={id}
-          posterPath={posterPath}
+          poster={poster}
           userScore={userScore}
           showType={showType}
           title={title}

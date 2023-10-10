@@ -5,18 +5,14 @@ import Link from 'next/link';
 import Hoverable, { HoverableProps } from '@/components/ui/Hoverable';
 import VideoLink from '@/components/VideoLink/VideoLink';
 import cn from '@/lib/cn';
-import {
-  TMDB_VIDEO_CARD_THUMBNAIL_HEIGHT,
-  TMDB_VIDEO_CARD_THUMBNAIL_WIDTH,
-} from '@/services/tmdb/constants';
+import ImageType from '@/types/Image';
 import ShowType from '@/types/ShowType';
-import Thumbnail from '@/types/Thumbnail';
 
 interface VideoCardProps extends Omit<HoverableProps, 'children'> {
   videoTitle: string;
   showTitle: string;
   id: string;
-  thumbnail: Thumbnail;
+  thumbnail: ImageType;
   showType: ShowType;
   showId: number;
   youtubeKey: string;

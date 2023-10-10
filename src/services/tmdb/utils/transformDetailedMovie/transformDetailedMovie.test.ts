@@ -1,30 +1,46 @@
 import mockTMDBDetailedMovie from '@/__mocks__/data/mockTMDBDetailedMovie';
 import {
-  TMDB_VIDEO_CARD_THUMBNAIL_HEIGHT,
-  TMDB_VIDEO_CARD_THUMBNAIL_WIDTH,
+  TMDB_DETAILED_SHOW_POSTER_HEIGHT,
+  TMDB_DETAILED_SHOW_POSTER_WIDTH,
+  TMDB_PERSON_IMAGE_HEIGHT,
+  TMDB_PERSON_IMAGE_WIDTH,
+  TMDB_SHOW_POSTER_HEIGHT,
+  TMDB_SHOW_POSTER_WIDTH,
+  TMDB_VIDEO_THUMBNAIL_HEIGHT,
+  TMDB_VIDEO_THUMBNAIL_WIDTH,
 } from '@/services/tmdb/constants';
 import transformDetailedMovie from '@/services/tmdb/utils/transformDetailedMovie/transformDetailedMovie';
 import transformMovieCast from '@/services/tmdb/utils/transformMovieCast/transformMovieCast';
 import DetailedMovie from '@/types/DetailedMovie';
 
+import getTMDBImagePath from '../getTMDBImagePath/getTMDBImagePath';
+
 describe('transformVideos', () => {
   it('should return correctly transformed data', async () => {
     const expectedData: DetailedMovie = {
-      backdropPath: '/1syW9SNna38rSl9fnXwc9fP7POW.jpg',
+      backdrop: { path: getTMDBImagePath({ image: '/1syW9SNna38rSl9fnXwc9fP7POW.jpg' }) },
       budget: 120000000,
       cast: [
         {
           character: 'Jaime Reyes / Blue Beetle',
           gender: 'Male',
           id: 1185997,
-          imagePath: '/tJMI7BpjlhHSMpzSz9e1XxygnKd.jpg',
+          imagePath: getTMDBImagePath({
+            height: TMDB_PERSON_IMAGE_HEIGHT,
+            image: '/tJMI7BpjlhHSMpzSz9e1XxygnKd.jpg',
+            width: TMDB_PERSON_IMAGE_WIDTH,
+          }),
           name: 'Xolo Mariduena',
         },
         {
           character: 'Nana Reyes',
           gender: 'Female',
           id: 270,
-          imagePath: '/1aE7wu22bdgVTa0PMKXbAOSLiZn.jpg',
+          imagePath: getTMDBImagePath({
+            height: TMDB_PERSON_IMAGE_HEIGHT,
+            image: '/1aE7wu22bdgVTa0PMKXbAOSLiZn.jpg',
+            width: TMDB_PERSON_IMAGE_WIDTH,
+          }),
           name: 'Adriana Barraza',
         },
       ],
@@ -80,28 +96,48 @@ describe('transformVideos', () => {
       originalTitle: 'Blue Beetle',
       overview:
         'Recent college grad Jaime Reyes returns home full of aspirations for his future, only to find that home is not quite as he left it. As he searches to find his purpose in the world, fate intervenes when Jaime unexpectedly finds himself in possession of an ancient relic of alien biotechnology: the Scarab.',
-      posterPath: '/mXLOHHc1Zeuwsl4xYKjKh2280oL.jpg',
+      poster: {
+        height: TMDB_DETAILED_SHOW_POSTER_HEIGHT,
+        path: getTMDBImagePath({
+          height: TMDB_DETAILED_SHOW_POSTER_HEIGHT,
+          image: '/mXLOHHc1Zeuwsl4xYKjKh2280oL.jpg',
+          width: TMDB_DETAILED_SHOW_POSTER_WIDTH,
+        }),
+        width: TMDB_DETAILED_SHOW_POSTER_WIDTH,
+      },
       rating: 'PG-13',
       recommendations: [
         {
-          backdropPath: '/jDjmnEuNUfWHg8rbW6u8mylkcO0.jpg',
           id: 832502,
-          posterPath: '/i6ye8ueFhVE5pXatgyRrZ83LBD8.jpg',
+          poster: {
+            height: TMDB_SHOW_POSTER_HEIGHT,
+            path: getTMDBImagePath({
+              height: TMDB_SHOW_POSTER_HEIGHT,
+              image: '/i6ye8ueFhVE5pXatgyRrZ83LBD8.jpg',
+              width: TMDB_SHOW_POSTER_WIDTH,
+            }),
+            width: TMDB_SHOW_POSTER_WIDTH,
+          },
           releaseDate: 'Aug 11, 2023',
           showType: 'movie',
           title: 'The Monkey King',
           userScore: 6.8,
-          userScoreCount: 170,
         },
         {
-          backdropPath: '/n6IHtlXxwxqI9CWpASDXil6HdDg.jpg',
           id: 16155,
-          posterPath: '/857L7x6uFNr4c2oHD5KJw5pkbxn.jpg',
+          poster: {
+            height: TMDB_SHOW_POSTER_HEIGHT,
+            path: getTMDBImagePath({
+              height: TMDB_SHOW_POSTER_HEIGHT,
+              image: '/857L7x6uFNr4c2oHD5KJw5pkbxn.jpg',
+              width: TMDB_SHOW_POSTER_WIDTH,
+            }),
+            width: TMDB_SHOW_POSTER_WIDTH,
+          },
           releaseDate: 'Aug 7, 1998',
           showType: 'movie',
           title: 'Safe Men',
           userScore: 5.6,
-          userScoreCount: 46,
         },
       ],
       releaseDate: 'Aug 16, 2023',
@@ -120,28 +156,30 @@ describe('transformVideos', () => {
       userScoreCount: 994,
       videos: [
         {
+          backdrop: { path: 'https://i.ytimg.com/vi/CvzlxfEz4hQ/hqdefault.jpg' },
           id: '6502385defea7a00e0360f7c',
           showId: 565770,
           showTitle: 'Blue Beetle',
           showType: 'movie',
           thumbnail: {
-            height: TMDB_VIDEO_CARD_THUMBNAIL_HEIGHT,
+            height: TMDB_VIDEO_THUMBNAIL_HEIGHT,
             path: 'https://i.ytimg.com/vi/CvzlxfEz4hQ/hqdefault.jpg',
-            width: TMDB_VIDEO_CARD_THUMBNAIL_WIDTH,
+            width: TMDB_VIDEO_THUMBNAIL_WIDTH,
           },
           title: 'Brynn',
           type: 'Featurette',
           youtubeKey: 'CvzlxfEz4hQ',
         },
         {
+          backdrop: { path: 'https://i.ytimg.com/vi/IcA02w6rm44/hqdefault.jpg' },
           id: '64f770aa5f2b8d00e12d5d1a',
           showId: 565770,
           showTitle: 'Blue Beetle',
           showType: 'movie',
           thumbnail: {
-            height: TMDB_VIDEO_CARD_THUMBNAIL_HEIGHT,
+            height: TMDB_VIDEO_THUMBNAIL_HEIGHT,
             path: 'https://i.ytimg.com/vi/IcA02w6rm44/hqdefault.jpg',
-            width: TMDB_VIDEO_CARD_THUMBNAIL_WIDTH,
+            width: TMDB_VIDEO_THUMBNAIL_WIDTH,
           },
           title: 'Official Trailer',
           type: 'Trailer',

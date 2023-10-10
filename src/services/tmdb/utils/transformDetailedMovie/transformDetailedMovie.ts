@@ -1,3 +1,7 @@
+import {
+  TMDB_DETAILED_SHOW_POSTER_HEIGHT,
+  TMDB_DETAILED_SHOW_POSTER_WIDTH,
+} from '@/services/tmdb/constants';
 import TMDBDetailedMovie from '@/services/tmdb/types/TMDBDetailedMovie';
 import TMDBReleaseDates from '@/services/tmdb/types/TMDBReleaseDates';
 import formatDate from '@/services/tmdb/utils/formatDate/formatDate';
@@ -6,6 +10,8 @@ import transformMovieCast from '@/services/tmdb/utils/transformMovieCast/transfo
 import transformShows from '@/services/tmdb/utils/transformShows/transformShows';
 import transformVideos from '@/services/tmdb/utils/transformVideos/transformVideos';
 import DetailedMovie from '@/types/DetailedMovie';
+
+import getTMDBImagePath from '../getTMDBImagePath/getTMDBImagePath';
 
 function getMovieRating(releaseDates: TMDBReleaseDates) {
   return releaseDates.results.find((release) => release.iso_3166_1 === 'US')?.release_dates[0]
@@ -38,8 +44,18 @@ export default function transformDetailedMovie({
   vote_average,
   vote_count,
 }: TMDBDetailedMovie): DetailedMovie {
+  const posterPath = getTMDBImagePath({
+    height: TMDB_DETAILED_SHOW_POSTER_HEIGHT,
+    image: poster_path,
+    width: TMDB_DETAILED_SHOW_POSTER_WIDTH,
+  });
+
+  const backdropPath = getTMDBImagePath({
+    image: backdrop_path,
+  });
+
   return {
-    backdropPath: backdrop_path,
+    backdrop: { path: backdropPath },
     budget,
     cast: transformMovieCast(credits.cast),
     createdBy: credits.crew
@@ -56,10 +72,14 @@ export default function transformDetailedMovie({
     originalLanguage: original_language,
     originalTitle: original_title,
     overview,
-    posterPath: poster_path,
+    poster: {
+      height: TMDB_DETAILED_SHOW_POSTER_HEIGHT,
+      path: posterPath,
+      width: TMDB_DETAILED_SHOW_POSTER_WIDTH,
+    },
     rating: getMovieRating(release_dates) || '',
     recommendations: transformShows(recommendations.results),
-    releaseDate: formatDate(release_date) || 'N/A',
+    releaseDate: release_date ? formatDate(release_date) : 'N/A',
     revenue,
     runtime,
     showType: 'movie',

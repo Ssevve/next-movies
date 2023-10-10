@@ -9,7 +9,7 @@ describe('ShowCard', () => {
     render(
       <ShowCard
         id={expectedShow.id}
-        posterPath={expectedShow.posterPath}
+        poster={expectedShow.poster}
         userScore={expectedShow.userScore}
         releaseDate={expectedShow.releaseDate}
         showType={expectedShow.showType}
@@ -24,7 +24,7 @@ describe('ShowCard', () => {
     render(
       <ShowCard
         id={expectedShow.id}
-        posterPath={expectedShow.posterPath}
+        poster={expectedShow.poster}
         userScore={expectedShow.userScore}
         releaseDate={expectedShow.releaseDate}
         showType={expectedShow.showType}
@@ -42,7 +42,7 @@ describe('ShowCard', () => {
     render(
       <ShowCard
         id={expectedShow.id}
-        posterPath={expectedShow.posterPath}
+        poster={expectedShow.poster}
         userScore={expectedShow.userScore}
         releaseDate={expectedShow.releaseDate}
         showType={expectedShow.showType}
@@ -57,7 +57,7 @@ describe('ShowCard', () => {
     render(
       <ShowCard
         id={expectedShow.id}
-        posterPath={expectedShow.posterPath}
+        poster={expectedShow.poster}
         userScore={expectedShow.userScore}
         releaseDate={expectedShow.releaseDate}
         showType={expectedShow.showType}
@@ -66,7 +66,9 @@ describe('ShowCard', () => {
     );
 
     const showPoster: HTMLImageElement = screen.getByRole('img');
-    expect(showPoster.src).toContain(expectedShow.posterPath.slice(1));
+    const expectedImageName = expectedShow.poster.path.split('/').slice(-1)[0];
+
+    expect(showPoster.src).toContain(expectedImageName);
   });
 
   it('should render <UserScore /> component', () => {
@@ -74,7 +76,7 @@ describe('ShowCard', () => {
     render(
       <ShowCard
         id={expectedShow.id}
-        posterPath={expectedShow.posterPath}
+        poster={expectedShow.poster}
         userScore={expectedShow.userScore}
         releaseDate={expectedShow.releaseDate}
         showType={expectedShow.showType}
@@ -89,7 +91,7 @@ describe('ShowCard', () => {
     render(
       <ShowCard
         id={expectedShow.id}
-        posterPath={expectedShow.posterPath}
+        poster={expectedShow.poster}
         userScore={expectedShow.userScore}
         releaseDate={expectedShow.releaseDate}
         showType={expectedShow.showType}
@@ -106,7 +108,7 @@ describe('ShowCard', () => {
     render(
       <ShowCard
         id={expectedShow.id}
-        posterPath={expectedShow.posterPath}
+        poster={expectedShow.poster}
         userScore={expectedShow.userScore}
         releaseDate={expectedShow.releaseDate}
         showType={expectedShow.showType}
@@ -121,7 +123,7 @@ describe('ShowCard', () => {
     render(
       <ShowCard
         id={expectedShow.id}
-        posterPath={expectedShow.posterPath}
+        poster={expectedShow.poster}
         userScore={expectedShow.userScore}
         releaseDate={expectedShow.releaseDate}
         showType={expectedShow.showType}

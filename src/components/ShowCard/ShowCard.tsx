@@ -3,16 +3,11 @@ import Link from 'next/link';
 
 import Hoverable from '@/components/ui/Hoverable';
 import UserScore from '@/components/UserScore/UserScore';
-import {
-  TMDB_IMAGE_URL,
-  TMDB_SHOW_CARD_POSTER_HEIGHT,
-  TMDB_SHOW_CARD_POSTER_PATH,
-  TMDB_SHOW_CARD_POSTER_WIDTH,
-} from '@/services/tmdb/constants';
+import ImageType from '@/types/Image';
 import ShowType from '@/types/ShowType';
 
 interface ShowCardProps {
-  posterPath: string;
+  poster: ImageType;
   id: number;
   title: string;
   userScore: number;
@@ -21,7 +16,7 @@ interface ShowCardProps {
 }
 
 export default function ShowCard({
-  posterPath,
+  poster,
   id,
   title,
   userScore,
@@ -33,10 +28,10 @@ export default function ShowCard({
       <Link href={`${showType}/${id}`}>
         <div className="relative">
           <Image
-            src={`${TMDB_IMAGE_URL}${TMDB_SHOW_CARD_POSTER_PATH}${posterPath}`}
+            src={poster.path}
             alt={title}
-            height={TMDB_SHOW_CARD_POSTER_HEIGHT}
-            width={TMDB_SHOW_CARD_POSTER_WIDTH}
+            height={poster.height}
+            width={poster.width}
             className="rounded-md"
           />
           <UserScore className="absolute -bottom-4 left-2 border" userScore={userScore} />

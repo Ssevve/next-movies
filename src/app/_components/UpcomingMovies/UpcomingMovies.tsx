@@ -30,12 +30,12 @@ async function getUpcomingMoviesTrailers() {
   const movies = await getUpcomingMovies();
 
   const result = await Promise.allSettled(
-    movies.map((movie) =>
+    movies.map(({ id, title, showType, thumbnailPath }) =>
       getTrailer({
-        showId: movie.id,
-        showTitle: movie.title || '',
-        showType: movie.showType,
-        thumbnailPath: movie.backdropPath,
+        showId: id,
+        showTitle: title || '',
+        showType,
+        thumbnailPath,
       })
     )
   );

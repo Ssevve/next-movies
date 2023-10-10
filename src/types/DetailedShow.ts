@@ -1,4 +1,5 @@
 import ShowType from '@/types//ShowType';
+import Backdrop from '@/types/Backdrop';
 import Creator from '@/types/Creator';
 import Genre from '@/types/Genre';
 import Images from '@/types/Images';
@@ -8,6 +9,8 @@ import SocialHandles from '@/types/SocialHandles';
 import Video from '@/types/Video';
 
 export default interface DetailedShow extends Show {
+  backdrop: Backdrop;
+  userScoreCount: number;
   genres: Genre[];
   images: Images;
   videos: Video[];

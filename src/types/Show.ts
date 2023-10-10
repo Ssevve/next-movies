@@ -1,12 +1,11 @@
+import Image from '@/types/Image';
 import ShowType from '@/types/ShowType';
 
 export default interface Show {
   id: number;
-  posterPath: string;
+  poster: Image;
   title: string;
   userScore: number;
-  userScoreCount: number;
   showType: ShowType;
   releaseDate: string;
-  backdropPath: string;
 }

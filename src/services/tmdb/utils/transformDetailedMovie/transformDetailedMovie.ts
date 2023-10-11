@@ -11,8 +11,6 @@ import transformShows from '@/services/tmdb/utils/transformShows/transformShows'
 import transformVideos from '@/services/tmdb/utils/transformVideos/transformVideos';
 import DetailedMovie from '@/types/DetailedMovie';
 
-import getTMDBImagePath from '../getTMDBImagePath/getTMDBImagePath';
-
 function getMovieRating(releaseDates: TMDBReleaseDates) {
   return releaseDates.results.find((release) => release.iso_3166_1 === 'US')?.release_dates[0]
     .certification;
@@ -44,18 +42,8 @@ export default function transformDetailedMovie({
   vote_average,
   vote_count,
 }: TMDBDetailedMovie): DetailedMovie {
-  const posterPath = getTMDBImagePath({
-    height: TMDB_DETAILED_SHOW_POSTER_HEIGHT,
-    image: poster_path,
-    width: TMDB_DETAILED_SHOW_POSTER_WIDTH,
-  });
-
-  const backdropPath = getTMDBImagePath({
-    image: backdrop_path,
-  });
-
   return {
-    backdrop: { path: backdropPath },
+    backdrop: { path: backdrop_path },
     budget,
     cast: transformMovieCast(credits.cast),
     createdBy: credits.crew
@@ -74,7 +62,7 @@ export default function transformDetailedMovie({
     overview,
     poster: {
       height: TMDB_DETAILED_SHOW_POSTER_HEIGHT,
-      path: posterPath,
+      path: poster_path,
       width: TMDB_DETAILED_SHOW_POSTER_WIDTH,
     },
     rating: getMovieRating(release_dates) || '',
@@ -97,7 +85,6 @@ export default function transformDetailedMovie({
       showId: id,
       showTitle: title,
       showType: 'movie',
-      thumbnailSource: 'YouTube',
       videos: videos.results,
     }),
   };

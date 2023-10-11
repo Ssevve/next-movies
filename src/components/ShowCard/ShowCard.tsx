@@ -3,6 +3,7 @@ import Link from 'next/link';
 
 import Hoverable from '@/components/ui/Hoverable';
 import UserScore from '@/components/UserScore/UserScore';
+import getTMDBImagePath from '@/services/tmdb/utils/getTMDBImagePath/getTMDBImagePath';
 import ImageType from '@/types/Image';
 import ShowType from '@/types/ShowType';
 
@@ -28,7 +29,11 @@ export default function ShowCard({
       <Link href={`${showType}/${id}`}>
         <div className="relative">
           <Image
-            src={poster.path}
+            src={getTMDBImagePath({
+              height: poster.height,
+              image: poster.path,
+              width: poster.width,
+            })}
             alt={title}
             height={poster.height}
             width={poster.width}

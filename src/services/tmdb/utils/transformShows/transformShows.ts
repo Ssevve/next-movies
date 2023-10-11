@@ -3,7 +3,6 @@ import TMDBMovie from '@/services/tmdb/types/TMDBMovie';
 import TMDBTvShow from '@/services/tmdb/types/TMDBTvShow';
 import TMDBUnknownShow from '@/services/tmdb/types/TMDBUnknownShow';
 import formatDate from '@/services/tmdb/utils/formatDate/formatDate';
-import getTMDBImagePath from '@/services/tmdb/utils/getTMDBImagePath/getTMDBImagePath';
 import Show from '@/types/Show';
 
 function isTMDBMovie(show: TMDBUnknownShow): show is TMDBMovie {
@@ -20,17 +19,11 @@ export default function transformShows(shows: TMDBUnknownShow[]) {
   return shows.map((show): Show => {
     const { id, poster_path, vote_average } = show;
 
-    const posterPath = getTMDBImagePath({
-      height: TMDB_SHOW_POSTER_HEIGHT,
-      image: poster_path,
-      width: TMDB_SHOW_POSTER_WIDTH,
-    });
-
     const transformedShow: Omit<Show, UniqueShowTypeProps> = {
       id,
       poster: {
         height: TMDB_SHOW_POSTER_HEIGHT,
-        path: posterPath,
+        path: poster_path,
         width: TMDB_SHOW_POSTER_WIDTH,
       },
       userScore: vote_average,

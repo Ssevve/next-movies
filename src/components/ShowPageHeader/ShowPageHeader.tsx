@@ -7,6 +7,7 @@ import ShowMetadata from '@/components/ShowPageHeader/components/ShowMetadata/Sh
 import ShowOverview from '@/components/ShowPageHeader/components/ShowOverview/ShowOverview';
 import UserScore from '@/components/UserScore/UserScore';
 import VideoLink from '@/components/VideoLink/VideoLink';
+import getTMDBImagePath from '@/services/tmdb/utils/getTMDBImagePath/getTMDBImagePath';
 import DetailedShow from '@/types/DetailedShow';
 import Video from '@/types/Video';
 
@@ -63,10 +64,18 @@ export default function ShowPageHeader({
   userScoreCount,
   overview,
 }: ShowPageHeaderProps) {
+  const fullPosterPath = getTMDBImagePath({
+    height: poster.height,
+    image: poster.path,
+    width: poster.width,
+  });
+
+  const fullBackdropPath = getTMDBImagePath({ image: backdrop.path });
+
   return (
     <section className="relative w-screen">
       <Image
-        src={backdrop.path}
+        src={fullBackdropPath}
         alt=""
         fill
         priority
@@ -74,7 +83,7 @@ export default function ShowPageHeader({
       />
       <section className="container relative flex flex-col gap-8 px-4 py-8 sm:flex-row sm:items-center">
         <Image
-          src={poster.path}
+          src={fullPosterPath}
           alt={title}
           width={poster.width}
           height={poster.height}

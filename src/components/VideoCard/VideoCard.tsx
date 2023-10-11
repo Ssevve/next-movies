@@ -5,8 +5,10 @@ import Link from 'next/link';
 import Hoverable, { HoverableProps } from '@/components/ui/Hoverable';
 import VideoLink from '@/components/VideoLink/VideoLink';
 import cn from '@/lib/cn';
+import getTMDBImagePath from '@/services/tmdb/utils/getTMDBImagePath/getTMDBImagePath';
 import ImageType from '@/types/Image';
 import ShowType from '@/types/ShowType';
+import getYoutubeThumbnail from '@/utils/getYoutubeThumbnail/getYoutubeThumbnail';
 
 interface VideoCardProps extends Omit<HoverableProps, 'children'> {
   videoTitle: string;
@@ -30,12 +32,20 @@ export default function VideoCard({
   invertedTextColor = false,
   ...props
 }: VideoCardProps) {
+  const fulLThumbnailPath = thumbnail.path
+    ? getTMDBImagePath({
+        height: thumbnail.height,
+        image: thumbnail.path,
+        width: thumbnail.width,
+      })
+    : getYoutubeThumbnail(youtubeKey);
+
   return (
     <>
       <Hoverable className="w-[275px]" {...props}>
         <VideoLink youtubeKey={youtubeKey} title={videoTitle}>
           <Image
-            src={thumbnail.path}
+            src={fulLThumbnailPath}
             alt=""
             className="aspect-video h-full rounded-md object-cover"
             width={thumbnail.width}

@@ -1,17 +1,9 @@
 import { render, screen } from '@testing-library/react';
 
 import PersonCard from '@/components/PersonCard/PersonCard';
-import { TMDB_PERSON_IMAGE_HEIGHT, TMDB_PERSON_IMAGE_WIDTH } from '@/services/tmdb/constants';
-import getTMDBImagePath from '@/services/tmdb/utils/getTMDBImagePath/getTMDBImagePath';
 import CastPerson from '@/types/CastPerson';
 
-const testImageName = '/testImage.jpg';
-
-const testImagePath = getTMDBImagePath({
-  height: TMDB_PERSON_IMAGE_HEIGHT,
-  image: testImageName,
-  width: TMDB_PERSON_IMAGE_WIDTH,
-});
+const testImagePath = '/testImage.jpg';
 
 describe('PersonCard', () => {
   it("should render person's image", () => {
@@ -56,7 +48,7 @@ describe('PersonCard', () => {
     );
 
     const image: HTMLImageElement = screen.getByRole('img', { name: expectedPerson.name });
-    expect(image.src).toContain(testImageName.slice(1));
+    expect(image.src).toContain(testImagePath.slice(1));
   });
 
   it('should render correct placeholder for male if imagePath is not present', () => {

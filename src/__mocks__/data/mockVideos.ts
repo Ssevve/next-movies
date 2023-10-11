@@ -1,5 +1,3 @@
-import { TMDB_VIDEO_THUMBNAIL_HEIGHT, TMDB_VIDEO_THUMBNAIL_WIDTH } from '@/services/tmdb/constants';
-import getTMDBImagePath from '@/services/tmdb/utils/getTMDBImagePath/getTMDBImagePath';
 import Video from '@/types/Video';
 
 const mockVideos: Video[] = [
@@ -11,11 +9,7 @@ const mockVideos: Video[] = [
     showType: 'movie',
     thumbnail: {
       height: 200,
-      path: getTMDBImagePath({
-        height: TMDB_VIDEO_THUMBNAIL_HEIGHT,
-        image: '/qEm4FrkGh7kGoEiBOyGYNielYVc.jpg',
-        width: TMDB_VIDEO_THUMBNAIL_WIDTH,
-      }),
+      path: '/qEm4FrkGh7kGoEiBOyGYNielYVc.jpg',
       width: 355,
     },
     title: 'Official Trailer',
@@ -30,11 +24,7 @@ const mockVideos: Video[] = [
     showType: 'movie',
     thumbnail: {
       height: 100,
-      path: getTMDBImagePath({
-        height: TMDB_VIDEO_THUMBNAIL_HEIGHT,
-        image: '/qZOuoBoKCDLSm1EvYz2eBub8Cto.jpg',
-        width: TMDB_VIDEO_THUMBNAIL_WIDTH,
-      }),
+      path: '/qZOuoBoKCDLSm1EvYz2eBub8Cto.jpg',
       width: 200,
     },
     title: 'ARGONUTS - Official Australian Trailer',

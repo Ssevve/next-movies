@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { ScrollArea, ScrollBar } from '@/components/ui/ScrollArea';
+import cn from '@/lib/cn';
 
 interface ScrollerProps {
   emptyMessage: string;

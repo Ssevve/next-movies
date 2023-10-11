@@ -1,6 +1,8 @@
 import Image from 'next/image';
 
 import cn from '@/lib/cn';
+import { TMDB_VIDEO_BACKDROP_HEIGHT, TMDB_VIDEO_BACKDROP_WIDTH } from '@/services/tmdb/constants';
+import getTMDBImagePath from '@/services/tmdb/utils/getTMDBImagePath/getTMDBImagePath';
 
 interface CrossFadeBackgroundImageProps {
   currentBackgroundPath: string;
@@ -14,7 +16,17 @@ export default function CrossFadeBackgroundImage({
   activeImage,
 }: CrossFadeBackgroundImageProps) {
   const getBackgroundImagePath = (imageIndex: number) => {
-    return activeImage === imageIndex ? currentBackgroundPath : previousBackgroundPath;
+    return activeImage === imageIndex
+      ? getTMDBImagePath({
+          height: TMDB_VIDEO_BACKDROP_HEIGHT,
+          image: currentBackgroundPath,
+          width: TMDB_VIDEO_BACKDROP_WIDTH,
+        })
+      : getTMDBImagePath({
+          height: TMDB_VIDEO_BACKDROP_HEIGHT,
+          image: previousBackgroundPath,
+          width: TMDB_VIDEO_BACKDROP_WIDTH,
+        });
   };
 
   const getBackgroundImageClassNames = (imageIndex: number) => {

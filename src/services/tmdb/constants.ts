@@ -16,6 +16,9 @@ export const TMDB_VIDEO_BACKDROP_WIDTH = 1920;
 export const TMDB_DETAILED_SHOW_POSTER_HEIGHT = 450;
 export const TMDB_DETAILED_SHOW_POSTER_WIDTH = 300;
 
+export const TMDB_BACKDROP_THUMBNAIL_HEIGHT = 200;
+export const TMDB_BACKDROP_THUMBNAIL_WIDTH = 355;
+
 export const genderMap = {
   0: 'N/A',
   1: 'Female',

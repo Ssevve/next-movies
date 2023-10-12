@@ -29,11 +29,7 @@ export default function ShowCard({
       <Link href={`${showType}/${id}`}>
         <div className="relative">
           <Image
-            src={getTMDBImagePath({
-              height: poster.height,
-              image: poster.path,
-              width: poster.width,
-            })}
+            src={getTMDBImagePath(poster.path, poster.width, poster.height)}
             alt={title}
             height={poster.height}
             width={poster.width}

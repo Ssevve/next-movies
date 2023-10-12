@@ -1,7 +1,4 @@
-import {
-  TMDB_DETAILED_SHOW_POSTER_HEIGHT,
-  TMDB_DETAILED_SHOW_POSTER_WIDTH,
-} from '@/services/tmdb/constants';
+import { imageSizes } from '@/services/tmdb/config';
 import TMDBDetailedMovie from '@/services/tmdb/types/TMDBDetailedMovie';
 import TMDBReleaseDates from '@/services/tmdb/types/TMDBReleaseDates';
 import formatDate from '@/services/tmdb/utils/formatDate/formatDate';
@@ -61,9 +58,9 @@ export default function transformDetailedMovie({
     originalTitle: original_title,
     overview,
     poster: {
-      height: TMDB_DETAILED_SHOW_POSTER_HEIGHT,
+      height: imageSizes.posters.detailedShow.height,
       path: poster_path,
-      width: TMDB_DETAILED_SHOW_POSTER_WIDTH,
+      width: imageSizes.posters.detailedShow.width,
     },
     rating: getMovieRating(release_dates) || '',
     recommendations: transformShows(recommendations.results),

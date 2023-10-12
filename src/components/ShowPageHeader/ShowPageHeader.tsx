@@ -64,13 +64,8 @@ export default function ShowPageHeader({
   userScoreCount,
   overview,
 }: ShowPageHeaderProps) {
-  const fullPosterPath = getTMDBImagePath({
-    height: poster.height,
-    image: poster.path,
-    width: poster.width,
-  });
-
-  const fullBackdropPath = getTMDBImagePath({ image: backdrop.path });
+  const fullPosterPath = getTMDBImagePath(poster.path, poster.width, poster.height);
+  const fullBackdropPath = getTMDBImagePath(backdrop.path);
 
   return (
     <section className="relative w-screen">

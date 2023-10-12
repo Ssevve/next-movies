@@ -1,4 +1,4 @@
-import { TMDB_VIDEO_THUMBNAIL_HEIGHT, TMDB_VIDEO_THUMBNAIL_WIDTH } from '@/services/tmdb/constants';
+import { imageSizes } from '@/services/tmdb/config';
 import TMDBVideo from '@/services/tmdb/types/TMDBVideo';
 import ShowType from '@/types/ShowType';
 import Video from '@/types/Video';
@@ -30,9 +30,9 @@ export default function transformVideos({
       showTitle,
       showType,
       thumbnail: {
-        height: TMDB_VIDEO_THUMBNAIL_HEIGHT,
+        height: imageSizes.thumbnails.video.height,
         path: thumbnailPath,
-        width: TMDB_VIDEO_THUMBNAIL_WIDTH,
+        width: imageSizes.thumbnails.video.width,
       },
       title: name,
       type,

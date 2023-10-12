@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
 import Hoverable from '@/components/ui/Hoverable';
-import { TMDB_PERSON_IMAGE_HEIGHT, TMDB_PERSON_IMAGE_WIDTH } from '@/services/tmdb/constants';
+import { imageSizes } from '@/services/tmdb/config';
 import getTMDBImagePath from '@/services/tmdb/utils/getTMDBImagePath/getTMDBImagePath';
 import Gender from '@/types/Gender';
 
@@ -17,11 +17,7 @@ export default function PersonCard({ name, gender, imagePath, children }: Person
     gender === 'Female' ? 'female-placeholder.svg' : 'male-placeholder.svg';
   const placeholderImagePath = `/images/${placeholderImageName}`;
   const imageSrc = imagePath
-    ? getTMDBImagePath({
-        height: TMDB_PERSON_IMAGE_HEIGHT,
-        image: imagePath,
-        width: TMDB_PERSON_IMAGE_WIDTH,
-      })
+    ? getTMDBImagePath(imagePath, imageSizes.person.width, imageSizes.person.height)
     : placeholderImagePath;
   return (
     <Hoverable className="w-[150px]">

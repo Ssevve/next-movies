@@ -6,12 +6,12 @@ import mockTMDBMovieVideos from '@/__mocks__/data/mockTMDBMovieVideos';
 import mockTMDBTvShowVideos from '@/__mocks__/data/mockTMDBTvShowVideos';
 import { server } from '@/__mocks__/server';
 import getTrailer from '@/services/tmdb/api/getTrailer/getTrailer';
-import { TMDB_BASE_URL } from '@/services/tmdb/constants';
+import { urls } from '@/services/tmdb/config';
 import transformVideos from '@/services/tmdb/utils/transformVideos/transformVideos';
 import Video from '@/types/Video';
 import findTrailer from '@/utils/findTrailer/findTrailer';
 
-const endpoint = `${TMDB_BASE_URL}/:showType/:showId/videos`;
+const endpoint = `${urls.base}/:showType/:showId/videos`;
 
 type SharedProps = Pick<Video, 'showId' | 'showTitle' | 'showType'>;
 
@@ -35,7 +35,6 @@ describe('getTrailer', () => {
       videos: mockTMDBMovieVideos,
       ...movieArgs,
       thumbnailPath: expectedTMDBThumbnailPath,
-      thumbnailSource: 'TMDB',
     });
     const expectedTrailer = findTrailer(videos);
     const trailer = await getTrailer({ ...movieArgs, thumbnailPath: expectedTMDBThumbnailPath });
@@ -47,7 +46,6 @@ describe('getTrailer', () => {
       videos: mockTMDBTvShowVideos,
       ...tvShowArgs,
       thumbnailPath: expectedTMDBThumbnailPath,
-      thumbnailSource: 'TMDB',
     });
     const expectedTrailer = findTrailer(videos);
     const trailer = await getTrailer({ ...tvShowArgs, thumbnailPath: expectedTMDBThumbnailPath });

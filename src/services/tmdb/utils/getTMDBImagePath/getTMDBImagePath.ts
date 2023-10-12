@@ -1,12 +1,6 @@
-import { TMDB_IMAGE_URL } from '@/services/tmdb/constants';
+import { urls } from '@/services/tmdb/config';
 
-interface GetTMDBImagePathParams {
-  width?: number;
-  height?: number;
-  image: string;
-}
-
-export default function getTMDBImagePath({ width, height, image }: GetTMDBImagePathParams) {
-  if (!width || !height) return `${TMDB_IMAGE_URL}/original${image}`;
-  else return `${TMDB_IMAGE_URL}/w${width}_and_h${height}_face${image}`;
+export default function getTMDBImagePath(image: string, width?: number, height?: number) {
+  if (!width || !height) return `${urls.image}/original${image}`;
+  else return `${urls.image}/w${width}_and_h${height}_face${image}`;
 }

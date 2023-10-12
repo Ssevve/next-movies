@@ -5,7 +5,7 @@ import { rest } from 'msw';
 import mockTMDBMovies from '@/__mocks__/data/mockTMDBMovies';
 import { server } from '@/__mocks__/server';
 import getUpcomingMovies from '@/services/tmdb/api/getUpcomingMovies/getUpcomingMovies';
-import { TMDB_BASE_URL } from '@/services/tmdb/constants';
+import { urls } from '@/services/tmdb/config';
 import formatDate from '@/services/tmdb/utils/formatDate/formatDate';
 
 describe('getUpcomingMovies', () => {
@@ -23,7 +23,7 @@ describe('getUpcomingMovies', () => {
 
   it('should throw correct error on failed fetch', () => {
     server.use(
-      rest.get(`${TMDB_BASE_URL}/movie/upcoming`, (req, res, ctx) => {
+      rest.get(`${urls.base}/movie/upcoming`, (req, res, ctx) => {
         return res(ctx.status(500));
       })
     );

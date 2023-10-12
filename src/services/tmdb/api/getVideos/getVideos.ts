@@ -30,7 +30,6 @@ export default async function getVideos({
     showTitle,
     showType,
     thumbnailPath,
-    thumbnailSource: 'TMDB',
     videos: videos.results,
   });
 }

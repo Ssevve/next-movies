@@ -2,7 +2,7 @@ import { Play } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import Hoverable, { HoverableProps } from '@/components/ui/Hoverable';
+import Hoverable from '@/components/ui/Hoverable';
 import VideoLink from '@/components/VideoLink/VideoLink';
 import cn from '@/lib/cn';
 import getTMDBImagePath from '@/services/tmdb/utils/getTMDBImagePath/getTMDBImagePath';
@@ -10,7 +10,7 @@ import ImageType from '@/types/Image';
 import ShowType from '@/types/ShowType';
 import getYoutubeThumbnail from '@/utils/getYoutubeThumbnail/getYoutubeThumbnail';
 
-interface VideoCardProps extends Omit<HoverableProps, 'children'> {
+interface VideoCardProps {
   videoTitle: string;
   showTitle: string;
   id: string;
@@ -33,11 +33,7 @@ export default function VideoCard({
   ...props
 }: VideoCardProps) {
   const fulLThumbnailPath = thumbnail.path
-    ? getTMDBImagePath({
-        height: thumbnail.height,
-        image: thumbnail.path,
-        width: thumbnail.width,
-      })
+    ? getTMDBImagePath(thumbnail.path, thumbnail.width, thumbnail.height)
     : getYoutubeThumbnail(youtubeKey);
 
   return (

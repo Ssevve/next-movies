@@ -6,10 +6,10 @@ import mockTMDBMovies from '@/__mocks__/data/mockTMDBMovies';
 import mockTMDBTvShows from '@/__mocks__/data/mockTMDBTvShows';
 import { server } from '@/__mocks__/server';
 import getPopularShows from '@/services/tmdb/api/getPopularShows/getPopularShows';
-import { TMDB_BASE_URL } from '@/services/tmdb/constants';
+import { urls } from '@/services/tmdb/config';
 import transformShows from '@/services/tmdb/utils/transformShows/transformShows';
 
-const endpoint = `${TMDB_BASE_URL}/:showType/popular`;
+const endpoint = `${urls.base}/:showType/popular`;
 
 describe('getPopularShows', () => {
   it('should return correct results for movies', async () => {

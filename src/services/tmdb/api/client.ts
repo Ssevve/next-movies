@@ -1,5 +1,5 @@
 import { env } from '@/config/env';
-import { TMDB_BASE_URL } from '@/services/tmdb/constants';
+import { urls } from '@/services/tmdb/config';
 
 function mergeOptions(options?: RequestInit) {
   const mergedOptions = { ...options };
@@ -13,5 +13,5 @@ function mergeOptions(options?: RequestInit) {
 
 export default function tmdbAPI(url: string, options?: RequestInit) {
   if (url.startsWith('/')) url = url.slice(1);
-  return fetch(`${TMDB_BASE_URL}/${url}`, mergeOptions(options));
+  return fetch(`${urls.base}/${url}`, mergeOptions(options));
 }

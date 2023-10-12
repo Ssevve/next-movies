@@ -1,8 +1,7 @@
 import mockTMDBMovieVideos from '@/__mocks__/data/mockTMDBMovieVideos';
-import { TMDB_VIDEO_THUMBNAIL_HEIGHT, TMDB_VIDEO_THUMBNAIL_WIDTH } from '@/services/tmdb/constants';
+import { imageSizes } from '@/services/tmdb/config';
 import transformVideos from '@/services/tmdb/utils/transformVideos/transformVideos';
 import Video from '@/types/Video';
-import getYoutubeThumbnail from '@/utils/getYoutubeThumbnail/getYoutubeThumbnail';
 
 const expectedShowData: Pick<Video, 'showId' | 'showType' | 'showTitle'> = {
   showId: 1,
@@ -22,9 +21,9 @@ describe('transformVideos', () => {
         id: testVideo.id,
         ...expectedShowData,
         thumbnail: {
-          height: TMDB_VIDEO_THUMBNAIL_HEIGHT,
+          height: imageSizes.thumbnails.video.height,
           path: testTMDBImage,
-          width: TMDB_VIDEO_THUMBNAIL_WIDTH,
+          width: imageSizes.thumbnails.video.width,
         },
         title: testVideo.name,
         type: testVideo.type,
@@ -48,9 +47,9 @@ describe('transformVideos', () => {
       },
       id: video.id,
       thumbnail: {
-        height: TMDB_VIDEO_THUMBNAIL_HEIGHT,
+        height: imageSizes.thumbnails.video.height,
         path: testTMDBImage,
-        width: TMDB_VIDEO_THUMBNAIL_WIDTH,
+        width: imageSizes.thumbnails.video.width,
       },
       title: video.name,
       type: video.type,

@@ -21,19 +21,21 @@ export default async function getDetailedMovie(movieId: number): Promise<Detaile
   if (!res.ok) throw Error('Could not get movie data.');
   const detailedMovieData: TMDBDetailedMovie = await res.json();
 
+  let originalLanguageName = '';
   try {
-    let originalLanguageName = '';
     if (detailedMovieData.original_language) {
       const languages = await getLanguages();
-      originalLanguageName = languages[detailedMovieData.original_language] || '';
+      if (languages[detailedMovieData.original_language]) {
+        originalLanguageName = languages[detailedMovieData.original_language];
+      }
     }
+  } catch (error) {
+    if (error instanceof Error) console.log(error.message);
+    else console.log(error);
+  } finally {
     return transformDetailedMovie({
       ...detailedMovieData,
       original_language: originalLanguageName,
     });
-  } catch (error) {
-    if (error instanceof Error) console.log(error.message);
-    else console.log(error);
-    return transformDetailedMovie({ ...detailedMovieData, original_language: '' });
   }
 }

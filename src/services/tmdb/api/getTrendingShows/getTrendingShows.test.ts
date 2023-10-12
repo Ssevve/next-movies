@@ -7,10 +7,10 @@ import mockTMDBTvShows from '@/__mocks__/data/mockTMDBTvShows';
 import mockTMDBUnknownShows from '@/__mocks__/data/mockTMDBUnknownShows';
 import { server } from '@/__mocks__/server';
 import getTrendingShows from '@/services/tmdb/api/getTrendingShows/getTrendingShows';
-import { TMDB_BASE_URL } from '@/services/tmdb/constants';
+import { urls } from '@/services/tmdb/config';
 import transformShows from '@/services/tmdb/utils/transformShows/transformShows';
 
-const endpoint = `${TMDB_BASE_URL}/trending/:showType/:timeWindow`;
+const endpoint = `${urls.base}/trending/:showType/:timeWindow`;
 
 describe('getTrendingShows', () => {
   it('should return correct results for mixed shows', async () => {

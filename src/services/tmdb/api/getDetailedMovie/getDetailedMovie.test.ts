@@ -5,7 +5,7 @@ import { rest } from 'msw';
 import mockTMDBDetailedMovies from '@/__mocks__/data/mockTMDBDetailedMovies';
 import { server } from '@/__mocks__/server';
 import getDetailedMovie from '@/services/tmdb/api/getDetailedMovie/getDetailedMovie';
-import { TMDB_BASE_URL } from '@/services/tmdb/constants';
+import { urls } from '@/services/tmdb/config';
 import transformDetailedMovie from '@/services/tmdb/utils/transformDetailedMovie/transformDetailedMovie';
 
 describe('getDetailedMovie', () => {
@@ -26,7 +26,7 @@ describe('getDetailedMovie', () => {
   it('should throw correct error on failed fetch', () => {
     const testMovie = mockTMDBDetailedMovies.withOriginalLanguage;
     server.use(
-      rest.get(`${TMDB_BASE_URL}/movie/:movieId`, (req, res, ctx) => {
+      rest.get(`${urls.base}/movie/:movieId`, (req, res, ctx) => {
         return res(ctx.status(500));
       })
     );

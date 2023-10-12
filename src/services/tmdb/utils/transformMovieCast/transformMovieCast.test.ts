@@ -1,5 +1,5 @@
 import mockTMDBMovieCast from '@/__mocks__/data/mockTMDBMovieCast';
-import { genderMap } from '@/services/tmdb/constants';
+import { genders } from '@/services/tmdb/config';
 import transformMovieCast from '@/services/tmdb/utils/transformMovieCast/transformMovieCast';
 import CastPerson from '@/types/CastPerson';
 
@@ -9,7 +9,7 @@ describe('transformVideos', () => {
     const expectedCastPerson: CastPerson[] = [
       {
         character: testCastPerson.character,
-        gender: genderMap[testCastPerson.gender],
+        gender: genders[testCastPerson.gender],
         id: testCastPerson.id,
         imagePath: testCastPerson.profile_path,
         name: testCastPerson.name,
@@ -23,7 +23,7 @@ describe('transformVideos', () => {
   it('should return correctly transformed data for multiple people', async () => {
     const expectedCast: CastPerson[] = mockTMDBMovieCast.map((person) => ({
       character: person.character,
-      gender: genderMap[person.gender],
+      gender: genders[person.gender],
       id: person.id,
       imagePath: person.profile_path,
       name: person.name,

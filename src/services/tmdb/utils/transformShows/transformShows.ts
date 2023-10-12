@@ -1,4 +1,4 @@
-import { TMDB_SHOW_POSTER_HEIGHT, TMDB_SHOW_POSTER_WIDTH } from '@/services/tmdb/constants';
+import { imageSizes } from '@/services/tmdb/config';
 import TMDBMovie from '@/services/tmdb/types/TMDBMovie';
 import TMDBTvShow from '@/services/tmdb/types/TMDBTvShow';
 import TMDBUnknownShow from '@/services/tmdb/types/TMDBUnknownShow';
@@ -22,9 +22,9 @@ export default function transformShows(shows: TMDBUnknownShow[]) {
     const transformedShow: Omit<Show, UniqueShowTypeProps> = {
       id,
       poster: {
-        height: TMDB_SHOW_POSTER_HEIGHT,
+        height: imageSizes.posters.show.height,
         path: poster_path,
-        width: TMDB_SHOW_POSTER_WIDTH,
+        width: imageSizes.posters.show.width,
       },
       userScore: vote_average,
     };

@@ -6,11 +6,11 @@ import mockTMDBMovieVideos from '@/__mocks__/data/mockTMDBMovieVideos';
 import mockTMDBTvShowVideos from '@/__mocks__/data/mockTMDBTvShowVideos';
 import { server } from '@/__mocks__/server';
 import getVideos from '@/services/tmdb/api/getVideos/getVideos';
-import { TMDB_BASE_URL } from '@/services/tmdb/constants';
+import { urls } from '@/services/tmdb/config';
 import transformVideos from '@/services/tmdb/utils/transformVideos/transformVideos';
 import Video from '@/types/Video';
 
-const endpoint = `${TMDB_BASE_URL}/:showType/:showId/videos`;
+const endpoint = `${urls.base}/:showType/:showId/videos`;
 
 type ShowProps = Pick<Video, 'showId' | 'showTitle' | 'showType'>;
 
@@ -26,7 +26,6 @@ describe('getVideos', () => {
       videos: mockTMDBMovieVideos,
       ...expectedShowProps,
       thumbnailPath: expectedTMDBThumbnailPath,
-      thumbnailSource: 'TMDB',
     });
 
     const response = await getVideos({
@@ -47,7 +46,6 @@ describe('getVideos', () => {
       videos: mockTMDBTvShowVideos,
       ...expectedShowProps,
       thumbnailPath: expectedTMDBThumbnailPath,
-      thumbnailSource: 'TMDB',
     });
 
     const response = await getVideos({

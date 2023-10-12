@@ -1,7 +1,7 @@
 import mockTMDBMovies from '@/__mocks__/data/mockTMDBMovies';
 import mockTMDBTvShows from '@/__mocks__/data/mockTMDBTvShows';
 import mockTMDBUnknownShows from '@/__mocks__/data/mockTMDBUnknownShows';
-import { TMDB_SHOW_POSTER_HEIGHT, TMDB_SHOW_POSTER_WIDTH } from '@/services/tmdb/constants';
+import { imageSizes } from '@/services/tmdb/config';
 import formatDate from '@/services/tmdb/utils/formatDate/formatDate';
 import transformShows from '@/services/tmdb/utils/transformShows/transformShows';
 import Show from '@/types/Show';
@@ -12,9 +12,9 @@ describe('transformShowsResults', () => {
       {
         id: mockTMDBUnknownShows[0].id,
         poster: {
-          height: TMDB_SHOW_POSTER_HEIGHT,
+          height: imageSizes.posters.show.height,
           path: mockTMDBUnknownShows[0].poster_path,
-          width: TMDB_SHOW_POSTER_WIDTH,
+          width: imageSizes.posters.show.width,
         },
         releaseDate: formatDate(mockTMDBUnknownShows[0].release_date!),
         showType: 'movie',
@@ -24,9 +24,9 @@ describe('transformShowsResults', () => {
       {
         id: mockTMDBUnknownShows[1].id,
         poster: {
-          height: TMDB_SHOW_POSTER_HEIGHT,
+          height: imageSizes.posters.show.height,
           path: mockTMDBUnknownShows[1].poster_path,
-          width: TMDB_SHOW_POSTER_WIDTH,
+          width: imageSizes.posters.show.width,
         },
         releaseDate: formatDate(mockTMDBUnknownShows[1].first_air_date!),
         showType: 'tv',
@@ -44,9 +44,9 @@ describe('transformShowsResults', () => {
       ({ id, poster_path, title, vote_average, release_date }) => ({
         id,
         poster: {
-          height: TMDB_SHOW_POSTER_HEIGHT,
+          height: imageSizes.posters.show.height,
           path: poster_path,
-          width: TMDB_SHOW_POSTER_WIDTH,
+          width: imageSizes.posters.show.width,
         },
         releaseDate: release_date ? formatDate(release_date) : 'N/A',
         showType: 'movie',
@@ -64,9 +64,9 @@ describe('transformShowsResults', () => {
       ({ id, poster_path, name, vote_average, first_air_date }) => ({
         id: id,
         poster: {
-          height: TMDB_SHOW_POSTER_HEIGHT,
+          height: imageSizes.posters.show.height,
           path: poster_path,
-          width: TMDB_SHOW_POSTER_WIDTH,
+          width: imageSizes.posters.show.width,
         },
         releaseDate: formatDate(first_air_date!),
         showType: 'tv',
@@ -84,9 +84,9 @@ describe('transformShowsResults', () => {
       {
         id: mockTMDBTvShows[0].id,
         poster: {
-          height: TMDB_SHOW_POSTER_HEIGHT,
+          height: imageSizes.posters.show.height,
           path: mockTMDBTvShows[0].poster_path,
-          width: TMDB_SHOW_POSTER_WIDTH,
+          width: imageSizes.posters.show.width,
         },
         releaseDate: 'N/A',
         showType: 'tv',

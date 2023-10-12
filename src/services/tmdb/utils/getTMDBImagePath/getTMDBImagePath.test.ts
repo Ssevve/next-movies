@@ -1,4 +1,4 @@
-import { TMDB_IMAGE_URL } from '@/services/tmdb/constants';
+import { urls } from '@/services/tmdb/config';
 import getTMDBImagePath from '@/services/tmdb/utils/getTMDBImagePath/getTMDBImagePath';
 
 describe('getTMDBImagePath', () => {
@@ -6,15 +6,13 @@ describe('getTMDBImagePath', () => {
     const expectedWidth = 200;
     const expectedHeight = 250;
     const expectedImage = '/testImage.jpg';
-    expect(
-      getTMDBImagePath({ height: expectedHeight, image: expectedImage, width: expectedWidth })
-    ).toEqual(`${TMDB_IMAGE_URL}/w${expectedWidth}_and_h${expectedHeight}_face${expectedImage}`);
+    expect(getTMDBImagePath(expectedImage, expectedWidth, expectedHeight)).toEqual(
+      `${urls.image}/w${expectedWidth}_and_h${expectedHeight}_face${expectedImage}`
+    );
   });
 
   it('should return correct string when height and width are omitted', () => {
     const expectedImage = '/testImage.jpg';
-    expect(getTMDBImagePath({ image: expectedImage })).toEqual(
-      `${TMDB_IMAGE_URL}/original${expectedImage}`
-    );
+    expect(getTMDBImagePath(expectedImage)).toEqual(`${urls.image}/original${expectedImage}`);
   });
 });

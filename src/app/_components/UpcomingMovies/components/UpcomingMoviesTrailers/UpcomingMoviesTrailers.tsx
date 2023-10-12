@@ -6,6 +6,8 @@ import { useState } from 'react';
 import CrossFadeBackgroundImage from '@/app/_components/UpcomingMovies/components/UpcomingMoviesTrailers/components/CrossFadeBackgroundImage';
 import VideoScroller from '@/components/VideoScroller/VideoScroller';
 import cn from '@/lib/cn';
+import { imageSizes } from '@/services/tmdb/config';
+import getTMDBImagePath from '@/services/tmdb/utils/getTMDBImagePath/getTMDBImagePath';
 import Video from '@/types/Video';
 
 interface UpcomingMoviesTrailersProps {
@@ -15,14 +17,25 @@ interface UpcomingMoviesTrailersProps {
 export default function UpcomingMoviesTrailers({ trailers }: UpcomingMoviesTrailersProps) {
   const { theme } = useTheme();
 
-  const initialBackgroundPath = trailers[0]?.backdrop.path || '';
+  const initialBackgroundPath =
+    getTMDBImagePath(
+      trailers[0]?.backdrop.path,
+      imageSizes.backdrops.video.width,
+      imageSizes.backdrops.video.height
+    ) || '';
   const [currentBackgroundPath, setCurrentBackgroundPath] = useState(initialBackgroundPath);
   const [previousBackgroundPath, setPreviousBackgroundPath] = useState(initialBackgroundPath);
   const [activeImage, setActiveImage] = useState(0);
 
   const changeActiveImage = (path: string) => {
-    if (path === currentBackgroundPath) return;
-    setCurrentBackgroundPath(path);
+    const fullPath = getTMDBImagePath(
+      path,
+      imageSizes.backdrops.video.width,
+      imageSizes.backdrops.video.height
+    );
+
+    if (fullPath === currentBackgroundPath) return;
+    setCurrentBackgroundPath(fullPath);
     setPreviousBackgroundPath(currentBackgroundPath);
     setActiveImage((prev) => (prev === 0 ? 1 : 0));
   };

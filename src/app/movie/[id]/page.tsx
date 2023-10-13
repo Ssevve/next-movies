@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 
 import MovieFacts from '@/app/movie/[id]/_components/MovieFacts/MovieFacts';
+import Recommendations from '@/components/Recommendations/Recommendations';
 import ShowCast from '@/components/ShowCast/ShowCast';
 import ShowMedia from '@/components/ShowMedia/ShowMedia';
 import ShowPageHeader from '@/components/ShowPageHeader/ShowPageHeader';
@@ -61,6 +62,7 @@ export default async function MoviePage({ searchParams, params }: MoviePageProps
     cast,
     originalLanguage,
     images,
+    recommendations,
   } = await getDetailedMovie(Number(movieId));
   const previewVideo = findTrailer(videos);
   return (
@@ -96,6 +98,7 @@ export default async function MoviePage({ searchParams, params }: MoviePageProps
         />
         <ShowCast cast={cast} />
         <ShowMedia posters={images.posters} backdrops={images.backdrops} videos={videos} />
+        <Recommendations shows={recommendations} />
       </section>
     </section>
   );

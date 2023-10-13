@@ -26,7 +26,7 @@ export default function ShowCard({
 }: ShowCardProps) {
   return (
     <Hoverable className="w-[150px]">
-      <Link href={`${showType}/${id}`}>
+      <Link href={`/${showType}/${id}`}>
         <div className="relative">
           <Image
             src={getTMDBImagePath(poster.path, poster.width, poster.height)}
@@ -35,6 +35,7 @@ export default function ShowCard({
             width={poster.width}
             className="rounded-md"
           />
+
           <UserScore className="absolute -bottom-4 left-2 border" userScore={userScore} />
         </div>
         <h3 className="mt-6 text-sm font-bold">{title}</h3>

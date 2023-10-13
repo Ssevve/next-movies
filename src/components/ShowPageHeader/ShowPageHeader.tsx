@@ -7,7 +7,7 @@ import ShowMetadata from '@/components/ShowPageHeader/components/ShowMetadata/Sh
 import ShowOverview from '@/components/ShowPageHeader/components/ShowOverview/ShowOverview';
 import UserScore from '@/components/UserScore/UserScore';
 import VideoLink from '@/components/VideoLink/VideoLink';
-import getTMDBImagePath from '@/services/tmdb/utils/getTMDBImagePath/getTMDBImagePath';
+import getTMDBImagePath from '@/services/TMDB/utils/getTMDBImagePath/getTMDBImagePath';
 import DetailedShow from '@/types/DetailedShow';
 import Video from '@/types/Video';
 

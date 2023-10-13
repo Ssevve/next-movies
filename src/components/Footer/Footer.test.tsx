@@ -44,7 +44,7 @@ describe('Footer', () => {
   it('should render TMDB disclaimer', () => {
     render(<Footer />);
 
-    expect(screen.getByTestId('tmdb-disclaimer')).toHaveTextContent(
+    expect(screen.getByTestId('TMDB-disclaimer')).toHaveTextContent(
       'This product uses the TMDB API but is not endorsed or certified by TMDB.'
     );
   });

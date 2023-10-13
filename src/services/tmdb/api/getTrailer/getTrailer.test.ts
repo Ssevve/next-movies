@@ -5,13 +5,13 @@ import { rest } from 'msw';
 import mockTMDBMovieVideos from '@/__mocks__/data/mockTMDBMovieVideos';
 import mockTMDBTvShowVideos from '@/__mocks__/data/mockTMDBTvShowVideos';
 import { server } from '@/__mocks__/server';
-import getTrailer from '@/services/tmdb/api/getTrailer/getTrailer';
-import { urls } from '@/services/tmdb/config';
-import transformVideos from '@/services/tmdb/utils/transformVideos/transformVideos';
+import getTrailer from '@/services/TMDB/api/getTrailer/getTrailer';
+import { TMDBUrls } from '@/services/TMDB/config';
+import transformVideos from '@/services/TMDB/utils/transformVideos/transformVideos';
 import Video from '@/types/Video';
 import findTrailer from '@/utils/findTrailer/findTrailer';
 
-const endpoint = `${urls.base}/:showType/:showId/videos`;
+const endpoint = `${TMDBUrls.base}/:showType/:showId/videos`;
 
 type SharedProps = Pick<Video, 'showId' | 'showTitle' | 'showType'>;
 

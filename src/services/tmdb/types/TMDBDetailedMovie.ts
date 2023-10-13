@@ -1,7 +1,7 @@
-import TMDBCredits from '@/services/tmdb/types/TMDBCredits';
-import TMDBDetailedShow from '@/services/tmdb/types/TMDBDetailedShow';
-import TMDBMovie from '@/services/tmdb/types/TMDBMovie';
-import TMDBReleaseDates from '@/services/tmdb/types/TMDBReleaseDates';
+import TMDBCredits from '@/services/TMDB/types/TMDBCredits';
+import TMDBDetailedShow from '@/services/TMDB/types/TMDBDetailedShow';
+import TMDBMovie from '@/services/TMDB/types/TMDBMovie';
+import TMDBReleaseDates from '@/services/TMDB/types/TMDBReleaseDates';
 
 export default interface TMDBDetailedMovie extends TMDBDetailedShow, TMDBMovie {
   budget: number;

@@ -5,12 +5,12 @@ import { rest } from 'msw';
 import mockTMDBMovieVideos from '@/__mocks__/data/mockTMDBMovieVideos';
 import mockTMDBTvShowVideos from '@/__mocks__/data/mockTMDBTvShowVideos';
 import { server } from '@/__mocks__/server';
-import getVideos from '@/services/tmdb/api/getVideos/getVideos';
-import { urls } from '@/services/tmdb/config';
-import transformVideos from '@/services/tmdb/utils/transformVideos/transformVideos';
+import getVideos from '@/services/TMDB/api/getVideos/getVideos';
+import { TMDBUrls } from '@/services/TMDB/config';
+import transformVideos from '@/services/TMDB/utils/transformVideos/transformVideos';
 import Video from '@/types/Video';
 
-const endpoint = `${urls.base}/:showType/:showId/videos`;
+const endpoint = `${TMDBUrls.base}/:showType/:showId/videos`;
 
 type ShowProps = Pick<Video, 'showId' | 'showTitle' | 'showType'>;
 

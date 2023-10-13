@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import Hoverable from '@/components/ui/Hoverable';
 import UserScore from '@/components/UserScore/UserScore';
-import getTMDBImagePath from '@/services/tmdb/utils/getTMDBImagePath/getTMDBImagePath';
+import getTMDBImagePath from '@/services/TMDB/utils/getTMDBImagePath/getTMDBImagePath';
 import ImageType from '@/types/Image';
 import ShowType from '@/types/ShowType';
 

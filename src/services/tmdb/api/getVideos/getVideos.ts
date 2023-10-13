@@ -1,8 +1,8 @@
 import 'server-only';
 
-import tmdbAPI from '@/services/tmdb/api/client';
-import TMDBVideos from '@/services/tmdb/types/TMDBVideos';
-import transformVideos from '@/services/tmdb/utils/transformVideos/transformVideos';
+import TMDBApi from '@/services/TMDB/api/client';
+import TMDBVideos from '@/services/TMDB/types/TMDBVideos';
+import transformVideos from '@/services/TMDB/utils/transformVideos/transformVideos';
 import ShowType from '@/types/ShowType';
 import Video from '@/types/Video';
 
@@ -19,7 +19,7 @@ export default async function getVideos({
   thumbnailPath = '',
   showId,
 }: GetVideosParams): Promise<Video[]> {
-  const res = await tmdbAPI(`/${showType}/${showId}/videos`);
+  const res = await TMDBApi(`/${showType}/${showId}/videos`);
   if (!res.ok) throw Error(`Failed to fetch videos for: ${showId}.`);
   const videos: TMDBVideos = await res.json();
 

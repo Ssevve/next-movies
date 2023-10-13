@@ -1,8 +1,8 @@
-import { imageSizes } from '@/services/tmdb/config';
-import TMDBMovie from '@/services/tmdb/types/TMDBMovie';
-import TMDBTvShow from '@/services/tmdb/types/TMDBTvShow';
-import TMDBUnknownShow from '@/services/tmdb/types/TMDBUnknownShow';
-import formatDate from '@/services/tmdb/utils/formatDate/formatDate';
+import { TMDBImageSizes } from '@/services/TMDB/config';
+import TMDBMovie from '@/services/TMDB/types/TMDBMovie';
+import TMDBTvShow from '@/services/TMDB/types/TMDBTvShow';
+import TMDBUnknownShow from '@/services/TMDB/types/TMDBUnknownShow';
+import formatDate from '@/services/TMDB/utils/formatDate/formatDate';
 import Show from '@/types/Show';
 
 function isTMDBMovie(show: TMDBUnknownShow): show is TMDBMovie {
@@ -22,9 +22,9 @@ export default function transformShows(shows: TMDBUnknownShow[]) {
     const transformedShow: Omit<Show, UniqueShowTypeProps> = {
       id,
       poster: {
-        height: imageSizes.posters.show.height,
+        height: TMDBImageSizes.posters.show.height,
         path: poster_path,
-        width: imageSizes.posters.show.width,
+        width: TMDBImageSizes.posters.show.width,
       },
       userScore: vote_average,
     };

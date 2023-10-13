@@ -1,4 +1,4 @@
-import TMDBMovie from '@/services/tmdb/types/TMDBMovie';
+import TMDBMovie from '@/services/TMDB/types/TMDBMovie';
 
 const mockTMDBMovieResults: TMDBMovie[] = [
   {

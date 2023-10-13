@@ -1,6 +1,6 @@
 import 'server-only';
 
-import getVideos from '@/services/tmdb/api/getVideos/getVideos';
+import getVideos from '@/services/TMDB/api/getVideos/getVideos';
 import ShowType from '@/types/ShowType';
 import Video from '@/types/Video';
 import findTrailer from '@/utils/findTrailer/findTrailer';

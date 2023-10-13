@@ -1,4 +1,4 @@
-import formatDate from '@/services/tmdb/utils/formatDate/formatDate';
+import formatDate from '@/services/TMDB/utils/formatDate/formatDate';
 
 describe('formatDate', () => {
   it('should return correctly formatted date', () => {

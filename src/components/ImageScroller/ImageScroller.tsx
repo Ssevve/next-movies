@@ -3,8 +3,8 @@ import Link from 'next/link';
 
 import Scroller from '@/components/Scroller/Scroller';
 import Hoverable from '@/components/ui/Hoverable';
-import { imageSizes } from '@/services/tmdb/config';
-import getTMDBImagePath from '@/services/tmdb/utils/getTMDBImagePath/getTMDBImagePath';
+import { TMDBImageSizes } from '@/services/TMDB/config';
+import getTMDBImagePath from '@/services/TMDB/utils/getTMDBImagePath/getTMDBImagePath';
 import ImageType from '@/types/Image';
 
 interface ImageScrollerProps {
@@ -15,11 +15,11 @@ interface ImageScrollerProps {
 export default function ImageScroller({ images, kind }: ImageScrollerProps) {
   const isPoster = kind === 'poster';
   const imageWidth = isPoster
-    ? imageSizes.posters.show.width
-    : imageSizes.thumbnails.backdrop.width;
+    ? TMDBImageSizes.posters.show.width
+    : TMDBImageSizes.thumbnails.backdrop.width;
   const imageHeight = isPoster
-    ? imageSizes.posters.show.height
-    : imageSizes.thumbnails.backdrop.height;
+    ? TMDBImageSizes.posters.show.height
+    : TMDBImageSizes.thumbnails.backdrop.height;
 
   const widthClassName = isPoster ? 'w-[150px]' : 'w-[250px]';
 

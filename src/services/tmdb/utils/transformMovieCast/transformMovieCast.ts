@@ -1,5 +1,5 @@
-import { genders } from '@/services/tmdb/config';
-import TMDBCastPerson from '@/services/tmdb/types/TMDBCastPerson';
+import { TMDBGenders } from '@/services/TMDB/config';
+import TMDBCastPerson from '@/services/TMDB/types/TMDBCastPerson';
 import CastPerson from '@/types/CastPerson';
 
 export default function transformMovieCast(cast: TMDBCastPerson[]) {
@@ -7,7 +7,7 @@ export default function transformMovieCast(cast: TMDBCastPerson[]) {
   return cast.map(
     ({ character, gender, id, name, profile_path }): CastPerson => ({
       character,
-      gender: genders[gender],
+      gender: TMDBGenders[gender],
       id,
       imagePath: profile_path || '',
       name,

@@ -1,16 +1,17 @@
 import { Play } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import React from 'react';
 
-import Hoverable from '@/components/ui/Hoverable';
+import Hoverable, { HoverableProps } from '@/components/ui/Hoverable';
 import VideoLink from '@/components/VideoLink/VideoLink';
 import cn from '@/lib/cn';
-import getTMDBImagePath from '@/services/tmdb/utils/getTMDBImagePath/getTMDBImagePath';
+import getTMDBImagePath from '@/services/TMDB/utils/getTMDBImagePath/getTMDBImagePath';
 import ImageType from '@/types/Image';
 import ShowType from '@/types/ShowType';
 import getYoutubeThumbnail from '@/utils/getYoutubeThumbnail/getYoutubeThumbnail';
 
-interface VideoCardProps {
+interface VideoCardProps extends Omit<HoverableProps, 'children'> {
   videoTitle: string;
   showTitle: string;
   id: string;

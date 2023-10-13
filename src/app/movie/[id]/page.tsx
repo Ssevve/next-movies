@@ -5,7 +5,7 @@ import MovieFacts from '@/app/movie/[id]/_components/MovieFacts/MovieFacts';
 import ShowCast from '@/components/ShowCast/ShowCast';
 import ShowMedia from '@/components/ShowMedia/ShowMedia';
 import ShowPageHeader from '@/components/ShowPageHeader/ShowPageHeader';
-import getDetailedMovie from '@/services/tmdb/api/getDetailedMovie/getDetailedMovie';
+import getDetailedMovie from '@/services/TMDB/api/getDetailedMovie/getDetailedMovie';
 import findTrailer from '@/utils/findTrailer/findTrailer';
 
 const YoutubeIframeModal = dynamic(

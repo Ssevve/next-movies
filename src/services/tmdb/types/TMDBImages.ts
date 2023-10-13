@@ -1,4 +1,4 @@
-import TMDBImage from '@/services/tmdb/types/TMDBImage';
+import TMDBImage from '@/services/TMDB/types/TMDBImage';
 
 export default interface TMDBImages {
   backdrops: TMDBImage[];

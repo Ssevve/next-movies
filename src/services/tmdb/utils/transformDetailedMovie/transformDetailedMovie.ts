@@ -1,11 +1,11 @@
-import { imageSizes } from '@/services/tmdb/config';
-import TMDBDetailedMovie from '@/services/tmdb/types/TMDBDetailedMovie';
-import TMDBReleaseDates from '@/services/tmdb/types/TMDBReleaseDates';
-import formatDate from '@/services/tmdb/utils/formatDate/formatDate';
-import transformImages from '@/services/tmdb/utils/transformImages/transformImages';
-import transformMovieCast from '@/services/tmdb/utils/transformMovieCast/transformMovieCast';
-import transformShows from '@/services/tmdb/utils/transformShows/transformShows';
-import transformVideos from '@/services/tmdb/utils/transformVideos/transformVideos';
+import { TMDBImageSizes } from '@/services/TMDB/config';
+import TMDBDetailedMovie from '@/services/TMDB/types/TMDBDetailedMovie';
+import TMDBReleaseDates from '@/services/TMDB/types/TMDBReleaseDates';
+import formatDate from '@/services/TMDB/utils/formatDate/formatDate';
+import transformImages from '@/services/TMDB/utils/transformImages/transformImages';
+import transformMovieCast from '@/services/TMDB/utils/transformMovieCast/transformMovieCast';
+import transformShows from '@/services/TMDB/utils/transformShows/transformShows';
+import transformVideos from '@/services/TMDB/utils/transformVideos/transformVideos';
 import DetailedMovie from '@/types/DetailedMovie';
 
 function getMovieRating(releaseDates: TMDBReleaseDates) {
@@ -58,9 +58,9 @@ export default function transformDetailedMovie({
     originalTitle: original_title,
     overview,
     poster: {
-      height: imageSizes.posters.detailedShow.height,
+      height: TMDBImageSizes.posters.detailedShow.height,
       path: poster_path,
-      width: imageSizes.posters.detailedShow.width,
+      width: TMDBImageSizes.posters.detailedShow.width,
     },
     rating: getMovieRating(release_dates) || '',
     recommendations: transformShows(recommendations.results),

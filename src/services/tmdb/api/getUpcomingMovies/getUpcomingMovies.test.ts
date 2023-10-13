@@ -4,9 +4,9 @@ import { rest } from 'msw';
 
 import mockTMDBMovies from '@/__mocks__/data/mockTMDBMovies';
 import { server } from '@/__mocks__/server';
-import getUpcomingMovies from '@/services/tmdb/api/getUpcomingMovies/getUpcomingMovies';
-import { urls } from '@/services/tmdb/config';
-import formatDate from '@/services/tmdb/utils/formatDate/formatDate';
+import getUpcomingMovies from '@/services/TMDB/api/getUpcomingMovies/getUpcomingMovies';
+import { TMDBUrls } from '@/services/TMDB/config';
+import formatDate from '@/services/TMDB/utils/formatDate/formatDate';
 
 describe('getUpcomingMovies', () => {
   it('should return correct results with correct release date', async () => {
@@ -23,7 +23,7 @@ describe('getUpcomingMovies', () => {
 
   it('should throw correct error on failed fetch', () => {
     server.use(
-      rest.get(`${urls.base}/movie/upcoming`, (req, res, ctx) => {
+      rest.get(`${TMDBUrls.base}/movie/upcoming`, (req, res, ctx) => {
         return res(ctx.status(500));
       })
     );

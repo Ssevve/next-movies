@@ -1,4 +1,4 @@
-import TMDBLanguage from '@/services/tmdb/types/TMDBLanguage';
+import TMDBLanguage from '@/services/TMDB/types/TMDBLanguage';
 
 const mockTMDBLanguages: TMDBLanguage[] = [
   {

@@ -1,6 +1,6 @@
 import mockTMDBImages from '@/__mocks__/data/mockTMDBImages';
 import mockTMDBMovieVideos from '@/__mocks__/data/mockTMDBMovieVideos';
-import TMDBDetailedMovie from '@/services/tmdb/types/TMDBDetailedMovie';
+import TMDBDetailedMovie from '@/services/TMDB/types/TMDBDetailedMovie';
 
 const mockTMDBDetailedMovies: Record<string, TMDBDetailedMovie> = {
   withOriginalLanguage: {

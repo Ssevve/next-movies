@@ -1,4 +1,4 @@
-import TMDBVideoType from '@/services/tmdb/types/TMDBVideoType';
+import TMDBVideoType from '@/services/TMDB/types/TMDBVideoType';
 
 export default interface TMDBVideo {
   type: TMDBVideoType;

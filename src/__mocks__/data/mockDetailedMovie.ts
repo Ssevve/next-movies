@@ -1,4 +1,4 @@
-import { imageSizes } from '@/services/tmdb/config';
+import { TMDBImageSizes } from '@/services/TMDB/config';
 import DetailedMovie from '@/types/DetailedMovie';
 
 const mockDetailedMovie: DetailedMovie = {
@@ -79,18 +79,18 @@ const mockDetailedMovie: DetailedMovie = {
   overview:
     'The story of Tim Ballard, a former US government agent, who quits his job in order to devote his life to rescuing children from global sex traffickers.',
   poster: {
-    height: imageSizes.posters.detailedShow.height,
+    height: TMDBImageSizes.posters.detailedShow.height,
     path: '/qA5kPYZA7FkVvqcEfJRoOy4kpHg.jpg',
-    width: imageSizes.posters.detailedShow.width,
+    width: TMDBImageSizes.posters.detailedShow.width,
   },
   rating: 'PG-13',
   recommendations: [
     {
       id: 1130818,
       poster: {
-        height: imageSizes.posters.show.height,
+        height: TMDBImageSizes.posters.show.height,
         path: '/itUAkQmihFmRxMYTa3AkvIzMCV4.jpg',
-        width: imageSizes.posters.show.width,
+        width: TMDBImageSizes.posters.show.width,
       },
       releaseDate: 'Jun 23, 2023',
       showType: 'movie',
@@ -100,9 +100,9 @@ const mockDetailedMovie: DetailedMovie = {
     {
       id: 667538,
       poster: {
-        height: imageSizes.posters.show.height,
+        height: TMDBImageSizes.posters.show.height,
         path: '/gPbM0MK8CP8A174rmUwGsADNYKD.jpg',
-        width: imageSizes.posters.show.width,
+        width: TMDBImageSizes.posters.show.width,
       },
       releaseDate: 'Jun 6, 2023',
       showType: 'movie',

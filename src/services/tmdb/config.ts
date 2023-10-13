@@ -1,16 +1,16 @@
-export const urls = {
+export const TMDBUrls = {
   base: 'https://api.themoviedb.org/3',
   image: 'https://image.tmdb.org/t/p',
 } as const;
 
-export const genders = {
+export const TMDBGenders = {
   0: 'N/A',
   1: 'Female',
   2: 'Male',
   3: 'Non-binary',
 } as const;
 
-export const imageSizes = {
+export const TMDBImageSizes = {
   backdrops: {
     video: {
       height: 427,

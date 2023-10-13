@@ -4,9 +4,9 @@ import { rest } from 'msw';
 
 import mockTMDBMovies from '@/__mocks__/data/mockTMDBMovies';
 import { server } from '@/__mocks__/server';
-import getTheaterMovies from '@/services/tmdb/api/getTheaterMovies/getTheaterMovies';
-import { urls } from '@/services/tmdb/config';
-import transformShows from '@/services/tmdb/utils/transformShows/transformShows';
+import getTheaterMovies from '@/services/TMDB/api/getTheaterMovies/getTheaterMovies';
+import { TMDBUrls } from '@/services/TMDB/config';
+import transformShows from '@/services/TMDB/utils/transformShows/transformShows';
 
 describe('getTheaterMovies', () => {
   it('should return correct results', async () => {
@@ -17,7 +17,7 @@ describe('getTheaterMovies', () => {
 
   it('should throw correct error on failed fetch', () => {
     server.use(
-      rest.get(`${urls.base}/movie/now_playing`, (req, res, ctx) => {
+      rest.get(`${TMDBUrls.base}/movie/now_playing`, (req, res, ctx) => {
         return res(ctx.status(500));
       })
     );

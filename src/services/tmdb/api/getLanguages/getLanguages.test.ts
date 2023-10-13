@@ -4,8 +4,8 @@ import { rest } from 'msw';
 
 import mockTMDBLanguages from '@/__mocks__/data/mockTMDBLanguages';
 import { server } from '@/__mocks__/server';
-import getLanguages from '@/services/tmdb/api/getLanguages/getLanguages';
-import { urls } from '@/services/tmdb/config';
+import getLanguages from '@/services/TMDB/api/getLanguages/getLanguages';
+import { TMDBUrls } from '@/services/TMDB/config';
 
 describe('getLanguages', () => {
   it('should return correct results', async () => {
@@ -20,7 +20,7 @@ describe('getLanguages', () => {
 
   it('should throw correct error on failed fetch', () => {
     server.use(
-      rest.get(`${urls.base}/configuration/languages`, (req, res, ctx) => {
+      rest.get(`${TMDBUrls.base}/configuration/languages`, (req, res, ctx) => {
         return res(ctx.status(500));
       })
     );

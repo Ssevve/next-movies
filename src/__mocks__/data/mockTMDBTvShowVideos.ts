@@ -1,4 +1,4 @@
-import TMDBVideo from '@/services/tmdb/types/TMDBVideo';
+import TMDBVideo from '@/services/TMDB/types/TMDBVideo';
 
 const mockTMDBTvShowVideos: TMDBVideo[] = [
   {

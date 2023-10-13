@@ -1,8 +1,8 @@
 import 'server-only';
 
-import tmdbAPI from '@/services/tmdb/api/client';
-import TMDBPaginatedShows from '@/services/tmdb/types/TMDBPaginatedShows';
-import transformPaginatedShowsResponse from '@/services/tmdb/utils/transformPaginatedShows/transformPaginatedShows';
+import TMDBApi from '@/services/TMDB/api/client';
+import TMDBPaginatedShows from '@/services/TMDB/types/TMDBPaginatedShows';
+import transformPaginatedShowsResponse from '@/services/TMDB/utils/transformPaginatedShows/transformPaginatedShows';
 import PaginatedShows from '@/types/PaginatedShows';
 import ShowType from '@/types/ShowType';
 
@@ -17,7 +17,7 @@ export default async function getTrendingShows({
   showType,
   timeWindow,
 }: TrendingArgs): Promise<PaginatedShows> {
-  const res = await tmdbAPI(`/trending/${showType}/${timeWindow}`);
+  const res = await TMDBApi(`/trending/${showType}/${timeWindow}`);
   if (res.ok) {
     const { page, results, total_pages, total_results }: TMDBPaginatedShows = await res.json();
     return transformPaginatedShowsResponse({ page, results, total_pages, total_results });

@@ -1,7 +1,7 @@
 import mockTMDBDetailedMovies from '@/__mocks__/data/mockTMDBDetailedMovies';
-import { imageSizes } from '@/services/tmdb/config';
-import transformDetailedMovie from '@/services/tmdb/utils/transformDetailedMovie/transformDetailedMovie';
-import transformMovieCast from '@/services/tmdb/utils/transformMovieCast/transformMovieCast';
+import { TMDBImageSizes } from '@/services/TMDB/config';
+import transformDetailedMovie from '@/services/TMDB/utils/transformDetailedMovie/transformDetailedMovie';
+import transformMovieCast from '@/services/TMDB/utils/transformMovieCast/transformMovieCast';
 import DetailedMovie from '@/types/DetailedMovie';
 
 describe('transformVideos', () => {
@@ -78,18 +78,18 @@ describe('transformVideos', () => {
       overview:
         'Recent college grad Jaime Reyes returns home full of aspirations for his future, only to find that home is not quite as he left it. As he searches to find his purpose in the world, fate intervenes when Jaime unexpectedly finds himself in possession of an ancient relic of alien biotechnology: the Scarab.',
       poster: {
-        height: imageSizes.posters.detailedShow.height,
+        height: TMDBImageSizes.posters.detailedShow.height,
         path: '/mXLOHHc1Zeuwsl4xYKjKh2280oL.jpg',
-        width: imageSizes.posters.detailedShow.width,
+        width: TMDBImageSizes.posters.detailedShow.width,
       },
       rating: 'PG-13',
       recommendations: [
         {
           id: 832502,
           poster: {
-            height: imageSizes.posters.show.height,
+            height: TMDBImageSizes.posters.show.height,
             path: '/i6ye8ueFhVE5pXatgyRrZ83LBD8.jpg',
-            width: imageSizes.posters.show.width,
+            width: TMDBImageSizes.posters.show.width,
           },
           releaseDate: 'Aug 11, 2023',
           showType: 'movie',
@@ -99,9 +99,9 @@ describe('transformVideos', () => {
         {
           id: 16155,
           poster: {
-            height: imageSizes.posters.show.height,
+            height: TMDBImageSizes.posters.show.height,
             path: '/857L7x6uFNr4c2oHD5KJw5pkbxn.jpg',
-            width: imageSizes.posters.show.width,
+            width: TMDBImageSizes.posters.show.width,
           },
           releaseDate: 'Aug 7, 1998',
           showType: 'movie',
@@ -131,9 +131,9 @@ describe('transformVideos', () => {
           showTitle: 'Blue Beetle',
           showType: 'movie',
           thumbnail: {
-            height: imageSizes.thumbnails.video.height,
+            height: TMDBImageSizes.thumbnails.video.height,
             path: '',
-            width: imageSizes.thumbnails.video.width,
+            width: TMDBImageSizes.thumbnails.video.width,
           },
           title: 'Brynn',
           type: 'Featurette',
@@ -146,9 +146,9 @@ describe('transformVideos', () => {
           showTitle: 'Blue Beetle',
           showType: 'movie',
           thumbnail: {
-            height: imageSizes.thumbnails.video.height,
+            height: TMDBImageSizes.thumbnails.video.height,
             path: '',
-            width: imageSizes.thumbnails.video.width,
+            width: TMDBImageSizes.thumbnails.video.width,
           },
           title: 'Official Trailer',
           type: 'Trailer',

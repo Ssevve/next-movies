@@ -12,12 +12,12 @@ export default function Footer() {
             <Logo />
           </Link>
           <div className="flex flex-wrap items-center py-4">
-            <small data-testid="tmdb-disclaimer" className="flex flex-wrap text-sm">
+            <small data-testid="TMDB-disclaimer" className="flex flex-wrap text-sm">
               This product uses the
               <span className="mr-1 flex items-center">
                 <Link aria-label="TMDB link" href="https://developer.themoviedb.org/docs">
                   <Image
-                    src="/images/tmdb-logo.svg"
+                    src="/images/TMDB-logo.svg"
                     alt="TMDB logo"
                     className="m-1 h-auto w-16"
                     width={273}

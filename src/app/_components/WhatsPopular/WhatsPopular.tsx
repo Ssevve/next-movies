@@ -1,7 +1,7 @@
 import ShowScroller from '@/components/ShowScroller/ShowScroller';
 import TabsSection from '@/components/TabsSection/TabsSection';
-import getPopularShows from '@/services/tmdb/api/getPopularShows/getPopularShows';
-import getTheaterMovies from '@/services/tmdb/api/getTheaterMovies/getTheaterMovies';
+import getPopularShows from '@/services/TMDB/api/getPopularShows/getPopularShows';
+import getTheaterMovies from '@/services/TMDB/api/getTheaterMovies/getTheaterMovies';
 import Tab from '@/types/Tab';
 
 export default async function WhatsPopular() {

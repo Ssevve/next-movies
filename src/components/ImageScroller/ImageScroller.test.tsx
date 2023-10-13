@@ -1,24 +1,12 @@
 import { render, screen } from '@testing-library/react';
 
+import mockImages from '@/__mocks__/data/mockImages';
 import ImageScroller from '@/components/ImageScroller/ImageScroller';
-import Image from '@/types/Image';
 
 describe('ImageScroller', () => {
   it('should render correct amount of images', () => {
-    const mockPosters: Image[] = [
-      {
-        height: 300,
-        path: '/testPath1',
-        width: 200,
-      },
-      {
-        height: 300,
-        path: '/testPath2',
-        width: 200,
-      },
-    ];
-    render(<ImageScroller images={mockPosters} kind="poster" />);
-    expect(screen.getAllByRole('listitem')).toHaveLength(mockPosters.length);
+    render(<ImageScroller images={mockImages} kind="poster" />);
+    expect(screen.getAllByRole('listitem')).toHaveLength(mockImages.length);
   });
 
   it('should render "No backdrops to display" if "images" array is empty and "kind" is backdrop', () => {

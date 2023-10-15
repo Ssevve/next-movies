@@ -23,26 +23,30 @@ export default function ShowMetadata({
       <h1 className="text-2xl font-bold  sm:text-3xl md:text-4xl lg:text-5xl">
         {title} ({getReleaseYear(releaseDate)})
       </h1>
-      <div className="flex w-full flex-col flex-nowrap items-center justify-center gap-2 leading-none sm:flex-row sm:justify-start">
-        <div className="flex items-center gap-2">
+      <div className="flex w-full flex-col flex-wrap justify-center gap-4 leading-none sm:flex-row sm:justify-start md:gap-2">
+        <div className="flex gap-2">
           {rating && (
-            <span className=" my-auto rounded-md border border-foreground px-1 py-0.5 text-xs">
+            <span className="my-auto flex items-center rounded-md border border-foreground px-1 py-0.5 text-xs leading-none">
               {rating}
             </span>
           )}
-          <span className="text-sm">{releaseDate}</span>
+          <span className="flex w-max items-center text-sm leading-none">{releaseDate}</span>
         </div>
         {genres.length ? (
-          <>
-            <span className="my-auto hidden h-max sm:block">&#x2022;</span>
-            <span className="text-sm">{joinGenres(genres)}</span>
-          </>
+          <div className="flex">
+            <span className="mr-2 hidden items-center sm:flex">&#x2022;</span>
+            <span className="flex w-max items-center text-sm leading-none">
+              {joinGenres(genres)}
+            </span>
+          </div>
         ) : null}
         {runtime ? (
-          <>
-            <span className="my-auto hidden h-max sm:block">&#x2022;</span>
-            <span className="text-sm">{formatRuntime(runtime)}</span>
-          </>
+          <div className="flex">
+            <span className="my-auto mr-2 hidden h-max sm:block">&#x2022;</span>
+            <span className="flex w-max items-center text-sm leading-none">
+              {formatRuntime(runtime)}
+            </span>
+          </div>
         ) : null}
       </div>
     </>

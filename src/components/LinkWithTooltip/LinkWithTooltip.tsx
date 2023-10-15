@@ -20,7 +20,7 @@ export default function LinkWithTooltip({
     <TooltipProvider delayDuration={300}>
       <Tooltip>
         <TooltipTrigger className={cn(className)}>
-          <Link href={href} {...props} aria-label={tooltipText} target="_blank">
+          <Link href={href} {...props} aria-label={tooltipText}>
             {children}
           </Link>
         </TooltipTrigger>

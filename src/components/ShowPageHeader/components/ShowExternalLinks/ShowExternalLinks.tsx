@@ -20,12 +20,7 @@ export default function ShowExternalLinks({
 }: ShowExternalLinksProps) {
   const hasSocialHandle = twitterHandle || facebookHandle || instagramHandle;
   return (
-    <section
-      className={cn(
-        'flex items-center justify-center justify-self-start sm:justify-start',
-        className
-      )}
-    >
+    <section className={cn('flex items-center', className)}>
       {hasSocialHandle && (
         <ul className="flex gap-2 pr-2">
           {twitterHandle && (

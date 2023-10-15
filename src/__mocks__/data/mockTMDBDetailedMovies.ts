@@ -10,14 +10,12 @@ const mockTMDBDetailedMovies: Record<string, TMDBDetailedMovie> = {
       cast: [
         {
           character: 'Jaime Reyes / Blue Beetle',
-          gender: 2,
           id: 1185997,
           name: 'Xolo Mariduena',
           profile_path: '/tJMI7BpjlhHSMpzSz9e1XxygnKd.jpg',
         },
         {
           character: 'Nana Reyes',
-          gender: 1,
           id: 270,
           name: 'Adriana Barraza',
           profile_path: '/1aE7wu22bdgVTa0PMKXbAOSLiZn.jpg',
@@ -122,14 +120,12 @@ const mockTMDBDetailedMovies: Record<string, TMDBDetailedMovie> = {
       cast: [
         {
           character: 'Jaime Reyes / Blue Beetle',
-          gender: 2,
           id: 1185997,
           name: 'Xolo Mariduena',
           profile_path: '/tJMI7BpjlhHSMpzSz9e1XxygnKd.jpg',
         },
         {
           character: 'Nana Reyes',
-          gender: 1,
           id: 270,
           name: 'Adriana Barraza',
           profile_path: '/1aE7wu22bdgVTa0PMKXbAOSLiZn.jpg',

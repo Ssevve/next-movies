@@ -9,7 +9,6 @@ describe('transformVideos', () => {
     const expectedCastPerson: CastPerson[] = [
       {
         character: testCastPerson.character,
-        gender: TMDBGenders[testCastPerson.gender],
         id: testCastPerson.id,
         imagePath: testCastPerson.profile_path,
         name: testCastPerson.name,
@@ -23,7 +22,6 @@ describe('transformVideos', () => {
   it('should return correctly transformed data for multiple people', async () => {
     const expectedCast: CastPerson[] = mockTMDBMovieCast.map((person) => ({
       character: person.character,
-      gender: TMDBGenders[person.gender],
       id: person.id,
       imagePath: person.profile_path,
       name: person.name,

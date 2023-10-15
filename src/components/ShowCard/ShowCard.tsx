@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+import NoImage from '@/components/NoImage';
 import Hoverable from '@/components/ui/Hoverable';
 import UserScore from '@/components/UserScore/UserScore';
 import getTMDBImagePath from '@/services/TMDB/utils/getTMDBImagePath/getTMDBImagePath';
@@ -27,15 +28,18 @@ export default function ShowCard({
   return (
     <Hoverable className="w-[150px]">
       <Link href={`/${showType}/${id}`}>
-        <div className="relative">
-          <Image
-            src={getTMDBImagePath(poster.path, poster.width, poster.height)}
-            alt={title}
-            height={poster.height}
-            width={poster.width}
-            className="rounded-md"
-          />
-
+        <div className="relative h-[225px]">
+          {poster.path ? (
+            <Image
+              src={getTMDBImagePath(poster.path, poster.width, poster.height)}
+              alt={title}
+              height={poster.height}
+              width={poster.width}
+              className="h-full rounded-md"
+            />
+          ) : (
+            <NoImage />
+          )}
           <UserScore className="absolute -bottom-4 left-2 border" userScore={userScore} />
         </div>
         <h3 className="mt-6 text-sm font-bold">{title}</h3>

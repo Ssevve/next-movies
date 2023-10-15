@@ -20,7 +20,7 @@ export default function ShowMetadata({
 }: ShowMetadataProps) {
   return (
     <>
-      <h1 className="text-center text-2xl font-bold sm:text-left sm:text-3xl md:text-4xl lg:text-5xl">
+      <h1 className="text-2xl font-bold  sm:text-3xl md:text-4xl lg:text-5xl">
         {title} ({getReleaseYear(releaseDate)})
       </h1>
       <div className="flex w-full flex-col flex-nowrap items-center justify-center gap-2 leading-none sm:flex-row sm:justify-start">
@@ -30,20 +30,20 @@ export default function ShowMetadata({
               {rating}
             </span>
           )}
-          <span className="text-center text-sm">{releaseDate}</span>
+          <span className="text-sm">{releaseDate}</span>
         </div>
-        {genres.length && (
+        {genres.length ? (
           <>
             <span className="my-auto hidden h-max sm:block">&#x2022;</span>
-            <span className="text-center text-sm">{joinGenres(genres)}</span>
+            <span className="text-sm">{joinGenres(genres)}</span>
           </>
-        )}
-        {runtime && (
+        ) : null}
+        {runtime ? (
           <>
             <span className="my-auto hidden h-max sm:block">&#x2022;</span>
-            <span className="text-center text-sm">{formatRuntime(runtime)}</span>
+            <span className="text-sm">{formatRuntime(runtime)}</span>
           </>
-        )}
+        ) : null}
       </div>
     </>
   );

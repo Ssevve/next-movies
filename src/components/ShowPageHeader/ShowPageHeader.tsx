@@ -1,6 +1,7 @@
-import { Play } from 'lucide-react';
+import { CameraOff, Play } from 'lucide-react';
 import Image from 'next/image';
 
+import NoImage from '@/components/NoImage';
 import Creators from '@/components/ShowPageHeader/components/Creators/Creators';
 import ShowExternalLinks from '@/components/ShowPageHeader/components/ShowExternalLinks/ShowExternalLinks';
 import ShowMetadata from '@/components/ShowPageHeader/components/ShowMetadata/ShowMetadata';
@@ -64,28 +65,41 @@ export default function ShowPageHeader({
   userScoreCount,
   overview,
 }: ShowPageHeaderProps) {
-  const fullPosterPath = getTMDBImagePath(poster.path, poster.width, poster.height);
-  const fullBackdropPath = getTMDBImagePath(backdrop.path);
+  const fullPosterPath = poster.path
+    ? getTMDBImagePath(poster.path, poster.width, poster.height)
+    : '';
+  const fullBackdropPath = backdrop.path ? getTMDBImagePath(backdrop.path) : '';
 
   return (
     <section className="relative w-screen">
-      <Image
-        src={fullBackdropPath}
-        alt=""
-        fill
-        priority
-        className="-z-50 object-cover object-top opacity-20"
-      />
-      <section className="container relative flex flex-col gap-8 px-4 py-8 sm:flex-row sm:items-center">
+      {fullBackdropPath && (
         <Image
-          src={fullPosterPath}
-          alt={title}
-          width={poster.width}
-          height={poster.height}
+          src={fullBackdropPath}
+          alt=""
+          fill
           priority
-          className="mx-auto h-auto w-1/3 min-w-[150px] max-w-[275px] rounded-md shadow sm:mx-0 md:min-w-[275px]"
+          className="-z-50 object-cover object-top opacity-20"
         />
-        <section className="flex flex-col flex-wrap  gap-8 font-semibold sm:mt-8">
+      )}
+      <section className="container flex flex-col gap-8 px-4 py-8 md:flex-row">
+        <div className="mx-auto flex w-max shrink-0 items-center justify-center">
+          {fullPosterPath ? (
+            <Image
+              src={fullPosterPath}
+              alt={title}
+              width={poster.width}
+              height={poster.height}
+              priority
+              className="h-64 w-44 md:h-96 md:w-64"
+            />
+          ) : (
+            <div className="h-64 w-44 md:h-96 md:w-64">
+              <NoImage />
+            </div>
+          )}
+        </div>
+
+        <section className="flex flex-col flex-wrap gap-8 font-semibold md:mt-8">
           <section className="space-y-2">
             <ShowExternalLinks
               className="sm:mb-4"
@@ -102,8 +116,8 @@ export default function ShowPageHeader({
               title={title}
             />
           </section>
-          <span className="mx-auto italic sm:mx-0">{tagline}</span>
-          <section className="flex flex-wrap items-center justify-center gap-12 sm:justify-start">
+          {tagline && <span className="italic sm:mx-0">{tagline}</span>}
+          <section className="flex flex-wrap items-center gap-12">
             <div className="flex items-center gap-2">
               <UserScore
                 withTooltip

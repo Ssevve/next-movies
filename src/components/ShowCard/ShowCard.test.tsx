@@ -33,11 +33,11 @@ describe('ShowCard', () => {
     );
     expect(screen.getByRole('link')).toHaveAttribute(
       'href',
-      `${expectedShow.showType}/${expectedShow.id}`
+      `/${expectedShow.showType}/${expectedShow.id}`
     );
   });
 
-  it('should render show poster', () => {
+  it('should render show poster if poster path exists', () => {
     const expectedShow = mockShows[0];
     render(
       <ShowCard
@@ -52,7 +52,7 @@ describe('ShowCard', () => {
     expect(screen.getByRole('img')).toBeInTheDocument();
   });
 
-  it('should render show poster with correct "src" attribute', () => {
+  it('should render show poster with correct "src" attribute if poster path exists', () => {
     const expectedShow = mockShows[0];
     render(
       <ShowCard
@@ -69,6 +69,40 @@ describe('ShowCard', () => {
     const expectedImageName = expectedShow.poster.path.split('/').slice(-1)[0];
 
     expect(showPoster.src).toContain(expectedImageName);
+  });
+
+  it('should not render an image if poster path does not exist', () => {
+    const expectedShow = mockShows[0];
+    const expectedPoster = { ...expectedShow.poster, path: '' };
+    render(
+      <ShowCard
+        id={expectedShow.id}
+        poster={expectedPoster}
+        userScore={expectedShow.userScore}
+        releaseDate={expectedShow.releaseDate}
+        showType={expectedShow.showType}
+        title={expectedShow.title}
+      />
+    );
+
+    expect(screen.queryByRole('img')).not.toBeInTheDocument();
+  });
+
+  it('should render <NoImage /> component if poster path does not exist', () => {
+    const expectedShow = mockShows[0];
+    const expectedPoster = { ...expectedShow.poster, path: '' };
+    render(
+      <ShowCard
+        id={expectedShow.id}
+        poster={expectedPoster}
+        userScore={expectedShow.userScore}
+        releaseDate={expectedShow.releaseDate}
+        showType={expectedShow.showType}
+        title={expectedShow.title}
+      />
+    );
+
+    expect(screen.getByTestId('no-image')).toBeInTheDocument();
   });
 
   it('should render <UserScore /> component', () => {

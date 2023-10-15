@@ -9,8 +9,13 @@ describe('ShowScroller', () => {
     expect(screen.getAllByRole('listitem')).toHaveLength(mockShows.length);
   });
 
-  it('should render "No shows to display" if shows array is empty', () => {
+  it('should render "No shows to display" by default if shows array is empty', () => {
     render(<ShowScroller shows={[]} />);
     expect(screen.getByText('No shows to display')).toBeInTheDocument();
+  });
+
+  it('should render provided emptyMessage if shows array is empty', () => {
+    render(<ShowScroller shows={[]} emptyMessage="Test empty message" />);
+    expect(screen.getByText('Test empty message')).toBeInTheDocument();
   });
 });

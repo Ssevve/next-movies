@@ -9,18 +9,13 @@ describe('PersonCard', () => {
   it("should render person's image", () => {
     const expectedPerson: CastPerson = {
       character: 'Test character',
-      gender: 'Male',
       id: 1,
       imagePath: testImagePath,
       name: 'Test name',
     };
 
     render(
-      <PersonCard
-        gender={expectedPerson.gender}
-        imagePath={expectedPerson.imagePath}
-        name={expectedPerson.name}
-      >
+      <PersonCard imagePath={expectedPerson.imagePath} name={expectedPerson.name}>
         {expectedPerson.character}
       </PersonCard>
     );
@@ -28,21 +23,16 @@ describe('PersonCard', () => {
     expect(screen.getByRole('img', { name: expectedPerson.name })).toBeInTheDocument();
   });
 
-  it("should render person's image with correct 'src' attribute", () => {
+  it("should render person's image with correct 'src' attribute if imagePath is provided", () => {
     const expectedPerson: CastPerson = {
       character: 'Test character',
-      gender: 'Male',
       id: 1,
       imagePath: testImagePath,
       name: 'Test name',
     };
 
     render(
-      <PersonCard
-        gender={expectedPerson.gender}
-        imagePath={expectedPerson.imagePath}
-        name={expectedPerson.name}
-      >
+      <PersonCard imagePath={expectedPerson.imagePath} name={expectedPerson.name}>
         {expectedPerson.character}
       </PersonCard>
     );
@@ -51,117 +41,50 @@ describe('PersonCard', () => {
     expect(image.src).toContain(testImagePath.slice(1));
   });
 
-  it('should render correct placeholder for male if imagePath is not present', () => {
-    const expectedImageName = 'male-placeholder.svg';
+  it('should not render image if imagePath is not provided', () => {
     const expectedPerson: CastPerson = {
       character: 'Test character',
-      gender: 'Male',
       id: 1,
       imagePath: '',
       name: 'Test name',
     };
 
     render(
-      <PersonCard
-        gender={expectedPerson.gender}
-        imagePath={expectedPerson.imagePath}
-        name={expectedPerson.name}
-      >
+      <PersonCard imagePath={expectedPerson.imagePath} name={expectedPerson.name}>
         {expectedPerson.character}
       </PersonCard>
     );
 
-    const image: HTMLImageElement = screen.getByRole('img', { name: expectedPerson.name });
-    expect(image.src).toContain(expectedImageName);
+    expect(screen.queryByRole('img', { name: expectedPerson.name })).not.toBeInTheDocument();
   });
 
-  it('should render correct placeholder for female if imagePath is not present', () => {
-    const expectedImageName = 'female-placeholder.svg';
+  it('should render <NoImage /> component if imagePath is not provided', () => {
     const expectedPerson: CastPerson = {
       character: 'Test character',
-      gender: 'Female',
       id: 1,
       imagePath: '',
       name: 'Test name',
     };
 
     render(
-      <PersonCard
-        gender={expectedPerson.gender}
-        imagePath={expectedPerson.imagePath}
-        name={expectedPerson.name}
-      >
+      <PersonCard imagePath={expectedPerson.imagePath} name={expectedPerson.name}>
         {expectedPerson.character}
       </PersonCard>
     );
 
-    const image: HTMLImageElement = screen.getByRole('img', { name: expectedPerson.name });
-    expect(image.src).toContain(expectedImageName);
-  });
-
-  it('should render correct placeholder for non-binary if imagePath is not present', () => {
-    const expectedImageName = 'male-placeholder.svg';
-    const expectedPerson: CastPerson = {
-      character: 'Test character',
-      gender: 'Non-binary',
-      id: 1,
-      imagePath: '',
-      name: 'Test name',
-    };
-
-    render(
-      <PersonCard
-        gender={expectedPerson.gender}
-        imagePath={expectedPerson.imagePath}
-        name={expectedPerson.name}
-      >
-        {expectedPerson.character}
-      </PersonCard>
-    );
-
-    const image: HTMLImageElement = screen.getByRole('img', { name: expectedPerson.name });
-    expect(image.src).toContain(expectedImageName);
-  });
-
-  it('should render correct placeholder for not specified gender if imagePath is not present', () => {
-    const expectedImageName = 'male-placeholder.svg';
-    const expectedPerson: CastPerson = {
-      character: 'Test character',
-      gender: 'N/A',
-      id: 1,
-      imagePath: '',
-      name: 'Test name',
-    };
-
-    render(
-      <PersonCard
-        gender={expectedPerson.gender}
-        imagePath={expectedPerson.imagePath}
-        name={expectedPerson.name}
-      >
-        {expectedPerson.character}
-      </PersonCard>
-    );
-
-    const image: HTMLImageElement = screen.getByRole('img', { name: expectedPerson.name });
-    expect(image.src).toContain(expectedImageName);
+    expect(screen.getByTestId('no-image')).toBeInTheDocument();
   });
 
   it('should render name', () => {
     const expectedPerson: CastPerson = {
       character: 'Test character',
-      gender: 'Male',
       id: 1,
       imagePath: testImagePath,
       name: 'Test name',
     };
 
     render(
-      <PersonCard
-        gender={expectedPerson.gender}
-        imagePath={expectedPerson.imagePath}
-        name={expectedPerson.name}
-      >
+      <PersonCard imagePath={expectedPerson.imagePath} name={expectedPerson.name}>
         {expectedPerson.character}
       </PersonCard>
     );
@@ -172,18 +95,13 @@ describe('PersonCard', () => {
   it('should render children', () => {
     const expectedPerson: CastPerson = {
       character: 'Test character',
-      gender: 'Male',
       id: 1,
       imagePath: testImagePath,
       name: 'Test name',
     };
 
     render(
-      <PersonCard
-        gender={expectedPerson.gender}
-        imagePath={expectedPerson.imagePath}
-        name={expectedPerson.name}
-      >
+      <PersonCard imagePath={expectedPerson.imagePath} name={expectedPerson.name}>
         {expectedPerson.character}
       </PersonCard>
     );

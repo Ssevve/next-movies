@@ -7,7 +7,7 @@ import findTrailer from '@/utils/findTrailer/findTrailer';
 import getReleaseYear from '@/utils/getReleaseYear/getReleaseYear';
 
 describe('ShowPageHeader', () => {
-  it('should render poster', () => {
+  it('should render poster if poster path exists', () => {
     const expectedShow = mockDetailedMovie;
     render(
       <ShowPageHeader
@@ -33,7 +33,7 @@ describe('ShowPageHeader', () => {
     expect(screen.getByRole('img', { name: expectedShow.title })).toBeInTheDocument();
   });
 
-  it('should render poster with correct "src" attribute', () => {
+  it('should render poster with correct "src" attribute if poster path exists', () => {
     const expectedShow = mockDetailedMovie;
     render(
       <ShowPageHeader
@@ -62,6 +62,62 @@ describe('ShowPageHeader', () => {
     const expectedImageName = expectedShow.poster.path.split('/').slice(-1)[0];
 
     expect(poster.src).toContain(expectedImageName);
+  });
+
+  it('should not render an image if poster path does not exist', () => {
+    const expectedShow = mockDetailedMovie;
+    const expectedPoster = { ...mockDetailedMovie.poster, path: '' };
+    render(
+      <ShowPageHeader
+        facebookHandle={expectedShow.socialHandles.facebook}
+        twitterHandle={expectedShow.socialHandles.twitter}
+        instagramHandle={expectedShow.socialHandles.instagram}
+        homepage={expectedShow.homepage}
+        backdrop={expectedShow.backdrop}
+        createdBy={expectedShow.createdBy}
+        genres={expectedShow.genres}
+        poster={expectedPoster}
+        releaseDate={expectedShow.releaseDate}
+        runtime={expectedShow.runtime}
+        title={expectedShow.title}
+        userScore={expectedShow.userScore}
+        userScoreCount={expectedShow.userScoreCount}
+        showType="movie"
+        rating={expectedShow.rating}
+        previewVideo={findTrailer(expectedShow.videos)}
+        overview={expectedShow.overview}
+      />
+    );
+
+    expect(screen.queryByRole('img', { name: expectedShow.title })).not.toBeInTheDocument();
+  });
+
+  it('should render <NoImage /> component if poster path does not exist', () => {
+    const expectedShow = mockDetailedMovie;
+    const expectedPoster = { ...mockDetailedMovie.poster, path: '' };
+    render(
+      <ShowPageHeader
+        facebookHandle={expectedShow.socialHandles.facebook}
+        twitterHandle={expectedShow.socialHandles.twitter}
+        instagramHandle={expectedShow.socialHandles.instagram}
+        homepage={expectedShow.homepage}
+        backdrop={expectedShow.backdrop}
+        createdBy={expectedShow.createdBy}
+        genres={expectedShow.genres}
+        poster={expectedPoster}
+        releaseDate={expectedShow.releaseDate}
+        runtime={expectedShow.runtime}
+        title={expectedShow.title}
+        userScore={expectedShow.userScore}
+        userScoreCount={expectedShow.userScoreCount}
+        showType="movie"
+        rating={expectedShow.rating}
+        previewVideo={findTrailer(expectedShow.videos)}
+        overview={expectedShow.overview}
+      />
+    );
+
+    expect(screen.getByTestId('no-image')).toBeInTheDocument();
   });
 
   it('should render <ShowMetadata /> component', () => {

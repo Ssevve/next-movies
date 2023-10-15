@@ -7,14 +7,12 @@ const mockDetailedMovie: DetailedMovie = {
   cast: [
     {
       character: 'Tim Ballard',
-      gender: 'Male',
       id: 8767,
       imagePath: '/wDf6ukCaGMEnH94GzLP2NGjKeNL.jpg',
       name: 'Jim Caviezel',
     },
     {
       character: 'Katherine Ballard',
-      gender: 'Female',
       id: 23931,
       imagePath: '/11raFiNo7QfisH44v3NIfpVvIz5.jpg',
       name: 'Mira Sorvino',

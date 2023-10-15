@@ -10,7 +10,7 @@ export default function ShowCast({ cast }: ShowCastProps) {
   return (
     <section className="overflow-hidden">
       <SectionHeading className="mb-4">Cast</SectionHeading>
-      <CastScroller cast={cast} limit={10} />
+      <CastScroller cast={cast} limit={9} />
     </section>
   );
 }

@@ -1,10 +1,10 @@
 'use client';
 
-import Scroller from '@/components/Scroller/Scroller';
+import Scroller, { ScrollerProps } from '@/components/Scroller/Scroller';
 import VideoCard from '@/components/VideoCard/VideoCard';
 import Video from '@/types/Video';
 
-interface VideoScrollerProps {
+interface VideoScrollerProps extends Pick<ScrollerProps, 'limit'> {
   videos: Video[];
   onMouseEnter?: (path: string) => void;
   invertedTextColor?: boolean;
@@ -16,12 +16,14 @@ export default function VideoScroller({
   className,
   onMouseEnter,
   invertedTextColor = false,
+  limit,
 }: VideoScrollerProps) {
   return (
     <Scroller
       wrapperClassName={className}
       emptyMessage="No videos to display"
       listClassName="flex h-max space-x-4 px-2 pb-4"
+      limit={limit}
     >
       {videos.map(({ id, title, showTitle, thumbnail, showType, showId, youtubeKey, backdrop }) => (
         <VideoCard

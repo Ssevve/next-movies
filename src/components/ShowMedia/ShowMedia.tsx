@@ -16,15 +16,15 @@ export default function ShowMedia({ backdrops, posters, videos }: ShowMediaProps
       <SectionHeading>Media</SectionHeading>
       <section className="overflow-hidden">
         <h3 className="mb-2 font-semibold">Videos ({videos.length})</h3>
-        <VideoScroller videos={videos} />
+        <VideoScroller videos={videos} limit={10} />
       </section>
       <section className="overflow-hidden">
         <h3 className="mb-2 font-semibold">Backdrops ({backdrops.length})</h3>
-        <ImageScroller kind="backdrop" images={backdrops} />
+        <ImageScroller kind="backdrop" images={backdrops} limit={10} />
       </section>
       <section className="overflow-hidden">
         <h3 className="mb-2 font-semibold">Posters ({posters.length})</h3>
-        <ImageScroller kind="poster" images={posters} />
+        <ImageScroller kind="poster" images={posters} limit={10} />
       </section>
     </section>
   );

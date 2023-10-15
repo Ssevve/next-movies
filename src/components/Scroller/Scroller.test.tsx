@@ -15,7 +15,7 @@ describe('Scroller', () => {
     expect(screen.getByRole('list')).toBeInTheDocument();
   });
 
-  it('should render correct amount of items', () => {
+  it('should render all items if limit is not provided', () => {
     render(
       <Scroller emptyMessage="Test empty message">
         {mockShows.map(({ title }) => (
@@ -24,6 +24,52 @@ describe('Scroller', () => {
       </Scroller>
     );
     expect(screen.getAllByRole('listitem')).toHaveLength(mockShows.length);
+  });
+
+  it('should render all items if limit is 0', () => {
+    render(
+      <Scroller emptyMessage="Test empty message" limit={0}>
+        {mockShows.map(({ title }) => (
+          <p key={title}>{title}</p>
+        ))}
+      </Scroller>
+    );
+    expect(screen.getAllByRole('listitem')).toHaveLength(mockShows.length);
+  });
+
+  it('should render correct amount of items if limit is provided', () => {
+    const expectedItemCount = 2;
+    render(
+      <Scroller emptyMessage="Test empty message" limit={expectedItemCount}>
+        {mockShows.map(({ title }) => (
+          <p key={title}>{title}</p>
+        ))}
+      </Scroller>
+    );
+    expect(screen.getAllByRole('listitem')).toHaveLength(expectedItemCount);
+  });
+
+  it('should render "show more" button if not all children are visible', () => {
+    const expectedItemCount = 2;
+    render(
+      <Scroller emptyMessage="Test empty message" limit={expectedItemCount}>
+        {mockShows.map(({ title }) => (
+          <p key={title}>{title}</p>
+        ))}
+      </Scroller>
+    );
+    expect(screen.getByRole('button', { name: 'Show More' })).toBeInTheDocument();
+  });
+
+  it('should not render "show more" button if all children are visible', () => {
+    render(
+      <Scroller emptyMessage="Test empty message">
+        {mockShows.map(({ title }) => (
+          <p key={title}>{title}</p>
+        ))}
+      </Scroller>
+    );
+    expect(screen.queryByRole('button', { name: 'Show More' })).not.toBeInTheDocument();
   });
 
   it('should not render a list if has no children', () => {

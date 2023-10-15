@@ -1,18 +1,18 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import Scroller from '@/components/Scroller/Scroller';
+import Scroller, { ScrollerProps } from '@/components/Scroller/Scroller';
 import Hoverable from '@/components/ui/Hoverable';
 import { TMDBImageSizes } from '@/services/TMDB/config';
 import getTMDBImagePath from '@/services/TMDB/utils/getTMDBImagePath/getTMDBImagePath';
 import ImageType from '@/types/Image';
 
-interface ImageScrollerProps {
+interface ImageScrollerProps extends Pick<ScrollerProps, 'limit'> {
   images: ImageType[];
   kind: 'poster' | 'backdrop';
 }
 
-export default function ImageScroller({ images, kind }: ImageScrollerProps) {
+export default function ImageScroller({ images, kind, limit }: ImageScrollerProps) {
   const isPoster = kind === 'poster';
   const imageWidth = isPoster
     ? TMDBImageSizes.posters.show.width
@@ -26,7 +26,11 @@ export default function ImageScroller({ images, kind }: ImageScrollerProps) {
   const emptyMessage = `No ${kind}s to display`;
 
   return (
-    <Scroller emptyMessage={emptyMessage} listClassName="flex h-max space-x-4 px-2 pb-4">
+    <Scroller
+      emptyMessage={emptyMessage}
+      listClassName="flex h-max space-x-4 px-2 pb-4"
+      limit={limit}
+    >
       {images.map(({ path, width, height }) => (
         <Hoverable key={path} className={widthClassName}>
           <Link href={getTMDBImagePath(path)}>

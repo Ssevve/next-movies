@@ -1,8 +1,8 @@
-import Scroller from '@/components/Scroller/Scroller';
+import Scroller, { ScrollerProps } from '@/components/Scroller/Scroller';
 import ShowCard from '@/components/ShowCard/ShowCard';
 import Show from '@/types/Show';
 
-interface ShowScrollerProps {
+interface ShowScrollerProps extends Pick<ScrollerProps, 'limit'> {
   shows: Show[];
   emptyMessage?: string;
 }
@@ -10,9 +10,14 @@ interface ShowScrollerProps {
 export default function ShowScroller({
   shows,
   emptyMessage = 'No shows to display',
+  limit,
 }: ShowScrollerProps) {
   return (
-    <Scroller emptyMessage={emptyMessage} listClassName="flex h-max space-x-4 px-2 pb-4">
+    <Scroller
+      emptyMessage={emptyMessage}
+      listClassName="flex h-max space-x-4 px-2 pb-4"
+      limit={limit}
+    >
       {shows.map(({ id, releaseDate, poster, userScore, showType, title }) => (
         <ShowCard
           key={id}

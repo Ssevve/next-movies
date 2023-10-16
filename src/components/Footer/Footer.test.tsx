@@ -26,11 +26,6 @@ describe('Footer', () => {
     expect(screen.getByRole('img', { name: 'TMDB logo' })).toBeInTheDocument();
   });
 
-  it('should render TMDB logo', () => {
-    render(<Footer />);
-    expect(screen.getByRole('img', { name: 'TMDB logo' })).toBeInTheDocument();
-  });
-
   it('should render link to the home page', () => {
     render(<Footer />);
     expect(screen.getByRole('link', { name: 'Next Movies' })).toBeInTheDocument();

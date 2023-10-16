@@ -1,6 +1,6 @@
 import MovieCastPerson from '@/types/MovieCastPerson';
 
-const mockCast: MovieCastPerson[] = [
+const mockMovieCast: MovieCastPerson[] = [
   {
     character: 'Jaime Reyes / Blue Beetle',
     id: 1185997,
@@ -15,4 +15,4 @@ const mockCast: MovieCastPerson[] = [
   },
 ];
 
-export default mockCast;
+export default mockMovieCast;

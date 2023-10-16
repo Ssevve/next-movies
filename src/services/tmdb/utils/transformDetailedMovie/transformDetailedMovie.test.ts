@@ -1,10 +1,9 @@
 import mockTMDBDetailedMovies from '@/__mocks__/data/mockTMDBDetailedMovies';
 import { TMDBImageSizes } from '@/services/TMDB/config';
 import transformDetailedMovie from '@/services/TMDB/utils/transformDetailedMovie/transformDetailedMovie';
-import transformMovieCast from '@/services/TMDB/utils/transformMovieCast/transformMovieCast';
 import DetailedMovie from '@/types/DetailedMovie';
 
-describe('transformVideos', () => {
+describe('transformDetailedMovie', () => {
   it('should return correctly transformed data', async () => {
     const expectedData: DetailedMovie = {
       backdrop: { path: '/1syW9SNna38rSl9fnXwc9fP7POW.jpg' },
@@ -72,7 +71,6 @@ describe('transformVideos', () => {
         },
       ],
       originalLanguage: 'en',
-      originalTitle: 'Blue Beetle',
       overview:
         'Recent college grad Jaime Reyes returns home full of aspirations for his future, only to find that home is not quite as he left it. As he searches to find his purpose in the world, fate intervenes when Jaime unexpectedly finds himself in possession of an ancient relic of alien biotechnology: the Scarab.',
       poster: {
@@ -154,14 +152,10 @@ describe('transformVideos', () => {
         },
       ],
     };
+
     const transformedData = transformDetailedMovie({
       ...mockTMDBDetailedMovies.withOriginalLanguage,
     });
     expect(transformedData).toEqual(expectedData);
-  });
-
-  it('should return an empty array for no cast', async () => {
-    const transformedCast = transformMovieCast([]);
-    expect(transformedCast).toEqual([]);
   });
 });

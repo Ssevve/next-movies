@@ -10,7 +10,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/DropdownMenu';
 import cn from '@/lib/cn';
-import { NavItemLink } from '@/types/NavItem';
+import NavItemLink from '@/types/NavItemLink';
 
 interface DesktopNavDropdownProps {
   label: string;

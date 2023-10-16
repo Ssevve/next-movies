@@ -1,13 +1,13 @@
 import { render, screen } from '@testing-library/react';
 
 import PersonCard from '@/components/PersonCard/PersonCard';
-import CastPerson from '@/types/CastPerson';
+import MovieCastPerson from '@/types/MovieCastPerson';
 
 const testImagePath = '/testImage.jpg';
 
 describe('PersonCard', () => {
   it("should render person's image", () => {
-    const expectedPerson: CastPerson = {
+    const expectedPerson: MovieCastPerson = {
       character: 'Test character',
       id: 1,
       imagePath: testImagePath,
@@ -24,7 +24,7 @@ describe('PersonCard', () => {
   });
 
   it("should render person's image with correct 'src' attribute if imagePath is provided", () => {
-    const expectedPerson: CastPerson = {
+    const expectedPerson: MovieCastPerson = {
       character: 'Test character',
       id: 1,
       imagePath: testImagePath,
@@ -42,7 +42,7 @@ describe('PersonCard', () => {
   });
 
   it('should not render image if imagePath is not provided', () => {
-    const expectedPerson: CastPerson = {
+    const expectedPerson: MovieCastPerson = {
       character: 'Test character',
       id: 1,
       imagePath: '',
@@ -59,7 +59,7 @@ describe('PersonCard', () => {
   });
 
   it('should render <NoImage /> component if imagePath is not provided', () => {
-    const expectedPerson: CastPerson = {
+    const expectedPerson: MovieCastPerson = {
       character: 'Test character',
       id: 1,
       imagePath: '',
@@ -76,7 +76,7 @@ describe('PersonCard', () => {
   });
 
   it('should render name', () => {
-    const expectedPerson: CastPerson = {
+    const expectedPerson: MovieCastPerson = {
       character: 'Test character',
       id: 1,
       imagePath: testImagePath,
@@ -93,7 +93,7 @@ describe('PersonCard', () => {
   });
 
   it('should render children', () => {
-    const expectedPerson: CastPerson = {
+    const expectedPerson: MovieCastPerson = {
       character: 'Test character',
       id: 1,
       imagePath: testImagePath,

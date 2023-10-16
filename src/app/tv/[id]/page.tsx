@@ -3,17 +3,17 @@ import dynamic from 'next/dynamic';
 
 import MovieFacts from '@/app/movie/[id]/_components/MovieFacts/MovieFacts';
 import Recommendations from '@/components/Recommendations/Recommendations';
-import ShowCast from '@/components/ShowCast/ShowCast';
 import ShowMedia from '@/components/ShowMedia/ShowMedia';
 import ShowPageHeader from '@/components/ShowPageHeader/ShowPageHeader';
 import getDetailedMovie from '@/services/TMDB/api/getDetailedMovie/getDetailedMovie';
+import getDetailedTvShow from '@/services/TMDB/api/getDetailedTvShow/getDetailedTvShow';
 import findTrailer from '@/utils/findTrailer/findTrailer';
 
 const YoutubeIframeModal = dynamic(
   () => import('@/components/YoutubeIframeModal/YoutubeIframeModal')
 );
 
-interface MoviePageProps {
+interface TvShowPageProps {
   searchParams: {
     play?: string;
   };
@@ -22,10 +22,10 @@ interface MoviePageProps {
   };
 }
 
-export async function generateMetadata({ params }: MoviePageProps): Promise<Metadata> {
-  const movieId = params.id;
+export async function generateMetadata({ params }: TvShowPageProps): Promise<Metadata> {
+  const tvShowId = params.id;
 
-  const { title, overview } = await getDetailedMovie(Number(movieId));
+  const { title, overview } = await getDetailedTvShow(Number(tvShowId));
 
   return {
     description: overview,
@@ -33,9 +33,9 @@ export async function generateMetadata({ params }: MoviePageProps): Promise<Meta
   };
 }
 
-export default async function MoviePage({ searchParams, params }: MoviePageProps) {
+export default async function TvShowPage({ searchParams, params }: TvShowPageProps) {
   const youtubeModalVideoKey = searchParams?.play;
-  const movieId = params.id;
+  const tvShowId = params.id;
 
   const {
     backdrop,
@@ -48,19 +48,16 @@ export default async function MoviePage({ searchParams, params }: MoviePageProps
     title,
     userScore,
     userScoreCount,
-    runtime,
     socialHandles,
     homepage,
     overview,
-    budget,
-    revenue,
     videos,
     status,
     cast,
     originalLanguage,
     images,
     recommendations,
-  } = await getDetailedMovie(Number(movieId));
+  } = await getDetailedTvShow(Number(tvShowId));
   const previewVideo = findTrailer(videos);
   return (
     <section className="flex w-full flex-col gap-12">
@@ -76,8 +73,7 @@ export default async function MoviePage({ searchParams, params }: MoviePageProps
         title={title}
         userScore={userScore}
         userScoreCount={userScoreCount}
-        showType="movie"
-        runtime={runtime}
+        showType="tv"
         previewVideo={previewVideo}
         facebookHandle={socialHandles.facebook}
         twitterHandle={socialHandles.twitter}
@@ -87,13 +83,7 @@ export default async function MoviePage({ searchParams, params }: MoviePageProps
       />
 
       <section className="container flex w-full flex-col gap-12 px-4">
-        <MovieFacts
-          budget={budget}
-          revenue={revenue}
-          status={status}
-          originalLanguage={originalLanguage}
-        />
-        <ShowCast cast={cast} />
+        {/* <ShowCast cast={cast} /> */}
         <ShowMedia posters={images.posters} backdrops={images.backdrops} videos={videos} />
         <Recommendations shows={recommendations} />
       </section>

@@ -2,26 +2,31 @@ import ShowType from '@/types//ShowType';
 import Backdrop from '@/types/Backdrop';
 import Creator from '@/types/Creator';
 import Genre from '@/types/Genre';
-import Images from '@/types/Images';
-import Keyword from '@/types/Keyword';
+import Image from '@/types/Image';
+import MovieCastPerson from '@/types/MovieCastPerson';
 import Show from '@/types/Show';
-import SocialHandles from '@/types/SocialHandles';
 import Video from '@/types/Video';
 
 export default interface DetailedShow extends Show {
   backdrop: Backdrop;
   userScoreCount: number;
   genres: Genre[];
-  images: Images;
+  images: {
+    backdrops: Image[];
+    posters: Image[];
+  };
   videos: Video[];
-  socialHandles: SocialHandles;
+  socialHandles: {
+    twitter: string;
+    facebook: string;
+    instagram: string;
+  };
   originalLanguage: string;
   recommendations: Show[];
-  keywords: Keyword[];
+  keywords: { id: number; name: string }[];
   tagline?: string;
   overview: string;
   homepage: string;
-  originalTitle: string;
   status: string;
   rating: string;
   createdBy: Creator[];

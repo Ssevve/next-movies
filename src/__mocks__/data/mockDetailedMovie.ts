@@ -73,7 +73,6 @@ const mockDetailedMovie: DetailedMovie = {
     },
   ],
   originalLanguage: 'en',
-  originalTitle: 'Sound of Freedom',
   overview:
     'The story of Tim Ballard, a former US government agent, who quits his job in order to devote his life to rescuing children from global sex traffickers.',
   poster: {

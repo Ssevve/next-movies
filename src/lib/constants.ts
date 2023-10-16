@@ -1,4 +1,10 @@
-import { NavItem } from '@/types/NavItem';
+import NavItemLink from '@/types/NavItemLink';
+
+interface NavItem {
+  label: string;
+  path: string;
+  links: NavItemLink[];
+}
 
 export const navItems: NavItem[] = [
   {

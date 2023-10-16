@@ -1,10 +1,8 @@
-interface TMDBReleaseDate {
-  certification: string;
-}
-
 interface TMDBReleaseDatesResult {
   iso_3166_1: string;
-  release_dates: TMDBReleaseDate[];
+  release_dates: {
+    certification: string;
+  }[];
 }
 
 export default interface TMDBReleaseDates {

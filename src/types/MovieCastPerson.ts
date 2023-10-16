@@ -1,4 +1,4 @@
-export default interface CastPerson {
+export default interface MovieCastPerson {
   id: number;
   name: string;
   imagePath: string;

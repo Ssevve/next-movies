@@ -1,9 +1,9 @@
 import PersonCard from '@/components//PersonCard/PersonCard';
 import Scroller, { ScrollerProps } from '@/components/Scroller/Scroller';
-import CastPerson from '@/types/CastPerson';
+import MovieCastPerson from '@/types/MovieCastPerson';
 
 interface CastScrollerProps extends Pick<ScrollerProps, 'limit'> {
-  cast: CastPerson[];
+  cast: MovieCastPerson[];
 }
 
 export default function CastScroller({ cast, limit }: CastScrollerProps) {

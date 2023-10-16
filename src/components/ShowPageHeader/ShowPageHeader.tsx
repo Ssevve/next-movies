@@ -1,4 +1,4 @@
-import { CameraOff, Play } from 'lucide-react';
+import { Play } from 'lucide-react';
 import Image from 'next/image';
 
 import NoImage from '@/components/NoImage';
@@ -82,7 +82,7 @@ export default function ShowPageHeader({
         />
       )}
       <section className="container flex flex-col gap-8 px-4 py-8 md:flex-row">
-        <div className="mx-auto flex w-max shrink-0 items-center justify-center">
+        <div className="mx-auto flex w-max flex-none shrink-0 items-center justify-center  md:justify-start">
           {fullPosterPath ? (
             <Image
               src={fullPosterPath}
@@ -99,7 +99,7 @@ export default function ShowPageHeader({
           )}
         </div>
 
-        <section className="flex flex-col flex-wrap gap-8 font-semibold md:mt-8">
+        <section className="flex flex-1 flex-col flex-wrap justify-center gap-8 font-semibold">
           <section className="space-y-2">
             <ShowExternalLinks
               className="sm:mb-4"
@@ -140,9 +140,11 @@ export default function ShowPageHeader({
               </VideoLink>
             )}
           </section>
-          <div className="pr-4">
-            <ShowOverview overview={overview} />
-          </div>
+          {overview && (
+            <div className="pr-4">
+              <ShowOverview overview={overview} />
+            </div>
+          )}
           <Creators creators={createdBy} showType={showType} />
         </section>
       </section>

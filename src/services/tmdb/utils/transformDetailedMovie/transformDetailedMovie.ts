@@ -3,13 +3,12 @@ import TMDBDetailedMovie from '@/services/TMDB/types/TMDBDetailedMovie';
 import TMDBReleaseDates from '@/services/TMDB/types/TMDBReleaseDates';
 import formatDate from '@/services/TMDB/utils/formatDate/formatDate';
 import transformImages from '@/services/TMDB/utils/transformImages/transformImages';
-import transformMovieCast from '@/services/TMDB/utils/transformMovieCast/transformMovieCast';
 import transformShows from '@/services/TMDB/utils/transformShows/transformShows';
 import transformVideos from '@/services/TMDB/utils/transformVideos/transformVideos';
 import DetailedMovie from '@/types/DetailedMovie';
 
-function getMovieRating(releaseDates: TMDBReleaseDates) {
-  return releaseDates.results.find((release) => release.iso_3166_1 === 'US')?.release_dates[0]
+function getUSMovieRating(releaseDates: TMDBReleaseDates) {
+  return releaseDates.results.find(({ iso_3166_1 }) => iso_3166_1 === 'US')?.release_dates[0]
     .certification;
 }
 
@@ -24,7 +23,6 @@ export default function transformDetailedMovie({
   images,
   keywords,
   original_language,
-  original_title,
   overview,
   poster_path,
   recommendations,
@@ -42,7 +40,12 @@ export default function transformDetailedMovie({
   return {
     backdrop: { path: backdrop_path },
     budget,
-    cast: transformMovieCast(credits.cast),
+    cast: credits.cast.map(({ character, id, name, profile_path }) => ({
+      character,
+      id,
+      imagePath: profile_path || '',
+      name,
+    })),
     createdBy: credits.crew
       .filter((person) => person.job === 'Director')
       .map(({ name, id }) => ({ id, name })),
@@ -55,14 +58,13 @@ export default function transformDetailedMovie({
     },
     keywords: keywords.keywords,
     originalLanguage: original_language,
-    originalTitle: original_title,
     overview,
     poster: {
       height: TMDBImageSizes.posters.detailedShow.height,
       path: poster_path,
       width: TMDBImageSizes.posters.detailedShow.width,
     },
-    rating: getMovieRating(release_dates) || '',
+    rating: getUSMovieRating(release_dates) || '',
     recommendations: transformShows(recommendations.results),
     releaseDate: release_date ? formatDate(release_date) : 'N/A',
     revenue,

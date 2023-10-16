@@ -1,28 +1,20 @@
-import TMDBGenre from '@/services/TMDB/types/TMDBGenre';
 import TMDBImages from '@/services/TMDB/types/TMDBImages';
-import TMDBKeyword from '@/services/TMDB/types/TMDBKeyword';
 import TMDBPaginatedShows from '@/services/TMDB/types/TMDBPaginatedShows';
 import TMDBShow from '@/services/TMDB/types/TMDBShow';
-import TMDBVideos from '@/services/TMDB/types/TMDBVideos';
-
-interface TMDBExternalIds {
-  twitter_id: string;
-  facebook_id: string;
-  instagram_id: string;
-}
-
-interface TMDBKeywords {
-  keywords: TMDBKeyword[];
-}
+import TMDBVideo from '@/services/TMDB/types/TMDBVideo';
 
 export default interface TMDBDetailedShow extends TMDBShow {
-  genres: TMDBGenre[];
+  genres: { id: number; name: string }[];
   images: TMDBImages;
-  videos: Pick<TMDBVideos, 'results'>;
-  external_ids: TMDBExternalIds;
+  videos: {
+    results: TMDBVideo[];
+  };
+  external_ids: {
+    twitter_id: string;
+    facebook_id: string;
+    instagram_id: string;
+  };
   original_language: string;
-  recommendations: TMDBPaginatedShows;
-  keywords: TMDBKeywords;
   tagline: string;
   overview: string;
   homepage: string;

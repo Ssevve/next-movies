@@ -1,6 +1,6 @@
-import TMDBCastPerson from '@/services/TMDB/types/TMDBCastPerson';
+import TMDBMovieCastPerson from '@/services/TMDB/types/TMDBMovieCastPerson';
 
-const mockCast: TMDBCastPerson[] = [
+const mockMovieCast: TMDBMovieCastPerson[] = [
   {
     character: 'Jaime Reyes / Blue Beetle',
     id: 1185997,
@@ -15,4 +15,4 @@ const mockCast: TMDBCastPerson[] = [
   },
 ];
 
-export default mockCast;
+export default mockMovieCast;

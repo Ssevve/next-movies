@@ -16,9 +16,11 @@ describe('transformShowsResults', () => {
           path: mockTMDBUnknownShows[0].poster_path,
           width: TMDBImageSizes.posters.show.width,
         },
-        releaseDate: formatDate(mockTMDBUnknownShows[0].release_date!),
+        releaseDate: mockTMDBUnknownShows[0].release_date
+          ? formatDate(mockTMDBUnknownShows[0].release_date)
+          : 'N/A',
         showType: 'movie',
-        title: mockTMDBUnknownShows[0].title!,
+        title: mockTMDBUnknownShows[0].title || '',
         userScore: mockTMDBUnknownShows[0].vote_average,
       },
       {

@@ -1,5 +1,6 @@
 import TMDBDetailedShow from '@/services/TMDB/types/TMDBDetailedShow';
 import TMDBMovie from '@/services/TMDB/types/TMDBMovie';
+import TMDBMovieCastPerson from '@/services/TMDB/types/TMDBMovieCastPerson';
 import TMDBPaginatedShows from '@/services/TMDB/types/TMDBPaginatedShows';
 import TMDBReleaseDates from '@/services/TMDB/types/TMDBReleaseDates';
 
@@ -8,7 +9,7 @@ export default interface TMDBDetailedMovie extends TMDBDetailedShow, TMDBMovie {
   revenue: number;
   runtime: number;
   credits: {
-    cast: { id: number; name: string; profile_path?: string; character: string }[];
+    cast: TMDBMovieCastPerson[];
     crew: {
       id: number;
       job: string;

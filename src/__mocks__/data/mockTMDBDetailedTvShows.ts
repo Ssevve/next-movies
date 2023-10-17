@@ -11,7 +11,6 @@ const mockTMDBDetailedMovies: Record<string, TMDBDetailedTvShow> = {
           roles: [
             {
               character: 'Walter White',
-              episode_count: 62,
             },
           ],
           total_episode_count: 62,
@@ -23,7 +22,6 @@ const mockTMDBDetailedMovies: Record<string, TMDBDetailedTvShow> = {
           roles: [
             {
               character: 'Jesse Pinkman',
-              episode_count: 62,
             },
           ],
           total_episode_count: 62,
@@ -211,7 +209,6 @@ const mockTMDBDetailedMovies: Record<string, TMDBDetailedTvShow> = {
           roles: [
             {
               character: 'Walter White',
-              episode_count: 62,
             },
           ],
           total_episode_count: 62,
@@ -223,7 +220,6 @@ const mockTMDBDetailedMovies: Record<string, TMDBDetailedTvShow> = {
           roles: [
             {
               character: 'Jesse Pinkman',
-              episode_count: 62,
             },
           ],
           total_episode_count: 62,

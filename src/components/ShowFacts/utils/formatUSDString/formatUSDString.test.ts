@@ -1,4 +1,4 @@
-import formatUSDString from '@/app/movie/[id]/_components/MovieFacts/utils/formatUSDString/formatUSDString';
+import formatUSDString from '@/components/ShowFacts/utils/formatUSDString/formatUSDString';
 
 describe('formatUSDString', () => {
   it('should return correct string for "value" greater than 0', () => {

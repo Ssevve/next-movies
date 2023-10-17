@@ -1,9 +1,10 @@
 import CastScroller from '@/components/CastScroller/CastScroller';
 import SectionHeading from '@/components/SectionHeading/SectionHeading';
 import MovieCastPerson from '@/types/MovieCastPerson';
+import TvShowCastPerson from '@/types/TvShowCastPerson';
 
 interface ShowCastProps {
-  cast: MovieCastPerson[];
+  cast: (MovieCastPerson | TvShowCastPerson)[];
 }
 
 export default function ShowCast({ cast }: ShowCastProps) {

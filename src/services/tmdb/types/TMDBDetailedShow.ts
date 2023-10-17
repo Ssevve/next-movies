@@ -1,5 +1,4 @@
 import TMDBImages from '@/services/TMDB/types/TMDBImages';
-import TMDBPaginatedShows from '@/services/TMDB/types/TMDBPaginatedShows';
 import TMDBShow from '@/services/TMDB/types/TMDBShow';
 import TMDBVideo from '@/services/TMDB/types/TMDBVideo';
 

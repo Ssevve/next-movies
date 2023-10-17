@@ -42,7 +42,7 @@ export default function transformDetailedTvShow({
   return {
     backdrop: { path: backdrop_path },
     cast: aggregate_credits.cast.map(({ roles, id, name, profile_path, total_episode_count }) => ({
-      characters: roles.map((role) => ({ episodeCount: role.episode_count, name: role.character })),
+      characters: roles.map(({ character }) => character),
       id,
       imagePath: profile_path || '',
       name,
@@ -68,7 +68,7 @@ export default function transformDetailedTvShow({
           title: last_episode_to_air.name,
         }
       : null,
-    networks: networks.map(({ id, logo_path, name }) => ({ id, logo: logo_path, name })),
+    networks: networks.map(({ id, logo_path, name }) => ({ id, logoPath: logo_path, name })),
     nextEpisode: next_episode_to_air
       ? {
           airDate: next_episode_to_air?.air_date ? formatDate(next_episode_to_air.air_date) : '',

@@ -11,14 +11,14 @@ describe('transformDetailedTvShow', () => {
       backdrop: { path: '/tsRy63Mu5cu8etL1X7ZLyf7UP1M.jpg' },
       cast: [
         {
-          characters: [{ episodeCount: 62, name: 'Walter White' }],
+          characters: ['Walter White'],
           id: 17419,
           imagePath: '/aGSvZg7uITJveQtGHDcPNI6map1.jpg',
           name: 'Bryan Cranston',
           totalEpisodeCount: 62,
         },
         {
-          characters: [{ episodeCount: 62, name: 'Jesse Pinkman' }],
+          characters: ['Jesse Pinkman'],
           id: 84497,
           imagePath: '/8Ac9uuoYwZoYVAIJfRLzzLsGGJn.jpg',
           name: 'Aaron Paul',
@@ -91,7 +91,7 @@ describe('transformDetailedTvShow', () => {
       networks: [
         {
           id: 174,
-          logo: '/alqLicR1ZMHMaZGP3xRQxn9sq7p.png',
+          logoPath: '/alqLicR1ZMHMaZGP3xRQxn9sq7p.png',
           name: 'AMC',
         },
       ],

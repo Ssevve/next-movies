@@ -1,11 +1,11 @@
 import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 
-import MovieFacts from '@/app/movie/[id]/_components/MovieFacts/MovieFacts';
 import Recommendations from '@/components/Recommendations/Recommendations';
+import ShowCast from '@/components/ShowCast/ShowCast';
+import ShowFacts from '@/components/ShowFacts/ShowFacts';
 import ShowMedia from '@/components/ShowMedia/ShowMedia';
 import ShowPageHeader from '@/components/ShowPageHeader/ShowPageHeader';
-import getDetailedMovie from '@/services/TMDB/api/getDetailedMovie/getDetailedMovie';
 import getDetailedTvShow from '@/services/TMDB/api/getDetailedTvShow/getDetailedTvShow';
 import findTrailer from '@/utils/findTrailer/findTrailer';
 
@@ -51,6 +51,8 @@ export default async function TvShowPage({ searchParams, params }: TvShowPagePro
     socialHandles,
     homepage,
     overview,
+    type,
+    networks,
     videos,
     status,
     cast,
@@ -83,7 +85,13 @@ export default async function TvShowPage({ searchParams, params }: TvShowPagePro
       />
 
       <section className="container flex w-full flex-col gap-12 px-4">
-        {/* <ShowCast cast={cast} /> */}
+        <ShowFacts
+          networks={networks}
+          type={type}
+          status={status}
+          originalLanguage={originalLanguage}
+        />
+        <ShowCast cast={cast} />
         <ShowMedia posters={images.posters} backdrops={images.backdrops} videos={videos} />
         <Recommendations shows={recommendations} />
       </section>

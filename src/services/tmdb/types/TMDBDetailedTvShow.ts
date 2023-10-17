@@ -26,7 +26,6 @@ export default interface TMDBDetailedTvShow extends TMDBDetailedShow, TMDBTvShow
       roles: [
         {
           character: string;
-          episode_count: number;
         },
       ];
       total_episode_count: number;

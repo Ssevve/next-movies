@@ -1,5 +1,6 @@
 import DetailedShow from '@/types/DetailedShow';
 import Image from '@/types/Image';
+import Network from '@/types/Network';
 import TvShowCastPerson from '@/types/TvShowCastPerson';
 
 interface Episode {
@@ -13,7 +14,7 @@ interface Episode {
 }
 
 export default interface DetailedTvShow extends DetailedShow {
-  networks: { id: number; logo: string; name: string }[];
+  networks: Network[];
   type: string;
   seasons: {
     airDate: string;

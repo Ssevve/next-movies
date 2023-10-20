@@ -10,7 +10,7 @@ export default function Recommendations({ shows }: RecommendationsProps) {
   return (
     <section className="w-full space-y-4 overflow-hidden">
       <SectionHeading>Recommendations</SectionHeading>
-      <ShowScroller emptyMessage="No recommended shows found" shows={shows} limit={9} />
+      <ShowScroller emptyMessage="No recommended shows available" shows={shows} limit={9} />
     </section>
   );
 }

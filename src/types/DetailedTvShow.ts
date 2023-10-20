@@ -1,32 +1,15 @@
+import TMDBTvShowStatus from '@/services/TMDB/types/TMDBTvShowStatus';
+import TMDBTvShowType from '@/services/TMDB/types/TMDBTvShowType';
 import DetailedShow from '@/types/DetailedShow';
-import Image from '@/types/Image';
+import Episode from '@/types/Episode';
 import Network from '@/types/Network';
+import Season from '@/types/Season';
 import TvShowCastPerson from '@/types/TvShowCastPerson';
 
-interface Episode {
-  id: number;
-  title: string;
-  airDate?: string;
-  episodeNumber: number;
-  episodeType: string;
-  seasonNumber: number;
-  showId: number;
-}
-
-export default interface DetailedTvShow extends DetailedShow {
+export default interface DetailedTvShow extends DetailedShow<TvShowCastPerson, TMDBTvShowStatus> {
   networks: Network[];
-  type: string;
-  seasons: {
-    airDate: string;
-    episodeCount: number;
-    id: number;
-    name: string;
-    overview: string;
-    poster?: Image;
-    seasonNumber: number;
-    userScore: number;
-  }[];
+  type: TMDBTvShowType;
+  seasons: Season[];
   lastEpisode: Episode | null;
   nextEpisode: Episode | null;
-  cast: TvShowCastPerson[];
 }

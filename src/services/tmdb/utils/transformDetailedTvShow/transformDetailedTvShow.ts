@@ -63,9 +63,9 @@ export default function transformDetailedTvShow({
           episodeNumber: last_episode_to_air.episode_number,
           episodeType: last_episode_to_air.episode_type,
           id: last_episode_to_air.id,
+          name: last_episode_to_air.name,
           seasonNumber: last_episode_to_air.season_number,
           showId: last_episode_to_air.show_id,
-          title: last_episode_to_air.name,
         }
       : null,
     networks: networks.map(({ id, logo_path, name }) => ({ id, logoPath: logo_path, name })),
@@ -75,9 +75,9 @@ export default function transformDetailedTvShow({
           episodeNumber: next_episode_to_air.episode_number,
           episodeType: next_episode_to_air.episode_type,
           id: next_episode_to_air.id,
+          name: next_episode_to_air.name,
           seasonNumber: next_episode_to_air.season_number,
           showId: next_episode_to_air.show_id,
-          title: next_episode_to_air.name,
         }
       : null,
     originalLanguage: original_language,

@@ -1,19 +1,12 @@
 import TMDBContentRatings from '@/services/TMDB/types/TMDBContentRatings';
 import TMDBDetailedShow from '@/services/TMDB/types/TMDBDetailedShow';
+import TMDBEpisode from '@/services/TMDB/types/TMDBEpisode';
 import TMDBPaginatedShows from '@/services/TMDB/types/TMDBPaginatedShows';
 import TMDBTvShow from '@/services/TMDB/types/TMDBTvShow';
+import TMDBTvShowStatus from '@/services/TMDB/types/TMDBTvShowStatus';
+import TMDBTvShowType from '@/services/TMDB/types/TMDBTvShowType';
 
-interface TMDBEpisode {
-  id: number;
-  name: string;
-  air_date: string;
-  episode_number: number;
-  episode_type: string; // TODO: Union of possible strings?
-  season_number: number;
-  show_id: number;
-}
-
-export default interface TMDBDetailedTvShow extends TMDBDetailedShow, TMDBTvShow {
+export default interface TMDBDetailedTvShow extends TMDBDetailedShow<TMDBTvShowStatus>, TMDBTvShow {
   created_by: {
     id: number;
     name: string;
@@ -32,7 +25,7 @@ export default interface TMDBDetailedTvShow extends TMDBDetailedShow, TMDBTvShow
     }[];
   };
   networks: { id: number; logo_path: string; name: string }[];
-  type: string;
+  type: TMDBTvShowType;
   seasons: {
     air_date: string;
     episode_count: number;

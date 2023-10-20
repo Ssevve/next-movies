@@ -1,8 +1,9 @@
 import TMDBImages from '@/services/TMDB/types/TMDBImages';
 import TMDBShow from '@/services/TMDB/types/TMDBShow';
+import TMDBShowStatus from '@/services/TMDB/types/TMDBShowStatus';
 import TMDBVideo from '@/services/TMDB/types/TMDBVideo';
 
-export default interface TMDBDetailedShow extends TMDBShow {
+export default interface TMDBDetailedShow<S = TMDBShowStatus> extends TMDBShow {
   genres: { id: number; name: string }[];
   images: TMDBImages;
   videos: {
@@ -17,5 +18,5 @@ export default interface TMDBDetailedShow extends TMDBShow {
   tagline: string;
   overview: string;
   homepage: string;
-  status: string;
+  status: S;
 }

@@ -1,10 +1,11 @@
 import TMDBDetailedShow from '@/services/TMDB/types/TMDBDetailedShow';
 import TMDBMovie from '@/services/TMDB/types/TMDBMovie';
 import TMDBMovieCastPerson from '@/services/TMDB/types/TMDBMovieCastPerson';
+import TMDBMovieStatus from '@/services/TMDB/types/TMDBMovieStatus';
 import TMDBPaginatedShows from '@/services/TMDB/types/TMDBPaginatedShows';
 import TMDBReleaseDates from '@/services/TMDB/types/TMDBReleaseDates';
 
-export default interface TMDBDetailedMovie extends TMDBDetailedShow, TMDBMovie {
+export default interface TMDBDetailedMovie extends TMDBDetailedShow<TMDBMovieStatus>, TMDBMovie {
   budget: number;
   revenue: number;
   runtime: number;

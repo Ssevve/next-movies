@@ -1,7 +1,6 @@
-export default interface TvShowCastPerson {
-  id: number;
-  name: string;
-  imagePath: string;
+import CastPerson from '@/types/CastPerson';
+
+export default interface TvShowCastPerson extends CastPerson {
   characters: string[];
   totalEpisodeCount: number;
 }

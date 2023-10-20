@@ -1,6 +1,5 @@
-export default interface MovieCastPerson {
-  id: number;
-  name: string;
-  imagePath: string;
+import CastPerson from '@/types/CastPerson';
+
+export default interface MovieCastPerson extends CastPerson {
   character: string;
 }

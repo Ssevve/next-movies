@@ -1,13 +1,14 @@
+import TMDBShowStatus from '@/services/TMDB/types/TMDBShowStatus';
 import ShowType from '@/types//ShowType';
 import Backdrop from '@/types/Backdrop';
+import CastPerson from '@/types/CastPerson';
 import Creator from '@/types/Creator';
 import Genre from '@/types/Genre';
 import Image from '@/types/Image';
-import MovieCastPerson from '@/types/MovieCastPerson';
 import Show from '@/types/Show';
 import Video from '@/types/Video';
 
-export default interface DetailedShow extends Show {
+export default interface DetailedShow<C = CastPerson, S = TMDBShowStatus> extends Show {
   backdrop: Backdrop;
   userScoreCount: number;
   genres: Genre[];
@@ -27,8 +28,9 @@ export default interface DetailedShow extends Show {
   tagline?: string;
   overview: string;
   homepage: string;
-  status: string;
   rating: string;
   createdBy: Creator[];
   showType: ShowType;
+  status: S;
+  cast: C[];
 }

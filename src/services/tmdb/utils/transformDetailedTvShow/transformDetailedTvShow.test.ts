@@ -84,9 +84,9 @@ describe('transformDetailedTvShow', () => {
         episodeNumber: 16,
         episodeType: 'finale',
         id: 62161,
+        name: 'Felina',
         seasonNumber: 5,
         showId: 1396,
-        title: 'Felina',
       },
       networks: [
         {

@@ -1,5 +1,5 @@
-import Image from '@/types/Image';
-
-type Backdrop = Pick<Image, 'path'>;
+interface Backdrop {
+  path: string;
+}
 
 export default Backdrop;

@@ -1,9 +1,9 @@
 import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 
+import MovieFacts from '@/app/movie/[id]/_components/MovieFacts/MovieFacts';
 import Recommendations from '@/components/Recommendations/Recommendations';
 import ShowCast from '@/components/ShowCast/ShowCast';
-import ShowFacts from '@/components/ShowFacts/ShowFacts';
 import ShowMedia from '@/components/ShowMedia/ShowMedia';
 import ShowPageHeader from '@/components/ShowPageHeader/ShowPageHeader';
 import getDetailedMovie from '@/services/TMDB/api/getDetailedMovie/getDetailedMovie';
@@ -87,7 +87,7 @@ export default async function MoviePage({ searchParams, params }: MoviePageProps
       />
 
       <section className="container flex w-full flex-col gap-12 px-4">
-        <ShowFacts
+        <MovieFacts
           budget={budget}
           revenue={revenue}
           status={status}

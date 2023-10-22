@@ -1,6 +1,7 @@
 import { Play } from 'lucide-react';
 import Image from 'next/image';
 
+import MovieMetadata from '@/app/movie/[id]/_components/MovieMetadata/MovieMetadata';
 import NoImage from '@/components/NoImage';
 import Creators from '@/components/ShowPageHeader/components/Creators/Creators';
 import ShowExternalLinks from '@/components/ShowPageHeader/components/ShowExternalLinks/ShowExternalLinks';
@@ -12,7 +13,7 @@ import getTMDBImagePath from '@/services/TMDB/utils/getTMDBImagePath/getTMDBImag
 import DetailedShow from '@/types/DetailedShow';
 import Video from '@/types/Video';
 
-type ShowPageHeaderProps = Pick<
+type SharedProps = Pick<
   DetailedShow,
   | 'genres'
   | 'title'
@@ -25,7 +26,6 @@ type ShowPageHeaderProps = Pick<
   | 'releaseDate'
   | 'backdrop'
   | 'overview'
-  | 'showType'
 > & {
   previewVideo?: Video | null;
   instagramHandle: string;
@@ -33,6 +33,18 @@ type ShowPageHeaderProps = Pick<
   twitterHandle: string;
   homepage: string;
 };
+
+interface TvShowProps extends SharedProps {
+  showType: 'tv';
+  runtime?: never;
+}
+
+interface MovieProps extends SharedProps {
+  showType: 'movie';
+  runtime: number;
+}
+
+type ShowPageHeaderProps = TvShowProps | MovieProps;
 
 export default function ShowPageHeader({
   backdrop,
@@ -50,6 +62,7 @@ export default function ShowPageHeader({
   twitterHandle,
   instagramHandle,
   homepage,
+  runtime,
   userScoreCount,
   overview,
 }: ShowPageHeaderProps) {
@@ -96,7 +109,22 @@ export default function ShowPageHeader({
               instagramHandle={instagramHandle}
               twitterHandle={twitterHandle}
             />
-            <ShowMetadata genres={genres} rating={rating} releaseDate={releaseDate} title={title} />
+            {showType === 'movie' ? (
+              <MovieMetadata
+                genres={genres}
+                rating={rating}
+                releaseDate={releaseDate}
+                title={title}
+                runtime={runtime}
+              />
+            ) : (
+              <ShowMetadata
+                genres={genres}
+                rating={rating}
+                releaseDate={releaseDate}
+                title={title}
+              />
+            )}
           </section>
           {tagline && <span className="italic sm:mx-0">{tagline}</span>}
           <section className="flex flex-wrap items-center gap-12">

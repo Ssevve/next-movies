@@ -61,4 +61,20 @@ describe('ShowMetadata', () => {
     );
     expect(screen.getByText(expectedGenres)).toBeInTheDocument();
   });
+
+  it('should render children', () => {
+    const expectedShow = mockDetailedMovie;
+    const expectedChildText = 'Test child';
+    render(
+      <ShowMetadata
+        genres={expectedShow.genres}
+        releaseDate={expectedShow.releaseDate}
+        title={expectedShow.title}
+        rating={expectedShow.rating}
+      >
+        <p>{expectedChildText}</p>
+      </ShowMetadata>
+    );
+    expect(screen.getByText(expectedChildText)).toBeInTheDocument();
+  });
 });

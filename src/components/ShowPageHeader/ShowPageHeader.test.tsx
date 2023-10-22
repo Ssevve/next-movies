@@ -11,6 +11,7 @@ describe('ShowPageHeader', () => {
     const expectedShow = mockDetailedMovie;
     render(
       <ShowPageHeader
+        runtime={expectedShow.runtime}
         facebookHandle={expectedShow.socialHandles.facebook}
         twitterHandle={expectedShow.socialHandles.twitter}
         instagramHandle={expectedShow.socialHandles.instagram}
@@ -36,6 +37,7 @@ describe('ShowPageHeader', () => {
     const expectedShow = mockDetailedMovie;
     render(
       <ShowPageHeader
+        runtime={expectedShow.runtime}
         facebookHandle={expectedShow.socialHandles.facebook}
         twitterHandle={expectedShow.socialHandles.twitter}
         instagramHandle={expectedShow.socialHandles.instagram}
@@ -67,6 +69,7 @@ describe('ShowPageHeader', () => {
     const expectedPoster = { ...mockDetailedMovie.poster, path: '' };
     render(
       <ShowPageHeader
+        runtime={expectedShow.runtime}
         facebookHandle={expectedShow.socialHandles.facebook}
         twitterHandle={expectedShow.socialHandles.twitter}
         instagramHandle={expectedShow.socialHandles.instagram}
@@ -94,6 +97,7 @@ describe('ShowPageHeader', () => {
     const expectedPoster = { ...mockDetailedMovie.poster, path: '' };
     render(
       <ShowPageHeader
+        runtime={expectedShow.runtime}
         facebookHandle={expectedShow.socialHandles.facebook}
         twitterHandle={expectedShow.socialHandles.twitter}
         instagramHandle={expectedShow.socialHandles.instagram}
@@ -116,7 +120,35 @@ describe('ShowPageHeader', () => {
     expect(screen.getByTestId('no-image')).toBeInTheDocument();
   });
 
-  it('should render <ShowMetadata /> component', () => {
+  it('should render <ShowMetadata /> component fot TV shows', () => {
+    const expectedShow = mockDetailedMovie;
+    const expectedYear = getReleaseYear(expectedShow.releaseDate);
+    render(
+      <ShowPageHeader
+        facebookHandle={expectedShow.socialHandles.facebook}
+        twitterHandle={expectedShow.socialHandles.twitter}
+        instagramHandle={expectedShow.socialHandles.instagram}
+        homepage={expectedShow.homepage}
+        backdrop={expectedShow.backdrop}
+        createdBy={expectedShow.createdBy}
+        genres={expectedShow.genres}
+        poster={expectedShow.poster}
+        releaseDate={expectedShow.releaseDate}
+        title={expectedShow.title}
+        userScore={expectedShow.userScore}
+        userScoreCount={expectedShow.userScoreCount}
+        showType="tv"
+        previewVideo={findTrailer(expectedShow.videos)}
+        overview={expectedShow.overview}
+        rating={expectedShow.rating}
+      />
+    );
+    expect(
+      screen.getByRole('heading', { level: 1, name: `${expectedShow.title} (${expectedYear})` })
+    ).toBeInTheDocument();
+  });
+
+  it('should render <MovieMetadata /> component for movies', () => {
     const expectedShow = mockDetailedMovie;
     const expectedYear = getReleaseYear(expectedShow.releaseDate);
     render(
@@ -137,6 +169,7 @@ describe('ShowPageHeader', () => {
         previewVideo={findTrailer(expectedShow.videos)}
         overview={expectedShow.overview}
         rating={expectedShow.rating}
+        runtime={mockDetailedMovie.runtime}
       />
     );
     expect(
@@ -165,6 +198,7 @@ describe('ShowPageHeader', () => {
         previewVideo={findTrailer(expectedShow.videos)}
         overview={expectedShow.overview}
         rating={expectedShow.rating}
+        runtime={expectedShow.runtime}
       />
     );
     expect(screen.getByText(expectedShow.tagline!)).toBeInTheDocument();
@@ -174,6 +208,7 @@ describe('ShowPageHeader', () => {
     const expectedShow = mockDetailedMovie;
     render(
       <ShowPageHeader
+        runtime={expectedShow.runtime}
         facebookHandle={expectedShow.socialHandles.facebook}
         twitterHandle={expectedShow.socialHandles.twitter}
         instagramHandle={expectedShow.socialHandles.instagram}
@@ -201,6 +236,7 @@ describe('ShowPageHeader', () => {
     const expectedVideo = findTrailer(expectedShow.videos);
     render(
       <ShowPageHeader
+        runtime={expectedShow.runtime}
         facebookHandle={expectedShow.socialHandles.facebook}
         twitterHandle={expectedShow.socialHandles.twitter}
         instagramHandle={expectedShow.socialHandles.instagram}
@@ -229,6 +265,7 @@ describe('ShowPageHeader', () => {
     const expectedCreators = joinCreators(expectedShow.createdBy);
     render(
       <ShowPageHeader
+        runtime={expectedShow.runtime}
         facebookHandle={expectedShow.socialHandles.facebook}
         twitterHandle={expectedShow.socialHandles.twitter}
         instagramHandle={expectedShow.socialHandles.instagram}

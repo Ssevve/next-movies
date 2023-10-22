@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: TvShowPageProps): Promise<Met
   };
 }
 
-export default async function TvShowPage({ searchParams, params }: TvShowPageProps) {
+export default async function DetailedTvShowPage({ searchParams, params }: TvShowPageProps) {
   const youtubeModalVideoKey = searchParams?.play;
   const tvShowId = params.id;
 

@@ -15,13 +15,8 @@ export default function MovieMetadata({
   title,
 }: MovieMetadataProps) {
   return (
-    <div>
-      <ShowMetadata genres={genres} rating={rating} releaseDate={releaseDate} title={title} />
-      {runtime ? (
-        <span className="relative flex w-max items-center text-sm leading-none before:absolute before:left-0 before:top-1/2 before:hidden before:h-[0.3rem] before:w-[0.3rem] before:-translate-y-1/2 before:rounded-full before:bg-foreground sm:pl-3 sm:before:block">
-          {formatRuntime(runtime)}
-        </span>
-      ) : null}
-    </div>
+    <ShowMetadata genres={genres} rating={rating} releaseDate={releaseDate} title={title}>
+      {runtime ? <>{formatRuntime(runtime)}</> : null}
+    </ShowMetadata>
   );
 }

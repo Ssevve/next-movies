@@ -1,4 +1,5 @@
-import formatRuntime from '@/app/movie/[id]/_components/MovieMetadata/utils/formatRuntime/formatRuntime';
+import React from 'react';
+
 import joinGenres from '@/components/ShowPageHeader/components/ShowMetadata/utils/joinGenres/joinGenres';
 import Genre from '@/types/Genre';
 import getReleaseYear from '@/utils/getReleaseYear/getReleaseYear';
@@ -8,9 +9,16 @@ export interface ShowMetadataProps {
   releaseDate: string;
   rating: string;
   genres: Genre[];
+  children?: React.ReactNode;
 }
 
-export default function ShowMetadata({ title, releaseDate, rating, genres }: ShowMetadataProps) {
+export default function ShowMetadata({
+  title,
+  releaseDate,
+  rating,
+  genres,
+  children,
+}: ShowMetadataProps) {
   return (
     <>
       <h1 className="text-2xl font-bold  sm:text-3xl md:text-4xl lg:text-5xl">
@@ -30,6 +38,11 @@ export default function ShowMetadata({ title, releaseDate, rating, genres }: Sho
             {joinGenres(genres)}
           </span>
         ) : null}
+        {React.Children.map(children, (child) => (
+          <span className="relative flex w-max items-center text-sm leading-none before:absolute before:left-0 before:top-1/2 before:hidden before:h-[0.3rem] before:w-[0.3rem] before:-translate-y-1/2 before:rounded-full before:bg-foreground sm:pl-3 sm:before:block">
+            {child}
+          </span>
+        ))}
       </div>
     </>
   );

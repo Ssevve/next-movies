@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: MoviePageProps): Promise<Meta
   };
 }
 
-export default async function MoviePage({ searchParams, params }: MoviePageProps) {
+export default async function DetailedMoviePage({ searchParams, params }: MoviePageProps) {
   const youtubeModalVideoKey = searchParams?.play;
   const movieId = params.id;
 
@@ -83,6 +83,7 @@ export default async function MoviePage({ searchParams, params }: MoviePageProps
         homepage={homepage}
         instagramHandle={socialHandles.instagram}
         overview={overview}
+        runtime={runtime}
       />
 
       <section className="container flex w-full flex-col gap-12 px-4">

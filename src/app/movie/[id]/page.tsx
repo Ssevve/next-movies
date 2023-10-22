@@ -77,7 +77,6 @@ export default async function MoviePage({ searchParams, params }: MoviePageProps
         userScore={userScore}
         userScoreCount={userScoreCount}
         showType="movie"
-        runtime={runtime}
         previewVideo={previewVideo}
         facebookHandle={socialHandles.facebook}
         twitterHandle={socialHandles.twitter}

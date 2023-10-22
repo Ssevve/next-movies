@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss';
+const defaultTheme = require('tailwindcss/defaultTheme');
 
 export default {
   content: ['./src/**/*.{ts,tsx}'],
@@ -70,6 +71,10 @@ export default {
           to: { height: '0' },
         },
       },
+    },
+    screens: {
+      xs: '415px',
+      ...defaultTheme.screens,
     },
   },
 } satisfies Config;

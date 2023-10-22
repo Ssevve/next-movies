@@ -12,7 +12,7 @@ import getTMDBImagePath from '@/services/TMDB/utils/getTMDBImagePath/getTMDBImag
 import DetailedShow from '@/types/DetailedShow';
 import Video from '@/types/Video';
 
-type SharedProps = Pick<
+type ShowPageHeaderProps = Pick<
   DetailedShow,
   | 'genres'
   | 'title'
@@ -25,6 +25,7 @@ type SharedProps = Pick<
   | 'releaseDate'
   | 'backdrop'
   | 'overview'
+  | 'showType'
 > & {
   previewVideo?: Video | null;
   instagramHandle: string;
@@ -32,18 +33,6 @@ type SharedProps = Pick<
   twitterHandle: string;
   homepage: string;
 };
-
-interface TvShowProps extends SharedProps {
-  showType: 'tv';
-  runtime?: never;
-}
-
-interface MovieProps extends SharedProps {
-  showType: 'movie';
-  runtime: number;
-}
-
-type ShowPageHeaderProps = TvShowProps | MovieProps;
 
 export default function ShowPageHeader({
   backdrop,
@@ -57,7 +46,6 @@ export default function ShowPageHeader({
   tagline,
   showType,
   previewVideo,
-  runtime,
   facebookHandle,
   twitterHandle,
   instagramHandle,
@@ -108,13 +96,7 @@ export default function ShowPageHeader({
               instagramHandle={instagramHandle}
               twitterHandle={twitterHandle}
             />
-            <ShowMetadata
-              genres={genres}
-              rating={rating}
-              releaseDate={releaseDate}
-              runtime={runtime}
-              title={title}
-            />
+            <ShowMetadata genres={genres} rating={rating} releaseDate={releaseDate} title={title} />
           </section>
           {tagline && <span className="italic sm:mx-0">{tagline}</span>}
           <section className="flex flex-wrap items-center gap-12">

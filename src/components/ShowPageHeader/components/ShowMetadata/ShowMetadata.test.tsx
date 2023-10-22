@@ -2,7 +2,6 @@ import { render, screen } from '@testing-library/react';
 
 import mockDetailedMovie from '@/__mocks__/data/mockDetailedMovie';
 import ShowMetadata from '@/components/ShowPageHeader/components/ShowMetadata/ShowMetadata';
-import formatRuntime from '@/components/ShowPageHeader/components/ShowMetadata/utils/formatRuntime/formatRuntime';
 import joinGenres from '@/components/ShowPageHeader/components/ShowMetadata/utils/joinGenres/joinGenres';
 import getReleaseYear from '@/utils/getReleaseYear/getReleaseYear';
 
@@ -14,7 +13,6 @@ describe('ShowMetadata', () => {
       <ShowMetadata
         genres={expectedShow.genres}
         releaseDate={expectedShow.releaseDate}
-        runtime={expectedShow.runtime}
         title={expectedShow.title}
         rating={expectedShow.rating}
       />
@@ -30,7 +28,6 @@ describe('ShowMetadata', () => {
       <ShowMetadata
         genres={expectedShow.genres}
         releaseDate={expectedShow.releaseDate}
-        runtime={expectedShow.runtime}
         title={expectedShow.title}
         rating={expectedShow.rating}
       />
@@ -44,7 +41,6 @@ describe('ShowMetadata', () => {
       <ShowMetadata
         genres={expectedShow.genres}
         releaseDate={expectedShow.releaseDate}
-        runtime={expectedShow.runtime}
         title={expectedShow.title}
         rating={expectedShow.rating}
       />
@@ -59,26 +55,10 @@ describe('ShowMetadata', () => {
       <ShowMetadata
         genres={expectedShow.genres}
         releaseDate={expectedShow.releaseDate}
-        runtime={expectedShow.runtime}
         title={expectedShow.title}
         rating={expectedShow.rating}
       />
     );
     expect(screen.getByText(expectedGenres)).toBeInTheDocument();
-  });
-
-  it('should render correctly formatted runtime for a movie if provided', () => {
-    const expectedShow = mockDetailedMovie;
-    const expectedRuntime = formatRuntime(expectedShow.runtime);
-    render(
-      <ShowMetadata
-        genres={expectedShow.genres}
-        releaseDate={expectedShow.releaseDate}
-        runtime={expectedShow.runtime}
-        title={expectedShow.title}
-        rating={expectedShow.rating}
-      />
-    );
-    expect(screen.getByText(expectedRuntime)).toBeInTheDocument();
   });
 });

@@ -17,25 +17,24 @@ export default async function getDetailedMovie(movieId: number): Promise<Detaile
     'release_dates',
   ].join(',');
 
-  const res = await TMDBApi(`/movie/${movieId}?append_to_response=${appendToResponseString}`);
-  if (!res.ok) throw Error('Could not get movie data.');
-  const detailedMovieData: TMDBDetailedMovie = await res.json();
+  const moviePromise = TMDBApi(`/movie/${movieId}?append_to_response=${appendToResponseString}`);
+  const languagesPromise = getLanguages();
 
-  let originalLanguageName = '';
-  try {
-    if (detailedMovieData.original_language) {
-      const languages = await getLanguages();
-      if (languages[detailedMovieData.original_language]) {
-        originalLanguageName = languages[detailedMovieData.original_language];
-      }
-    }
-  } catch (error) {
-    if (error instanceof Error) console.log(error.message);
-    else console.log(error);
-  } finally {
-    return transformDetailedMovie({
-      ...detailedMovieData,
-      original_language: originalLanguageName,
-    });
+  const [movie, languages] = await Promise.allSettled([moviePromise, languagesPromise]);
+
+  if (movie.status === 'rejected' || movie.value.status !== 200) {
+    throw Error('Could not get movie data.');
   }
+  const detailedMovieData: TMDBDetailedMovie = await movie.value.json();
+
+  let originalLanguageName = detailedMovieData.original_language;
+  if (languages.status === 'fulfilled') {
+    const matchingLanguageName = languages.value[detailedMovieData.original_language];
+    if (matchingLanguageName) originalLanguageName = matchingLanguageName;
+  }
+
+  return transformDetailedMovie({
+    ...detailedMovieData,
+    original_language: originalLanguageName,
+  });
 }

@@ -1,7 +1,7 @@
 'use client';
 
 import { useTheme } from 'next-themes';
-import { useState } from 'react';
+import { use, useState } from 'react';
 
 import CrossFadeBackgroundImage from '@/app/_components/UpcomingMovies/components/UpcomingMoviesTrailers/components/CrossFadeBackgroundImage';
 import VideoScroller from '@/components/VideoScroller/VideoScroller';
@@ -11,11 +11,12 @@ import getTMDBImagePath from '@/services/TMDB/utils/getTMDBImagePath/getTMDBImag
 import Video from '@/types/Video';
 
 interface UpcomingMoviesTrailersProps {
-  trailers: Video[];
+  trailersPromise: Promise<Video[]>;
 }
 
-export default function UpcomingMoviesTrailers({ trailers }: UpcomingMoviesTrailersProps) {
+export default function UpcomingMoviesTrailers({ trailersPromise }: UpcomingMoviesTrailersProps) {
   const { theme } = useTheme();
+  const trailers = use(trailersPromise);
 
   const initialBackgroundPath =
     getTMDBImagePath(

@@ -45,12 +45,12 @@ async function getUpcomingMoviesTrailers() {
 }
 
 export default async function UpcomingMovies() {
-  const trailers = await getUpcomingMoviesTrailers();
+  const trailersPromise = getUpcomingMoviesTrailers();
   return (
     <section className="w-full space-y-4 overflow-hidden">
       <SectionHeading>Upcoming Movies</SectionHeading>
       <ErrorBoundary FallbackComponent={ErrorFallback}>
-        <UpcomingMoviesTrailers trailers={trailers} />
+        <UpcomingMoviesTrailers trailersPromise={trailersPromise} />
       </ErrorBoundary>
     </section>
   );

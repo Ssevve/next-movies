@@ -1,7 +1,6 @@
 import Image from 'next/image';
 
-import { Button } from '@/components/ui/Button';
-import { Input } from '@/components/ui/Input';
+import Searchbar from '../Searchbar/Searchbar';
 
 export default function Hero() {
   return (
@@ -26,14 +25,7 @@ export default function Hero() {
             <p className="text-lg">Find the latest and greatest movies and TV shows.</p>
           </div>
           <div className="relative flex w-full max-w-sm items-center">
-            <Input
-              type="text"
-              placeholder="Search for a movie, tv show, person..."
-              className="rounded-r-none dark:border-foreground dark:bg-foreground dark:text-background"
-            />
-            <Button type="submit" className="rounded-l-none dark:text-foreground">
-              Search
-            </Button>
+            <Searchbar />
           </div>
         </div>
       </div>

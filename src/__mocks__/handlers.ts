@@ -9,13 +9,13 @@ import mockTMDBTvShowVideos from '@/__mocks__/data/mockTMDBTvShowVideos';
 import mockTMDBUnknownShows from '@/__mocks__/data/mockTMDBUnknownShows';
 import { TMDBUrls } from '@/services/TMDB/config';
 import TMDBMovie from '@/services/TMDB/types/TMDBMovie';
-import TMDBPaginatedShows from '@/services/TMDB/types/TMDBPaginatedShows';
+import TMDBPaginatedResponse from '@/services/TMDB/types/TMDBPaginatedResponse';
 import TMDBTvShow from '@/services/TMDB/types/TMDBTvShow';
 import TMDBUnknownShow from '@/services/TMDB/types/TMDBUnknownShow';
 
 const generateMockPaginatedShowsResponse = (
   shows: TMDBUnknownShow[] | TMDBMovie[] | TMDBTvShow[]
-): TMDBPaginatedShows => {
+): TMDBPaginatedResponse<TMDBUnknownShow> => {
   return {
     page: 1,
     results: shows,

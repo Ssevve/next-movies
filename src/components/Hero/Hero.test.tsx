@@ -20,13 +20,8 @@ describe('Hero', () => {
     ).toBeInTheDocument();
   });
 
-  it('should render a text input', () => {
+  it('should render <Searchbar /> component', () => {
     render(<Hero />);
     expect(screen.getByRole('textbox')).toBeInTheDocument();
-  });
-
-  it('should render a submit button', () => {
-    render(<Hero />);
-    expect(screen.getByRole('button')).toBeInTheDocument();
   });
 });

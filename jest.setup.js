@@ -8,7 +8,8 @@ global.ResizeObserver = require('resize-observer-polyfill');
 jest.mock('next/navigation', () => {
   return {
     ...jest.requireActual('next/navigation'),
-    useSearchParams: jest.fn(() => ({ param: 'test' })),
+    useRouter: jest.fn(),
+    useSearchParams: jest.fn(() => new URLSearchParams({ query: 'testQuery' })),
   };
 });
 

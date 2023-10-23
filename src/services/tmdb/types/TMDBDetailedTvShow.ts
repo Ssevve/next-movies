@@ -1,7 +1,7 @@
 import TMDBContentRatings from '@/services/TMDB/types/TMDBContentRatings';
 import TMDBDetailedShow from '@/services/TMDB/types/TMDBDetailedShow';
 import TMDBEpisode from '@/services/TMDB/types/TMDBEpisode';
-import TMDBPaginatedShows from '@/services/TMDB/types/TMDBPaginatedShows';
+import TMDBPaginatedResponse from '@/services/TMDB/types/TMDBPaginatedResponse';
 import TMDBTvShow from '@/services/TMDB/types/TMDBTvShow';
 import TMDBTvShowStatus from '@/services/TMDB/types/TMDBTvShowStatus';
 import TMDBTvShowType from '@/services/TMDB/types/TMDBTvShowType';
@@ -40,5 +40,5 @@ export default interface TMDBDetailedTvShow extends TMDBDetailedShow<TMDBTvShowS
   next_episode_to_air: TMDBEpisode | null;
   content_ratings: TMDBContentRatings;
   keywords: { results: { id: number; name: string }[] };
-  recommendations: TMDBPaginatedShows<TMDBTvShow>;
+  recommendations: TMDBPaginatedResponse<TMDBTvShow>;
 }

@@ -1,9 +1,11 @@
 import 'server-only';
 
 import TMDBApi from '@/services/TMDB/api/client';
-import TMDBPaginatedShows from '@/services/TMDB/types/TMDBPaginatedShows';
+import TMDBPaginatedResponse from '@/services/TMDB/types/TMDBPaginatedResponse';
+import TMDBUnknownShow from '@/services/TMDB/types/TMDBUnknownShow';
 import transformPaginatedShowsResponse from '@/services/TMDB/utils/transformPaginatedShows/transformPaginatedShows';
-import PaginatedShows from '@/types/PaginatedShows';
+import PaginatedResponse from '@/types/PaginatedResponse';
+import Show from '@/types/Show';
 import ShowType from '@/types/ShowType';
 
 export type TimeWindow = 'day' | 'week';
@@ -16,10 +18,11 @@ interface TrendingArgs {
 export default async function getTrendingShows({
   showType,
   timeWindow,
-}: TrendingArgs): Promise<PaginatedShows> {
+}: TrendingArgs): Promise<PaginatedResponse<Show>> {
   const res = await TMDBApi(`/trending/${showType}/${timeWindow}`);
   if (res.ok) {
-    const { page, results, total_pages, total_results }: TMDBPaginatedShows = await res.json();
+    const { page, results, total_pages, total_results }: TMDBPaginatedResponse<TMDBUnknownShow> =
+      await res.json();
     return transformPaginatedShowsResponse({ page, results, total_pages, total_results });
   }
 

@@ -1,15 +1,20 @@
 import 'server-only';
 
 import TMDBApi from '@/services/TMDB/api/client';
-import TMDBPaginatedShows from '@/services/TMDB/types/TMDBPaginatedShows';
+import TMDBPaginatedResponse from '@/services/TMDB/types/TMDBPaginatedResponse';
+import TMDBUnknownShow from '@/services/TMDB/types/TMDBUnknownShow';
 import transformPaginatedShows from '@/services/TMDB/utils/transformPaginatedShows/transformPaginatedShows';
-import PaginatedShows from '@/types/PaginatedShows';
+import PaginatedResponse from '@/types/PaginatedResponse';
+import Show from '@/types/Show';
 import ShowType from '@/types/ShowType';
 
-export default async function getPopularShows(showType: ShowType): Promise<PaginatedShows> {
+export default async function getPopularShows(
+  showType: ShowType
+): Promise<PaginatedResponse<Show>> {
   const res = await TMDBApi(`/${showType}/popular`);
   if (res.ok) {
-    const { page, results, total_pages, total_results }: TMDBPaginatedShows = await res.json();
+    const { page, results, total_pages, total_results }: TMDBPaginatedResponse<TMDBUnknownShow> =
+      await res.json();
     return transformPaginatedShows({ page, results, total_pages, total_results });
   }
 

@@ -1,6 +1,7 @@
 import TMDBUnknownShow from '@/services/TMDB/types/TMDBUnknownShow';
 import transformShows from '@/services/TMDB/utils/transformShows/transformShows';
-import PaginatedShows from '@/types/PaginatedShows';
+import PaginatedResponse from '@/types/PaginatedResponse';
+import Show from '@/types/Show';
 
 interface TransformPaginatedShowsArgs {
   page: number;
@@ -14,7 +15,7 @@ export default function transformPaginatedShows({
   results,
   total_pages,
   total_results,
-}: TransformPaginatedShowsArgs): PaginatedShows {
+}: TransformPaginatedShowsArgs): PaginatedResponse<Show> {
   const transformedResponse = {
     page,
     results: results.length ? transformShows(results) : [],

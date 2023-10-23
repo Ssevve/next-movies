@@ -2,7 +2,7 @@ import 'server-only';
 
 import TMDBApi from '@/services/TMDB/api/client';
 import TMDBMovie from '@/services/TMDB/types/TMDBMovie';
-import TMDBPaginatedShows from '@/services/TMDB/types/TMDBPaginatedShows';
+import TMDBPaginatedResponse from '@/services/TMDB/types/TMDBPaginatedResponse';
 import formatDate from '@/services/TMDB/utils/formatDate/formatDate';
 
 interface UpcomingMovie {
@@ -16,7 +16,7 @@ interface UpcomingMovie {
 export default async function getUpcomingMovies(): Promise<UpcomingMovie[]> {
   const res = await TMDBApi(`/movie/upcoming`);
   if (!res.ok) throw Error('Failed to fetch upcoming movies.');
-  const movies: TMDBPaginatedShows<TMDBMovie> = await res.json();
+  const movies: TMDBPaginatedResponse<TMDBMovie> = await res.json();
 
   return movies.results.map(
     ({ release_date, title, backdrop_path, id }): UpcomingMovie => ({

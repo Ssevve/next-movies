@@ -25,9 +25,12 @@ export default function Searchbar() {
         type="text"
         onChange={(e) => setQuery(e.currentTarget.value)}
         placeholder="Search for shows and people"
-        className="h-full rounded-md rounded-r-none p-2 placeholder:text-sm placeholder:leading-none dark:border-foreground dark:bg-foreground dark:text-background"
+        className="h-full rounded-md rounded-r-none border p-2 placeholder:text-sm placeholder:leading-none dark:border-foreground dark:bg-foreground dark:text-background"
       />
-      <Button type="submit" className="flex h-full gap-2 rounded-l-none dark:text-foreground">
+      <Button
+        type="submit"
+        className="flex h-full gap-2 rounded-l-none border border-primary dark:text-foreground"
+      >
         <Search size={20} />
         <span>Search</span>
       </Button>

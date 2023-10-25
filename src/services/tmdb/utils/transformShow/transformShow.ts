@@ -1,17 +1,9 @@
 import { TMDBImageSizes } from '@/services/TMDB/config';
-import TMDBMovie from '@/services/TMDB/types/TMDBMovie';
-import TMDBTvShow from '@/services/TMDB/types/TMDBTvShow';
 import TMDBUnknownShow from '@/services/TMDB/types/TMDBUnknownShow';
 import formatDate from '@/services/TMDB/utils/formatDate/formatDate';
+import isTMDBMovie from '@/services/TMDB/utils/isTMDBMovie';
+import isTMDBTvShow from '@/services/TMDB/utils/isTMDBTvShow';
 import Show from '@/types/Show';
-
-function isTMDBMovie(show: TMDBUnknownShow): show is TMDBMovie {
-  return 'title' in show;
-}
-
-function isTMDBTvShow(show: TMDBUnknownShow): show is TMDBTvShow {
-  return 'name' in show;
-}
 
 type UniqueShowTypeProps = 'title' | 'showType' | 'releaseDate';
 

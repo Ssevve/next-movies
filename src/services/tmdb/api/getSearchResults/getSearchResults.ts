@@ -4,27 +4,40 @@ import TMDBApi from '@/services/TMDB/api/client';
 import TMDBPersonSearchResult from '@/services/TMDB/types/TMDBPersonSearchResult';
 import TMDBSearchResponseResults from '@/services/TMDB/types/TMDBSearchResponseResults';
 import TMDBShowSearchResult from '@/services/TMDB/types/TMDBShowSearchResult';
+import TMDBUnknownShow from '@/services/TMDB/types/TMDBUnknownShow';
+import isTMDBMovie from '@/services/TMDB/utils/isTMDBMovie';
 import transformShow from '@/services/TMDB/utils/transformShow/transformShow';
-import transformShows from '@/services/TMDB/utils/transformShows/transformShows';
 import PaginatedResponse from '@/types/PaginatedResponse';
 import PersonSearchResult from '@/types/PersonSearchResult';
+import PersonSearchResultShow from '@/types/PersonSearchResultShow';
 import SearchEndpoint from '@/types/SearchEndpoint';
 import ShowSearchResult from '@/types/ShowSearchResult';
 
+// TODO: move to a different file
 const transformPersonSearchResult = (result: TMDBPersonSearchResult): PersonSearchResult => {
-  const SHOWS_LIMIT = 3;
+  const transformPersonSearchResultShows = (shows: TMDBUnknownShow[]): PersonSearchResultShow[] => {
+    return shows.map((show) => {
+      const { id } = show;
+      if (isTMDBMovie(show)) {
+        return { id, showType: 'movie', title: show.title };
+      } else {
+        return { id, showType: 'tv', title: show.name };
+      }
+    });
+  };
+
   return {
     department: result.known_for_department,
     id: result.id,
     imagePath: result.profile_path,
     name: result.name,
-    showsTitles: transformShows(result.known_for.slice(0, SHOWS_LIMIT)).map(({ title }) => title),
+    shows: transformPersonSearchResultShows(result.known_for),
   };
 };
 
 const transformShowSearchResult = (result: TMDBShowSearchResult): ShowSearchResult => {
   const transformedShow = transformShow(result);
-  return { ...transformedShow, overview: result.overview };
+  return { ...transformedShow, overview: result.overview || 'Overview not available.' };
 };
 
 function isTMDBShowSearchResult(
@@ -40,6 +53,7 @@ interface TMDBSearchResponse {
   total_results: number;
 }
 
+// TODO: tests
 export default async function getSearchResults({
   endpoint,
   query = '',

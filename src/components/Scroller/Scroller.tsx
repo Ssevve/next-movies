@@ -44,7 +44,7 @@ export default function Scroller({
             className="my-auto flex w-max items-center gap-2 px-2 transition-all hover:gap-3"
             onClick={() => setVisibleChildren((prev) => prev + limit)}
           >
-            <span>Show more</span>
+            <span className="w-max">Show more</span>
             <MoveRight aria-hidden="true" />
           </button>
         )}

@@ -14,6 +14,7 @@ interface RecentSeasonProps {
   episode: Episode | null;
 }
 
+// TODO: tests
 export default function RecentSeason({ season, showEnded, episode }: RecentSeasonProps) {
   const isSeasonFinaleEpisode = episode && episode.episodeType === 'finale';
   return (

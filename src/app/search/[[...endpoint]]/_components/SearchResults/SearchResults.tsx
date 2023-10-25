@@ -1,13 +1,15 @@
 import Link from 'next/link';
 
-import PersonCard from '@/components/PersonCard/PersonCard';
+import PersonImage from '@/components/PersonImage/PersonImage';
 import ShowCard from '@/components/ShowCard/ShowCard';
 import getSearchResults from '@/services/TMDB/api/getSearchResults/getSearchResults';
 import PersonSearchResult from '@/types/PersonSearchResult';
 import SearchEndpoint from '@/types/SearchEndpoint';
-import Show from '@/types/Show';
+import ShowSearchResult from '@/types/ShowSearchResult';
 
-function isShow(result: Show | PersonSearchResult): result is Show {
+function isShowSearchResult(
+  result: ShowSearchResult | PersonSearchResult
+): result is ShowSearchResult {
   return 'title' in result;
 }
 
@@ -17,6 +19,7 @@ interface SearchResultsProps {
   query?: string;
 }
 
+// TODO: tests, fix spacing
 export default async function SearchResults({ page, endpoint, query }: SearchResultsProps) {
   const paginatedResults = await getSearchResults({
     endpoint: endpoint || 'movie',
@@ -25,12 +28,11 @@ export default async function SearchResults({ page, endpoint, query }: SearchRes
   });
 
   return (
-    // <ul className="items-between mt-12 grid grid-cols-2 gap-4 sm:mt-0">
-    <ul className="mt-12 flex flex-wrap gap-8 sm:mt-0">
+    <ul className="mt-12 flex flex-wrap sm:mt-0">
       {paginatedResults.results.map((result) => {
-        if (isShow(result)) {
+        if (isShowSearchResult(result)) {
           return (
-            <li key={result.id} className="flex">
+            <li key={result.id} className="flex w-1/2 flex-col gap-2 px-4 first:pt-0 sm:flex-row">
               <ShowCard
                 id={result.id}
                 poster={result.poster}
@@ -42,20 +44,35 @@ export default async function SearchResults({ page, endpoint, query }: SearchRes
               />
               <div className="flex flex-1 flex-col gap-4 px-2">
                 <div className="flex flex-col gap-1">
-                  <Link href={`/${result.showType}/${result.id}`}>{result.title}</Link>
+                  <Link href={`/${result.showType}/${result.id}`}>
+                    <h3 className="font-bold">{result.title}</h3>
+                  </Link>
                   <span className="text-xs text-slate-400">{result.releaseDate}</span>
                 </div>
-                <p className="mb-4 text-sm">{result.overview}</p>
+                <p className="my-auto  line-clamp-4 overflow-hidden text-ellipsis text-sm leading-normal">
+                  {result.overview}
+                </p>
               </div>
             </li>
           );
         } else {
           return (
-            <li key={result.id}>
-              <PersonCard imagePath={result.imagePath} name={result.name}>
-                <span className="block text-sm font-semibold italic">{result.department}</span>
-                <span className="mt-1 text-xs italic">{result.showsTitles.join(',\n')}</span>
-              </PersonCard>
+            <li key={result.id} className="flex w-full gap-4 pt-8 first:pt-0">
+              <PersonImage imagePath={result.imagePath} alt={result.name} />
+              <div className="flex flex-col gap-4">
+                <h3 className="font-bold">{result.name}</h3>
+                <span className="text-sm text-slate-400">{result.department}</span>
+                <div>
+                  <span className="mr-1 text-sm font-semibold">Known for:</span>
+                  <span className="text-sm">
+                    {result.shows.map(({ id, showType, title }) => (
+                      <Link key={id} href={`/${showType}/${id}`} className="hover:underline">
+                        <span>{title}</span>
+                      </Link>
+                    ))}
+                  </span>
+                </div>
+              </div>
             </li>
           );
         }

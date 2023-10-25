@@ -8,6 +8,7 @@ import { ScrollArea, ScrollBar } from '@/components/ui/ScrollArea';
 import cn from '@/lib/cn';
 import SearchEndpoint from '@/types/SearchEndpoint';
 
+// TODO: tests, scroll into view
 export default function SearchCategories({
   totalMovies,
   totalTvShows,

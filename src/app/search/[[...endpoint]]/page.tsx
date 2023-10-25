@@ -58,12 +58,14 @@ export default async function SearchPage({ searchParams, params }: SearchPagePro
   return (
     <section className="container items-center space-y-12 px-4 py-8 sm:items-start">
       <Searchbar />
-      <div className="w-full gap-4 sm:flex">
-        <SearchCategories
-          totalMovies={movies.totalResults}
-          totalTvShows={tvShows.totalResults}
-          totalPeople={people.totalResults}
-        />
+      <div className="w-full sm:flex">
+        <div className="mx-auto w-max">
+          <SearchCategories
+            totalMovies={movies.totalResults}
+            totalTvShows={tvShows.totalResults}
+            totalPeople={people.totalResults}
+          />
+        </div>
         <Suspense
           fallback={
             <div className="mt-4 flex w-full items-center justify-center">

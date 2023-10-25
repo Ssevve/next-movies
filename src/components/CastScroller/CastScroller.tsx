@@ -1,4 +1,4 @@
-import PersonCard from '@/components/PersonCard/PersonCard';
+import CastPersonCard from '@/components/CastPersonCard/CastPersonCard';
 import Scroller, { ScrollerProps } from '@/components/Scroller/Scroller';
 import MovieCastPerson from '@/types/MovieCastPerson';
 import TvShowCastPerson from '@/types/TvShowCastPerson';
@@ -33,7 +33,7 @@ export default function CastScroller({ cast, limit }: CastScrollerProps) {
       limit={limit}
     >
       {cast.map((person) => (
-        <PersonCard key={person.id} name={person.name} imagePath={person.imagePath}>
+        <CastPersonCard key={person.id} name={person.name} imagePath={person.imagePath}>
           {isMovieCastPerson(person) ? (
             <span className="mt-1 text-xs text-slate-400">{person.character}</span>
           ) : (
@@ -44,7 +44,7 @@ export default function CastScroller({ cast, limit }: CastScrollerProps) {
               <span className="mt-1 block text-xs">{person.totalEpisodeCount} episodes</span>
             </>
           )}
-        </PersonCard>
+        </CastPersonCard>
       ))}
     </Scroller>
   );

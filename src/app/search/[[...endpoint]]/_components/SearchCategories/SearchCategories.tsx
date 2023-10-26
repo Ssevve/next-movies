@@ -45,14 +45,15 @@ export default function SearchCategories({
 
   const getLinkClassName = (linkEndpoint: SearchEndpoint) =>
     cn(
-      'p-4 flex gap-4 min-w-max items-center justify-between w-full',
-      linkEndpoint === currentEndpoint && 'bg-slate-100 dark:bg-slate-700'
+      'p-4 flex gap-4 min-w-max items-center justify-between w-full hover:bg-slate-50 dark:hover:bg-slate-900',
+      linkEndpoint === currentEndpoint &&
+        'bg-slate-100 dark:bg-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700'
     );
 
   return (
     <div className="h-max rounded-md border border-slate-100 dark:border-slate-700">
       <ScrollArea>
-        <div className="flex h-max justify-between sm:flex-col md:w-64">
+        <div className="flex h-max justify-between divide-x divide-slate-100 dark:divide-slate-700 sm:flex-col sm:divide-x-0 sm:divide-y md:w-64">
           <Link ref={moviesRef} className={getLinkClassName('movie')} href={generateHref('movie')}>
             <span>Movies</span>
             <span className="min-w-[45px] rounded-full bg-slate-200 px-2 py-1 text-center text-sm dark:bg-slate-800 dark:text-foreground">

@@ -58,8 +58,8 @@ export default async function SearchPage({ searchParams, params }: SearchPagePro
   return (
     <section className="container items-center space-y-12 px-4 py-8 sm:items-start">
       <Searchbar />
-      <div className="w-full sm:flex">
-        <div className="mx-auto max-w-max">
+      <div className="w-full gap-4 sm:flex">
+        <div className="mx-auto max-w-max sm:mx-0">
           <SearchCategories
             totalMovies={movies.totalResults}
             totalTvShows={tvShows.totalResults}

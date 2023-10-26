@@ -45,23 +45,23 @@ export default function SearchCategories({
 
   const getLinkClassName = (linkEndpoint: SearchEndpoint) =>
     cn(
-      'p-4 flex gap-4 items-center justify-between',
+      'p-4 flex gap-4 min-w-max items-center justify-between w-full',
       linkEndpoint === currentEndpoint && 'bg-slate-100 dark:bg-slate-700'
     );
 
   return (
-    <div className="h-max w-full max-w-max rounded-md border border-slate-100 dark:border-slate-700">
+    <div className="h-max rounded-md border border-slate-100 dark:border-slate-700">
       <ScrollArea>
-        <div className="flex h-max w-max sm:w-64 sm:flex-col">
+        <div className="flex h-max justify-between sm:flex-col md:w-64">
           <Link ref={moviesRef} className={getLinkClassName('movie')} href={generateHref('movie')}>
             <span>Movies</span>
-            <span className="rounded-full bg-slate-200 px-2 py-1 text-sm dark:bg-slate-800 dark:text-foreground">
+            <span className="min-w-[45px] rounded-full bg-slate-200 px-2 py-1 text-center text-sm dark:bg-slate-800 dark:text-foreground">
               {totalMovies}
             </span>
           </Link>
           <Link ref={tvShowsRef} className={getLinkClassName('tv')} href={generateHref('tv')}>
             <span>TV Shows</span>
-            <span className="rounded-full bg-slate-200 px-2 py-1 text-sm dark:bg-slate-800 dark:text-foreground">
+            <span className="min-w-[45px] rounded-full bg-slate-200 px-2 py-1 text-center text-sm dark:bg-slate-800 dark:text-foreground">
               {totalTvShows}
             </span>
           </Link>
@@ -71,7 +71,7 @@ export default function SearchCategories({
             href={generateHref('person')}
           >
             <span>People</span>
-            <span className="rounded-full bg-slate-200 px-2 py-1 text-sm dark:bg-slate-800 dark:text-foreground">
+            <span className="min-w-[45px] rounded-full bg-slate-200 px-2 py-1 text-center text-sm dark:bg-slate-800 dark:text-foreground">
               {totalPeople}
             </span>
           </Link>

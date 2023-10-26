@@ -59,7 +59,7 @@ export default async function SearchPage({ searchParams, params }: SearchPagePro
     <section className="container items-center space-y-12 px-4 py-8 sm:items-start">
       <Searchbar />
       <div className="w-full gap-4 sm:flex">
-        <div className="mx-auto max-w-max sm:mx-0">
+        <div className="mx-auto sm:mx-0">
           <SearchCategories
             totalMovies={movies.totalResults}
             totalTvShows={tvShows.totalResults}
@@ -68,7 +68,7 @@ export default async function SearchPage({ searchParams, params }: SearchPagePro
         </div>
         <Suspense
           fallback={
-            <div className="mt-4 flex w-full items-center justify-center">
+            <div className="mt-12 flex w-full items-center justify-center sm:mt-0">
               <Spinner />
             </div>
           }

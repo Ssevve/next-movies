@@ -61,6 +61,9 @@ export default {
       fontFamily: {
         sans: ['var(--font-inter)'],
       },
+      gridTemplateColumns: {
+        fluid: 'repeat(auto-fill, minmax(175px, 1fr))',
+      },
       keyframes: {
         'accordion-down': {
           from: { height: '0' },

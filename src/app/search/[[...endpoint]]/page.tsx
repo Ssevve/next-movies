@@ -2,12 +2,12 @@ import { Metadata } from 'next';
 import { Suspense } from 'react';
 
 import SearchCategories from '@/app/search/[[...endpoint]]/_components/SearchCategories/SearchCategories';
+import SearchResults from '@/app/search/[[...endpoint]]/_components/SearchResults/SearchResults';
 import Searchbar from '@/components/Searchbar/Searchbar';
 import Spinner from '@/components/ui/Spinner';
 import getSearchResults from '@/services/TMDB/api/getSearchResults/getSearchResults';
+import SearchCategory from '@/types/SearchCategory';
 import SearchEndpoint from '@/types/SearchEndpoint';
-
-import SearchResults from './_components/SearchResults/SearchResults';
 
 interface SearchPageProps {
   searchParams: {
@@ -55,16 +55,30 @@ export default async function SearchPage({ searchParams, params }: SearchPagePro
     peoplePromise,
   ]);
 
+  const searchCategories: SearchCategory[] = [
+    {
+      endpoint: 'movie',
+      label: 'Movies',
+      total: movies.totalResults,
+    },
+    {
+      endpoint: 'tv',
+      label: 'TV Shows',
+      total: tvShows.totalResults,
+    },
+    {
+      endpoint: 'person',
+      label: 'People',
+      total: people.totalResults,
+    },
+  ];
+
   return (
     <section className="container items-center space-y-12 px-4 py-8 sm:items-start">
       <Searchbar />
       <div className="w-full gap-4 sm:flex">
         <div className="mx-auto sm:mx-0">
-          <SearchCategories
-            totalMovies={movies.totalResults}
-            totalTvShows={tvShows.totalResults}
-            totalPeople={people.totalResults}
-          />
+          <SearchCategories query={query} activeEndpoint={endpoint} categories={searchCategories} />
         </div>
         <Suspense
           fallback={

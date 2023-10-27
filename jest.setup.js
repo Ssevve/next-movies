@@ -5,6 +5,9 @@ import { server } from '@/__mocks__/server';
 
 global.ResizeObserver = require('resize-observer-polyfill');
 
+// scrollIntoView mock
+window.HTMLElement.prototype.scrollIntoView = jest.fn();
+
 jest.mock('next/navigation', () => {
   return {
     ...jest.requireActual('next/navigation'),

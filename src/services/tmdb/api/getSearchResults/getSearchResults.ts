@@ -63,6 +63,14 @@ export default async function getSearchResults({
   query?: string;
   page?: string | number;
 }): Promise<PaginatedResponse<PersonSearchResult | ShowSearchResult>> {
+  if (!query) {
+    return {
+      page: 0,
+      results: [],
+      totalPages: 0,
+      totalResults: 0,
+    };
+  }
   const res = await TMDBApi(
     `/search/${endpoint}?query=${query}&include_adult=false&language=en-US&page=${page}`
   );

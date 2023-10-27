@@ -7,7 +7,6 @@ interface PersonCardProps {
   children: React.ReactNode;
 }
 
-// TODO: update tests
 export default function CastPersonCard({ name, imagePath, children }: PersonCardProps) {
   return (
     <Hoverable>

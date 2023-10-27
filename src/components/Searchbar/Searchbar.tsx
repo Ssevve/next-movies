@@ -19,17 +19,21 @@ export default function Searchbar() {
   };
 
   return (
-    <form onSubmit={goToSearch} className="flex max-w-sm items-center" aria-label="Search">
+    <form
+      onSubmit={goToSearch}
+      className="flex w-full max-w-lg flex-col items-center gap-2 xs:flex-row xs:gap-0"
+      aria-label="Search"
+    >
       <input
         value={query}
         type="text"
         onChange={(e) => setQuery(e.currentTarget.value)}
         placeholder="Search for shows and people"
-        className="h-full rounded-md rounded-r-none border p-2 placeholder:text-sm placeholder:leading-none dark:border-foreground dark:bg-foreground dark:text-background"
+        className="h-10 w-full rounded-md border p-4 placeholder:text-sm placeholder:leading-none dark:border-foreground dark:bg-foreground dark:text-background xs:rounded-r-none"
       />
       <Button
         type="submit"
-        className="flex h-full gap-2 rounded-l-none border border-primary dark:text-foreground"
+        className="flex h-10 w-full gap-2 border border-primary dark:text-foreground xs:w-max xs:rounded-l-none"
       >
         <Search size={20} />
         <span>Search</span>

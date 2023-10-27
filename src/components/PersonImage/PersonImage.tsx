@@ -10,7 +10,6 @@ interface PersonImageProps {
   alt: string;
 }
 
-// TODO: tests
 export default function PersonImage({ alt, imagePath = '' }: PersonImageProps) {
   return (
     <div className="relative h-[200px] w-[150px]">

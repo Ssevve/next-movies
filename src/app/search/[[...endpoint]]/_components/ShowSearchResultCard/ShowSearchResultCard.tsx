@@ -3,7 +3,6 @@ import Link from 'next/link';
 import ShowCard from '@/components/ShowCard/ShowCard';
 import ShowSearchResult from '@/types/ShowSearchResult';
 
-// TODO: tests
 export default function ShowSearchResultCard({
   id,
   poster,

@@ -3,7 +3,6 @@ import Link from 'next/link';
 import PersonImage from '@/components/PersonImage/PersonImage';
 import PersonSearchResult from '@/types/PersonSearchResult';
 
-// TODO: tests
 export default function PersonSearchResultCard({
   name,
   imagePath,

@@ -21,6 +21,8 @@ const searchCategories: SearchCategory[] = [
   },
 ];
 
+window.HTMLElement.prototype.scrollIntoView = jest.fn();
+
 describe('SearchCategories', () => {
   it('should render all category labels', () => {
     render(<SearchCategories activeEndpoint="movie" categories={searchCategories} />);

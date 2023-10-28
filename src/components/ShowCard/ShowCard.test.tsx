@@ -11,7 +11,6 @@ describe('ShowCard', () => {
         id={expectedShow.id}
         poster={expectedShow.poster}
         userScore={expectedShow.userScore}
-        releaseDate={expectedShow.releaseDate}
         showType={expectedShow.showType}
         title={expectedShow.title}
       />
@@ -26,7 +25,6 @@ describe('ShowCard', () => {
         id={expectedShow.id}
         poster={expectedShow.poster}
         userScore={expectedShow.userScore}
-        releaseDate={expectedShow.releaseDate}
         showType={expectedShow.showType}
         title={expectedShow.title}
       />
@@ -44,7 +42,6 @@ describe('ShowCard', () => {
         id={expectedShow.id}
         poster={expectedShow.poster}
         userScore={expectedShow.userScore}
-        releaseDate={expectedShow.releaseDate}
         showType={expectedShow.showType}
         title={expectedShow.title}
       />
@@ -59,7 +56,6 @@ describe('ShowCard', () => {
         id={expectedShow.id}
         poster={expectedShow.poster}
         userScore={expectedShow.userScore}
-        releaseDate={expectedShow.releaseDate}
         showType={expectedShow.showType}
         title={expectedShow.title}
       />
@@ -79,7 +75,6 @@ describe('ShowCard', () => {
         id={expectedShow.id}
         poster={expectedPoster}
         userScore={expectedShow.userScore}
-        releaseDate={expectedShow.releaseDate}
         showType={expectedShow.showType}
         title={expectedShow.title}
       />
@@ -96,7 +91,6 @@ describe('ShowCard', () => {
         id={expectedShow.id}
         poster={expectedPoster}
         userScore={expectedShow.userScore}
-        releaseDate={expectedShow.releaseDate}
         showType={expectedShow.showType}
         title={expectedShow.title}
       />
@@ -112,7 +106,6 @@ describe('ShowCard', () => {
         id={expectedShow.id}
         poster={expectedShow.poster}
         userScore={expectedShow.userScore}
-        releaseDate={expectedShow.releaseDate}
         showType={expectedShow.showType}
         title={expectedShow.title}
       />
@@ -127,7 +120,6 @@ describe('ShowCard', () => {
         id={expectedShow.id}
         poster={expectedShow.poster}
         userScore={expectedShow.userScore}
-        releaseDate={expectedShow.releaseDate}
         showType={expectedShow.showType}
         title={expectedShow.title}
       />
@@ -144,7 +136,6 @@ describe('ShowCard', () => {
         id={expectedShow.id}
         poster={expectedShow.poster}
         userScore={expectedShow.userScore}
-        releaseDate={expectedShow.releaseDate}
         showType={expectedShow.showType}
         title={expectedShow.title}
       />
@@ -152,7 +143,7 @@ describe('ShowCard', () => {
     expect(screen.getByRole('heading', { name: expectedShow.title })).toBeInTheDocument();
   });
 
-  it('should render release date', () => {
+  it('should render release date if provided', () => {
     const expectedShow = mockShows[0];
     render(
       <ShowCard

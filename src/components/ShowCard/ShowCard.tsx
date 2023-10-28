@@ -15,7 +15,7 @@ interface ShowCardProps {
   title: string;
   userScore: number;
   showType: ShowType;
-  releaseDate: string;
+  releaseDate?: string;
   showMetadata?: boolean;
 }
 
@@ -48,7 +48,7 @@ export default function ShowCard({
         {showMetadata && (
           <div>
             <h3 className="mt-6 text-sm font-bold">{title}</h3>
-            <span className="text-xs text-slate-400">{releaseDate}</span>
+            {releaseDate ? <span className="text-xs text-slate-400">{releaseDate}</span> : null}
           </div>
         )}
       </Link>

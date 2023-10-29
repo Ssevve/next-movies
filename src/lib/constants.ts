@@ -62,3 +62,5 @@ export const navItems: NavItem[] = [
     path: '/people',
   },
 ];
+
+export const searchEndpoints = ['movie', 'tv', 'person'] as const;

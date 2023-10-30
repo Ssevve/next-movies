@@ -7,47 +7,30 @@ import mockTMDBMovieVideos from '@/__mocks__/data/mockTMDBMovieVideos';
 import mockTMDBTvShows from '@/__mocks__/data/mockTMDBTvShows';
 import mockTMDBTvShowVideos from '@/__mocks__/data/mockTMDBTvShowVideos';
 import mockTMDBUnknownShows from '@/__mocks__/data/mockTMDBUnknownShows';
+import generateMockPaginatedResponse from '@/__mocks__/utils/generateMockPaginatedResponse';
 import { TMDBUrls } from '@/services/TMDB/config';
-import TMDBMovie from '@/services/TMDB/types/TMDBMovie';
-import TMDBPaginatedResponse from '@/services/TMDB/types/TMDBPaginatedResponse';
-import TMDBTvShow from '@/services/TMDB/types/TMDBTvShow';
-import TMDBUnknownShow from '@/services/TMDB/types/TMDBUnknownShow';
-
-const generateMockPaginatedShowsResponse = (
-  shows: TMDBUnknownShow[] | TMDBMovie[] | TMDBTvShow[]
-): TMDBPaginatedResponse<TMDBUnknownShow> => {
-  return {
-    page: 1,
-    results: shows,
-    total_pages: 1,
-    total_results: shows.length,
-  };
-};
 
 export const TMDBHandlers = [
   rest.get(`${TMDBUrls.base}/trending/:showType/:timeWindow`, (req, res, ctx) => {
     const { showType } = req.params;
     if (showType === 'all') {
-      return res(
-        ctx.status(200),
-        ctx.json(generateMockPaginatedShowsResponse(mockTMDBUnknownShows))
-      );
+      return res(ctx.status(200), ctx.json(generateMockPaginatedResponse(mockTMDBUnknownShows)));
     } else if (showType === 'movie') {
-      return res(ctx.status(200), ctx.json(generateMockPaginatedShowsResponse(mockTMDBMovies)));
+      return res(ctx.status(200), ctx.json(generateMockPaginatedResponse(mockTMDBMovies)));
     } else if (showType === 'tv') {
-      return res(ctx.status(200), ctx.json(generateMockPaginatedShowsResponse(mockTMDBTvShows)));
+      return res(ctx.status(200), ctx.json(generateMockPaginatedResponse(mockTMDBTvShows)));
     }
   }),
   rest.get(`${TMDBUrls.base}/movie/now_playing`, (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json(generateMockPaginatedShowsResponse(mockTMDBMovies)));
+    return res(ctx.status(200), ctx.json(generateMockPaginatedResponse(mockTMDBMovies)));
   }),
   rest.get(`${TMDBUrls.base}/:showType/popular`, (req, res, ctx) => {
     const { showType } = req.params;
 
     if (showType === 'movie') {
-      return res(ctx.status(200), ctx.json(generateMockPaginatedShowsResponse(mockTMDBMovies)));
+      return res(ctx.status(200), ctx.json(generateMockPaginatedResponse(mockTMDBMovies)));
     } else if (showType === 'tv') {
-      return res(ctx.status(200), ctx.json(generateMockPaginatedShowsResponse(mockTMDBTvShows)));
+      return res(ctx.status(200), ctx.json(generateMockPaginatedResponse(mockTMDBTvShows)));
     }
   }),
   rest.get(`${TMDBUrls.base}/:showType/:showId/videos`, (req, res, ctx) => {

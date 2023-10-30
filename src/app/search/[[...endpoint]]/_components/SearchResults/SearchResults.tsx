@@ -11,31 +11,31 @@ function isShowSearchResult(
   return 'title' in result;
 }
 
-interface SearchResultsProps {
-  page?: string;
-  endpoint: SearchEndpoint;
+export interface SearchResultsProps {
   query?: string;
-}
-
-function NoResults() {
-  return <p className="mt-12 sm:mt-8">There are no results that matched your query.</p>;
+  endpoint: SearchEndpoint;
+  page?: string;
 }
 
 // TODO: tests
-export default async function SearchResults({ page, endpoint, query }: SearchResultsProps) {
-  if (!query) return <NoResults />;
-
+export default async function SearchResults({
+  query = '',
+  page = '1',
+  endpoint,
+}: SearchResultsProps) {
   const paginatedResults = await getSearchResults({
-    endpoint: endpoint || 'movie',
+    endpoint,
     page,
     query,
   });
 
+  const hasResults = paginatedResults.totalResults > 0;
+
   return (
-    <ul className="mt-12 grid grid-cols-fluid gap-8 divide-y sm:mt-0 sm:grid-cols-1 lg:grid-cols-2">
-      {paginatedResults.results.length ? (
+    <ul className="mt-12 grid grid-cols-fluid gap-x-8 sm:mt-0 sm:grid-cols-1 lg:grid-cols-2 xs:[&>*:nth-child(2)]:border-t-0 xs:[&>*:nth-child(2)]:pt-0 sm:[&>*:nth-child(2)]:border-t sm:[&>*:nth-child(2)]:pt-8 lg:[&>*:nth-child(2)]:border-t-0 lg:[&>*:nth-child(2)]:pt-0">
+      {hasResults ? (
         paginatedResults.results.map((result) => (
-          <li key={result.id} className="pt-8 first:border-t last:border-b">
+          <li key={result.id} className="border-t py-8 first:border-t-0 first:pt-0">
             {isShowSearchResult(result) ? (
               <ShowSearchResultCard
                 id={result.id}
@@ -58,7 +58,7 @@ export default async function SearchResults({ page, endpoint, query }: SearchRes
           </li>
         ))
       ) : (
-        <NoResults />
+        <p className="mt-12 sm:mt-8">There are no results that matched your query.</p>
       )}
     </ul>
   );

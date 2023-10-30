@@ -1,3 +1,5 @@
+import 'server-only';
+
 import getSearchResults from '@/services/TMDB/api/getSearchResults/getSearchResults';
 import isFulfilled from '@/utils/isFulfilled';
 

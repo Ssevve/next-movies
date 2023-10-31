@@ -7,8 +7,7 @@ import Show from '@/types/Show';
 
 type UniqueShowTypeProps = 'title' | 'showType' | 'releaseDate';
 
-// TODO: tests
-export default function transformShow(show: TMDBUnknownShow) {
+export default function transformShow(show: TMDBUnknownShow): Show {
   const { id, poster_path, vote_average } = show;
 
   const transformedShow: Omit<Show, UniqueShowTypeProps> = {

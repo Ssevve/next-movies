@@ -1,6 +1,6 @@
 import TMDBUnknownShow from '@/services/TMDB/types/TMDBUnknownShow';
 
-const mockTMDBMixedResults: TMDBUnknownShow[] = [
+const mockTMDBUnknownShows: TMDBUnknownShow[] = [
   {
     backdrop_path: '/1syW9SNna38rSl9fnXwc9fP7POW.jpg',
     id: 565770,
@@ -21,4 +21,4 @@ const mockTMDBMixedResults: TMDBUnknownShow[] = [
   },
 ];
 
-export default mockTMDBMixedResults;
+export default mockTMDBUnknownShows;

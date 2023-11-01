@@ -11,7 +11,9 @@ export default function PersonSearchResultCard({
 }: PersonSearchResult) {
   return (
     <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-start">
-      <PersonImage imagePath={imagePath} alt={name} />
+      <div className="shrink-0">
+        <PersonImage imagePath={imagePath} alt={name} />
+      </div>
       <div className="flex flex-col items-center gap-2 sm:items-start">
         <div>
           <h3 className="font-bold">{name}</h3>

@@ -9,7 +9,7 @@ import TvShowCastPerson from '@/types/TvShowCastPerson';
 export default interface DetailedTvShow extends DetailedShow<TvShowCastPerson, TMDBTvShowStatus> {
   networks: Network[];
   type: TMDBTvShowType;
-  seasons: Season[];
+  recentSeason: Season | null;
   lastEpisode: Episode | null;
   nextEpisode: Episode | null;
 }

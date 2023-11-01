@@ -1,12 +1,11 @@
 import mockTMDBMovies from '@/__mocks__/data/mockTMDBMovies';
 import mockTMDBTvShows from '@/__mocks__/data/mockTMDBTvShows';
 import mockTMDBUnknownShows from '@/__mocks__/data/mockTMDBUnknownShows';
+import transformShow from '@/services/TMDB/utils/transformShow/transformShow';
 import transformShows from '@/services/TMDB/utils/transformShows/transformShows';
 import Show from '@/types/Show';
 
-import transformShow from '../transformShow/transformShow';
-
-describe('transformShowsResults', () => {
+describe('transformShows', () => {
   it('should return correctly transformed data for mixed shows', async () => {
     const expectedResults: Show[] = mockTMDBUnknownShows.map((show) => transformShow(show));
     const transformedResults = transformShows(mockTMDBUnknownShows);

@@ -5,7 +5,7 @@ import formatDate from '@/services/TMDB/utils/formatDate/formatDate';
 import transformShow from '@/services/TMDB/utils/transformShow/transformShow';
 import Show from '@/types/Show';
 
-describe('transformShowsResults', () => {
+describe('transformShow', () => {
   it('should return correctly transformed movie', async () => {
     const testMovie = mockTMDBMovies[0];
     const expectedResult: Show = {

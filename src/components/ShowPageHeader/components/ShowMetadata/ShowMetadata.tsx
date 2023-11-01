@@ -1,4 +1,3 @@
-import formatRuntime from '@/app/movie/[id]/_components/MovieMetadata/utils/formatRuntime/formatRuntime';
 import joinGenres from '@/components/ShowPageHeader/components/ShowMetadata/utils/joinGenres/joinGenres';
 import Genre from '@/types/Genre';
 import getReleaseYear from '@/utils/getReleaseYear/getReleaseYear';

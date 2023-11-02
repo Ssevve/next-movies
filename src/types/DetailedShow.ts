@@ -22,10 +22,10 @@ export default interface DetailedShow<C = CastPerson, S = TMDBShowStatus> extend
   originalLanguage: string;
   recommendations: Show[];
   keywords: { id: number; name: string }[];
-  tagline?: string;
+  tagline: string | null;
   overview: string;
   homepage: string;
-  rating: string;
+  rating: string | null;
   createdBy: Creator[];
   showType: ShowType;
   status: S;

@@ -12,9 +12,11 @@ import transformShows from '@/services/TMDB/utils/transformShows/transformShows'
 import transformVideos from '@/services/TMDB/utils/transformVideos/transformVideos';
 import DetailedMovie from '@/types/DetailedMovie';
 
+const mockTMDBDetailedMovie = mockTMDBDetailedMovies.withOriginalLanguage;
+
 describe('transformDetailedMovie', () => {
   it('should return correctly transformed data', () => {
-    const testMovie = mockTMDBDetailedMovies.withOriginalLanguage;
+    const testMovie = mockTMDBDetailedMovie;
     const expectedData: DetailedMovie = {
       backdrop: { path: testMovie.backdrop_path },
       budget: 120000000,
@@ -35,7 +37,7 @@ describe('transformDetailedMovie', () => {
         path: testMovie.poster_path,
         width: TMDBImageSizes.posters.detailedShow.width,
       },
-      rating: 'PG-13',
+      rating: getUSMovieRating(testMovie.release_dates),
       recommendations: transformShows(testMovie.recommendations.results),
       releaseDate: formatDate(testMovie.release_date!),
       revenue: testMovie.revenue,
@@ -43,7 +45,52 @@ describe('transformDetailedMovie', () => {
       showType: 'movie',
       socialHandles: transformExternalIds(testMovie.external_ids),
       status: testMovie.status,
-      tagline: testMovie.tagline,
+      tagline: testMovie.tagline!,
+      title: testMovie.title,
+      userScore: testMovie.vote_average,
+      userScoreCount: testMovie.vote_count,
+      videos: transformVideos({
+        showId: testMovie.id,
+        showTitle: testMovie.title,
+        showType: 'movie',
+        videos: testMovie.videos.results,
+      }),
+    };
+    const transformedData = transformDetailedMovie(testMovie);
+    expect(transformedData).toEqual(expectedData);
+  });
+
+  it('should return correctly transformed data for a movie without tagline', () => {
+    const testMovie = { ...mockTMDBDetailedMovie, tagline: '' };
+    const expectedData: DetailedMovie = {
+      backdrop: { path: testMovie.backdrop_path },
+      budget: 120000000,
+      cast: transformMovieCast(testMovie.credits.cast),
+      createdBy: transformMovieCreatedBy(testMovie.credits.crew),
+      genres: testMovie.genres,
+      homepage: testMovie.homepage,
+      id: testMovie.id,
+      images: {
+        backdrops: transformImages(testMovie.images.backdrops),
+        posters: transformImages(testMovie.images.posters),
+      },
+      keywords: testMovie.keywords.keywords,
+      originalLanguage: testMovie.original_language,
+      overview: testMovie.overview!,
+      poster: {
+        height: TMDBImageSizes.posters.detailedShow.height,
+        path: testMovie.poster_path,
+        width: TMDBImageSizes.posters.detailedShow.width,
+      },
+      rating: getUSMovieRating(testMovie.release_dates),
+      recommendations: transformShows(testMovie.recommendations.results),
+      releaseDate: formatDate(testMovie.release_date!),
+      revenue: testMovie.revenue,
+      runtime: testMovie.runtime,
+      showType: 'movie',
+      socialHandles: transformExternalIds(testMovie.external_ids),
+      status: testMovie.status,
+      tagline: null,
       title: testMovie.title,
       userScore: testMovie.vote_average,
       userScoreCount: testMovie.vote_count,
@@ -60,7 +107,7 @@ describe('transformDetailedMovie', () => {
 
   it('should return correctly transformed data for a movie without a release date', () => {
     const testMovie: TMDBDetailedMovie = {
-      ...mockTMDBDetailedMovies.withOriginalLanguage,
+      ...mockTMDBDetailedMovie,
       release_date: undefined,
     };
     const expectedData: DetailedMovie = {
@@ -91,7 +138,7 @@ describe('transformDetailedMovie', () => {
       showType: 'movie',
       socialHandles: transformExternalIds(testMovie.external_ids),
       status: testMovie.status,
-      tagline: testMovie.tagline,
+      tagline: testMovie.tagline!,
       title: testMovie.title,
       userScore: testMovie.vote_average,
       userScoreCount: testMovie.vote_count,
@@ -109,7 +156,7 @@ describe('transformDetailedMovie', () => {
 
   it('should return correctly transformed data for a movie without an overview', () => {
     const testMovie: TMDBDetailedMovie = {
-      ...mockTMDBDetailedMovies.withOriginalLanguage,
+      ...mockTMDBDetailedMovie,
       overview: '',
     };
 
@@ -141,7 +188,7 @@ describe('transformDetailedMovie', () => {
       showType: 'movie',
       socialHandles: transformExternalIds(testMovie.external_ids),
       status: testMovie.status,
-      tagline: testMovie.tagline,
+      tagline: testMovie.tagline!,
       title: testMovie.title,
       userScore: testMovie.vote_average,
       userScoreCount: testMovie.vote_count,
@@ -159,7 +206,7 @@ describe('transformDetailedMovie', () => {
 
   it('should return correctly transformed data for a movie without a US rating', () => {
     const testMovie: TMDBDetailedMovie = {
-      ...mockTMDBDetailedMovies.withOriginalLanguage,
+      ...mockTMDBDetailedMovie,
       release_dates: {
         results: [],
       },
@@ -185,7 +232,7 @@ describe('transformDetailedMovie', () => {
         path: testMovie.poster_path,
         width: TMDBImageSizes.posters.detailedShow.width,
       },
-      rating: '',
+      rating: null,
       recommendations: transformShows(testMovie.recommendations.results),
       releaseDate: formatDate(testMovie.release_date!),
       revenue: testMovie.revenue,
@@ -193,7 +240,7 @@ describe('transformDetailedMovie', () => {
       showType: 'movie',
       socialHandles: transformExternalIds(testMovie.external_ids),
       status: testMovie.status,
-      tagline: testMovie.tagline,
+      tagline: testMovie.tagline!,
       title: testMovie.title,
       userScore: testMovie.vote_average,
       userScoreCount: testMovie.vote_count,

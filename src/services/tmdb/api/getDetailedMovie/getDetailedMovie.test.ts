@@ -9,14 +9,17 @@ import { TMDBUrls } from '@/services/TMDB/config';
 import transformDetailedMovie from '@/services/TMDB/utils/transformDetailedMovie/transformDetailedMovie';
 
 describe('getDetailedMovie', () => {
-  it('should return correct result', async () => {
+  it('should return correct result for a movie with original language', async () => {
     const testMovie = mockTMDBDetailedMovies.withOriginalLanguage;
-    const expectedResult = transformDetailedMovie({ ...testMovie, original_language: 'English' });
+    const expectedResult = {
+      ...transformDetailedMovie(testMovie),
+      originalLanguage: 'English',
+    };
     const result = await getDetailedMovie(testMovie.id);
     expect(result).toEqual(expectedResult);
   });
 
-  it('should return correct result if original language is not specified', async () => {
+  it('should return correct result for a movie without original language', async () => {
     const testMovie = mockTMDBDetailedMovies.withoutOriginalLanguage;
     const expectedResult = transformDetailedMovie(testMovie);
     const result = await getDetailedMovie(testMovie.id);

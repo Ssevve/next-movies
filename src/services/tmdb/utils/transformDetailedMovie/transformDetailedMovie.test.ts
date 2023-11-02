@@ -1,161 +1,211 @@
 import mockTMDBDetailedMovies from '@/__mocks__/data/mockTMDBDetailedMovies';
 import { TMDBImageSizes } from '@/services/TMDB/config';
+import TMDBDetailedMovie from '@/services/TMDB/types/TMDBDetailedMovie';
+import formatDate from '@/services/TMDB/utils/formatDate/formatDate';
 import transformDetailedMovie from '@/services/TMDB/utils/transformDetailedMovie/transformDetailedMovie';
+import getUSMovieRating from '@/services/TMDB/utils/transformDetailedMovie/utils/getUSMovieRating/getUSMovieRating';
+import transformMovieCast from '@/services/TMDB/utils/transformDetailedMovie/utils/transformMovieCast/transformMovieCast';
+import transformMovieCreatedBy from '@/services/TMDB/utils/transformDetailedMovie/utils/transformMovieCreatedBy/transformMovieCreatedBy';
+import transformExternalIds from '@/services/TMDB/utils/transformExternalIds/transformExternalIds';
+import transformImages from '@/services/TMDB/utils/transformImages/transformImages';
+import transformShows from '@/services/TMDB/utils/transformShows/transformShows';
+import transformVideos from '@/services/TMDB/utils/transformVideos/transformVideos';
 import DetailedMovie from '@/types/DetailedMovie';
 
 describe('transformDetailedMovie', () => {
-  it('should return correctly transformed data', async () => {
+  it('should return correctly transformed data', () => {
+    const testMovie = mockTMDBDetailedMovies.withOriginalLanguage;
     const expectedData: DetailedMovie = {
-      backdrop: { path: '/1syW9SNna38rSl9fnXwc9fP7POW.jpg' },
+      backdrop: { path: testMovie.backdrop_path },
       budget: 120000000,
-      cast: [
-        {
-          character: 'Jaime Reyes / Blue Beetle',
-          id: 1185997,
-          imagePath: '/tJMI7BpjlhHSMpzSz9e1XxygnKd.jpg',
-          name: 'Xolo Mariduena',
-        },
-        {
-          character: 'Nana Reyes',
-          id: 270,
-          imagePath: '/1aE7wu22bdgVTa0PMKXbAOSLiZn.jpg',
-          name: 'Adriana Barraza',
-        },
-      ],
-      createdBy: [],
-      genres: [
-        {
-          id: 28,
-          name: 'Action',
-        },
-        {
-          id: 878,
-          name: 'Science Fiction',
-        },
-        {
-          id: 12,
-          name: 'Adventure',
-        },
-      ],
-      homepage: 'https://www.dc.com/bluebeetle',
-      id: 565770,
+      cast: transformMovieCast(testMovie.credits.cast),
+      createdBy: transformMovieCreatedBy(testMovie.credits.crew),
+      genres: testMovie.genres,
+      homepage: testMovie.homepage,
+      id: testMovie.id,
       images: {
-        backdrops: [
-          {
-            height: 2160,
-            path: '/1syW9SNna38rSl9fnXwc9fP7POW.jpg',
-            width: 3840,
-          },
-          {
-            height: 1080,
-            path: '/9faGSFi5jam6pDWGNd0p8JcJgXQ.jpg',
-            width: 1920,
-          },
-        ],
-        posters: [
-          {
-            height: 3000,
-            path: '/mXLOHHc1Zeuwsl4xYKjKh2280oL.jpg',
-            width: 2000,
-          },
-        ],
+        backdrops: transformImages(testMovie.images.backdrops),
+        posters: transformImages(testMovie.images.posters),
       },
-      keywords: [
-        {
-          id: 2898,
-          name: 'armor',
-        },
-        {
-          id: 9715,
-          name: 'superhero',
-        },
-      ],
-      originalLanguage: 'en',
-      overview:
-        'Recent college grad Jaime Reyes returns home full of aspirations for his future, only to find that home is not quite as he left it. As he searches to find his purpose in the world, fate intervenes when Jaime unexpectedly finds himself in possession of an ancient relic of alien biotechnology: the Scarab.',
+      keywords: testMovie.keywords.keywords,
+      originalLanguage: testMovie.original_language,
+      overview: testMovie.overview!,
       poster: {
         height: TMDBImageSizes.posters.detailedShow.height,
-        path: '/mXLOHHc1Zeuwsl4xYKjKh2280oL.jpg',
+        path: testMovie.poster_path,
         width: TMDBImageSizes.posters.detailedShow.width,
       },
       rating: 'PG-13',
-      recommendations: [
-        {
-          id: 832502,
-          poster: {
-            height: TMDBImageSizes.posters.show.height,
-            path: '/i6ye8ueFhVE5pXatgyRrZ83LBD8.jpg',
-            width: TMDBImageSizes.posters.show.width,
-          },
-          releaseDate: 'Aug 11, 2023',
-          showType: 'movie',
-          title: 'The Monkey King',
-          userScore: 6.8,
-        },
-        {
-          id: 16155,
-          poster: {
-            height: TMDBImageSizes.posters.show.height,
-            path: '/857L7x6uFNr4c2oHD5KJw5pkbxn.jpg',
-            width: TMDBImageSizes.posters.show.width,
-          },
-          releaseDate: 'Aug 7, 1998',
-          showType: 'movie',
-          title: 'Safe Men',
-          userScore: 5.6,
-        },
-      ],
-      releaseDate: 'Aug 16, 2023',
-      revenue: 124818235,
-      runtime: 128,
+      recommendations: transformShows(testMovie.recommendations.results),
+      releaseDate: formatDate(testMovie.release_date!),
+      revenue: testMovie.revenue,
+      runtime: testMovie.runtime,
       showType: 'movie',
-      socialHandles: {
-        facebook: 'DCBlueBeetle',
-        instagram: 'bluebeetle',
-        twitter: 'bluebeetle',
+      socialHandles: transformExternalIds(testMovie.external_ids),
+      status: testMovie.status,
+      tagline: testMovie.tagline,
+      title: testMovie.title,
+      userScore: testMovie.vote_average,
+      userScoreCount: testMovie.vote_count,
+      videos: transformVideos({
+        showId: testMovie.id,
+        showTitle: testMovie.title,
+        showType: 'movie',
+        videos: testMovie.videos.results,
+      }),
+    };
+    const transformedData = transformDetailedMovie(testMovie);
+    expect(transformedData).toEqual(expectedData);
+  });
+
+  it('should return correctly transformed data for a movie without a release date', () => {
+    const testMovie: TMDBDetailedMovie = {
+      ...mockTMDBDetailedMovies.withOriginalLanguage,
+      release_date: undefined,
+    };
+    const expectedData: DetailedMovie = {
+      backdrop: { path: testMovie.backdrop_path },
+      budget: 120000000,
+      cast: transformMovieCast(testMovie.credits.cast),
+      createdBy: transformMovieCreatedBy(testMovie.credits.crew),
+      genres: testMovie.genres,
+      homepage: testMovie.homepage,
+      id: testMovie.id,
+      images: {
+        backdrops: transformImages(testMovie.images.backdrops),
+        posters: transformImages(testMovie.images.posters),
       },
-      status: 'Released',
-      tagline: 'Jaime Reyes is a superhero whether he likes it or not.',
-      title: 'Blue Beetle',
-      userScore: 7.143,
-      userScoreCount: 994,
-      videos: [
-        {
-          backdrop: { path: '' },
-          id: '6502385defea7a00e0360f7c',
-          showId: 565770,
-          showTitle: 'Blue Beetle',
-          showType: 'movie',
-          thumbnail: {
-            height: TMDBImageSizes.thumbnails.video.height,
-            path: '',
-            width: TMDBImageSizes.thumbnails.video.width,
-          },
-          title: 'Brynn',
-          type: 'Featurette',
-          youtubeKey: 'CvzlxfEz4hQ',
-        },
-        {
-          backdrop: { path: '' },
-          id: '64f770aa5f2b8d00e12d5d1a',
-          showId: 565770,
-          showTitle: 'Blue Beetle',
-          showType: 'movie',
-          thumbnail: {
-            height: TMDBImageSizes.thumbnails.video.height,
-            path: '',
-            width: TMDBImageSizes.thumbnails.video.width,
-          },
-          title: 'Official Trailer',
-          type: 'Trailer',
-          youtubeKey: 'IcA02w6rm44',
-        },
-      ],
+      keywords: testMovie.keywords.keywords,
+      originalLanguage: testMovie.original_language,
+      overview: testMovie.overview!,
+      poster: {
+        height: TMDBImageSizes.posters.detailedShow.height,
+        path: testMovie.poster_path,
+        width: TMDBImageSizes.posters.detailedShow.width,
+      },
+      rating: getUSMovieRating(testMovie.release_dates)!,
+      recommendations: transformShows(testMovie.recommendations.results),
+      releaseDate: 'N/A',
+      revenue: testMovie.revenue,
+      runtime: testMovie.runtime,
+      showType: 'movie',
+      socialHandles: transformExternalIds(testMovie.external_ids),
+      status: testMovie.status,
+      tagline: testMovie.tagline,
+      title: testMovie.title,
+      userScore: testMovie.vote_average,
+      userScoreCount: testMovie.vote_count,
+      videos: transformVideos({
+        showId: testMovie.id,
+        showTitle: testMovie.title,
+        showType: 'movie',
+        videos: testMovie.videos.results,
+      }),
     };
 
-    const transformedData = transformDetailedMovie({
+    const transformedData = transformDetailedMovie(testMovie);
+    expect(transformedData).toEqual(expectedData);
+  });
+
+  it('should return correctly transformed data for a movie without an overview', () => {
+    const testMovie: TMDBDetailedMovie = {
       ...mockTMDBDetailedMovies.withOriginalLanguage,
-    });
+      overview: '',
+    };
+
+    const expectedData: DetailedMovie = {
+      backdrop: { path: testMovie.backdrop_path },
+      budget: 120000000,
+      cast: transformMovieCast(testMovie.credits.cast),
+      createdBy: transformMovieCreatedBy(testMovie.credits.crew),
+      genres: testMovie.genres,
+      homepage: testMovie.homepage,
+      id: testMovie.id,
+      images: {
+        backdrops: transformImages(testMovie.images.backdrops),
+        posters: transformImages(testMovie.images.posters),
+      },
+      keywords: testMovie.keywords.keywords,
+      originalLanguage: testMovie.original_language,
+      overview: 'Overview not available.',
+      poster: {
+        height: TMDBImageSizes.posters.detailedShow.height,
+        path: testMovie.poster_path,
+        width: TMDBImageSizes.posters.detailedShow.width,
+      },
+      rating: getUSMovieRating(testMovie.release_dates)!,
+      recommendations: transformShows(testMovie.recommendations.results),
+      releaseDate: formatDate(testMovie.release_date!),
+      revenue: testMovie.revenue,
+      runtime: testMovie.runtime,
+      showType: 'movie',
+      socialHandles: transformExternalIds(testMovie.external_ids),
+      status: testMovie.status,
+      tagline: testMovie.tagline,
+      title: testMovie.title,
+      userScore: testMovie.vote_average,
+      userScoreCount: testMovie.vote_count,
+      videos: transformVideos({
+        showId: testMovie.id,
+        showTitle: testMovie.title,
+        showType: 'movie',
+        videos: testMovie.videos.results,
+      }),
+    };
+
+    const transformedData = transformDetailedMovie(testMovie);
+    expect(transformedData).toEqual(expectedData);
+  });
+
+  it('should return correctly transformed data for a movie without a US rating', () => {
+    const testMovie: TMDBDetailedMovie = {
+      ...mockTMDBDetailedMovies.withOriginalLanguage,
+      release_dates: {
+        results: [],
+      },
+    };
+
+    const expectedData: DetailedMovie = {
+      backdrop: { path: testMovie.backdrop_path },
+      budget: 120000000,
+      cast: transformMovieCast(testMovie.credits.cast),
+      createdBy: transformMovieCreatedBy(testMovie.credits.crew),
+      genres: testMovie.genres,
+      homepage: testMovie.homepage,
+      id: testMovie.id,
+      images: {
+        backdrops: transformImages(testMovie.images.backdrops),
+        posters: transformImages(testMovie.images.posters),
+      },
+      keywords: testMovie.keywords.keywords,
+      originalLanguage: testMovie.original_language,
+      overview: testMovie.overview!,
+      poster: {
+        height: TMDBImageSizes.posters.detailedShow.height,
+        path: testMovie.poster_path,
+        width: TMDBImageSizes.posters.detailedShow.width,
+      },
+      rating: '',
+      recommendations: transformShows(testMovie.recommendations.results),
+      releaseDate: formatDate(testMovie.release_date!),
+      revenue: testMovie.revenue,
+      runtime: testMovie.runtime,
+      showType: 'movie',
+      socialHandles: transformExternalIds(testMovie.external_ids),
+      status: testMovie.status,
+      tagline: testMovie.tagline,
+      title: testMovie.title,
+      userScore: testMovie.vote_average,
+      userScoreCount: testMovie.vote_count,
+      videos: transformVideos({
+        showId: testMovie.id,
+        showTitle: testMovie.title,
+        showType: 'movie',
+        videos: testMovie.videos.results,
+      }),
+    };
+
+    const transformedData = transformDetailedMovie(testMovie);
     expect(transformedData).toEqual(expectedData);
   });
 });

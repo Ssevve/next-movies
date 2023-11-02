@@ -1,6 +1,6 @@
 import TMDBEpisode from '@/services/TMDB/types/TMDBEpisode';
 import formatDate from '@/services/TMDB/utils/formatDate/formatDate';
-import transformEpisode from '@/services/TMDB/utils/transformEpisode/transformEpisode';
+import transformDetailedTvShowEpisode from '@/services/TMDB/utils/transformDetailedTvShow/utils/transformDetailedTvShowEpisode/transformDetailedTvShowEpisode';
 import Episode from '@/types/Episode';
 
 const mockEpisode: TMDBEpisode = {
@@ -13,11 +13,7 @@ const mockEpisode: TMDBEpisode = {
   show_id: 1396,
 };
 
-describe('transformEpisode', () => {
-  it('should return null if episode is null', () => {
-    expect(transformEpisode(null)).toEqual(null);
-  });
-
+describe('transformDetailedTvShowEpisode', () => {
   it('should return correctly transformed episode', () => {
     const expectedEpisode: Episode = {
       airDate: formatDate(mockEpisode.air_date!),
@@ -29,7 +25,7 @@ describe('transformEpisode', () => {
       title: mockEpisode.name,
     };
 
-    const result = transformEpisode(mockEpisode);
+    const result = transformDetailedTvShowEpisode(mockEpisode);
     expect(result).toStrictEqual(expectedEpisode);
   });
 
@@ -45,7 +41,7 @@ describe('transformEpisode', () => {
       title: mockEpisode.name,
     };
 
-    const result = transformEpisode(testEpisode);
+    const result = transformDetailedTvShowEpisode(testEpisode);
     expect(result).toStrictEqual(expectedEpisode);
   });
 });

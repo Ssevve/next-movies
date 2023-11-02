@@ -1,3 +1,4 @@
+import TMDBExternalIds from '@/services/TMDB/types/TMDBExternalIds';
 import TMDBImages from '@/services/TMDB/types/TMDBImages';
 import TMDBShow from '@/services/TMDB/types/TMDBShow';
 import TMDBShowStatus from '@/services/TMDB/types/TMDBShowStatus';
@@ -9,14 +10,10 @@ export default interface TMDBDetailedShow<S = TMDBShowStatus> extends TMDBShow {
   videos: {
     results: TMDBVideo[];
   };
-  external_ids: {
-    twitter_id: string;
-    facebook_id: string;
-    instagram_id: string;
-  };
+  external_ids: TMDBExternalIds;
   original_language: string;
-  tagline: string;
-  overview: string;
+  tagline?: string;
+  overview?: string;
   homepage: string;
   status: S;
 }

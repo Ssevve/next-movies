@@ -1,5 +1,5 @@
 import TMDBTvShowCastPerson from '@/services/TMDB/types/TMDBTvShowCastPerson';
-import transformTvShowCast from '@/services/TMDB/utils/transformTvShowCast/transformTvShowCast';
+import transformTvShowCast from '@/services/TMDB/utils/transformDetailedTvShow/utils/transformTvShowCast/transformTvShowCast';
 import TvShowCastPerson from '@/types/TvShowCastPerson';
 
 const mockCast: TMDBTvShowCastPerson[] = [

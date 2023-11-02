@@ -1,7 +1,7 @@
 import { TMDBImageSizes } from '@/services/TMDB/config';
 import TMDBSeason from '@/services/TMDB/types/TMDBSeason';
 import formatDate from '@/services/TMDB/utils/formatDate/formatDate';
-import getRecentSeason from '@/services/TMDB/utils/getRecentSeason/getRecentSeason';
+import getRecentSeason from '@/services/TMDB/utils/transformDetailedTvShow/utils/getRecentSeason/getRecentSeason';
 import Season from '@/types/Season';
 
 const mockSeasons: TMDBSeason[] = [
@@ -29,11 +29,6 @@ const mockSeasons: TMDBSeason[] = [
 ];
 
 describe('getRecentSeason', () => {
-  it('should return null if there is no recent season', () => {
-    const season = getRecentSeason([]);
-    expect(season).toEqual(null);
-  });
-
   it('should return correctly transformed season if seasons length is 1', () => {
     const testSeason = mockSeasons.slice(1);
     const expectedSeason: Season = {

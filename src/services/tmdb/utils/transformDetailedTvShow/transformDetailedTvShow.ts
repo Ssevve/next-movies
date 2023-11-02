@@ -1,24 +1,23 @@
 import { TMDBImageSizes } from '@/services/TMDB/config';
-import TMDBContentRatings from '@/services/TMDB/types/TMDBContentRatings';
 import TMDBDetailedTvShow from '@/services/TMDB/types/TMDBDetailedTvShow';
 import formatDate from '@/services/TMDB/utils/formatDate/formatDate';
-import getRecentSeason from '@/services/TMDB/utils/getRecentSeason/getRecentSeason';
-import transformEpisode from '@/services/TMDB/utils/transformEpisode/transformEpisode';
+import getRecentSeason from '@/services/TMDB/utils/transformDetailedTvShow/utils/getRecentSeason/getRecentSeason';
+import getUSTvShowRating from '@/services/TMDB/utils/transformDetailedTvShow/utils/getUSTvShowRating/getUSTvShowRating';
+import transformDetailedTvShowEpisode from '@/services/TMDB/utils/transformDetailedTvShow/utils/transformDetailedTvShowEpisode/transformDetailedTvShowEpisode';
+import transformTvShowCast from '@/services/TMDB/utils/transformDetailedTvShow/utils/transformTvShowCast/transformTvShowCast';
+import transformTvShowCreatedBy from '@/services/TMDB/utils/transformDetailedTvShow/utils/transformTvShowCreatedBy/transformTvShowCreatedBy';
+import transformTvShowNetworks from '@/services/TMDB/utils/transformDetailedTvShow/utils/transformTvShowNetworks/transformTvShowNetworks';
+import transformExternalIds from '@/services/TMDB/utils/transformExternalIds/transformExternalIds';
 import transformImages from '@/services/TMDB/utils/transformImages/transformImages';
 import transformShows from '@/services/TMDB/utils/transformShows/transformShows';
-import transformTvShowCast from '@/services/TMDB/utils/transformTvShowCast/transformTvShowCast';
 import transformVideos from '@/services/TMDB/utils/transformVideos/transformVideos';
 import DetailedTvShow from '@/types/DetailedTvShow';
-
-function getUSTvShowRating(contentRatings: TMDBContentRatings) {
-  return contentRatings.results.find(({ iso_3166_1 }) => iso_3166_1 === 'US')?.rating;
-}
 
 export default function transformDetailedTvShow(tvShow: TMDBDetailedTvShow): DetailedTvShow {
   return {
     backdrop: { path: tvShow.backdrop_path },
     cast: transformTvShowCast(tvShow.aggregate_credits.cast),
-    createdBy: tvShow.created_by.map(({ id, name }) => ({ id, name })),
+    createdBy: transformTvShowCreatedBy(tvShow.created_by),
     genres: tvShow.genres,
     homepage: tvShow.homepage,
     id: tvShow.id,
@@ -27,28 +26,28 @@ export default function transformDetailedTvShow(tvShow: TMDBDetailedTvShow): Det
       posters: transformImages(tvShow.images.posters),
     },
     keywords: tvShow.keywords.results,
-    lastEpisode: transformEpisode(tvShow.last_episode_to_air),
-    networks: tvShow.networks.map(({ id, logo_path, name }) => ({ id, logoPath: logo_path, name })),
-    nextEpisode: transformEpisode(tvShow.next_episode_to_air),
+    lastEpisode: tvShow.last_episode_to_air
+      ? transformDetailedTvShowEpisode(tvShow.last_episode_to_air)
+      : null,
+    networks: tvShow.networks.length ? transformTvShowNetworks(tvShow.networks) : [],
+    nextEpisode: tvShow.next_episode_to_air
+      ? transformDetailedTvShowEpisode(tvShow.next_episode_to_air)
+      : null,
     originalLanguage: tvShow.original_language,
-    overview: tvShow.overview,
+    overview: tvShow.overview || 'Overview not available.',
     poster: {
       height: TMDBImageSizes.posters.detailedShow.height,
       path: tvShow.poster_path,
       width: TMDBImageSizes.posters.detailedShow.width,
     },
-    rating: getUSTvShowRating(tvShow.content_ratings) || '',
-    recentSeason: getRecentSeason(tvShow.seasons),
+    rating: getUSTvShowRating(tvShow.content_ratings) || null,
+    recentSeason: tvShow.seasons.length ? getRecentSeason(tvShow.seasons) : null,
     recommendations: transformShows(tvShow.recommendations.results),
     releaseDate: tvShow.first_air_date ? formatDate(tvShow.first_air_date) : 'N/A',
     showType: 'tv',
-    socialHandles: {
-      facebook: tvShow.external_ids['facebook_id'],
-      instagram: tvShow.external_ids['instagram_id'],
-      twitter: tvShow.external_ids['twitter_id'],
-    },
+    socialHandles: transformExternalIds(tvShow.external_ids),
     status: tvShow.status,
-    tagline: tvShow.tagline,
+    tagline: tvShow.tagline || null,
     title: tvShow.name,
     type: tvShow.type,
     userScore: tvShow.vote_average,

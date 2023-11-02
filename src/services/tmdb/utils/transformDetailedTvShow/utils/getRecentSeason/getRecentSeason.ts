@@ -3,9 +3,8 @@ import TMDBSeason from '@/services/TMDB/types/TMDBSeason';
 import formatDate from '@/services/TMDB/utils/formatDate/formatDate';
 import Season from '@/types/Season';
 
-export default function getRecentSeason(seasons: TMDBSeason[]): Season | null {
-  const recentSeason = seasons.at(-1);
-  if (!recentSeason) return null;
+export default function getRecentSeason(seasons: TMDBSeason[]): Season {
+  const recentSeason = seasons.slice(-1)[0];
   return {
     airDate: recentSeason.air_date ? formatDate(recentSeason.air_date) : 'N/A',
     episodeCount: recentSeason.episode_count,

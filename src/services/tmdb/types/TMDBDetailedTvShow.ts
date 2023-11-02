@@ -1,6 +1,7 @@
 import TMDBContentRatings from '@/services/TMDB/types/TMDBContentRatings';
 import TMDBDetailedShow from '@/services/TMDB/types/TMDBDetailedShow';
 import TMDBEpisode from '@/services/TMDB/types/TMDBEpisode';
+import TMDBNetwork from '@/services/TMDB/types/TMDBNetwork';
 import TMDBPaginatedResponse from '@/services/TMDB/types/TMDBPaginatedResponse';
 import TMDBSeason from '@/services/TMDB/types/TMDBSeason';
 import TMDBTvShow from '@/services/TMDB/types/TMDBTvShow';
@@ -16,7 +17,7 @@ export default interface TMDBDetailedTvShow extends TMDBDetailedShow<TMDBTvShowS
   aggregate_credits: {
     cast: TMDBTvShowCastPerson[];
   };
-  networks: { id: number; logo_path: string; name: string }[];
+  networks: TMDBNetwork[];
   type: TMDBTvShowType;
   seasons: TMDBSeason[];
   last_episode_to_air: TMDBEpisode | null;

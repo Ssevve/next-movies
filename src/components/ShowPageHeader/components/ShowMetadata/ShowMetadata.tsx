@@ -5,7 +5,7 @@ import getReleaseYear from '@/utils/getReleaseYear/getReleaseYear';
 export interface ShowMetadataProps {
   title: string;
   releaseDate: string;
-  rating?: string;
+  rating: string | null;
   genres: Genre[];
 }
 

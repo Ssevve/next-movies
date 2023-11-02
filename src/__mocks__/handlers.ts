@@ -59,7 +59,7 @@ export const TMDBHandlers = [
     const { movieId } = req.params;
     return res(
       ctx.status(200),
-      ctx.json(Object.values(mockTMDBDetailedMovies).find((movie) => movie.id === Number(movieId)))
+      ctx.json(Object.values(mockTMDBDetailedMovies).find(({ id }) => id === Number(movieId)))
     );
   }),
   rest.get(`${TMDBUrls.base}/configuration/languages`, (req, res, ctx) => {

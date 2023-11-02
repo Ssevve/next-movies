@@ -1,5 +1,5 @@
 export default interface TMDBSeason {
-  air_date: string;
+  air_date?: string;
   episode_count: number;
   id: number;
   name: string;

@@ -2,7 +2,6 @@ import TMDBPersonSearchResult from '@/services/TMDB/types/TMDBPersonSearchResult
 import transformPersonSearchResultShows from '@/services/TMDB/utils/transformPersonSearchResultShows/transformPersonSearchResultShows';
 import PersonSearchResult from '@/types/PersonSearchResult';
 
-// TODO: test
 export default function transformPersonSearchResult(
   result: TMDBPersonSearchResult
 ): PersonSearchResult {

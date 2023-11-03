@@ -1,6 +1,6 @@
 import TMDBMovie from '@/services/TMDB/types/TMDBMovie';
 
-const mockTMDBMovieResults: TMDBMovie[] = [
+const mockTMDBMovies: TMDBMovie[] = [
   {
     backdrop_path: '/n47trh6SChgncx2GUmwsvry6DLb.jpg',
     id: 991708,
@@ -21,4 +21,4 @@ const mockTMDBMovieResults: TMDBMovie[] = [
   },
 ];
 
-export default mockTMDBMovieResults;
+export default mockTMDBMovies;

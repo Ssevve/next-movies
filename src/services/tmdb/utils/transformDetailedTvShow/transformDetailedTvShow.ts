@@ -29,7 +29,7 @@ export default function transformDetailedTvShow(tvShow: TMDBDetailedTvShow): Det
     lastEpisode: tvShow.last_episode_to_air
       ? transformDetailedTvShowEpisode(tvShow.last_episode_to_air)
       : null,
-    networks: tvShow.networks.length ? transformTvShowNetworks(tvShow.networks) : [],
+    networks: transformTvShowNetworks(tvShow.networks),
     nextEpisode: tvShow.next_episode_to_air
       ? transformDetailedTvShowEpisode(tvShow.next_episode_to_air)
       : null,

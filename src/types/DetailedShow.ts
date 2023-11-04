@@ -6,7 +6,7 @@ import Creator from '@/types/Creator';
 import Genre from '@/types/Genre';
 import Image from '@/types/Image';
 import Show from '@/types/Show';
-import SocialHandles from '@/types/SocialHandles';
+import { SocialHandles } from '@/types/SocialHandles';
 import Video from '@/types/Video';
 
 export default interface DetailedShow<C = CastPerson, S = TMDBShowStatus> extends Show {

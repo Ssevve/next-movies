@@ -1,5 +1,7 @@
-export default interface SocialHandles {
-  facebook: string | null;
-  instagram: string | null;
-  twitter: string | null;
+export type SocialHandle = string | null;
+
+export interface SocialHandles {
+  facebook: SocialHandle;
+  instagram: SocialHandle;
+  twitter: SocialHandle;
 }

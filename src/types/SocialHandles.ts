@@ -1,5 +1,5 @@
 export default interface SocialHandles {
-  facebook: string;
-  instagram: string;
-  twitter: string;
+  facebook: string | null;
+  instagram: string | null;
+  twitter: string | null;
 }

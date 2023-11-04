@@ -4,7 +4,7 @@ import TvShowCastPerson from '@/types/TvShowCastPerson';
 
 describe('transformTvShowCast', () => {
   it('should return correctly transformed data for single person', () => {
-    const mockCast = [
+    const mockCast: TMDBTvShowCastPerson[] = [
       {
         id: 1,
         name: 'John Doe',

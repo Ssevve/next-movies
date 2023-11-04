@@ -1,11 +1,6 @@
 import Creator from '@/types/Creator';
 
-interface TMDBTvShowCreatedBy {
-  id: number;
-  name: string;
-}
-
-// TODO: tests
-export default function transformTvShowCreatedBy(createdBy: TMDBTvShowCreatedBy[]): Creator[] {
+export default function transformTvShowCreatedBy(createdBy: Creator[]): Creator[] {
+  if (!createdBy || !createdBy.length || !Array.isArray(createdBy)) return [];
   return createdBy.map(({ id, name }) => ({ id, name }));
 }

@@ -23,7 +23,7 @@ export default async function getUpcomingMovies(): Promise<UpcomingMovie[]> {
       id,
       releaseDate: release_date ? formatDate(release_date) : 'N/A',
       showType: 'movie',
-      thumbnailPath: backdrop_path,
+      thumbnailPath: backdrop_path || '',
       title,
     })
   );

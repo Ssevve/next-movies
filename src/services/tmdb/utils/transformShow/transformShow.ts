@@ -14,7 +14,7 @@ export default function transformShow(show: TMDBUnknownShow): Show {
     id,
     poster: {
       height: TMDBImageSizes.posters.show.height,
-      path: poster_path,
+      path: poster_path || '',
       width: TMDBImageSizes.posters.show.width,
     },
     userScore: vote_average,

@@ -19,7 +19,7 @@ describe('transformDetailedTvShow', () => {
   it('should return correctly transformed data', () => {
     const testTvShow: TMDBDetailedTvShow = mockTMDBDetailedTvShows.withOriginalLanguage;
     const expectedData: DetailedTvShow = {
-      backdrop: { path: testTvShow.backdrop_path },
+      backdrop: { path: testTvShow.backdrop_path || '' },
       cast: transformTvShowCast(testTvShow.aggregate_credits.cast),
       createdBy: transformTvShowCreatedBy(testTvShow.created_by),
       genres: testTvShow.genres,
@@ -37,7 +37,7 @@ describe('transformDetailedTvShow', () => {
       overview: testTvShow.overview!,
       poster: {
         height: TMDBImageSizes.posters.detailedShow.height,
-        path: testTvShow.poster_path,
+        path: testTvShow.poster_path || '',
         width: TMDBImageSizes.posters.detailedShow.width,
       },
       rating: getUSTvShowRating(testTvShow.content_ratings)!,
@@ -69,7 +69,7 @@ describe('transformDetailedTvShow', () => {
       tagline: '',
     };
     const expectedData: DetailedTvShow = {
-      backdrop: { path: testTvShow.backdrop_path },
+      backdrop: { path: testTvShow.backdrop_path || '' },
       cast: transformTvShowCast(testTvShow.aggregate_credits.cast),
       createdBy: transformTvShowCreatedBy(testTvShow.created_by),
       genres: testTvShow.genres,
@@ -87,7 +87,7 @@ describe('transformDetailedTvShow', () => {
       overview: testTvShow.overview!,
       poster: {
         height: TMDBImageSizes.posters.detailedShow.height,
-        path: testTvShow.poster_path,
+        path: testTvShow.poster_path || '',
         width: TMDBImageSizes.posters.detailedShow.width,
       },
       rating: getUSTvShowRating(testTvShow.content_ratings)!,
@@ -119,7 +119,7 @@ describe('transformDetailedTvShow', () => {
       first_air_date: undefined,
     };
     const expectedData: DetailedTvShow = {
-      backdrop: { path: testTvShow.backdrop_path },
+      backdrop: { path: testTvShow.backdrop_path || '' },
       cast: transformTvShowCast(testTvShow.aggregate_credits.cast),
       createdBy: transformTvShowCreatedBy(testTvShow.created_by),
       genres: testTvShow.genres,
@@ -137,7 +137,7 @@ describe('transformDetailedTvShow', () => {
       overview: testTvShow.overview!,
       poster: {
         height: TMDBImageSizes.posters.detailedShow.height,
-        path: testTvShow.poster_path,
+        path: testTvShow.poster_path || '',
         width: TMDBImageSizes.posters.detailedShow.width,
       },
       rating: getUSTvShowRating(testTvShow.content_ratings)!,
@@ -169,7 +169,7 @@ describe('transformDetailedTvShow', () => {
       content_ratings: { results: [] },
     };
     const expectedData: DetailedTvShow = {
-      backdrop: { path: testTvShow.backdrop_path },
+      backdrop: { path: testTvShow.backdrop_path || '' },
       cast: transformTvShowCast(testTvShow.aggregate_credits.cast),
       createdBy: transformTvShowCreatedBy(testTvShow.created_by),
       genres: testTvShow.genres,
@@ -187,7 +187,7 @@ describe('transformDetailedTvShow', () => {
       overview: testTvShow.overview!,
       poster: {
         height: TMDBImageSizes.posters.detailedShow.height,
-        path: testTvShow.poster_path,
+        path: testTvShow.poster_path || '',
         width: TMDBImageSizes.posters.detailedShow.width,
       },
       rating: null,
@@ -219,7 +219,7 @@ describe('transformDetailedTvShow', () => {
       overview: '',
     };
     const expectedData: DetailedTvShow = {
-      backdrop: { path: testTvShow.backdrop_path },
+      backdrop: { path: testTvShow.backdrop_path || '' },
       cast: transformTvShowCast(testTvShow.aggregate_credits.cast),
       createdBy: transformTvShowCreatedBy(testTvShow.created_by),
       genres: testTvShow.genres,
@@ -237,7 +237,7 @@ describe('transformDetailedTvShow', () => {
       overview: 'Overview not available.',
       poster: {
         height: TMDBImageSizes.posters.detailedShow.height,
-        path: testTvShow.poster_path,
+        path: testTvShow.poster_path || '',
         width: TMDBImageSizes.posters.detailedShow.width,
       },
       rating: getUSTvShowRating(testTvShow.content_ratings)!,

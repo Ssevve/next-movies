@@ -12,7 +12,7 @@ describe('transformShow', () => {
       id: testMovie.id,
       poster: {
         height: TMDBImageSizes.posters.show.height,
-        path: testMovie.poster_path,
+        path: testMovie.poster_path || '',
         width: TMDBImageSizes.posters.show.width,
       },
       releaseDate: formatDate(testMovie.release_date!),
@@ -30,7 +30,7 @@ describe('transformShow', () => {
       id: testMovie.id,
       poster: {
         height: TMDBImageSizes.posters.show.height,
-        path: testMovie.poster_path,
+        path: testMovie.poster_path || '',
         width: TMDBImageSizes.posters.show.width,
       },
       releaseDate: 'N/A',
@@ -48,7 +48,7 @@ describe('transformShow', () => {
       id: testTvShow.id,
       poster: {
         height: TMDBImageSizes.posters.show.height,
-        path: testTvShow.poster_path,
+        path: testTvShow.poster_path || '',
         width: TMDBImageSizes.posters.show.width,
       },
       releaseDate: formatDate(testTvShow.first_air_date!),
@@ -66,7 +66,7 @@ describe('transformShow', () => {
       id: testTvShow.id,
       poster: {
         height: TMDBImageSizes.posters.show.height,
-        path: testTvShow.poster_path,
+        path: testTvShow.poster_path || '',
         width: TMDBImageSizes.posters.show.width,
       },
       releaseDate: 'N/A',

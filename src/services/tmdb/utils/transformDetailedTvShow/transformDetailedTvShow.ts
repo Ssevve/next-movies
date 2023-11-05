@@ -15,7 +15,7 @@ import DetailedTvShow from '@/types/DetailedTvShow';
 
 export default function transformDetailedTvShow(tvShow: TMDBDetailedTvShow): DetailedTvShow {
   return {
-    backdrop: { path: tvShow.backdrop_path },
+    backdrop: { path: tvShow.backdrop_path || '' },
     cast: transformTvShowCast(tvShow.aggregate_credits.cast),
     createdBy: transformTvShowCreatedBy(tvShow.created_by),
     genres: tvShow.genres,
@@ -37,7 +37,7 @@ export default function transformDetailedTvShow(tvShow: TMDBDetailedTvShow): Det
     overview: tvShow.overview || 'Overview not available.',
     poster: {
       height: TMDBImageSizes.posters.detailedShow.height,
-      path: tvShow.poster_path,
+      path: tvShow.poster_path || '',
       width: TMDBImageSizes.posters.detailedShow.width,
     },
     rating: getUSTvShowRating(tvShow.content_ratings) || null,

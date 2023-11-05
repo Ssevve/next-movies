@@ -12,7 +12,7 @@ import DetailedMovie from '@/types/DetailedMovie';
 
 export default function transformDetailedMovie(movie: TMDBDetailedMovie): DetailedMovie {
   return {
-    backdrop: { path: movie.backdrop_path },
+    backdrop: { path: movie.backdrop_path || '' },
     budget: movie.budget,
     cast: transformMovieCast(movie.credits.cast),
     createdBy: transformMovieCreatedBy(movie.credits.crew),
@@ -28,7 +28,7 @@ export default function transformDetailedMovie(movie: TMDBDetailedMovie): Detail
     overview: movie.overview || 'Overview not available.',
     poster: {
       height: TMDBImageSizes.posters.detailedShow.height,
-      path: movie.poster_path,
+      path: movie.poster_path || '',
       width: TMDBImageSizes.posters.detailedShow.width,
     },
     rating: getUSMovieRating(movie.release_dates) || null,

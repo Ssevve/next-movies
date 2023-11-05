@@ -18,7 +18,7 @@ describe('transformDetailedMovie', () => {
   it('should return correctly transformed data', () => {
     const testMovie = mockTMDBDetailedMovie;
     const expectedData: DetailedMovie = {
-      backdrop: { path: testMovie.backdrop_path },
+      backdrop: { path: testMovie.backdrop_path || '' },
       budget: 120000000,
       cast: transformMovieCast(testMovie.credits.cast),
       createdBy: transformMovieCreatedBy(testMovie.credits.crew),
@@ -34,7 +34,7 @@ describe('transformDetailedMovie', () => {
       overview: testMovie.overview!,
       poster: {
         height: TMDBImageSizes.posters.detailedShow.height,
-        path: testMovie.poster_path,
+        path: testMovie.poster_path || '',
         width: TMDBImageSizes.posters.detailedShow.width,
       },
       rating: getUSMovieRating(testMovie.release_dates),
@@ -63,7 +63,7 @@ describe('transformDetailedMovie', () => {
   it('should return correctly transformed data for a movie without tagline', () => {
     const testMovie = { ...mockTMDBDetailedMovie, tagline: '' };
     const expectedData: DetailedMovie = {
-      backdrop: { path: testMovie.backdrop_path },
+      backdrop: { path: testMovie.backdrop_path || '' },
       budget: 120000000,
       cast: transformMovieCast(testMovie.credits.cast),
       createdBy: transformMovieCreatedBy(testMovie.credits.crew),
@@ -79,7 +79,7 @@ describe('transformDetailedMovie', () => {
       overview: testMovie.overview!,
       poster: {
         height: TMDBImageSizes.posters.detailedShow.height,
-        path: testMovie.poster_path,
+        path: testMovie.poster_path || '',
         width: TMDBImageSizes.posters.detailedShow.width,
       },
       rating: getUSMovieRating(testMovie.release_dates),
@@ -111,7 +111,7 @@ describe('transformDetailedMovie', () => {
       release_date: undefined,
     };
     const expectedData: DetailedMovie = {
-      backdrop: { path: testMovie.backdrop_path },
+      backdrop: { path: testMovie.backdrop_path || '' },
       budget: 120000000,
       cast: transformMovieCast(testMovie.credits.cast),
       createdBy: transformMovieCreatedBy(testMovie.credits.crew),
@@ -127,7 +127,7 @@ describe('transformDetailedMovie', () => {
       overview: testMovie.overview!,
       poster: {
         height: TMDBImageSizes.posters.detailedShow.height,
-        path: testMovie.poster_path,
+        path: testMovie.poster_path || '',
         width: TMDBImageSizes.posters.detailedShow.width,
       },
       rating: getUSMovieRating(testMovie.release_dates)!,
@@ -161,7 +161,7 @@ describe('transformDetailedMovie', () => {
     };
 
     const expectedData: DetailedMovie = {
-      backdrop: { path: testMovie.backdrop_path },
+      backdrop: { path: testMovie.backdrop_path || '' },
       budget: 120000000,
       cast: transformMovieCast(testMovie.credits.cast),
       createdBy: transformMovieCreatedBy(testMovie.credits.crew),
@@ -177,7 +177,7 @@ describe('transformDetailedMovie', () => {
       overview: 'Overview not available.',
       poster: {
         height: TMDBImageSizes.posters.detailedShow.height,
-        path: testMovie.poster_path,
+        path: testMovie.poster_path || '',
         width: TMDBImageSizes.posters.detailedShow.width,
       },
       rating: getUSMovieRating(testMovie.release_dates)!,
@@ -213,7 +213,7 @@ describe('transformDetailedMovie', () => {
     };
 
     const expectedData: DetailedMovie = {
-      backdrop: { path: testMovie.backdrop_path },
+      backdrop: { path: testMovie.backdrop_path || '' },
       budget: 120000000,
       cast: transformMovieCast(testMovie.credits.cast),
       createdBy: transformMovieCreatedBy(testMovie.credits.crew),
@@ -229,7 +229,7 @@ describe('transformDetailedMovie', () => {
       overview: testMovie.overview!,
       poster: {
         height: TMDBImageSizes.posters.detailedShow.height,
-        path: testMovie.poster_path,
+        path: testMovie.poster_path || '',
         width: TMDBImageSizes.posters.detailedShow.width,
       },
       rating: null,

@@ -15,7 +15,7 @@ export default function Hero() {
         />
         <div className="absolute inset-0 bg-primary opacity-30" />
       </div>
-      <div className="z-50 flex flex-col items-center justify-center gap-8 p-4 text-center lg:flex-row lg:justify-evenly lg:text-left">
+      <div className="z-40 flex flex-col items-center justify-center gap-8 p-4 text-center lg:flex-row lg:justify-evenly lg:text-left">
         <div className="text-primary-foreground dark:text-foreground lg:min-w-[385px]">
           <h1 className="mb-4 max-w-[470px] break-keep text-4xl font-extrabold leading-none tracking-tight lg:text-5xl">
             Unlimited movies, TV shows, and more

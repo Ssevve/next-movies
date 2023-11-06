@@ -1,36 +1,16 @@
 import { Star } from 'lucide-react';
-import Image from 'next/image';
 
-import NoImage from '@/components/NoImage';
 import SectionHeading from '@/components/SectionHeading/SectionHeading';
-import getTMDBImagePath from '@/services/TMDB/utils/getTMDBImagePath/getTMDBImagePath';
 import Episode from '@/types/Episode';
-import ImageType from '@/types/Image';
 import Season from '@/types/Season';
 import getReleaseYear from '@/utils/getReleaseYear/getReleaseYear';
+
+import SeasonPoster from './components/SeasonPoster/SeasonPoster';
 
 interface RecentSeasonProps {
   season: Season | null;
   showEnded: boolean;
   episode: Episode | null;
-}
-
-function SeasonPoster({ poster, alt }: { poster?: ImageType; alt: string }) {
-  return (
-    <div className="col-start-1 col-end-1 row-span-2 row-start-1 flex h-full min-w-[100px] max-w-[175px] sm:row-span-3">
-      {poster && poster.path ? (
-        <Image
-          src={getTMDBImagePath(poster.path, poster.width, poster.height)}
-          alt={alt}
-          width={poster.width}
-          height={poster.height}
-          className="object-scale-down"
-        />
-      ) : (
-        <NoImage />
-      )}
-    </div>
-  );
 }
 
 function SeasonMetadata({

@@ -74,4 +74,9 @@ describe('RecentSeason', () => {
     renderRecentSeason();
     expect(screen.getByText(defaultTestProps.season!.overview)).toBeInTheDocument();
   });
+
+  it('should render "No season data available" if season is null', () => {
+    renderRecentSeason({ season: null });
+    expect(screen.getByText('No season data available.')).toBeInTheDocument();
+  });
 });

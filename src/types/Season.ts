@@ -6,7 +6,7 @@ export default interface Season {
   id: number;
   name: string;
   overview: string;
-  poster?: Image;
+  poster: Image;
   seasonNumber: number;
   userScore: number;
 }

@@ -36,7 +36,7 @@ export default function RecentSeason({ season, showEnded, episode }: RecentSeaso
                 title={episode.title}
               />
             )}
-            <p className="col-span-full col-start-1 row-start-3 sm:col-start-2 sm:row-start-auto">
+            <p className="xs:text-md col-span-full col-start-1 row-start-3 text-sm sm:col-start-2 sm:row-start-auto">
               {season.overview}
             </p>
           </>

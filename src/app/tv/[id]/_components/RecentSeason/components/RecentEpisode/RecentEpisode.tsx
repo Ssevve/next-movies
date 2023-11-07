@@ -18,7 +18,7 @@ export default function RecentEpisode({
   const isSeasonFinaleEpisode = episodeType === 'finale';
 
   return (
-    <div className="col-start-2 row-start-2 flex flex-col gap-1 text-sm sm:flex-row">
+    <div className="col-start-2 row-start-2 flex flex-col gap-1 text-xs xs:text-sm sm:flex-row">
       <div className="h-max sm:flex sm:items-center">
         <div className="flex flex-col gap-1 sm:flex-row">
           <h4>{showEnded ? 'Last' : 'Next'} episode:</h4>
@@ -26,7 +26,7 @@ export default function RecentEpisode({
           <span>{`(${seasonNumber}x${episodeNumber} - ${airDate})`}</span>
         </div>
         {isSeasonFinaleEpisode && (
-          <span className="ml-1 h-max w-max rounded-md bg-foreground p-1 text-xs font-semibold text-background">
+          <span className="mt-2 block h-max w-max rounded-md bg-foreground px-1 py-0.5 text-xs font-semibold text-background sm:ml-1 sm:mt-0">
             Finale
           </span>
         )}

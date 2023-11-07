@@ -5,13 +5,13 @@ import SectionHeading from '@/components/SectionHeading/SectionHeading';
 import Episode from '@/types/Episode';
 import Season from '@/types/Season';
 
-interface RecentSeasonProps {
+export interface RecentSeasonProps {
   season: Season | null;
   showEnded: boolean;
   episode: Episode | null;
 }
 
-// TODO: tests, fix no image size, fix spacing
+// TODO: fix no image size
 export default function RecentSeason({ season, showEnded, episode }: RecentSeasonProps) {
   return (
     <section>

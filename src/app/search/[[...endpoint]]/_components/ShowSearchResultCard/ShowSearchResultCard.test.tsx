@@ -22,34 +22,18 @@ const renderShowSearchResultCard = (props?: Partial<ShowSearchResult>) => {
 };
 
 describe('ShowSearchResultCard', () => {
-  it('should render show poster', () => {
+  it('should render general show information', () => {
     renderShowSearchResultCard();
     screen.getByAltText(searchResult.title);
+    screen.getByText(searchResult.userScore);
+    screen.getByText(searchResult.title);
+    screen.getByText(searchResult.releaseDate);
+    screen.getByText(searchResult.overview);
   });
 
   it('should render <NoImage /> component if poster has no path specified', () => {
     renderShowSearchResultCard({ poster: { height: 300, path: '', width: 200 } });
     screen.getByTestId('no-image');
-  });
-
-  it('should render show user score', () => {
-    renderShowSearchResultCard();
-    screen.getByText(searchResult.userScore);
-  });
-
-  it('should render title', () => {
-    renderShowSearchResultCard();
-    screen.getByText(searchResult.title);
-  });
-
-  it('should render releaseDate', () => {
-    renderShowSearchResultCard();
-    screen.getByText(searchResult.releaseDate);
-  });
-
-  it('should render overview', () => {
-    renderShowSearchResultCard();
-    screen.getByText(searchResult.overview);
   });
 
   it('should render link to the detailed show page', () => {

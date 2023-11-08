@@ -27,6 +27,12 @@ const renderPersonSearchResultCard = (props?: Partial<PersonSearchResult>) => {
 };
 
 describe('ShowSearchResultCard', () => {
+  it('should render general person information', () => {
+    renderPersonSearchResultCard();
+    screen.getByText(searchResult.name);
+    screen.getByText(searchResult.department);
+  });
+
   it('should render image if imagePath is specified', () => {
     renderPersonSearchResultCard();
     screen.getByAltText(searchResult.name);
@@ -35,16 +41,6 @@ describe('ShowSearchResultCard', () => {
   it('should render <NoImage /> component if imagePath is not specified', () => {
     renderPersonSearchResultCard({ imagePath: '' });
     screen.getByTestId('no-image');
-  });
-
-  it('should render name', () => {
-    renderPersonSearchResultCard();
-    screen.getByText(searchResult.name);
-  });
-
-  it('should render department', () => {
-    renderPersonSearchResultCard();
-    screen.getByText(searchResult.department);
   });
 
   it('should render all show titles', () => {

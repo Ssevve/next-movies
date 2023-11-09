@@ -35,7 +35,7 @@ export default function Searchbar() {
         type="submit"
         className="flex h-10 w-full gap-2 border border-primary dark:text-foreground xs:w-max xs:rounded-l-none"
       >
-        <Search size={20} />
+        <Search size={20} aria-hidden="true" />
         <span>Search</span>
       </Button>
     </form>

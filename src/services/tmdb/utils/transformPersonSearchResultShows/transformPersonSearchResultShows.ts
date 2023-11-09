@@ -1,5 +1,7 @@
-import TMDBPersonSearchResultMovie from '@/services/TMDB/types/TMDBPersonSearchResultMovie';
-import TMDBPersonSearchResultShow from '@/services/TMDB/types/TMDBPersonSearchResultShow';
+import {
+  TMDBPersonSearchResultMovie,
+  TMDBPersonSearchResultShow,
+} from '@/services/TMDB/types/TMDBSearchResult';
 import PersonSearchResultShow from '@/types/PersonSearchResultShow';
 
 function isTMDBPersonSearchResultMovie(

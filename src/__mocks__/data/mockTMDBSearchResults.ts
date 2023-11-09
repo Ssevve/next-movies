@@ -1,9 +1,12 @@
-import TMDBPersonSearchResult from '@/services/TMDB/types/TMDBPersonSearchResult';
-import TMDBShowSearchResult from '@/services/TMDB/types/TMDBShowSearchResult';
+import {
+  TMDBMovieSearchResult,
+  TMDBPersonSearchResult,
+  TMDBTvShowSearchResult,
+} from '@/services/TMDB/types/TMDBSearchResult';
 
 interface MockTMDBSearchResults {
-  movie: TMDBShowSearchResult[];
-  tv: TMDBShowSearchResult[];
+  movie: TMDBMovieSearchResult[];
+  tv: TMDBTvShowSearchResult[];
   person: TMDBPersonSearchResult[];
 }
 

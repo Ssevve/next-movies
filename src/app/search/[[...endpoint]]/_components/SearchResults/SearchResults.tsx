@@ -17,7 +17,6 @@ export interface SearchResultsProps {
   page?: string;
 }
 
-// TODO: tests
 export default async function SearchResults({
   query = '',
   page = '1',
@@ -58,7 +57,7 @@ export default async function SearchResults({
           </li>
         ))
       ) : (
-        <p className="mt-12 sm:mt-8">There are no results that matched your query.</p>
+        <p className="col-span-full">There are no results that matched your query.</p>
       )}
     </ul>
   );

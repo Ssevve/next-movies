@@ -1,4 +1,4 @@
-import TMDBPersonSearchResult from '@/services/TMDB/types/TMDBPersonSearchResult';
+import { TMDBPersonSearchResult } from '@/services/TMDB/types/TMDBSearchResult';
 import transformPersonSearchResultShows from '@/services/TMDB/utils/transformPersonSearchResultShows/transformPersonSearchResultShows';
 import PersonSearchResult from '@/types/PersonSearchResult';
 

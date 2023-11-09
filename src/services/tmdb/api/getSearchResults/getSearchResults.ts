@@ -2,16 +2,13 @@ import 'server-only';
 
 import TMDBApi from '@/services/TMDB/api/client';
 import TMDBPaginatedResponse from '@/services/TMDB/types/TMDBPaginatedResponse';
-import TMDBPersonSearchResult from '@/services/TMDB/types/TMDBPersonSearchResult';
-import TMDBShowSearchResult from '@/services/TMDB/types/TMDBShowSearchResult';
+import { TMDBSearchResult, TMDBShowSearchResult } from '@/services/TMDB/types/TMDBSearchResult';
 import transformPersonSearchResult from '@/services/TMDB/utils/transformPersonSearchResult/transformPersonSearchResult';
 import transformShowSearchResult from '@/services/TMDB/utils/transformShowSearchResult/transformShowSearchResult';
 import PaginatedResponse from '@/types/PaginatedResponse';
 import PersonSearchResult from '@/types/PersonSearchResult';
 import SearchEndpoint from '@/types/SearchEndpoint';
 import ShowSearchResult from '@/types/ShowSearchResult';
-
-type TMDBSearchResult = TMDBPersonSearchResult | TMDBShowSearchResult;
 
 function isTMDBShowSearchResult(result: TMDBSearchResult): result is TMDBShowSearchResult {
   return 'vote_count' in result;
@@ -25,7 +22,7 @@ export default async function getSearchResults({
   endpoint: SearchEndpoint;
   query?: string;
   page?: string;
-}): Promise<PaginatedResponse<PersonSearchResult | ShowSearchResult>> {
+}): Promise<PaginatedResponse<ShowSearchResult | PersonSearchResult>> {
   if (!query) {
     return {
       page: 1,

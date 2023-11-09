@@ -1,5 +1,7 @@
-import TMDBPersonSearchResultMovie from '@/services/TMDB/types/TMDBPersonSearchResultMovie';
-import TMDBPersonSearchResultTvShow from '@/services/TMDB/types/TMDBPersonSearchResultTvShow';
+import {
+  TMDBPersonSearchResultMovie,
+  TMDBPersonSearchResultTvShow,
+} from '@/services/TMDB/types/TMDBSearchResult';
 import transformPersonSearchResultShows from '@/services/TMDB/utils/transformPersonSearchResultShows/transformPersonSearchResultShows';
 import PersonSearchResultShow from '@/types/PersonSearchResultShow';
 

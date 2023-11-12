@@ -64,7 +64,13 @@ export default async function SearchPage({ searchParams, params }: SearchPagePro
         <div className="mx-auto sm:mx-0">
           <SearchCategories query={query} activeEndpoint={endpoint} categories={searchCategories} />
         </div>
-        <Suspense fallback={<Spinner />}>
+        <Suspense
+          fallback={
+            <div className="mx-auto">
+              <Spinner />
+            </div>
+          }
+        >
           <SearchResults query={query} page={page} endpoint={endpoint} />
         </Suspense>
       </div>

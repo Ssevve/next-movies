@@ -58,3 +58,20 @@
     @apply bg-background text-foreground;
   }
 }
+
+.rc-pagination-simple,
+.rc-pagination-simple-pager {
+  @apply h-full items-center flex;
+}
+
+.rc-pagination-simple {
+  @apply mx-auto gap-2;
+}
+
+.rc-pagination-simple-pager {
+  @apply text-lg gap-2 items-center;
+}
+
+.rc-pagination-simple-pager input {
+  @apply border bg-inherit text-center rounded-md h-10 w-10;
+}

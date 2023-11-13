@@ -137,6 +137,7 @@ describe('ShowPageHeader', () => {
         createdBy={expectedShow.createdBy}
         genres={expectedShow.genres}
         poster={expectedShow.poster}
+        tagline={expectedShow.tagline}
         releaseDate={expectedShow.releaseDate}
         title={expectedShow.title}
         userScore={expectedShow.userScore}

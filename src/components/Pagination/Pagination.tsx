@@ -9,10 +9,9 @@ import { Button } from '@/components/ui/Button';
 interface PaginationProps {
   totalItemCount: number;
   itemsPerPage: number;
-  currentPage: number;
 }
 
-export default function Pagination({ totalItemCount, itemsPerPage, currentPage }: PaginationProps) {
+export default function Pagination({ totalItemCount, itemsPerPage }: PaginationProps) {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
@@ -27,23 +26,22 @@ export default function Pagination({ totalItemCount, itemsPerPage, currentPage }
   return (
     <ReactPagination
       onChange={(page) => goToPage(page)}
-      current={currentPage}
+      current={Number(searchParams.get('page')) || 1}
       total={totalItemCount}
       defaultPageSize={itemsPerPage}
-      className=""
       hideOnSinglePage
       showTitle={false}
+      simple
       prevIcon={
-        <Button variant="outline" size="icon">
-          <ChevronLeft size={16} />
+        <Button variant="outline" size="icon" aria-label="Previous page">
+          <ChevronLeft size={16} aria-hidden="true" />
         </Button>
       }
       nextIcon={
-        <Button variant="outline" size="icon">
-          <ChevronRight size={16} />
+        <Button variant="outline" size="icon" aria-label="Next page">
+          <ChevronRight size={16} aria-hidden="true" />
         </Button>
       }
-      simple
     />
   );
 }

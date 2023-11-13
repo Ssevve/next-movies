@@ -69,7 +69,7 @@
 }
 
 .rc-pagination-simple-pager {
-  @apply text-lg gap-2 items-center;
+  @apply gap-2 items-center;
 }
 
 .rc-pagination-simple-pager input {

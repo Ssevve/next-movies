@@ -63,7 +63,6 @@ export default async function SearchResults({
         )}
       </ul>
       <Pagination
-        currentPage={paginatedResults.page}
         totalItemCount={paginatedResults.totalResults}
         itemsPerPage={paginatedResults.results.length}
       />

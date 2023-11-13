@@ -11,6 +11,7 @@ import UserScore from '@/components/UserScore/UserScore';
 import VideoLink from '@/components/VideoLink/VideoLink';
 import getTMDBImagePath from '@/services/TMDB/utils/getTMDBImagePath/getTMDBImagePath';
 import DetailedShow from '@/types/DetailedShow';
+import { SocialHandle } from '@/types/SocialHandles';
 import Video from '@/types/Video';
 
 type SharedProps = Pick<
@@ -27,10 +28,10 @@ type SharedProps = Pick<
   | 'backdrop'
   | 'overview'
 > & {
-  previewVideo?: Video | null;
-  instagramHandle: string;
-  facebookHandle: string;
-  twitterHandle: string;
+  previewVideo: Video | null;
+  instagramHandle: SocialHandle;
+  facebookHandle: SocialHandle;
+  twitterHandle: SocialHandle;
   homepage: string;
 };
 

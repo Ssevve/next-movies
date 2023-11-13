@@ -22,7 +22,7 @@ describe('ShowMetadata', () => {
     ).toBeInTheDocument();
   });
 
-  it('should render rating', () => {
+  it('should render rating if available', () => {
     const expectedShow = mockDetailedMovie;
     render(
       <ShowMetadata
@@ -32,7 +32,7 @@ describe('ShowMetadata', () => {
         rating={expectedShow.rating}
       />
     );
-    expect(screen.getByText(expectedShow.rating)).toBeInTheDocument();
+    expect(screen.getByText(expectedShow.rating!)).toBeInTheDocument();
   });
 
   it('should render release date', () => {

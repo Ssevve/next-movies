@@ -2,14 +2,15 @@ import 'server-only';
 
 import TMDBApi from '@/services/TMDB/api/client';
 import TMDBMovie from '@/services/TMDB/types/TMDBMovie';
-import TMDBPaginatedShows from '@/services/TMDB/types/TMDBPaginatedShows';
+import TMDBPaginatedResponse from '@/services/TMDB/types/TMDBPaginatedResponse';
 import transformPaginatedShowsResponse from '@/services/TMDB/utils/transformPaginatedShows/transformPaginatedShows';
-import PaginatedShows from '@/types/PaginatedShows';
+import PaginatedResponse from '@/types/PaginatedResponse';
+import Show from '@/types/Show';
 
-export default async function getTheaterMovies(): Promise<PaginatedShows> {
+export default async function getTheaterMovies(): Promise<PaginatedResponse<Show>> {
   const res = await TMDBApi(`/movie/now_playing`);
   if (!res.ok) throw Error('Failed to fetch theater movies.');
-  const { page, results, total_pages, total_results }: TMDBPaginatedShows<TMDBMovie> =
+  const { page, results, total_pages, total_results }: TMDBPaginatedResponse<TMDBMovie> =
     await res.json();
   return transformPaginatedShowsResponse({ page, results, total_pages, total_results });
 }

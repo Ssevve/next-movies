@@ -2,11 +2,12 @@ import { Facebook, Instagram, Link, Twitter } from 'lucide-react';
 
 import LinkWithTooltip from '@/components/LinkWithTooltip/LinkWithTooltip';
 import cn from '@/lib/cn';
+import { SocialHandle } from '@/types/SocialHandles';
 
 interface ShowExternalLinksProps {
-  twitterHandle: string;
-  facebookHandle: string;
-  instagramHandle: string;
+  twitterHandle: SocialHandle;
+  facebookHandle: SocialHandle;
+  instagramHandle: SocialHandle;
   homepage: string;
   className?: string;
 }
@@ -56,7 +57,7 @@ export default function ShowExternalLinks({
         </ul>
       )}
       {homepage && (
-        <div className={hasSocialHandle && 'border-l pl-2'}>
+        <div className={hasSocialHandle ? 'border-l pl-2' : ''}>
           <LinkWithTooltip tooltipText="Visit Homepage" href={homepage}>
             <Link aria-hidden="true" />
           </LinkWithTooltip>

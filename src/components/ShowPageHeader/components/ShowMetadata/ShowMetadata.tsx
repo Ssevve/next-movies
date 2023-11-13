@@ -1,5 +1,3 @@
-import React from 'react';
-
 import joinGenres from '@/components/ShowPageHeader/components/ShowMetadata/utils/joinGenres/joinGenres';
 import Genre from '@/types/Genre';
 import getReleaseYear from '@/utils/getReleaseYear/getReleaseYear';
@@ -7,7 +5,7 @@ import getReleaseYear from '@/utils/getReleaseYear/getReleaseYear';
 export interface ShowMetadataProps {
   title: string;
   releaseDate: string;
-  rating: string;
+  rating: string | null;
   genres: Genre[];
   children?: React.ReactNode;
 }

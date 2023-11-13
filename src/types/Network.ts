@@ -1,5 +1,6 @@
-export default interface Network {
-  id: number;
-  logoPath: string;
-  name: string;
-}
+import TMDBNetwork from '@/services/TMDB/types/TMDBNetwork';
+import SnakeToCamelCase from '@/types/SnakeToCamelCase';
+
+type Network = { [K in keyof TMDBNetwork as SnakeToCamelCase<K>]: TMDBNetwork[K] };
+
+export default Network;

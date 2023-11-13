@@ -1,216 +1,265 @@
 import mockTMDBDetailedTvShows from '@/__mocks__/data/mockTMDBDetailedTvShows';
 import { TMDBImageSizes } from '@/services/TMDB/config';
+import TMDBDetailedTvShow from '@/services/TMDB/types/TMDBDetailedTvShow';
 import formatDate from '@/services/TMDB/utils/formatDate/formatDate';
+import transformDetailedTvShow from '@/services/TMDB/utils/transformDetailedTvShow/transformDetailedTvShow';
+import getRecentSeason from '@/services/TMDB/utils/transformDetailedTvShow/utils/getRecentSeason/getRecentSeason';
+import getUSTvShowRating from '@/services/TMDB/utils/transformDetailedTvShow/utils/getUSTvShowRating/getUSTvShowRating';
+import transformDetailedTvShowEpisode from '@/services/TMDB/utils/transformDetailedTvShow/utils/transformDetailedTvShowEpisode/transformDetailedTvShowEpisode';
+import transformTvShowCast from '@/services/TMDB/utils/transformDetailedTvShow/utils/transformTvShowCast/transformTvShowCast';
+import transformTvShowCreatedBy from '@/services/TMDB/utils/transformDetailedTvShow/utils/transformTvShowCreatedBy/transformTvShowCreatedBy';
+import transformTvShowNetworks from '@/services/TMDB/utils/transformDetailedTvShow/utils/transformTvShowNetworks/transformTvShowNetworks';
+import transformExternalIds from '@/services/TMDB/utils/transformExternalIds/transformExternalIds';
+import transformImages from '@/services/TMDB/utils/transformImages/transformImages';
+import transformShows from '@/services/TMDB/utils/transformShows/transformShows';
+import transformVideos from '@/services/TMDB/utils/transformVideos/transformVideos';
 import DetailedTvShow from '@/types/DetailedTvShow';
 
-import transformDetailedTvShow from './transformDetailedTvShow';
-
 describe('transformDetailedTvShow', () => {
-  it('should return correctly transformed data', async () => {
+  it('should return correctly transformed data', () => {
+    const testTvShow: TMDBDetailedTvShow = mockTMDBDetailedTvShows.withOriginalLanguage;
     const expectedData: DetailedTvShow = {
-      backdrop: { path: '/tsRy63Mu5cu8etL1X7ZLyf7UP1M.jpg' },
-      cast: [
-        {
-          characters: ['Walter White'],
-          id: 17419,
-          imagePath: '/aGSvZg7uITJveQtGHDcPNI6map1.jpg',
-          name: 'Bryan Cranston',
-          totalEpisodeCount: 62,
-        },
-        {
-          characters: ['Jesse Pinkman'],
-          id: 84497,
-          imagePath: '/8Ac9uuoYwZoYVAIJfRLzzLsGGJn.jpg',
-          name: 'Aaron Paul',
-          totalEpisodeCount: 62,
-        },
-      ],
-      createdBy: [
-        {
-          id: 66633,
-          name: 'Vince Gilligan',
-        },
-      ],
-      genres: [
-        {
-          id: 18,
-          name: 'Drama',
-        },
-        {
-          id: 80,
-          name: 'Crime',
-        },
-      ],
-      homepage: 'http://www.amc.com/shows/breaking-bad',
-      id: 1396,
+      backdrop: { path: testTvShow.backdrop_path || '' },
+      cast: transformTvShowCast(testTvShow.aggregate_credits.cast),
+      createdBy: transformTvShowCreatedBy(testTvShow.created_by),
+      genres: testTvShow.genres,
+      homepage: testTvShow.homepage,
+      id: testTvShow.id,
       images: {
-        backdrops: [
-          {
-            height: 1688,
-            path: '/tsRy63Mu5cu8etL1X7ZLyf7UP1M.jpg',
-            width: 3000,
-          },
-          {
-            height: 1080,
-            path: '/9faGSFi5jam6pDWGNd0p8JcJgXQ.jpg',
-            width: 1920,
-          },
-        ],
-        posters: [
-          {
-            height: 1500,
-            path: '/3xnWaLQjelJDDF7LT1WBo6f4BRe.jpg',
-            width: 1000,
-          },
-          {
-            height: 1500,
-            path: '/zKnBah5dWlFoY0yIKcSIYb4f7kC.jpg',
-            width: 1000,
-          },
-        ],
+        backdrops: transformImages(testTvShow.images.backdrops),
+        posters: transformImages(testTvShow.images.posters),
       },
-      keywords: [
-        {
-          id: 2231,
-          name: 'drug dealer',
-        },
-        {
-          id: 6259,
-          name: 'psychopath',
-        },
-      ],
-      lastEpisode: {
-        airDate: formatDate('2013-09-29'),
-        episodeNumber: 16,
-        episodeType: 'finale',
-        id: 62161,
-        name: 'Felina',
-        seasonNumber: 5,
-        showId: 1396,
-      },
-      networks: [
-        {
-          id: 174,
-          logoPath: '/alqLicR1ZMHMaZGP3xRQxn9sq7p.png',
-          name: 'AMC',
-        },
-      ],
+      keywords: testTvShow.keywords.results,
+      lastEpisode: transformDetailedTvShowEpisode(testTvShow.last_episode_to_air!),
+      networks: transformTvShowNetworks(testTvShow.networks),
       nextEpisode: null,
-      originalLanguage: 'en',
-      overview:
-        "When Walter White, a New Mexico chemistry teacher, is diagnosed with Stage III cancer and given a prognosis of only two years left to live. He becomes filled with a sense of fearlessness and an unrelenting desire to secure his family's financial future at any cost as he enters the dangerous world of drugs and crime.",
+      originalLanguage: testTvShow.original_language,
+      overview: testTvShow.overview!,
       poster: {
         height: TMDBImageSizes.posters.detailedShow.height,
-        path: '/3xnWaLQjelJDDF7LT1WBo6f4BRe.jpg',
+        path: testTvShow.poster_path || '',
         width: TMDBImageSizes.posters.detailedShow.width,
       },
-      rating: 'TV-MA',
-      recommendations: [
-        {
-          id: 60059,
-          poster: {
-            height: TMDBImageSizes.posters.show.height,
-            path: '/fC2HDm5t0kHl7mTm7jxMR31b7by.jpg',
-            width: TMDBImageSizes.posters.show.width,
-          },
-          releaseDate: formatDate('2015-02-08'),
-          showType: 'tv',
-          title: 'Better Call Saul',
-          userScore: 8.644,
-        },
-        {
-          id: 1399,
-          poster: {
-            height: TMDBImageSizes.posters.show.height,
-            path: '/1XS1oqL89opfnbLl8WnZY1O1uJx.jpg',
-            width: TMDBImageSizes.posters.show.width,
-          },
-          releaseDate: formatDate('2011-04-17'),
-          showType: 'tv',
-          title: 'Game of Thrones',
-          userScore: 8.441,
-        },
-      ],
-      releaseDate: formatDate('2008-01-20'),
-      seasons: [
-        {
-          airDate: formatDate('2009-02-17'),
-          episodeCount: 11,
-          id: 3577,
-          name: 'Specials',
-          overview: '',
-          poster: {
-            height: TMDBImageSizes.posters.season.height,
-            path: '/40dT79mDEZwXkQiZNBgSaydQFDP.jpg',
-            width: TMDBImageSizes.posters.season.width,
-          },
-          seasonNumber: 0,
-          userScore: 0.0,
-        },
-        {
-          airDate: formatDate('2008-01-20'),
-          episodeCount: 7,
-          id: 3572,
-          name: 'Season 1',
-          overview:
-            'High school chemistry teacher Walter White\'s life is suddenly transformed by a dire medical diagnosis. Street-savvy former student Jesse Pinkman "teaches" Walter a new trade.',
-          poster: {
-            height: TMDBImageSizes.posters.season.height,
-            path: '/1BP4xYv9ZG4ZVHkL7ocOziBbSYH.jpg',
-            width: TMDBImageSizes.posters.season.width,
-          },
-          seasonNumber: 1,
-          userScore: 8.2,
-        },
-      ],
+      rating: getUSTvShowRating(testTvShow.content_ratings)!,
+      recentSeason: getRecentSeason(testTvShow.seasons),
+      recommendations: transformShows(testTvShow.recommendations.results),
+      releaseDate: formatDate(testTvShow.first_air_date!),
       showType: 'tv',
-      socialHandles: {
-        facebook: 'BreakingBad',
-        instagram: 'breakingbad',
-        twitter: 'BreakingBad',
-      },
-      status: 'Ended',
-      tagline: 'Change the equation.',
-      title: 'Breaking Bad',
-      type: 'Scripted',
-      userScore: 8.89,
-      userScoreCount: 12378,
-      videos: [
-        {
-          backdrop: { path: '' },
-          id: '64c3fca091745b010120964b',
-          showId: 1396,
-          showTitle: 'Breaking Bad',
-          showType: 'tv',
-          thumbnail: {
-            height: TMDBImageSizes.thumbnails.video.height,
-            path: '',
-            width: TMDBImageSizes.thumbnails.video.width,
-          },
-          title: 'Breaking Bad | Trailer',
-          type: 'Trailer',
-          youtubeKey: 'VFLkMDEO-Xc',
-        },
-        {
-          backdrop: { path: '' },
-          id: '5759db2fc3a3683e7c003df7',
-          showId: 1396,
-          showTitle: 'Breaking Bad',
-          showType: 'tv',
-          thumbnail: {
-            height: TMDBImageSizes.thumbnails.video.height,
-            path: '',
-            width: TMDBImageSizes.thumbnails.video.width,
-          },
-          title: 'Series Trailer',
-          type: 'Trailer',
-          youtubeKey: 'XZ8daibM3AE',
-        },
-      ],
+      socialHandles: transformExternalIds(testTvShow.external_ids),
+      status: testTvShow.status,
+      tagline: testTvShow.tagline!,
+      title: testTvShow.name,
+      type: testTvShow.type,
+      userScore: testTvShow.vote_average,
+      userScoreCount: testTvShow.vote_count,
+      videos: transformVideos({
+        showId: testTvShow.id,
+        showTitle: testTvShow.name,
+        showType: 'tv',
+        videos: testTvShow.videos.results,
+      }),
     };
-    const transformedData = transformDetailedTvShow({
+    const transformedData = transformDetailedTvShow(testTvShow);
+    expect(transformedData).toEqual(expectedData);
+  });
+
+  it('should return correctly transformed data for TV show without a tagline', () => {
+    const testTvShow: TMDBDetailedTvShow = {
       ...mockTMDBDetailedTvShows.withOriginalLanguage,
-    });
+      tagline: '',
+    };
+    const expectedData: DetailedTvShow = {
+      backdrop: { path: testTvShow.backdrop_path || '' },
+      cast: transformTvShowCast(testTvShow.aggregate_credits.cast),
+      createdBy: transformTvShowCreatedBy(testTvShow.created_by),
+      genres: testTvShow.genres,
+      homepage: testTvShow.homepage,
+      id: testTvShow.id,
+      images: {
+        backdrops: transformImages(testTvShow.images.backdrops),
+        posters: transformImages(testTvShow.images.posters),
+      },
+      keywords: testTvShow.keywords.results,
+      lastEpisode: transformDetailedTvShowEpisode(testTvShow.last_episode_to_air!),
+      networks: transformTvShowNetworks(testTvShow.networks),
+      nextEpisode: null,
+      originalLanguage: testTvShow.original_language,
+      overview: testTvShow.overview!,
+      poster: {
+        height: TMDBImageSizes.posters.detailedShow.height,
+        path: testTvShow.poster_path || '',
+        width: TMDBImageSizes.posters.detailedShow.width,
+      },
+      rating: getUSTvShowRating(testTvShow.content_ratings)!,
+      recentSeason: getRecentSeason(testTvShow.seasons),
+      recommendations: transformShows(testTvShow.recommendations.results),
+      releaseDate: formatDate(testTvShow.first_air_date!),
+      showType: 'tv',
+      socialHandles: transformExternalIds(testTvShow.external_ids),
+      status: testTvShow.status,
+      tagline: null,
+      title: testTvShow.name,
+      type: testTvShow.type,
+      userScore: testTvShow.vote_average,
+      userScoreCount: testTvShow.vote_count,
+      videos: transformVideos({
+        showId: testTvShow.id,
+        showTitle: testTvShow.name,
+        showType: 'tv',
+        videos: testTvShow.videos.results,
+      }),
+    };
+    const transformedData = transformDetailedTvShow(testTvShow);
+    expect(transformedData).toEqual(expectedData);
+  });
+
+  it('should return correctly transformed data for TV show without release date', () => {
+    const testTvShow: TMDBDetailedTvShow = {
+      ...mockTMDBDetailedTvShows.withOriginalLanguage,
+      first_air_date: undefined,
+    };
+    const expectedData: DetailedTvShow = {
+      backdrop: { path: testTvShow.backdrop_path || '' },
+      cast: transformTvShowCast(testTvShow.aggregate_credits.cast),
+      createdBy: transformTvShowCreatedBy(testTvShow.created_by),
+      genres: testTvShow.genres,
+      homepage: testTvShow.homepage,
+      id: testTvShow.id,
+      images: {
+        backdrops: transformImages(testTvShow.images.backdrops),
+        posters: transformImages(testTvShow.images.posters),
+      },
+      keywords: testTvShow.keywords.results,
+      lastEpisode: transformDetailedTvShowEpisode(testTvShow.last_episode_to_air!),
+      networks: transformTvShowNetworks(testTvShow.networks),
+      nextEpisode: null,
+      originalLanguage: testTvShow.original_language,
+      overview: testTvShow.overview!,
+      poster: {
+        height: TMDBImageSizes.posters.detailedShow.height,
+        path: testTvShow.poster_path || '',
+        width: TMDBImageSizes.posters.detailedShow.width,
+      },
+      rating: getUSTvShowRating(testTvShow.content_ratings)!,
+      recentSeason: getRecentSeason(testTvShow.seasons),
+      recommendations: transformShows(testTvShow.recommendations.results),
+      releaseDate: 'N/A',
+      showType: 'tv',
+      socialHandles: transformExternalIds(testTvShow.external_ids),
+      status: testTvShow.status,
+      tagline: testTvShow.tagline!,
+      title: testTvShow.name,
+      type: testTvShow.type,
+      userScore: testTvShow.vote_average,
+      userScoreCount: testTvShow.vote_count,
+      videos: transformVideos({
+        showId: testTvShow.id,
+        showTitle: testTvShow.name,
+        showType: 'tv',
+        videos: testTvShow.videos.results,
+      }),
+    };
+    const transformedData = transformDetailedTvShow(testTvShow);
+    expect(transformedData).toEqual(expectedData);
+  });
+
+  it('should return correctly transformed data for TV show without US rating', () => {
+    const testTvShow: TMDBDetailedTvShow = {
+      ...mockTMDBDetailedTvShows.withOriginalLanguage,
+      content_ratings: { results: [] },
+    };
+    const expectedData: DetailedTvShow = {
+      backdrop: { path: testTvShow.backdrop_path || '' },
+      cast: transformTvShowCast(testTvShow.aggregate_credits.cast),
+      createdBy: transformTvShowCreatedBy(testTvShow.created_by),
+      genres: testTvShow.genres,
+      homepage: testTvShow.homepage,
+      id: testTvShow.id,
+      images: {
+        backdrops: transformImages(testTvShow.images.backdrops),
+        posters: transformImages(testTvShow.images.posters),
+      },
+      keywords: testTvShow.keywords.results,
+      lastEpisode: transformDetailedTvShowEpisode(testTvShow.last_episode_to_air!),
+      networks: transformTvShowNetworks(testTvShow.networks),
+      nextEpisode: null,
+      originalLanguage: testTvShow.original_language,
+      overview: testTvShow.overview!,
+      poster: {
+        height: TMDBImageSizes.posters.detailedShow.height,
+        path: testTvShow.poster_path || '',
+        width: TMDBImageSizes.posters.detailedShow.width,
+      },
+      rating: null,
+      recentSeason: getRecentSeason(testTvShow.seasons),
+      recommendations: transformShows(testTvShow.recommendations.results),
+      releaseDate: formatDate(testTvShow.first_air_date!),
+      showType: 'tv',
+      socialHandles: transformExternalIds(testTvShow.external_ids),
+      status: testTvShow.status,
+      tagline: testTvShow.tagline!,
+      title: testTvShow.name,
+      type: testTvShow.type,
+      userScore: testTvShow.vote_average,
+      userScoreCount: testTvShow.vote_count,
+      videos: transformVideos({
+        showId: testTvShow.id,
+        showTitle: testTvShow.name,
+        showType: 'tv',
+        videos: testTvShow.videos.results,
+      }),
+    };
+    const transformedData = transformDetailedTvShow(testTvShow);
+    expect(transformedData).toEqual(expectedData);
+  });
+
+  it('should return correctly transformed data for TV show without an overview', () => {
+    const testTvShow: TMDBDetailedTvShow = {
+      ...mockTMDBDetailedTvShows.withOriginalLanguage,
+      overview: '',
+    };
+    const expectedData: DetailedTvShow = {
+      backdrop: { path: testTvShow.backdrop_path || '' },
+      cast: transformTvShowCast(testTvShow.aggregate_credits.cast),
+      createdBy: transformTvShowCreatedBy(testTvShow.created_by),
+      genres: testTvShow.genres,
+      homepage: testTvShow.homepage,
+      id: testTvShow.id,
+      images: {
+        backdrops: transformImages(testTvShow.images.backdrops),
+        posters: transformImages(testTvShow.images.posters),
+      },
+      keywords: testTvShow.keywords.results,
+      lastEpisode: transformDetailedTvShowEpisode(testTvShow.last_episode_to_air!),
+      networks: transformTvShowNetworks(testTvShow.networks),
+      nextEpisode: null,
+      originalLanguage: testTvShow.original_language,
+      overview: 'Overview not available.',
+      poster: {
+        height: TMDBImageSizes.posters.detailedShow.height,
+        path: testTvShow.poster_path || '',
+        width: TMDBImageSizes.posters.detailedShow.width,
+      },
+      rating: getUSTvShowRating(testTvShow.content_ratings)!,
+      recentSeason: getRecentSeason(testTvShow.seasons),
+      recommendations: transformShows(testTvShow.recommendations.results),
+      releaseDate: formatDate(testTvShow.first_air_date!),
+      showType: 'tv',
+      socialHandles: transformExternalIds(testTvShow.external_ids),
+      status: testTvShow.status,
+      tagline: testTvShow.tagline!,
+      title: testTvShow.name,
+      type: testTvShow.type,
+      userScore: testTvShow.vote_average,
+      userScoreCount: testTvShow.vote_count,
+      videos: transformVideos({
+        showId: testTvShow.id,
+        showTitle: testTvShow.name,
+        showType: 'tv',
+        videos: testTvShow.videos.results,
+      }),
+    };
+    const transformedData = transformDetailedTvShow(testTvShow);
     expect(transformedData).toEqual(expectedData);
   });
 });

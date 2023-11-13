@@ -6,6 +6,7 @@ import SectionHeading from '@/components/SectionHeading/SectionHeading';
 import VideoScrollerSkeleton from '@/components/skeletons/VideoScrollerSkeleton';
 import getTrailer from '@/services/TMDB/api/getTrailer/getTrailer';
 import getUpcomingMovies from '@/services/TMDB/api/getUpcomingMovies/getUpcomingMovies';
+import isFulfilled from '@/utils/isFulfilled';
 
 const UpcomingMoviesTrailers = dynamic(
   () =>
@@ -21,10 +22,6 @@ const UpcomingMoviesTrailers = dynamic(
     ssr: false,
   }
 );
-
-function isFulfilled<T>(promise: PromiseSettledResult<T>): promise is PromiseFulfilledResult<T> {
-  return promise.status === 'fulfilled';
-}
 
 async function getUpcomingMoviesTrailers() {
   const movies = await getUpcomingMovies();

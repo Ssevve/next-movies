@@ -59,7 +59,7 @@ export default async function DetailedTvShowPage({ searchParams, params }: TvSho
     cast,
     originalLanguage,
     images,
-    seasons,
+    recentSeason,
     recommendations,
     lastEpisode,
     nextEpisode,
@@ -98,7 +98,7 @@ export default async function DetailedTvShowPage({ searchParams, params }: TvSho
         />
         <ShowCast cast={cast} />
         <RecentSeason
-          season={seasons[seasons.length - 1]}
+          season={recentSeason}
           showEnded={showEnded}
           episode={showEnded ? lastEpisode : nextEpisode}
         />

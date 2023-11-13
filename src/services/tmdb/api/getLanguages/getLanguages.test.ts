@@ -27,6 +27,6 @@ describe('getLanguages', () => {
 
     expect(async () => {
       await getLanguages();
-    }).rejects.toThrow(`Failed to fetch languages.`);
+    }).rejects.toThrow('Failed to fetch languages.');
   });
 });

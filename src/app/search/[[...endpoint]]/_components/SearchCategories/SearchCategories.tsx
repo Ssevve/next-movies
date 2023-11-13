@@ -1,14 +1,13 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useRef } from 'react';
 
+import useSearchCategories from '@/app/search/[[...endpoint]]/_components/SearchCategories/useSearchCategories';
 import { ScrollArea, ScrollBar } from '@/components/ui/ScrollArea';
-import cn from '@/lib/cn';
 import SearchCategory from '@/types/SearchCategory';
 import SearchEndpoint from '@/types/SearchEndpoint';
 
-interface SearchCategoriesProps {
+export interface SearchCategoriesProps {
   categories: SearchCategory[];
   activeEndpoint: SearchEndpoint;
   query?: string;
@@ -19,26 +18,11 @@ export default function SearchCategories({
   activeEndpoint,
   query,
 }: SearchCategoriesProps) {
-  const listRef = useRef<HTMLUListElement>(null);
-
-  useEffect(() => {
-    if (listRef.current) {
-      const endpointIndex = categories.findIndex(
-        (category) => category.endpoint === activeEndpoint
-      );
-      listRef.current.children.item(endpointIndex)?.scrollIntoView({ block: 'center' });
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activeEndpoint]);
-
-  const generateHref = (endpoint: string) => `/search/${endpoint}?query=${query}`;
-
-  const getLinkClassName = (linkEndpoint: SearchEndpoint) =>
-    cn(
-      'p-4 flex gap-4 min-w-max items-center justify-between w-full hover:bg-slate-50 dark:hover:bg-slate-900',
-      linkEndpoint === activeEndpoint &&
-        'bg-slate-100 dark:bg-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700'
-    );
+  const { generateHref, getLinkClassName, listRef } = useSearchCategories({
+    activeEndpoint,
+    categories,
+    query,
+  });
 
   return (
     <div className="h-max rounded-md border border-slate-100 dark:border-slate-700">

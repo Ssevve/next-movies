@@ -1,3 +1,5 @@
+import React from 'react';
+
 import joinGenres from '@/components/ShowPageHeader/components/ShowMetadata/utils/joinGenres/joinGenres';
 import Genre from '@/types/Genre';
 import getReleaseYear from '@/utils/getReleaseYear/getReleaseYear';

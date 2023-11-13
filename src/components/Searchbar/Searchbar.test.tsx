@@ -13,7 +13,7 @@ describe('Searchbar', () => {
     expect(screen.getByRole('textbox')).toBeInTheDocument();
   });
 
-  it('should render aa submit button', () => {
+  it('should render a submit button', () => {
     render(<Searchbar />);
     expect(screen.getByRole('button')).toBeInTheDocument();
   });

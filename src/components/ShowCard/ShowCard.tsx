@@ -29,7 +29,7 @@ export default function ShowCard({
   showMetadata = true,
 }: ShowCardProps) {
   return (
-    <Hoverable className={cn('min-w-[150px] pb-4', showMetadata && 'pb-0')}>
+    <Hoverable className={cn('min-w-[150px] pb-4', showMetadata && 'pb-0')} data-testid="show-card">
       <Link href={`/${showType}/${id}`}>
         <div className="relative min-h-[225px]">
           {poster.path ? (

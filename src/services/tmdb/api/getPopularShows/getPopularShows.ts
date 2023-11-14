@@ -12,7 +12,6 @@ export default async function getPopularShows(
   showType: ShowType,
   page = 1
 ): Promise<PaginatedResponse<Show>> {
-  console.log(page);
   const res = await TMDBApi(`/${showType}/popular?page=${page}`);
   if (res.ok) {
     const { page, results, total_pages, total_results }: TMDBPaginatedResponse<TMDBUnknownShow> =

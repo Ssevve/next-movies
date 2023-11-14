@@ -5,13 +5,17 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import ReactPagination from 'rc-pagination';
 
 import { Button } from '@/components/ui/Button';
-import { ITEMS_PER_PAGE, PAGINATED_ITEMS_COUNT_LIMIT } from '@/services/TMDB/config';
+import { DEFAULT_ITEMS_PER_PAGE, PAGINATED_ITEMS_COUNT_LIMIT } from '@/services/TMDB/config';
 
 interface PaginationProps {
+  itemsPerPage?: number;
   totalItemCount: number;
 }
 
-export default function Pagination({ totalItemCount }: PaginationProps) {
+export default function Pagination({
+  itemsPerPage = DEFAULT_ITEMS_PER_PAGE,
+  totalItemCount,
+}: PaginationProps) {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
@@ -30,7 +34,7 @@ export default function Pagination({ totalItemCount }: PaginationProps) {
       onChange={(page) => goToPage(page)}
       current={Number(searchParams.get('page')) || 1}
       total={itemLimitExceeded ? PAGINATED_ITEMS_COUNT_LIMIT : totalItemCount}
-      defaultPageSize={ITEMS_PER_PAGE}
+      defaultPageSize={itemsPerPage}
       hideOnSinglePage
       showTitle={false}
       simple

@@ -4,15 +4,16 @@ import Show from '@/types/Show';
 
 interface PaginatedShowsProps {
   shows: Show[];
+  showsPerPage?: number;
   totalShows: number;
 }
 
-// TODO: tests
-export default function PaginatedShows({ shows, totalShows }: PaginatedShowsProps) {
+export default function PaginatedShows({ showsPerPage, shows, totalShows }: PaginatedShowsProps) {
+  const showsToRender = showsPerPage ? shows.slice(0, showsPerPage) : shows;
   return (
     <>
       <ul className="flex flex-wrap justify-center gap-x-4 gap-y-8">
-        {shows.map(({ id, poster, releaseDate, showType, title, userScore }) => (
+        {showsToRender.map(({ id, poster, releaseDate, showType, title, userScore }) => (
           <li key={id} className="shrink-1 basis-1/3 sm:basis-1/4 md:basis-1/6">
             <ShowCard
               id={id}
@@ -25,7 +26,7 @@ export default function PaginatedShows({ shows, totalShows }: PaginatedShowsProp
           </li>
         ))}
       </ul>
-      <Pagination totalItemCount={totalShows} />
+      <Pagination totalItemCount={totalShows} itemsPerPage={showsPerPage} />
     </>
   );
 }

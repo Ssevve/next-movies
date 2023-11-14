@@ -31,7 +31,6 @@ it('should return correct results for person endpoint', async () => {
 
 it('should return correct page of results', async () => {
   const searchResults = await getSearchResults({ endpoint: 'person', page: '2', query: 'Rich' });
-  console.log(searchResults);
   expect(searchResults.page).toBe(2);
 });
 

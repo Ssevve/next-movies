@@ -29,9 +29,9 @@ export default function ShowCard({
   showMetadata = true,
 }: ShowCardProps) {
   return (
-    <Hoverable className={cn('w-[150px] pb-4', showMetadata && 'pb-0')}>
+    <Hoverable className={cn('min-w-[150px] pb-4', showMetadata && 'pb-0')}>
       <Link href={`/${showType}/${id}`}>
-        <div className="relative h-[225px]">
+        <div className="relative min-h-[225px]">
           {poster.path ? (
             <Image
               src={getTMDBImagePath(poster.path, poster.width, poster.height)}

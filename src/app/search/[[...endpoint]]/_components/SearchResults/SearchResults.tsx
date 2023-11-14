@@ -62,10 +62,7 @@ export default async function SearchResults({
           <p className="col-span-full">There are no results that matched your query.</p>
         )}
       </ul>
-      <Pagination
-        totalItemCount={paginatedResults.totalResults}
-        itemsPerPage={paginatedResults.results.length}
-      />
+      <Pagination totalItemCount={paginatedResults.totalResults} />
     </section>
   );
 }

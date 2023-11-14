@@ -3,6 +3,9 @@ export const TMDBUrls = {
   image: 'https://image.tmdb.org/t/p',
 } as const;
 
+export const PAGINATED_ITEMS_COUNT_LIMIT = 10000 as const;
+export const ITEMS_PER_PAGE = 20 as const;
+
 export const TMDBImageSizes = {
   backdrops: {
     video: {

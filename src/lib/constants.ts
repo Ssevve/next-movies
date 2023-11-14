@@ -27,7 +27,7 @@ export const navItems: NavItem[] = [
         name: 'Top Rated',
       },
     ],
-    path: '/movies',
+    path: '/movie',
   },
   {
     label: 'TV Shows',
@@ -49,7 +49,7 @@ export const navItems: NavItem[] = [
         name: 'Top Rated',
       },
     ],
-    path: '/shows',
+    path: '/tv',
   },
   {
     label: 'People',

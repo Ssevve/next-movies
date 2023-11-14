@@ -5,8 +5,8 @@ import getTheaterMovies from '@/services/TMDB/api/getTheaterMovies/getTheaterMov
 import Tab from '@/types/Tab';
 
 export default async function WhatsPopular() {
-  const popularMovies = await getPopularShows('movie');
-  const popularTvShows = await getPopularShows('tv');
+  const popularMovies = await getPopularShows('movie', 1);
+  const popularTvShows = await getPopularShows('tv', 1);
   const inTheaters = await getTheaterMovies();
 
   const tabs: Tab[] = [

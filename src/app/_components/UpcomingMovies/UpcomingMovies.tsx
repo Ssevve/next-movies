@@ -27,7 +27,7 @@ async function getUpcomingMoviesTrailers() {
   const movies = await getUpcomingMovies();
 
   const result = await Promise.allSettled(
-    movies.map(({ id, title, showType, thumbnailPath }) =>
+    movies.results.map(({ id, title, showType, thumbnailPath }) =>
       getTrailer({
         showId: id,
         showTitle: title || '',

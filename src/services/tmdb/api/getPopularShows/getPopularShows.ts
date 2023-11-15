@@ -10,9 +10,9 @@ import ShowType from '@/types/ShowType';
 
 export default async function getPopularShows(
   showType: ShowType,
-  page = 1
+  requestPage = 1
 ): Promise<PaginatedResponse<Show>> {
-  const res = await TMDBApi(`/${showType}/popular?page=${page}`);
+  const res = await TMDBApi(`/${showType}/popular?page=${requestPage}`);
   if (res.ok) {
     const { page, results, total_pages, total_results }: TMDBPaginatedResponse<TMDBUnknownShow> =
       await res.json();

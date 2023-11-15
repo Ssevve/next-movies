@@ -18,7 +18,7 @@ describe('PaginatedShows', () => {
 
   it('should render all of shows  if totalShows length is less than showsPerPage', () => {
     render(<PaginatedShows shows={mockShows} totalShows={mockShows.length} />);
-    expect(screen.getAllByRole('listitem')).toHaveLength(mockShows.length);
+    expect(screen.getAllByTestId('show-card')).toHaveLength(mockShows.length);
   });
 
   it('should not render <Pagination /> component if totalShows length is less than showsPerPage', () => {

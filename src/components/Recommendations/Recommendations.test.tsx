@@ -16,6 +16,6 @@ describe('Recommendations', () => {
 
   it('should render correct amount of shows', async () => {
     render(<Recommendations shows={mockShows} />);
-    expect(screen.getAllByRole('listitem')).toHaveLength(mockShows.length);
+    expect(screen.getAllByTestId('show-card')).toHaveLength(mockShows.length);
   });
 });

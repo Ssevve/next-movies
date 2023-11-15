@@ -23,7 +23,7 @@ describe('Scroller', () => {
         ))}
       </Scroller>
     );
-    expect(screen.getAllByRole('listitem')).toHaveLength(mockShows.length);
+    expect(screen.getAllByTestId('show-card')).toHaveLength(mockShows.length);
   });
 
   it('should render all items if limit is 0', () => {
@@ -34,7 +34,7 @@ describe('Scroller', () => {
         ))}
       </Scroller>
     );
-    expect(screen.getAllByRole('listitem')).toHaveLength(mockShows.length);
+    expect(screen.getAllByTestId('show-card')).toHaveLength(mockShows.length);
   });
 
   it('should render correct amount of items if limit is provided', () => {

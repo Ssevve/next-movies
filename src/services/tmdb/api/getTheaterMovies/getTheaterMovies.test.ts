@@ -15,6 +15,12 @@ describe('getTheaterMovies', () => {
     expect(response.results).toEqual(expectedResults);
   });
 
+  it('should call with correct page', async () => {
+    const expectedPage = 2;
+    const response = await getTheaterMovies(expectedPage);
+    expect(response.page).toEqual(expectedPage);
+  });
+
   it('should throw correct error on failed fetch', () => {
     server.use(
       rest.get(`${TMDBUrls.base}/movie/now_playing`, (req, res, ctx) => {

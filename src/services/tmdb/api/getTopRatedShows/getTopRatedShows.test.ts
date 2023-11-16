@@ -5,28 +5,28 @@ import { rest } from 'msw';
 import mockTMDBMovies from '@/__mocks__/data/mockTMDBMovies';
 import mockTMDBTvShows from '@/__mocks__/data/mockTMDBTvShows';
 import { server } from '@/__mocks__/server';
-import getPopularShows from '@/services/TMDB/api/getPopularShows/getPopularShows';
+import getTopRatedShows from '@/services/TMDB/api/getTopRatedShows/getTopRatedShows';
 import { TMDBUrls } from '@/services/TMDB/config';
 import transformShows from '@/services/TMDB/utils/transformShows/transformShows';
 
-const endpoint = `${TMDBUrls.base}/:showType/popular`;
+const endpoint = `${TMDBUrls.base}/:showType/top_rated`;
 
-describe('getPopularShows', () => {
+describe('getTopRatedShows', () => {
   it('should return correct results for movies', async () => {
     const expectedResults = transformShows(mockTMDBMovies);
-    const response = await getPopularShows('movie');
+    const response = await getTopRatedShows('movie');
     expect(response.results).toEqual(expectedResults);
   });
 
   it('should return correct results for TV shows', async () => {
     const expectedResults = transformShows(mockTMDBTvShows);
-    const response = await getPopularShows('tv');
+    const response = await getTopRatedShows('tv');
     expect(response.results).toEqual(expectedResults);
   });
 
   it('should call with correct page', async () => {
     const expectedPage = 2;
-    const response = await getPopularShows('tv', expectedPage);
+    const response = await getTopRatedShows('tv', expectedPage);
     expect(response.page).toEqual(expectedPage);
   });
 
@@ -38,8 +38,8 @@ describe('getPopularShows', () => {
     );
 
     expect(async () => {
-      await getPopularShows('movie');
-    }).rejects.toThrow('Failed to fetch popular movies.');
+      await getTopRatedShows('movie');
+    }).rejects.toThrow('Failed to fetch top rated movies.');
   });
 
   it('should throw correct error on failed fetch for TV shows', () => {
@@ -50,7 +50,7 @@ describe('getPopularShows', () => {
     );
 
     expect(async () => {
-      await getPopularShows('tv');
-    }).rejects.toThrow('Failed to fetch popular TV shows.');
+      await getTopRatedShows('tv');
+    }).rejects.toThrow('Failed to fetch top rated TV shows.');
   });
 });

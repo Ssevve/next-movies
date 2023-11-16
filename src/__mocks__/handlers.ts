@@ -9,6 +9,7 @@ import mockTMDBTvShows from '@/__mocks__/data/mockTMDBTvShows';
 import mockTMDBTvShowVideos from '@/__mocks__/data/mockTMDBTvShowVideos';
 import mockTMDBUnknownShows from '@/__mocks__/data/mockTMDBUnknownShows';
 import generateMockPaginatedResponse from '@/__mocks__/utils/generateMockPaginatedResponse';
+import getRequestedPage from '@/__mocks__/utils/getRequestedPage';
 import { TMDBUrls } from '@/services/TMDB/config';
 
 export const TMDBHandlers = [
@@ -31,24 +32,43 @@ export const TMDBHandlers = [
       );
     }
   }),
+
   rest.get(`${TMDBUrls.base}/movie/now_playing`, (req, res, ctx) => {
+    const page = getRequestedPage(req);
     return res(
       ctx.status(200),
-      ctx.json(generateMockPaginatedResponse({ results: mockTMDBMovies }))
+      ctx.json(generateMockPaginatedResponse({ page, results: mockTMDBMovies }))
     );
   }),
-  rest.get(`${TMDBUrls.base}/:showType/popular`, (req, res, ctx) => {
+  rest.get(`${TMDBUrls.base}/:showType/top_rated`, (req, res, ctx) => {
     const { showType } = req.params;
+    const page = getRequestedPage(req);
 
     if (showType === 'movie') {
       return res(
         ctx.status(200),
-        ctx.json(generateMockPaginatedResponse({ results: mockTMDBMovies }))
+        ctx.json(generateMockPaginatedResponse({ page, results: mockTMDBMovies }))
       );
     } else if (showType === 'tv') {
       return res(
         ctx.status(200),
-        ctx.json(generateMockPaginatedResponse({ results: mockTMDBTvShows }))
+        ctx.json(generateMockPaginatedResponse({ page, results: mockTMDBTvShows }))
+      );
+    }
+  }),
+  rest.get(`${TMDBUrls.base}/:showType/popular`, (req, res, ctx) => {
+    const { showType } = req.params;
+    const page = getRequestedPage(req);
+
+    if (showType === 'movie') {
+      return res(
+        ctx.status(200),
+        ctx.json(generateMockPaginatedResponse({ page, results: mockTMDBMovies }))
+      );
+    } else if (showType === 'tv') {
+      return res(
+        ctx.status(200),
+        ctx.json(generateMockPaginatedResponse({ page, results: mockTMDBTvShows }))
       );
     }
   }),
@@ -72,7 +92,8 @@ export const TMDBHandlers = [
     }
   }),
   rest.get(`${TMDBUrls.base}/movie/upcoming`, (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json({ results: mockTMDBMovies }));
+    const page = getRequestedPage(req);
+    return res(ctx.status(200), ctx.json({ page, results: mockTMDBMovies }));
   }),
   rest.get(`${TMDBUrls.base}/movie/:movieId`, (req, res, ctx) => {
     const { movieId } = req.params;
@@ -88,7 +109,6 @@ export const TMDBHandlers = [
     const { endpoint } = req.params;
 
     const url = new URL(req.url);
-    console.log(url.searchParams);
     const page = url.searchParams.get('page') || 1;
     const query = url.searchParams.get('query');
 

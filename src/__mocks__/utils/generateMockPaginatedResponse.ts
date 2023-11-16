@@ -9,10 +9,10 @@ interface GenerateMockPaginatedResponseArgs<T> {
 export default function generateMockPaginatedResponse<T>({
   results,
   resultsPerPage = 1,
-  page,
+  page = 1,
 }: GenerateMockPaginatedResponseArgs<T>): TMDBPaginatedResponse<T> {
   return {
-    page: Number(page) || 1,
+    page: Number(page),
     results,
     total_pages: Math.ceil(results.length / resultsPerPage),
     total_results: results.length,

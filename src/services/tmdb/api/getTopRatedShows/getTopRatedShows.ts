@@ -8,17 +8,16 @@ import PaginatedResponse from '@/types/PaginatedResponse';
 import Show from '@/types/Show';
 import ShowType from '@/types/ShowType';
 
-// TODO: tests
 export default async function getTopRatedShows(
   showType: ShowType,
   requestPage = 1
 ): Promise<PaginatedResponse<Show>> {
   const res = await TMDBApi(`/${showType}/top_rated?page=${requestPage}`);
-  if (res.ok) {
-    const { page, results, total_pages, total_results }: TMDBPaginatedResponse<TMDBUnknownShow> =
-      await res.json();
-    return transformPaginatedShows({ page, results, total_pages, total_results });
+  if (!res.ok) {
+    throw Error(`Failed to fetch top rated ${showType === 'movie' ? 'movies' : 'TV shows'}.`);
   }
 
-  throw Error(`Failed to fetch top rated ${showType === 'movie' ? 'movies' : 'TV shows'}.`);
+  const { page, results, total_pages, total_results }: TMDBPaginatedResponse<TMDBUnknownShow> =
+    await res.json();
+  return transformPaginatedShows({ page, results, total_pages, total_results });
 }

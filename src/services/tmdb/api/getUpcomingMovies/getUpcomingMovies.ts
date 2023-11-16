@@ -1,22 +1,12 @@
 import 'server-only';
 
 import TMDBApi from '@/services/TMDB/api/client';
-import { TMDBImageSizes } from '@/services/TMDB/config';
 import TMDBMovie from '@/services/TMDB/types/TMDBMovie';
 import TMDBPaginatedResponse from '@/services/TMDB/types/TMDBPaginatedResponse';
-import formatDate from '@/services/TMDB/utils/formatDate/formatDate';
+import transformUpcomingMovies from '@/services/TMDB/utils/transformUpcomingMovies/transformUpcomingMovies';
 import PaginatedResponse from '@/types/PaginatedResponse';
-import Show from '@/types/Show';
+import UpcomingMovie from '@/types/UpcomingMovie';
 
-interface UpcomingMovie extends Show {
-  id: number;
-  thumbnailPath: string;
-  releaseDate: string;
-  title: string;
-  showType: 'movie';
-}
-
-// TODO: Update tests
 export default async function getUpcomingMovies(
   requestPage = 1
 ): Promise<PaginatedResponse<UpcomingMovie>> {
@@ -27,21 +17,7 @@ export default async function getUpcomingMovies(
 
   return {
     page,
-    results: results.map(
-      ({ release_date, title, backdrop_path, id, vote_average, poster_path }): UpcomingMovie => ({
-        id,
-        poster: {
-          height: TMDBImageSizes.posters.show.height,
-          path: poster_path || '',
-          width: TMDBImageSizes.posters.show.width,
-        },
-        releaseDate: release_date ? formatDate(release_date) : 'N/A',
-        showType: 'movie',
-        thumbnailPath: backdrop_path || '',
-        title,
-        userScore: vote_average,
-      })
-    ),
+    results: transformUpcomingMovies(results),
     totalPages: total_pages,
     totalResults: total_results,
   };

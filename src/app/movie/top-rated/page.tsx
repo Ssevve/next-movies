@@ -1,3 +1,5 @@
+import { Metadata } from 'next';
+
 import PaginatedShows from '@/components/PaginatedShows/PaginatedShows';
 import getTopRatedShows from '@/services/TMDB/api/getTopRatedShows/getTopRatedShows';
 
@@ -6,6 +8,10 @@ interface TopRatedMoviesPageProps {
     page?: string;
   };
 }
+
+export const metadata: Metadata = {
+  title: 'Top Rated Movies | Next Movies',
+};
 
 export default async function TopRatedMoviesPage({ searchParams }: TopRatedMoviesPageProps) {
   const { page } = searchParams;

@@ -1,3 +1,5 @@
+import { Metadata } from 'next';
+
 import PaginatedShows from '@/components/PaginatedShows/PaginatedShows';
 import getPopularShows from '@/services/TMDB/api/getPopularShows/getPopularShows';
 
@@ -6,6 +8,10 @@ interface PopularMoviesPageProps {
     page?: string;
   };
 }
+
+export const metadata: Metadata = {
+  title: 'Popular Movies | Next Movies',
+};
 
 export default async function PopularMoviesPage({ searchParams }: PopularMoviesPageProps) {
   const { page } = searchParams;

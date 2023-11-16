@@ -1,3 +1,5 @@
+import { Metadata } from 'next';
+
 import PaginatedShows from '@/components/PaginatedShows/PaginatedShows';
 import getUpcomingMovies from '@/services/TMDB/api/getUpcomingMovies/getUpcomingMovies';
 
@@ -6,6 +8,10 @@ interface UpcomingMoviesPageProps {
     page?: string;
   };
 }
+
+export const metadata: Metadata = {
+  title: 'Upcoming Movies | Next Movies',
+};
 
 export default async function UpcomingMoviesPage({ searchParams }: UpcomingMoviesPageProps) {
   const { page } = searchParams;

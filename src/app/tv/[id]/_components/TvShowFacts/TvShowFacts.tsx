@@ -3,7 +3,7 @@ import Image from 'next/image';
 import ShowFacts, { ShowFactsProps } from '@/components/ShowFacts/ShowFacts';
 import TMDBTvShowType from '@/services/TMDB/types/TMDBTvShowType';
 import getTMDBImagePath from '@/services/TMDB/utils/getTMDBImagePath/getTMDBImagePath';
-import Network from '@/types/Network';
+import { Network } from '@/types/DetailedTvShow';
 
 interface TvShowFacts extends ShowFactsProps {
   networks: Network[];

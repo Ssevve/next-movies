@@ -1,4 +1,4 @@
-import NavItemLink from '@/types/NavItemLink';
+import { NavItemLink } from '@/types/NavItem';
 
 interface NavItem {
   label: string;

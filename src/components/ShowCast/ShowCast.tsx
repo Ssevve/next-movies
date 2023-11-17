@@ -1,7 +1,7 @@
 import CastScroller from '@/components/CastScroller/CastScroller';
 import SectionHeading from '@/components/SectionHeading/SectionHeading';
-import MovieCastPerson from '@/types/MovieCastPerson';
-import TvShowCastPerson from '@/types/TvShowCastPerson';
+import { MovieCastPerson } from '@/types/DetailedMovie';
+import { TvShowCastPerson } from '@/types/DetailedTvShow';
 
 interface ShowCastProps {
   cast: (MovieCastPerson | TvShowCastPerson)[];

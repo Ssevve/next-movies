@@ -5,8 +5,8 @@ import TMDBPaginatedResponse from '@/services/TMDB/types/TMDBPaginatedResponse';
 import TMDBUnknownShow from '@/services/TMDB/types/TMDBUnknownShow';
 import transformPaginatedShowsResponse from '@/services/TMDB/utils/transformPaginatedShows/transformPaginatedShows';
 import PaginatedResponse from '@/types/PaginatedResponse';
-import Show from '@/types/Show';
-import ShowType from '@/types/ShowType';
+import { Show } from '@/types/Show';
+import { ShowType } from '@/types/Show';
 
 export type TimeWindow = 'day' | 'week';
 

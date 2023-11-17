@@ -1,4 +1,4 @@
-import Creator from '@/types/Creator';
+import { Creator } from '@/types/DetailedShow';
 
 export default function transformTvShowCreatedBy(createdBy: Creator[]): Creator[] {
   if (!createdBy || !createdBy.length || !Array.isArray(createdBy)) return [];

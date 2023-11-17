@@ -8,7 +8,7 @@ import VideoLink from '@/components/VideoLink/VideoLink';
 import cn from '@/lib/cn';
 import getTMDBImagePath from '@/services/TMDB/utils/getTMDBImagePath/getTMDBImagePath';
 import ImageType from '@/types/Image';
-import ShowType from '@/types/ShowType';
+import { ShowType } from '@/types/Show';
 import getYoutubeThumbnail from '@/utils/getYoutubeThumbnail/getYoutubeThumbnail';
 
 interface VideoCardProps extends Omit<HoverableProps, 'children'> {

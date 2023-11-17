@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 
 import PersonCard from '@/components/CastPersonCard/CastPersonCard';
-import MovieCastPerson from '@/types/MovieCastPerson';
+import { MovieCastPerson } from '@/types/DetailedMovie';
 
 const testImagePath = '/testImage.jpg';
 

@@ -1,6 +1,6 @@
 import { TMDBPersonSearchResult } from '@/services/TMDB/types/TMDBSearchResult';
 import transformPersonSearchResultShows from '@/services/TMDB/utils/transformPersonSearchResultShows/transformPersonSearchResultShows';
-import PersonSearchResult from '@/types/PersonSearchResult';
+import { PersonSearchResult } from '@/types/SearchResult';
 
 export default function transformPersonSearchResult(
   result: TMDBPersonSearchResult

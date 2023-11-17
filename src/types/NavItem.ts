@@ -1,6 +1,9 @@
-import NavItemLink from '@/types/NavItemLink';
+export interface NavItemLink {
+  href: string;
+  name: string;
+}
 
-export default interface NavItem {
+export interface NavItem {
   label: string;
   path: string;
   links: NavItemLink[];

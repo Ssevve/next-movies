@@ -1,6 +1,6 @@
 import SectionHeading from '@/components/SectionHeading/SectionHeading';
 import ShowScroller from '@/components/ShowScroller/ShowScroller';
-import Show from '@/types/Show';
+import { Show } from '@/types/Show';
 
 interface RecommendationsProps {
   shows: Show[];

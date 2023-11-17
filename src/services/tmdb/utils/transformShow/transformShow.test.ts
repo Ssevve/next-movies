@@ -3,7 +3,7 @@ import mockTMDBTvShows from '@/__mocks__/data/mockTMDBTvShows';
 import { TMDBImageSizes } from '@/services/TMDB/config';
 import formatDate from '@/services/TMDB/utils/formatDate/formatDate';
 import transformShow from '@/services/TMDB/utils/transformShow/transformShow';
-import Show from '@/types/Show';
+import { Show } from '@/types/Show';
 
 describe('transformShow', () => {
   it('should return correctly transformed movie', async () => {

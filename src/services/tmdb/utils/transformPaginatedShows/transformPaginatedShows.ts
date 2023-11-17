@@ -1,7 +1,7 @@
 import TMDBUnknownShow from '@/services/TMDB/types/TMDBUnknownShow';
 import transformShows from '@/services/TMDB/utils/transformShows/transformShows';
 import PaginatedResponse from '@/types/PaginatedResponse';
-import Show from '@/types/Show';
+import { Show } from '@/types/Show';
 
 interface TransformPaginatedShowsArgs {
   page: number;

@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 
 import TvShowFacts from '@/app/tv/[id]/_components/TvShowFacts/TvShowFacts';
-import Network from '@/types/Network';
+import { Network } from '@/types/DetailedTvShow';
 
 describe('TvShowFacts', () => {
   it('should render <ShowFacts /> component', () => {

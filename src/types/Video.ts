@@ -1,7 +1,7 @@
 import TMDBVideoType from '@/services/TMDB/types/TMDBVideoType';
 import Backdrop from '@/types/Backdrop';
 import Image from '@/types/Image';
-import ShowType from '@/types/ShowType';
+import { ShowType } from '@/types/Show';
 
 export default interface Video {
   showTitle: string;

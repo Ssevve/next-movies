@@ -1,6 +1,6 @@
 import Scroller, { ScrollerProps } from '@/components/Scroller/Scroller';
 import ShowCard from '@/components/ShowCard/ShowCard';
-import Show from '@/types/Show';
+import { Show } from '@/types/Show';
 
 interface ShowScrollerProps extends Pick<ScrollerProps, 'limit'> {
   shows: Show[];

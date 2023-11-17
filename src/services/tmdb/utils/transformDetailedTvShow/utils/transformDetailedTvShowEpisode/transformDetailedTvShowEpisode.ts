@@ -1,6 +1,6 @@
 import TMDBEpisode from '@/services/TMDB/types/TMDBEpisode';
 import formatDate from '@/services/TMDB/utils/formatDate/formatDate';
-import Episode from '@/types/Episode';
+import { Episode } from '@/types/DetailedTvShow';
 
 export default function transformDetailedTvShowEpisode(episode: TMDBEpisode): Episode {
   return {

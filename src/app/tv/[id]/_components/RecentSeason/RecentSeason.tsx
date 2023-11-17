@@ -2,8 +2,7 @@ import RecentEpisode from '@/app/tv/[id]/_components/RecentSeason/components/Rec
 import SeasonMetadata from '@/app/tv/[id]/_components/RecentSeason/components/SeasonMetadata/SeasonMetadata';
 import SeasonPoster from '@/app/tv/[id]/_components/RecentSeason/components/SeasonPoster/SeasonPoster';
 import SectionHeading from '@/components/SectionHeading/SectionHeading';
-import Episode from '@/types/Episode';
-import Season from '@/types/Season';
+import { Episode, Season } from '@/types/DetailedTvShow';
 
 export interface RecentSeasonProps {
   season: Season | null;

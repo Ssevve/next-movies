@@ -1,4 +1,4 @@
-import Show from '@/types/Show';
+import { Show } from '@/types/Show';
 
 export default interface UpcomingMovie extends Show {
   id: number;

@@ -1,5 +1,5 @@
 import { TMDBImageSizes } from '@/services/TMDB/config';
-import DetailedMovie from '@/types/DetailedMovie';
+import { DetailedMovie } from '@/types/DetailedMovie';
 
 const mockDetailedMovie: DetailedMovie = {
   backdrop: { path: '/pA3vdhadJPxF5GA1uo8OPTiNQDT.jpg' },

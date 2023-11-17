@@ -1,6 +1,6 @@
 import TMDBMovieCrewPerson from '@/services/TMDB/types/TMDBMovieCrewPerson';
 import transformMovieCreatedBy from '@/services/TMDB/utils/transformDetailedMovie/utils/transformMovieCreatedBy/transformMovieCreatedBy';
-import Creator from '@/types/Creator';
+import { Creator } from '@/types/DetailedShow';
 
 describe('transformMovieCreatedBy', () => {
   it('should return correctly transformed data for single director', () => {

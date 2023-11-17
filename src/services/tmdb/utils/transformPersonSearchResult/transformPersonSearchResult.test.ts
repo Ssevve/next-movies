@@ -1,7 +1,7 @@
 import { TMDBPersonSearchResult } from '@/services/TMDB/types/TMDBSearchResult';
 import transformPersonSearchResult from '@/services/TMDB/utils/transformPersonSearchResult/transformPersonSearchResult';
 import transformPersonSearchResultShows from '@/services/TMDB/utils/transformPersonSearchResultShows/transformPersonSearchResultShows';
-import PersonSearchResult from '@/types/PersonSearchResult';
+import { PersonSearchResult } from '@/types/SearchResult';
 
 describe('transformPersonSearchResult', () => {
   it('should return correctly transformed data', async () => {

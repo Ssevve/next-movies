@@ -1,7 +1,8 @@
 import Image from '@/types/Image';
-import ShowType from '@/types/ShowType';
 
-export default interface Show {
+export type ShowType = 'movie' | 'tv';
+
+export interface Show {
   id: number;
   poster: Image;
   title: string;

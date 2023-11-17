@@ -4,7 +4,7 @@ import TMDBApi from '@/services/TMDB/api/client';
 import getLanguages from '@/services/TMDB/api/getLanguages/getLanguages';
 import TMDBDetailedTvShow from '@/services/TMDB/types/TMDBDetailedTvShow';
 import transformDetailedTvShow from '@/services/TMDB/utils/transformDetailedTvShow/transformDetailedTvShow';
-import DetailedTvShow from '@/types/DetailedTvShow';
+import { DetailedTvShow } from '@/types/DetailedTvShow';
 
 export default async function getDetailedTvShow(tvShowId: number): Promise<DetailedTvShow> {
   const appendToResponseString = [

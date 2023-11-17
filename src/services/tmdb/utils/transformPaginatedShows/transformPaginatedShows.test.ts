@@ -2,7 +2,7 @@ import mockTMDBUnknownShows from '@/__mocks__/data/mockTMDBUnknownShows';
 import transformPaginatedShows from '@/services/TMDB/utils/transformPaginatedShows/transformPaginatedShows';
 import transformShows from '@/services/TMDB/utils/transformShows/transformShows';
 import PaginatedResponse from '@/types/PaginatedResponse';
-import Show from '@/types/Show';
+import { Show } from '@/types/Show';
 
 describe('transformPaginatedShows', () => {
   it('should return correctly transformed data', async () => {

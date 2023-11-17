@@ -1,5 +1,5 @@
 import joinCreators from '@/components/ShowPageHeader/utils/joinCreators/joinCreators';
-import Creator from '@/types/Creator';
+import { Creator } from '@/types/DetailedShow';
 
 describe('joinCreators', () => {
   it('should return correct string for single creator', () => {

@@ -3,7 +3,7 @@ import 'server-only';
 import TMDBApi from '@/services/TMDB/api/client';
 import TMDBVideo from '@/services/TMDB/types/TMDBVideo';
 import transformVideos from '@/services/TMDB/utils/transformVideos/transformVideos';
-import ShowType from '@/types/ShowType';
+import { ShowType } from '@/types/Show';
 import Video from '@/types/Video';
 
 interface TMDBVideoResponse {

@@ -1,6 +1,6 @@
 import TMDBNetwork from '@/services/TMDB/types/TMDBNetwork';
 import transformTvShowNetworks from '@/services/TMDB/utils/transformDetailedTvShow/utils/transformTvShowNetworks/transformTvShowNetworks';
-import Network from '@/types/Network';
+import { Network } from '@/types/DetailedTvShow';
 
 describe('transformTvShowNetworks', () => {
   it('should return correctly transformed data for single network', () => {

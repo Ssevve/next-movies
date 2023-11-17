@@ -3,7 +3,7 @@ import {
   TMDBPersonSearchResultTvShow,
 } from '@/services/TMDB/types/TMDBSearchResult';
 import transformPersonSearchResultShows from '@/services/TMDB/utils/transformPersonSearchResultShows/transformPersonSearchResultShows';
-import PersonSearchResultShow from '@/types/PersonSearchResultShow';
+import { PersonSearchResultShow } from '@/types/SearchResult';
 
 describe('transformPersonSearchResultShows', () => {
   it('should return correctly transformed data for a single movie', async () => {

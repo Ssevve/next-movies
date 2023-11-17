@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 
 import Creators from '@/components/ShowPageHeader/components/Creators/Creators';
-import Creator from '@/types/Creator';
+import { Creator } from '@/types/DetailedShow';
 
 describe('Creators', () => {
   it('should render correctly creators', () => {

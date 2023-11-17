@@ -3,7 +3,7 @@ import TMDBUnknownShow from '@/services/TMDB/types/TMDBUnknownShow';
 import formatDate from '@/services/TMDB/utils/formatDate/formatDate';
 import isTMDBMovie from '@/services/TMDB/utils/isTMDBMovie';
 import isTMDBTvShow from '@/services/TMDB/utils/isTMDBTvShow';
-import Show from '@/types/Show';
+import { Show } from '@/types/Show';
 
 type UniqueShowTypeProps = 'title' | 'showType' | 'releaseDate';
 

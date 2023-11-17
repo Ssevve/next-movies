@@ -7,7 +7,7 @@ import UserScore from '@/components/UserScore/UserScore';
 import cn from '@/lib/cn';
 import getTMDBImagePath from '@/services/TMDB/utils/getTMDBImagePath/getTMDBImagePath';
 import ImageType from '@/types/Image';
-import ShowType from '@/types/ShowType';
+import { ShowType } from '@/types/Show';
 
 interface ShowCardProps {
   poster: ImageType;

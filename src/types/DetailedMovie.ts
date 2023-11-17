@@ -1,8 +1,11 @@
 import TMDBMovieStatus from '@/services/TMDB/types/TMDBMovieStatus';
-import DetailedShow from '@/types/DetailedShow';
-import MovieCastPerson from '@/types/MovieCastPerson';
+import { CastPerson, DetailedShow } from '@/types/DetailedShow';
 
-export default interface DetailedMovie extends DetailedShow<MovieCastPerson, TMDBMovieStatus> {
+export interface MovieCastPerson extends CastPerson {
+  character: string;
+}
+
+export interface DetailedMovie extends DetailedShow<MovieCastPerson, TMDBMovieStatus> {
   budget: number;
   revenue: number;
   runtime: number;

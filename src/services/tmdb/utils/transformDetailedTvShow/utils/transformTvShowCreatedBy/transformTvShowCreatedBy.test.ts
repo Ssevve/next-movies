@@ -1,5 +1,5 @@
 import transformTvShowCreatedBy from '@/services/TMDB/utils/transformDetailedTvShow/utils/transformTvShowCreatedBy/transformTvShowCreatedBy';
-import Creator from '@/types/Creator';
+import { Creator } from '@/types/DetailedShow';
 
 describe('transformTvShowCreatedBy', () => {
   it('should return correctly transformed data for single creator', () => {

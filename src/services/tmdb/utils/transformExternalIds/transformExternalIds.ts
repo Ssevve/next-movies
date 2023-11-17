@@ -1,5 +1,5 @@
 import TMDBExternalIds from '@/services/TMDB/types/TMDBExternalIds';
-import { SocialHandles } from '@/types/SocialHandles';
+import { SocialHandles } from '@/types/DetailedShow';
 
 export default function transformExternalIds(externalIds: TMDBExternalIds): SocialHandles {
   return {

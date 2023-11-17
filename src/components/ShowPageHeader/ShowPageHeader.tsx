@@ -10,8 +10,7 @@ import ShowOverview from '@/components/ShowPageHeader/components/ShowOverview/Sh
 import UserScore from '@/components/UserScore/UserScore';
 import VideoLink from '@/components/VideoLink/VideoLink';
 import getTMDBImagePath from '@/services/TMDB/utils/getTMDBImagePath/getTMDBImagePath';
-import DetailedShow from '@/types/DetailedShow';
-import { SocialHandle } from '@/types/SocialHandles';
+import { DetailedShow, SocialHandle } from '@/types/DetailedShow';
 import Video from '@/types/Video';
 
 type SharedProps = Pick<

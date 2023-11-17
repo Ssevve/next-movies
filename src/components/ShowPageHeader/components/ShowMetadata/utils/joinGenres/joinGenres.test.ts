@@ -1,5 +1,5 @@
 import joinGenres from '@/components/ShowPageHeader/components/ShowMetadata/utils/joinGenres/joinGenres';
-import Genre from '@/types/Genre';
+import { Genre } from '@/types/DetailedShow';
 
 describe('joinGenres', () => {
   it('should return correct string for single genre', () => {

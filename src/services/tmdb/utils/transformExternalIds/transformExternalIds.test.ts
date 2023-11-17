@@ -1,6 +1,6 @@
 import TMDBExternalIds from '@/services/TMDB/types/TMDBExternalIds';
 import transformExternalIds from '@/services/TMDB/utils/transformExternalIds/transformExternalIds';
-import { SocialHandles } from '@/types/SocialHandles';
+import { SocialHandles } from '@/types/DetailedShow';
 
 describe('transformExternalIds', () => {
   it('should return correctly transformed data for defined ids', () => {

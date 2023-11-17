@@ -5,7 +5,7 @@ import TMDBPaginatedResponse from '@/services/TMDB/types/TMDBPaginatedResponse';
 import TMDBTvShow from '@/services/TMDB/types/TMDBTvShow';
 import transformPaginatedShowsResponse from '@/services/TMDB/utils/transformPaginatedShows/transformPaginatedShows';
 import PaginatedResponse from '@/types/PaginatedResponse';
-import Show from '@/types/Show';
+import { Show } from '@/types/Show';
 
 export default async function getOnTheAirTvShows(
   requestPage = 1

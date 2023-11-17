@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 
 import ShowSearchResultCard from '@/app/search/[[...endpoint]]/_components/ShowSearchResultCard/ShowSearchResultCard';
-import ShowSearchResult from '@/types/ShowSearchResult';
+import { ShowSearchResult } from '@/types/SearchResult';
 
 const searchResult: ShowSearchResult = {
   id: 1,

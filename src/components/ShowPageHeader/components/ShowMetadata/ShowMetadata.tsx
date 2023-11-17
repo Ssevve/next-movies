@@ -1,7 +1,7 @@
 import React from 'react';
 
 import joinGenres from '@/components/ShowPageHeader/components/ShowMetadata/utils/joinGenres/joinGenres';
-import Genre from '@/types/Genre';
+import { Genre } from '@/types/DetailedShow';
 import getReleaseYear from '@/utils/getReleaseYear/getReleaseYear';
 
 export interface ShowMetadataProps {

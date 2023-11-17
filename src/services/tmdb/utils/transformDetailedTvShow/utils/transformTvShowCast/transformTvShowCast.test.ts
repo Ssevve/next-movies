@@ -1,6 +1,6 @@
 import TMDBTvShowCastPerson from '@/services/TMDB/types/TMDBTvShowCastPerson';
 import transformTvShowCast from '@/services/TMDB/utils/transformDetailedTvShow/utils/transformTvShowCast/transformTvShowCast';
-import TvShowCastPerson from '@/types/TvShowCastPerson';
+import { TvShowCastPerson } from '@/types/DetailedTvShow';
 
 describe('transformTvShowCast', () => {
   it('should return correctly transformed data for single person', () => {

@@ -1,4 +1,4 @@
-import MovieCastPerson from '@/types/MovieCastPerson';
+import { MovieCastPerson } from '@/types/DetailedMovie';
 
 const mockMovieCast: MovieCastPerson[] = [
   {

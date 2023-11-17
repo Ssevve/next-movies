@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 
 import PersonSearchResultCard from '@/app/search/[[...endpoint]]/_components/PersonSearchResultCard/PersonSearchResultCard';
-import PersonSearchResult from '@/types/PersonSearchResult';
+import { PersonSearchResult } from '@/types/SearchResult';
 
 const searchResult: PersonSearchResult = {
   department: 'Acting',

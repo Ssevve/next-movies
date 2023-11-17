@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import { buttonVariants } from '@/components/ui/Button';
 import cn from '@/lib/cn';
-import NavItemLink from '@/types/NavItemLink';
+import { NavItemLink } from '@/types/NavItem';
 
 interface MobileNavItemProps {
   path: string;

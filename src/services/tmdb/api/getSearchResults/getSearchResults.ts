@@ -6,9 +6,9 @@ import { TMDBSearchResult, TMDBShowSearchResult } from '@/services/TMDB/types/TM
 import transformPersonSearchResult from '@/services/TMDB/utils/transformPersonSearchResult/transformPersonSearchResult';
 import transformShowSearchResult from '@/services/TMDB/utils/transformShowSearchResult/transformShowSearchResult';
 import PaginatedResponse from '@/types/PaginatedResponse';
-import PersonSearchResult from '@/types/PersonSearchResult';
+import { PersonSearchResult } from '@/types/SearchResult';
 import SearchEndpoint from '@/types/SearchEndpoint';
-import ShowSearchResult from '@/types/ShowSearchResult';
+import { ShowSearchResult } from '@/types/SearchResult';
 
 function isTMDBShowSearchResult(result: TMDBSearchResult): result is TMDBShowSearchResult {
   return 'vote_count' in result;

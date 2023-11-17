@@ -2,7 +2,7 @@ import { TMDBImageSizes } from '@/services/TMDB/config';
 import TMDBSeason from '@/services/TMDB/types/TMDBSeason';
 import formatDate from '@/services/TMDB/utils/formatDate/formatDate';
 import getRecentSeason from '@/services/TMDB/utils/transformDetailedTvShow/utils/getRecentSeason/getRecentSeason';
-import Season from '@/types/Season';
+import { Season } from '@/types/DetailedTvShow';
 
 const mockSeasons: TMDBSeason[] = [
   {

@@ -1,6 +1,6 @@
 import TMDBMovieCastPerson from '@/services/TMDB/types/TMDBMovieCastPerson';
 import transformMovieCast from '@/services/TMDB/utils/transformDetailedMovie/utils/transformMovieCast/transformMovieCast';
-import MovieCastPerson from '@/types/MovieCastPerson';
+import { MovieCastPerson } from '@/types/DetailedMovie';
 
 describe('transformMovieCast', () => {
   it('should return correctly transformed data for single person', () => {

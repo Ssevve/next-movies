@@ -1,7 +1,7 @@
 import { TMDBImageSizes } from '@/services/TMDB/config';
 import TMDBSeason from '@/services/TMDB/types/TMDBSeason';
 import formatDate from '@/services/TMDB/utils/formatDate/formatDate';
-import Season from '@/types/Season';
+import { Season } from '@/types/DetailedTvShow';
 
 export default function getRecentSeason(seasons: TMDBSeason[]): Season {
   const recentSeason = seasons.slice(-1)[0];

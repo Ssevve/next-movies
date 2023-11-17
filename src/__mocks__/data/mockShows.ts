@@ -1,5 +1,5 @@
 import { TMDBImageSizes } from '@/services/TMDB/config';
-import Show from '@/types/Show';
+import { Show } from '@/types/Show';
 
 const mockShows: Show[] = [
   {

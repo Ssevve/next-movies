@@ -1,6 +1,6 @@
 import Pagination from '@/components/Pagination/Pagination';
 import ShowCard from '@/components/ShowCard/ShowCard';
-import Show from '@/types/Show';
+import { Show } from '@/types/Show';
 
 interface PaginatedShowsProps {
   shows: Show[];

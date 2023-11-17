@@ -1,7 +1,7 @@
 import TMDBEpisode from '@/services/TMDB/types/TMDBEpisode';
 import formatDate from '@/services/TMDB/utils/formatDate/formatDate';
 import transformDetailedTvShowEpisode from '@/services/TMDB/utils/transformDetailedTvShow/utils/transformDetailedTvShowEpisode/transformDetailedTvShowEpisode';
-import Episode from '@/types/Episode';
+import { Episode } from '@/types/DetailedTvShow';
 
 const mockEpisode: TMDBEpisode = {
   air_date: '2013-09-29',

@@ -10,7 +10,7 @@ import transformExternalIds from '@/services/TMDB/utils/transformExternalIds/tra
 import transformImages from '@/services/TMDB/utils/transformImages/transformImages';
 import transformShows from '@/services/TMDB/utils/transformShows/transformShows';
 import transformVideos from '@/services/TMDB/utils/transformVideos/transformVideos';
-import DetailedMovie from '@/types/DetailedMovie';
+import { DetailedMovie } from '@/types/DetailedMovie';
 
 const mockTMDBDetailedMovie = mockTMDBDetailedMovies.withOriginalLanguage;
 

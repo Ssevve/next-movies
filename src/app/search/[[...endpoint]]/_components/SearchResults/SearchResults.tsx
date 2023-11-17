@@ -2,9 +2,9 @@ import PersonSearchResultCard from '@/app/search/[[...endpoint]]/_components/Per
 import ShowSearchResultCard from '@/app/search/[[...endpoint]]/_components/ShowSearchResultCard/ShowSearchResultCard';
 import Pagination from '@/components/Pagination/Pagination';
 import getSearchResults from '@/services/TMDB/api/getSearchResults/getSearchResults';
-import PersonSearchResult from '@/types/PersonSearchResult';
 import SearchEndpoint from '@/types/SearchEndpoint';
-import ShowSearchResult from '@/types/ShowSearchResult';
+import { PersonSearchResult } from '@/types/SearchResult';
+import { ShowSearchResult } from '@/types/SearchResult';
 
 function isShowSearchResult(
   result: ShowSearchResult | PersonSearchResult

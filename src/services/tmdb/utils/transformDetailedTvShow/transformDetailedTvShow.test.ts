@@ -13,7 +13,7 @@ import transformExternalIds from '@/services/TMDB/utils/transformExternalIds/tra
 import transformImages from '@/services/TMDB/utils/transformImages/transformImages';
 import transformShows from '@/services/TMDB/utils/transformShows/transformShows';
 import transformVideos from '@/services/TMDB/utils/transformVideos/transformVideos';
-import DetailedTvShow from '@/types/DetailedTvShow';
+import { DetailedTvShow } from '@/types/DetailedTvShow';
 
 describe('transformDetailedTvShow', () => {
   it('should return correctly transformed data', () => {

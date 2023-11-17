@@ -5,7 +5,7 @@ import TMDBMovie from '@/services/TMDB/types/TMDBMovie';
 import TMDBPaginatedResponse from '@/services/TMDB/types/TMDBPaginatedResponse';
 import transformPaginatedShowsResponse from '@/services/TMDB/utils/transformPaginatedShows/transformPaginatedShows';
 import PaginatedResponse from '@/types/PaginatedResponse';
-import Show from '@/types/Show';
+import { Show } from '@/types/Show';
 
 export default async function getTheaterMovies(requestPage = 1): Promise<PaginatedResponse<Show>> {
   const res = await TMDBApi(`/movie/now_playing?page=${requestPage}`);

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 import PersonImage from '@/components/PersonImage/PersonImage';
-import PersonSearchResult from '@/types/PersonSearchResult';
+import { PersonSearchResult } from '@/types/SearchResult';
 
 export default function PersonSearchResultCard({
   name,

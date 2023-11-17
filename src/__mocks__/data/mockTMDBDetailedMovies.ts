@@ -110,7 +110,9 @@ const movieBase: Omit<TMDBDetailedMovie, 'original_language' | 'id'> = {
   vote_count: 994,
 };
 
-const mockTMDBDetailedMovies: Record<string, TMDBDetailedMovie> = {
+type MovieMockType = 'withOriginalLanguage' | 'withoutOriginalLanguage';
+
+const mockTMDBDetailedMovies: Record<MovieMockType, TMDBDetailedMovie> = {
   withOriginalLanguage: { ...movieBase, id: 1, original_language: 'en' },
   withoutOriginalLanguage: { ...movieBase, id: 2, original_language: '' },
 };

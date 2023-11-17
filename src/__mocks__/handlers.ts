@@ -1,6 +1,7 @@
 import { rest } from 'msw';
 
 import mockTMDBDetailedMovies from '@/__mocks__/data/mockTMDBDetailedMovies';
+import mockTMDBDetailedTvShows from '@/__mocks__/data/mockTMDBDetailedTvShows';
 import mockTMDBLanguages from '@/__mocks__/data/mockTMDBLanguages';
 import mockTMDBMovies from '@/__mocks__/data/mockTMDBMovies';
 import mockTMDBMovieVideos from '@/__mocks__/data/mockTMDBMovieVideos';
@@ -100,6 +101,13 @@ export const TMDBHandlers = [
     return res(
       ctx.status(200),
       ctx.json(Object.values(mockTMDBDetailedMovies).find(({ id }) => id === Number(movieId)))
+    );
+  }),
+  rest.get(`${TMDBUrls.base}/tv/:tvShowId`, (req, res, ctx) => {
+    const { tvShowId } = req.params;
+    return res(
+      ctx.status(200),
+      ctx.json(Object.values(mockTMDBDetailedTvShows).find(({ id }) => id === Number(tvShowId)))
     );
   }),
   rest.get(`${TMDBUrls.base}/configuration/languages`, (req, res, ctx) => {

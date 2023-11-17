@@ -19,10 +19,9 @@ describe('DetailedMoviePage', () => {
   });
 
   it('should render <MovieFacts /> component', async () => {
-    const expectedMovie = testMovie;
     renderDetailedMoviePage();
     await waitFor(() => {
-      screen.getByText(expectedMovie.status);
+      screen.getByText(testMovie.status);
     });
   });
 

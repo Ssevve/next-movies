@@ -14,7 +14,7 @@ const YoutubeIframeModal = dynamic(
   () => import('@/components/YoutubeIframeModal/YoutubeIframeModal')
 );
 
-interface TvShowPageProps {
+export interface DetailedTvShowPageProps {
   searchParams: {
     play?: string;
   };
@@ -23,7 +23,7 @@ interface TvShowPageProps {
   };
 }
 
-export async function generateMetadata({ params }: TvShowPageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: DetailedTvShowPageProps): Promise<Metadata> {
   const tvShowId = params.id;
 
   const { title, overview } = await getDetailedTvShow(Number(tvShowId));
@@ -34,7 +34,10 @@ export async function generateMetadata({ params }: TvShowPageProps): Promise<Met
   };
 }
 
-export default async function DetailedTvShowPage({ searchParams, params }: TvShowPageProps) {
+export default async function DetailedTvShowPage({
+  searchParams,
+  params,
+}: DetailedTvShowPageProps) {
   const youtubeModalVideoKey = searchParams?.play;
   const tvShowId = params.id;
 

@@ -1,10 +1,10 @@
 import { render, screen, waitFor } from '@testing-library/react';
 
-import TvShowsPage from '@/app/tv/page';
+import MoviesPage from '@/app/movie/page';
 
-describe('TvShowsPage', () => {
+describe('MoviesPage', () => {
   it('should render <PaginatedShows /> component', async () => {
-    render(await TvShowsPage({ searchParams: { page: '1' } }));
+    render(await MoviesPage({ searchParams: { page: '1' } }));
     await waitFor(() => {
       screen.getAllByTestId('show-card');
     });

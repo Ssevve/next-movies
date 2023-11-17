@@ -1,4 +1,4 @@
-import TMDBShowStatus from '@/services/TMDB/types/TMDBShowStatus';
+import { TMDBShowStatus } from '@/services/TMDB/types/TMDBDetailedShow';
 import Backdrop from '@/types/Backdrop';
 import Image from '@/types/Image';
 import { Show, ShowType } from '@/types/Show';

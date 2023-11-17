@@ -1,5 +1,5 @@
 import { TMDBImageSizes } from '@/services/TMDB/config';
-import TMDBUnknownShow from '@/services/TMDB/types/TMDBUnknownShow';
+import { TMDBUnknownShow } from '@/services/TMDB/types/TMDBShow';
 import formatDate from '@/services/TMDB/utils/formatDate/formatDate';
 import isTMDBMovie from '@/services/TMDB/utils/isTMDBMovie';
 import isTMDBTvShow from '@/services/TMDB/utils/isTMDBTvShow';

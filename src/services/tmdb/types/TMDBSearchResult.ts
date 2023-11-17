@@ -1,6 +1,4 @@
-import TMDBMovie from '@/services/TMDB/types/TMDBMovie';
-import TMDBTvShow from '@/services/TMDB/types/TMDBTvShow';
-import TMDBUnknownShow from '@/services/TMDB/types/TMDBUnknownShow';
+import { TMDBMovie, TMDBTvShow, TMDBUnknownShow } from '@/services/TMDB/types/TMDBShow';
 
 export type TMDBShowSearchResult = {
   overview?: string;

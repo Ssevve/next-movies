@@ -1,4 +1,4 @@
-import TMDBTvShowCastPerson from '@/services/TMDB/types/TMDBTvShowCastPerson';
+import { TMDBTvShowCastPerson } from '@/services/TMDB/types/TMDBDetailedTvShow';
 import { TvShowCastPerson } from '@/types/DetailedTvShow';
 
 export default function transformTvShowCast(cast: TMDBTvShowCastPerson[]): TvShowCastPerson[] {

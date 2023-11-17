@@ -1,4 +1,4 @@
-import TMDBUnknownShow from '@/services/TMDB/types/TMDBUnknownShow';
+import { TMDBUnknownShow } from '@/services/TMDB/types/TMDBShow';
 import transformShows from '@/services/TMDB/utils/transformShows/transformShows';
 import PaginatedResponse from '@/types/PaginatedResponse';
 import { Show } from '@/types/Show';

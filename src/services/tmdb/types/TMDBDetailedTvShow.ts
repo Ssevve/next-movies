@@ -1,15 +1,66 @@
-import TMDBContentRatings from '@/services/TMDB/types/TMDBContentRatings';
-import TMDBDetailedShow from '@/services/TMDB/types/TMDBDetailedShow';
-import TMDBEpisode from '@/services/TMDB/types/TMDBEpisode';
-import TMDBNetwork from '@/services/TMDB/types/TMDBNetwork';
+import { TMDBDetailedShow, TMDBShowStatus } from '@/services/TMDB/types/TMDBDetailedShow';
 import TMDBPaginatedResponse from '@/services/TMDB/types/TMDBPaginatedResponse';
-import TMDBSeason from '@/services/TMDB/types/TMDBSeason';
-import TMDBTvShow from '@/services/TMDB/types/TMDBTvShow';
-import TMDBTvShowCastPerson from '@/services/TMDB/types/TMDBTvShowCastPerson';
-import TMDBTvShowStatus from '@/services/TMDB/types/TMDBTvShowStatus';
-import TMDBTvShowType from '@/services/TMDB/types/TMDBTvShowType';
+import { TMDBTvShow } from '@/services/TMDB/types/TMDBShow';
 
-export default interface TMDBDetailedTvShow extends TMDBDetailedShow<TMDBTvShowStatus>, TMDBTvShow {
+export interface TMDBTvShowCastPerson {
+  id: number;
+  name: string;
+  profile_path?: string;
+  roles: {
+    character: string;
+  }[];
+  total_episode_count: number;
+}
+
+export interface TMDBNetwork {
+  id: number;
+  logo_path: string;
+  name: string;
+}
+
+export interface TMDBSeason {
+  air_date?: string;
+  episode_count: number;
+  id: number;
+  name: string;
+  overview: string;
+  poster_path?: string;
+  season_number: number;
+  vote_average: number;
+}
+
+type TMDBEpisodeType = 'finale' | 'standard' | 'mid_season';
+
+export interface TMDBEpisode {
+  id: number;
+  name: string;
+  air_date?: string;
+  episode_number: number;
+  episode_type: TMDBEpisodeType;
+  season_number: number;
+  show_id: number;
+}
+
+export interface TMDBContentRatings {
+  results: {
+    descriptors: string[];
+    iso_3166_1: string;
+    rating: string;
+  }[];
+}
+
+export type TMDBTvShowStatus = TMDBShowStatus | 'Pilot' | 'Returning Series' | 'Ended';
+
+export type TMDBTvShowType =
+  | 'Documentary'
+  | 'News'
+  | 'Miniseries'
+  | 'Reality'
+  | 'Scripted'
+  | 'Talk Show'
+  | 'Video';
+
+export interface TMDBDetailedTvShow extends TMDBDetailedShow<TMDBTvShowStatus>, TMDBTvShow {
   created_by: {
     id: number;
     name: string;

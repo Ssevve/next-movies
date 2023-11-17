@@ -1,6 +1,6 @@
 import mockTMDBImages from '@/__mocks__/data/mockTMDBImages';
 import mockTMDBMovieVideos from '@/__mocks__/data/mockTMDBMovieVideos';
-import TMDBDetailedMovie from '@/services/TMDB/types/TMDBDetailedMovie';
+import { TMDBDetailedMovie } from '@/services/TMDB/types/TMDBDetailedMovie';
 
 const movieBase: Omit<TMDBDetailedMovie, 'original_language' | 'id'> = {
   backdrop_path: '/1syW9SNna38rSl9fnXwc9fP7POW.jpg',

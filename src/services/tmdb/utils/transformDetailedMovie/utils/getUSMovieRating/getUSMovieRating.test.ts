@@ -1,4 +1,4 @@
-import TMDBReleaseDates from '@/services/TMDB/types/TMDBReleaseDates';
+import { TMDBReleaseDates } from '@/services/TMDB/types/TMDBDetailedMovie';
 import getUSMovieRating from '@/services/TMDB/utils/transformDetailedMovie/utils/getUSMovieRating/getUSMovieRating';
 
 describe('getUSMovieRating', () => {

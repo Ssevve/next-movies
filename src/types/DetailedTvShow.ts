@@ -1,7 +1,9 @@
-import TMDBEpisode from '@/services/TMDB/types/TMDBEpisode';
-import TMDBNetwork from '@/services/TMDB/types/TMDBNetwork';
-import TMDBTvShowStatus from '@/services/TMDB/types/TMDBTvShowStatus';
-import TMDBTvShowType from '@/services/TMDB/types/TMDBTvShowType';
+import {
+  TMDBEpisode,
+  TMDBNetwork,
+  TMDBTvShowStatus,
+  TMDBTvShowType,
+} from '@/services/TMDB/types/TMDBDetailedTvShow';
 import { CastPerson, DetailedShow } from '@/types/DetailedShow';
 import Image from '@/types/Image';
 import SnakeToCamelCase from '@/types/SnakeToCamelCase';

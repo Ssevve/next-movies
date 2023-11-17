@@ -1,4 +1,4 @@
-import TMDBTvShowCastPerson from '@/services/TMDB/types/TMDBTvShowCastPerson';
+import { TMDBTvShowCastPerson } from '@/services/TMDB/types/TMDBDetailedTvShow';
 import transformTvShowCast from '@/services/TMDB/utils/transformDetailedTvShow/utils/transformTvShowCast/transformTvShowCast';
 import { TvShowCastPerson } from '@/types/DetailedTvShow';
 

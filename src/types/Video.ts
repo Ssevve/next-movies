@@ -1,4 +1,4 @@
-import TMDBVideoType from '@/services/TMDB/types/TMDBVideoType';
+import { TMDBVideoType } from '@/services/TMDB/types/TMDBVideo';
 import Backdrop from '@/types/Backdrop';
 import Image from '@/types/Image';
 import { ShowType } from '@/types/Show';

@@ -1,6 +1,13 @@
-import TMDBVideoType from '@/services/TMDB/types/TMDBVideoType';
+export type TMDBVideoType =
+  | 'Trailer'
+  | 'Teaser'
+  | 'Featurette'
+  | 'Behind the Scenes'
+  | 'Clip'
+  | 'Bloopers'
+  | 'Opening Credits';
 
-export default interface TMDBVideo {
+export interface TMDBVideo {
   type: TMDBVideoType;
   key: string;
   name: string;

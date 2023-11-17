@@ -1,8 +1,8 @@
 import 'server-only';
 
 import TMDBApi from '@/services/TMDB/api/client';
-import TMDBMovie from '@/services/TMDB/types/TMDBMovie';
 import TMDBPaginatedResponse from '@/services/TMDB/types/TMDBPaginatedResponse';
+import { TMDBMovie } from '@/services/TMDB/types/TMDBShow';
 import transformUpcomingMovies from '@/services/TMDB/utils/transformUpcomingMovies/transformUpcomingMovies';
 import PaginatedResponse from '@/types/PaginatedResponse';
 import UpcomingMovie from '@/types/UpcomingMovie';

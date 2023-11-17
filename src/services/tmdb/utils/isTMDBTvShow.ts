@@ -1,5 +1,4 @@
-import TMDBTvShow from '@/services/TMDB/types/TMDBTvShow';
-import TMDBUnknownShow from '@/services/TMDB/types/TMDBUnknownShow';
+import { TMDBTvShow, TMDBUnknownShow } from '@/services/TMDB/types/TMDBShow';
 
 export default function isTMDBTvShow(show: TMDBUnknownShow): show is TMDBTvShow {
   return 'name' in show;

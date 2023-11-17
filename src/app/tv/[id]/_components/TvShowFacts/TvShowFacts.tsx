@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
 import ShowFacts, { ShowFactsProps } from '@/components/ShowFacts/ShowFacts';
-import TMDBTvShowType from '@/services/TMDB/types/TMDBTvShowType';
+import { TMDBTvShowType } from '@/services/TMDB/types/TMDBDetailedTvShow';
 import getTMDBImagePath from '@/services/TMDB/utils/getTMDBImagePath/getTMDBImagePath';
 import { Network } from '@/types/DetailedTvShow';
 

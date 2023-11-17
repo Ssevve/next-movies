@@ -1,4 +1,4 @@
-import TMDBUnknownShow from '@/services/TMDB/types/TMDBUnknownShow';
+import { TMDBUnknownShow } from '@/services/TMDB/types/TMDBShow';
 import transformShow from '@/services/TMDB/utils/transformShow/transformShow';
 
 export default function transformShows(shows: TMDBUnknownShow[]) {

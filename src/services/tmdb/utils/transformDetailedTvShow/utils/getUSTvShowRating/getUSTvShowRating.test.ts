@@ -1,4 +1,4 @@
-import TMDBContentRatings from '@/services/TMDB/types/TMDBContentRatings';
+import { TMDBContentRatings } from '@/services/TMDB/types/TMDBDetailedTvShow';
 import getUSTvShowRating from '@/services/TMDB/utils/transformDetailedTvShow/utils/getUSTvShowRating/getUSTvShowRating';
 
 describe('getUSTvShowRating', () => {

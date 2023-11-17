@@ -1,4 +1,4 @@
-import TMDBMovieCrewPerson from '@/services/TMDB/types/TMDBMovieCrewPerson';
+import { TMDBMovieCrewPerson } from '@/services/TMDB/types/TMDBDetailedMovie';
 import { Creator } from '@/types/DetailedShow';
 
 export default function transformMovieCreatedBy(crew: TMDBMovieCrewPerson[]): Creator[] {

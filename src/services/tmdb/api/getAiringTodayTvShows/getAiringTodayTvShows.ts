@@ -2,7 +2,7 @@ import 'server-only';
 
 import TMDBApi from '@/services/TMDB/api/client';
 import TMDBPaginatedResponse from '@/services/TMDB/types/TMDBPaginatedResponse';
-import TMDBTvShow from '@/services/TMDB/types/TMDBTvShow';
+import { TMDBTvShow } from '@/services/TMDB/types/TMDBShow';
 import transformPaginatedShowsResponse from '@/services/TMDB/utils/transformPaginatedShows/transformPaginatedShows';
 import PaginatedResponse from '@/types/PaginatedResponse';
 import { Show } from '@/types/Show';

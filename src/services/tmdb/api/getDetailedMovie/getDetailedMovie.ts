@@ -2,7 +2,7 @@ import 'server-only';
 
 import TMDBApi from '@/services/TMDB/api/client';
 import getLanguages from '@/services/TMDB/api/getLanguages/getLanguages';
-import TMDBDetailedMovie from '@/services/TMDB/types/TMDBDetailedMovie';
+import { TMDBDetailedMovie } from '@/services/TMDB/types/TMDBDetailedMovie';
 import transformDetailedMovie from '@/services/TMDB/utils/transformDetailedMovie/transformDetailedMovie';
 import { DetailedMovie } from '@/types/DetailedMovie';
 

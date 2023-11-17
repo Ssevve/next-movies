@@ -1,6 +1,6 @@
 import mockTMDBDetailedMovies from '@/__mocks__/data/mockTMDBDetailedMovies';
 import { TMDBImageSizes } from '@/services/TMDB/config';
-import TMDBDetailedMovie from '@/services/TMDB/types/TMDBDetailedMovie';
+import { TMDBDetailedMovie } from '@/services/TMDB/types/TMDBDetailedMovie';
 import formatDate from '@/services/TMDB/utils/formatDate/formatDate';
 import transformDetailedMovie from '@/services/TMDB/utils/transformDetailedMovie/transformDetailedMovie';
 import getUSMovieRating from '@/services/TMDB/utils/transformDetailedMovie/utils/getUSMovieRating/getUSMovieRating';

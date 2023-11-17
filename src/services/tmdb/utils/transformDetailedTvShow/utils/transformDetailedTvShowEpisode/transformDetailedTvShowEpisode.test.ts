@@ -1,4 +1,4 @@
-import TMDBEpisode from '@/services/TMDB/types/TMDBEpisode';
+import { TMDBEpisode } from '@/services/TMDB/types/TMDBDetailedTvShow';
 import formatDate from '@/services/TMDB/utils/formatDate/formatDate';
 import transformDetailedTvShowEpisode from '@/services/TMDB/utils/transformDetailedTvShow/utils/transformDetailedTvShowEpisode/transformDetailedTvShowEpisode';
 import { Episode } from '@/types/DetailedTvShow';

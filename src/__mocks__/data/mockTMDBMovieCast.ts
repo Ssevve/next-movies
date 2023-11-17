@@ -1,4 +1,4 @@
-import TMDBMovieCastPerson from '@/services/TMDB/types/TMDBMovieCastPerson';
+import { TMDBMovieCastPerson } from '@/services/TMDB/types/TMDBDetailedMovie';
 
 const mockMovieCast: TMDBMovieCastPerson[] = [
   {

@@ -1,4 +1,4 @@
-import TMDBExternalIds from '@/services/TMDB/types/TMDBExternalIds';
+import { TMDBExternalIds } from '@/services/TMDB/types/TMDBDetailedShow';
 import transformExternalIds from '@/services/TMDB/utils/transformExternalIds/transformExternalIds';
 import { SocialHandles } from '@/types/DetailedShow';
 

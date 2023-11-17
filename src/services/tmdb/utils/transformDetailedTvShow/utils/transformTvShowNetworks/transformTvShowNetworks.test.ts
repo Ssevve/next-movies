@@ -1,4 +1,4 @@
-import TMDBNetwork from '@/services/TMDB/types/TMDBNetwork';
+import { TMDBNetwork } from '@/services/TMDB/types/TMDBDetailedTvShow';
 import transformTvShowNetworks from '@/services/TMDB/utils/transformDetailedTvShow/utils/transformTvShowNetworks/transformTvShowNetworks';
 import { Network } from '@/types/DetailedTvShow';
 

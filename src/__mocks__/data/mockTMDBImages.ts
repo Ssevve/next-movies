@@ -1,4 +1,4 @@
-import TMDBImages from '@/services/TMDB/types/TMDBImages';
+import { TMDBImages } from '@/services/TMDB/types/TMDBDetailedShow';
 
 const mockTMDBImages: TMDBImages = {
   backdrops: [

@@ -1,4 +1,4 @@
-import TMDBMovieStatus from '@/services/TMDB/types/TMDBMovieStatus';
+import { TMDBMovieStatus } from '@/services/TMDB/types/TMDBDetailedMovie';
 import { CastPerson, DetailedShow } from '@/types/DetailedShow';
 
 export interface MovieCastPerson extends CastPerson {

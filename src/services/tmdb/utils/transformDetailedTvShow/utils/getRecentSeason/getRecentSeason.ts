@@ -1,5 +1,5 @@
 import { TMDBImageSizes } from '@/services/TMDB/config';
-import TMDBSeason from '@/services/TMDB/types/TMDBSeason';
+import { TMDBSeason } from '@/services/TMDB/types/TMDBDetailedTvShow';
 import formatDate from '@/services/TMDB/utils/formatDate/formatDate';
 import { Season } from '@/types/DetailedTvShow';
 

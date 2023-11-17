@@ -1,10 +1,22 @@
-import TMDBExternalIds from '@/services/TMDB/types/TMDBExternalIds';
-import TMDBImages from '@/services/TMDB/types/TMDBImages';
-import TMDBShow from '@/services/TMDB/types/TMDBShow';
-import TMDBShowStatus from '@/services/TMDB/types/TMDBShowStatus';
-import TMDBVideo from '@/services/TMDB/types/TMDBVideo';
+import { TMDBShow } from '@/services/TMDB/types/TMDBShow';
+import { TMDBVideo } from '@/services/TMDB/types/TMDBVideo';
 
-export default interface TMDBDetailedShow<S = TMDBShowStatus> extends TMDBShow {
+import TMDBImage from './TMDBImage';
+
+export interface TMDBImages {
+  backdrops: TMDBImage[];
+  posters: TMDBImage[];
+}
+
+export interface TMDBExternalIds {
+  facebook_id: string;
+  instagram_id: string;
+  twitter_id: string;
+}
+
+export type TMDBShowStatus = 'Cancelled' | 'In Production';
+
+export interface TMDBDetailedShow<S = TMDBShowStatus> extends TMDBShow {
   genres: { id: number; name: string }[];
   images: TMDBImages;
   videos: {

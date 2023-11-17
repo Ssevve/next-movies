@@ -1,5 +1,5 @@
 import { TMDBImageSizes } from '@/services/TMDB/config';
-import TMDBVideo from '@/services/TMDB/types/TMDBVideo';
+import { TMDBVideo } from '@/services/TMDB/types/TMDBVideo';
 import { ShowType } from '@/types/Show';
 import Video from '@/types/Video';
 

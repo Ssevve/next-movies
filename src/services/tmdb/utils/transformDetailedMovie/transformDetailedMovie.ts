@@ -1,5 +1,5 @@
 import { TMDBImageSizes } from '@/services/TMDB/config';
-import TMDBDetailedMovie from '@/services/TMDB/types/TMDBDetailedMovie';
+import { TMDBDetailedMovie } from '@/services/TMDB/types/TMDBDetailedMovie';
 import formatDate from '@/services/TMDB/utils/formatDate/formatDate';
 import getUSMovieRating from '@/services/TMDB/utils/transformDetailedMovie/utils/getUSMovieRating/getUSMovieRating';
 import transformMovieCast from '@/services/TMDB/utils/transformDetailedMovie/utils/transformMovieCast/transformMovieCast';

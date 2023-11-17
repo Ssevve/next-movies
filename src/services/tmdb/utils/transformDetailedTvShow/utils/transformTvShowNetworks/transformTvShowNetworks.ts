@@ -1,4 +1,4 @@
-import TMDBNetwork from '@/services/TMDB/types/TMDBNetwork';
+import { TMDBNetwork } from '@/services/TMDB/types/TMDBDetailedTvShow';
 import { Network } from '@/types/DetailedTvShow';
 
 export default function transformTvShowNetworks(networks: TMDBNetwork[]): Network[] {

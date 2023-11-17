@@ -1,6 +1,6 @@
 import mockTMDBDetailedTvShows from '@/__mocks__/data/mockTMDBDetailedTvShows';
 import { TMDBImageSizes } from '@/services/TMDB/config';
-import TMDBDetailedTvShow from '@/services/TMDB/types/TMDBDetailedTvShow';
+import { TMDBDetailedTvShow } from '@/services/TMDB/types/TMDBDetailedTvShow';
 import formatDate from '@/services/TMDB/utils/formatDate/formatDate';
 import transformDetailedTvShow from '@/services/TMDB/utils/transformDetailedTvShow/transformDetailedTvShow';
 import getRecentSeason from '@/services/TMDB/utils/transformDetailedTvShow/utils/getRecentSeason/getRecentSeason';

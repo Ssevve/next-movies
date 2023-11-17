@@ -1,4 +1,4 @@
-import TMDBDetailedTvShow from '@/services/TMDB/types/TMDBDetailedTvShow';
+import { TMDBDetailedTvShow } from '@/services/TMDB/types/TMDBDetailedTvShow';
 
 const tvShowBase: Omit<TMDBDetailedTvShow, 'original_language' | 'id'> = {
   aggregate_credits: {

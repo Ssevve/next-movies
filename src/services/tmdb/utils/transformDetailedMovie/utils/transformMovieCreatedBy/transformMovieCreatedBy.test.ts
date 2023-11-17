@@ -1,4 +1,4 @@
-import TMDBMovieCrewPerson from '@/services/TMDB/types/TMDBMovieCrewPerson';
+import { TMDBMovieCrewPerson } from '@/services/TMDB/types/TMDBDetailedMovie';
 import transformMovieCreatedBy from '@/services/TMDB/utils/transformDetailedMovie/utils/transformMovieCreatedBy/transformMovieCreatedBy';
 import { Creator } from '@/types/DetailedShow';
 

@@ -1,21 +1,38 @@
-import TMDBDetailedShow from '@/services/TMDB/types/TMDBDetailedShow';
-import TMDBMovie from '@/services/TMDB/types/TMDBMovie';
-import TMDBMovieCastPerson from '@/services/TMDB/types/TMDBMovieCastPerson';
-import TMDBMovieStatus from '@/services/TMDB/types/TMDBMovieStatus';
+import { TMDBDetailedShow, TMDBShowStatus } from '@/services/TMDB/types/TMDBDetailedShow';
 import TMDBPaginatedResponse from '@/services/TMDB/types/TMDBPaginatedResponse';
-import TMDBReleaseDates from '@/services/TMDB/types/TMDBReleaseDates';
+import { TMDBMovie } from '@/services/TMDB/types/TMDBShow';
 
-export default interface TMDBDetailedMovie extends TMDBDetailedShow<TMDBMovieStatus>, TMDBMovie {
+export interface TMDBReleaseDates {
+  results: {
+    iso_3166_1: string;
+    release_dates: {
+      certification: string;
+    }[];
+  }[];
+}
+
+export interface TMDBMovieCastPerson {
+  id: number;
+  name: string;
+  profile_path?: string;
+  character: string;
+}
+
+export interface TMDBMovieCrewPerson {
+  id: number;
+  name: string;
+  job: string;
+}
+
+export type TMDBMovieStatus = TMDBShowStatus | 'Post Production' | 'Released';
+
+export interface TMDBDetailedMovie extends TMDBDetailedShow<TMDBMovieStatus>, TMDBMovie {
   budget: number;
   revenue: number;
   runtime: number;
   credits: {
     cast: TMDBMovieCastPerson[];
-    crew: {
-      id: number;
-      job: string;
-      name: string;
-    }[];
+    crew: TMDBMovieCrewPerson[];
   };
   keywords: { keywords: { id: number; name: string }[] };
   release_dates: TMDBReleaseDates;

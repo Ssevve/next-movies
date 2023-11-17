@@ -1,4 +1,4 @@
-import TMDBMovie from '@/services/TMDB/types/TMDBMovie';
+import { TMDBMovie } from '@/services/TMDB/types/TMDBShow';
 import transformShow from '@/services/TMDB/utils/transformShow/transformShow';
 import UpcomingMovie from '@/types/UpcomingMovie';
 

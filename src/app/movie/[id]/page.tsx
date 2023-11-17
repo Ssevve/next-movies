@@ -13,7 +13,7 @@ const YoutubeIframeModal = dynamic(
   () => import('@/components/YoutubeIframeModal/YoutubeIframeModal')
 );
 
-interface MoviePageProps {
+export interface DetailedMoviePageProps {
   searchParams: {
     play?: string;
   };
@@ -22,7 +22,7 @@ interface MoviePageProps {
   };
 }
 
-export async function generateMetadata({ params }: MoviePageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: DetailedMoviePageProps): Promise<Metadata> {
   const movieId = params.id;
 
   const { title, overview } = await getDetailedMovie(Number(movieId));
@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: MoviePageProps): Promise<Meta
   };
 }
 
-export default async function DetailedMoviePage({ searchParams, params }: MoviePageProps) {
+export default async function DetailedMoviePage({ searchParams, params }: DetailedMoviePageProps) {
   const youtubeModalVideoKey = searchParams?.play;
   const movieId = params.id;
 

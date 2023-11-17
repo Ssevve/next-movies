@@ -100,6 +100,10 @@ export const TMDBHandlers = [
     const page = getRequestedPage(req);
     return res(ctx.status(200), ctx.json({ page, results: mockTMDBTvShows }));
   }),
+  rest.get(`${TMDBUrls.base}/tv/on_the_air`, (req, res, ctx) => {
+    const page = getRequestedPage(req);
+    return res(ctx.status(200), ctx.json({ page, results: mockTMDBTvShows }));
+  }),
   rest.get(`${TMDBUrls.base}/movie/:movieId`, (req, res, ctx) => {
     const { movieId } = req.params;
     return res(

@@ -3,7 +3,6 @@ import { Person } from '@/types/Person';
 import PersonImage from '../PersonImage/PersonImage';
 import PersonShows from '../PersonShows/PersonShows';
 
-// TODO: tests
 export default function PersonCard({ name, imagePath, department, shows }: Person) {
   return (
     <div className="flex flex-col gap-4">

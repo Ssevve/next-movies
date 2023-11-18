@@ -34,7 +34,7 @@ export default function ShowCard({
       data-testid="show-card"
     >
       <Link href={`/${showType}/${id}`} className="flex h-full flex-col">
-        <div className="relative h-full">
+        <div className="relative h-full min-h-[225px]">
           {poster.path ? (
             <Image
               src={getTMDBImagePath(poster.path, poster.width, poster.height)}

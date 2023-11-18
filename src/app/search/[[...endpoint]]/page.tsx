@@ -3,7 +3,7 @@ import { Suspense } from 'react';
 
 import SearchCategories from '@/app/search/[[...endpoint]]/_components/SearchCategories/SearchCategories';
 import SearchResults from '@/app/search/[[...endpoint]]/_components/SearchResults/SearchResults';
-import getSearchResultsCount from '@/app/search/[[...endpoint]]/utils/getSearchResultsCount';
+import getSearchResultsCount from '@/app/search/[[...endpoint]]/utils/getSearchResultsCount/getSearchResultsCount';
 import Searchbar from '@/components/Searchbar/Searchbar';
 import Spinner from '@/components/ui/Spinner';
 import { searchEndpoints } from '@/lib/constants';

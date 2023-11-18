@@ -15,6 +15,8 @@ const MobileMenu = dynamic(() => import('@/components/MobileMenu/MobileMenu'));
 export default function Navbar() {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
 
+  const closeMobileMenu = () => setShowMobileMenu(false);
+
   return (
     <header className="sticky top-0 z-50 border-b bg-background shadow">
       <div className="container flex items-center justify-between p-4">
@@ -27,8 +29,8 @@ export default function Navbar() {
         >
           <Menu aria-hidden="true" />
         </Button>
-        {showMobileMenu && <MobileMenu />}
-        <Link href="/">
+        {showMobileMenu && <MobileMenu close={closeMobileMenu} />}
+        <Link href="/" onClick={closeMobileMenu}>
           <Logo />
         </Link>
         <DesktopNav />

@@ -8,9 +8,10 @@ interface MobileNavItemProps {
   path: string;
   label: string;
   links: NavItemLink[];
+  closeMenu: () => void;
 }
 
-export default function MobileNavItem({ path, label, links }: MobileNavItemProps) {
+export default function MobileNavItem({ path, label, links, closeMenu }: MobileNavItemProps) {
   return (
     <div>
       <h2 className="mb-2 ml-4 text-lg font-semibold tracking-tight text-primary">{label}</h2>
@@ -20,6 +21,7 @@ export default function MobileNavItem({ path, label, links }: MobileNavItemProps
             <Link
               className={cn(buttonVariants({ variant: 'ghost' }), 'w-full justify-start')}
               href={`${path}${href}`}
+              onClick={() => closeMenu()}
             >
               {name}
             </Link>

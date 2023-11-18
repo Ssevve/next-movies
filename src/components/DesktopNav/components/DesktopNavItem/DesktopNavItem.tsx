@@ -36,8 +36,8 @@ export default function DesktopNavItem({ label, path, links }: DesktopNavDropdow
         <div data-testid="desktop-nav-item-menu">
           <DropdownMenuContent hideWhenDetached align="end">
             {links.map(({ href, name }) => (
-              <DropdownMenuItem key={href}>
-                <Link href={`${path}${href}`} className="text-sm">
+              <DropdownMenuItem key={href} asChild>
+                <Link href={`${path}${href}`} className="h-full w-full text-sm">
                   {name}
                 </Link>
               </DropdownMenuItem>

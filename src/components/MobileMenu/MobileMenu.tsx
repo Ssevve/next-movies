@@ -3,7 +3,11 @@ import useLockedBody from '@/hooks/useLockedBody';
 import cn from '@/lib/cn';
 import { navItems } from '@/lib/constants';
 
-export default function MobileMenu() {
+interface MobileMenuProps {
+  close: () => void;
+}
+
+export default function MobileMenu({ close }: MobileMenuProps) {
   useLockedBody(true);
 
   return (
@@ -17,7 +21,7 @@ export default function MobileMenu() {
         >
           {navItems.map(({ label, path, links }) => (
             <li key={path}>
-              <MobileNavItem label={label} links={links} path={path} />
+              <MobileNavItem label={label} links={links} path={path} closeMenu={close} />
             </li>
           ))}
         </ul>

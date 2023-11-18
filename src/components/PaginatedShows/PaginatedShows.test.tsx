@@ -16,17 +16,17 @@ describe('PaginatedShows', () => {
     expect(screen.getAllByTestId('show-card')).toHaveLength(expectedShowCount);
   });
 
-  it('should render all of shows  if totalShows length is less than showsPerPage', () => {
+  it('should render all of shows  if "totalShows" is less than "showsPerPage"', () => {
     render(<PaginatedShows shows={mockShows} totalShows={mockShows.length} />);
     expect(screen.getAllByTestId('show-card')).toHaveLength(mockShows.length);
   });
 
-  it('should not render <Pagination /> component if totalShows length is less than showsPerPage', () => {
+  it('should not render <Pagination /> component if "totalShows" is less than "showsPerPage"', () => {
     render(<PaginatedShows showsPerPage={20} shows={mockShows} totalShows={mockShows.length} />);
     expect(screen.queryByRole('button', { name: /previous page/i })).not.toBeInTheDocument();
   });
 
-  it('should render <Pagination /> component if totalShows length is greater than showsPerPage', () => {
+  it('should render <Pagination /> component if "totalShows" is greater than "showsPerPage"', () => {
     render(<PaginatedShows showsPerPage={1} shows={mockShows} totalShows={mockShows.length} />);
     expect(screen.getByRole('button', { name: /previous page/i })).toBeInTheDocument();
   });

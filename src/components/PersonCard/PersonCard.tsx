@@ -5,7 +5,7 @@ import PersonShows from '../PersonShows/PersonShows';
 
 export default function PersonCard({ name, imagePath, department, shows }: Person) {
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4" data-testid="person-card">
       <div className="shrink-0">
         <PersonImage imagePath={imagePath} alt={name} />
       </div>

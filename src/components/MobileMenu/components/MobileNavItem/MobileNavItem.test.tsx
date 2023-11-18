@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 import MobileNavItem from '@/components/MobileMenu/components/MobileNavItem/MobileNavItem';
 import { navItems } from '@/lib/constants';
@@ -8,6 +9,7 @@ describe('MobileNavItem', () => {
     const expectedItem = navItems[0];
     render(
       <MobileNavItem
+        closeMenu={() => {}}
         label={expectedItem.label}
         links={expectedItem.links}
         path={expectedItem.path}
@@ -20,6 +22,7 @@ describe('MobileNavItem', () => {
     const expectedItem = navItems[0];
     render(
       <MobileNavItem
+        closeMenu={() => {}}
         label={expectedItem.label}
         links={expectedItem.links}
         path={expectedItem.path}
@@ -28,10 +31,11 @@ describe('MobileNavItem', () => {
     expect(screen.getAllByRole('link')).toHaveLength(expectedItem.links.length);
   });
 
-  it('should render all links width correct "href" attribute', async () => {
+  it('should render all links width correct "href" attribute', () => {
     const expectedItem = navItems[0];
     render(
       <MobileNavItem
+        closeMenu={() => {}}
         label={expectedItem.label}
         links={expectedItem.links}
         path={expectedItem.path}
@@ -44,5 +48,23 @@ describe('MobileNavItem', () => {
         href === '/' ? expectedItem.path : `${expectedItem.path}${href}`
       );
     });
+  });
+
+  it('should call "closeMenu" on link click', async () => {
+    const user = userEvent.setup();
+    const expectedItem = navItems[0];
+    const expectedLink = navItems[0].links[0];
+    const mockCloseMenu = jest.fn();
+    render(
+      <MobileNavItem
+        closeMenu={mockCloseMenu}
+        label={expectedItem.label}
+        links={expectedItem.links}
+        path={expectedItem.path}
+      />
+    );
+
+    await user.click(screen.getByRole('link', { name: expectedLink.name }));
+    expect(mockCloseMenu).toHaveBeenCalledTimes(1);
   });
 });

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 import ShowCard from '@/components/ShowCard/ShowCard';
-import { ShowSearchResult } from '@/types/SearchResult';
+import ShowSearchResult from '@/types/ShowSearchResult';
 
 export default function ShowSearchResultCard({
   id,

@@ -1,22 +1,12 @@
-import PersonImage from '@/components/PersonImage/PersonImage';
-import PersonShows from '@/components/PersonShows/PersonShows';
-import { PersonShow } from '@/types/Person';
+import { Person } from '@/types/Person';
 
-interface PersonSearchResultCardProps {
-  name: string;
-  imagePath: string;
-  department: string;
-  shows: PersonShow[];
-}
+import PersonImage from '../PersonImage/PersonImage';
+import PersonShows from '../PersonShows/PersonShows';
 
-export default function PersonSearchResultCard({
-  name,
-  imagePath,
-  department,
-  shows,
-}: PersonSearchResultCardProps) {
+// TODO: tests
+export default function PersonCard({ name, imagePath, department, shows }: Person) {
   return (
-    <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-start">
+    <div className="flex flex-col gap-4">
       <div className="shrink-0">
         <PersonImage imagePath={imagePath} alt={name} />
       </div>

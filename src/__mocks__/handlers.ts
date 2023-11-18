@@ -5,6 +5,7 @@ import mockTMDBDetailedTvShows from '@/__mocks__/data/mockTMDBDetailedTvShows';
 import mockTMDBLanguages from '@/__mocks__/data/mockTMDBLanguages';
 import mockTMDBMovies from '@/__mocks__/data/mockTMDBMovies';
 import mockTMDBMovieVideos from '@/__mocks__/data/mockTMDBMovieVideos';
+import mockTMDBPerson from '@/__mocks__/data/mockTMDBPerson';
 import mockTMDBSearchResults from '@/__mocks__/data/mockTMDBSearchResults';
 import mockTMDBTvShows from '@/__mocks__/data/mockTMDBTvShows';
 import mockTMDBTvShowVideos from '@/__mocks__/data/mockTMDBTvShowVideos';
@@ -33,7 +34,13 @@ export const TMDBHandlers = [
       );
     }
   }),
-
+  rest.get(`${TMDBUrls.base}/person/popular`, (req, res, ctx) => {
+    const page = getRequestedPage(req);
+    return res(
+      ctx.status(200),
+      ctx.json(generateMockPaginatedResponse({ page, results: mockTMDBPerson }))
+    );
+  }),
   rest.get(`${TMDBUrls.base}/movie/now_playing`, (req, res, ctx) => {
     const page = getRequestedPage(req);
     return res(

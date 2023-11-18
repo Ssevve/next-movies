@@ -1,13 +1,10 @@
-import {
-  TMDBPersonSearchResultMovie,
-  TMDBPersonSearchResultTvShow,
-} from '@/services/TMDB/types/TMDBSearchResult';
-import transformPersonSearchResultShows from '@/services/TMDB/utils/transformPersonSearchResultShows/transformPersonSearchResultShows';
-import { PersonSearchResultShow } from '@/types/SearchResult';
+import { TMDBPersonMovie, TMDBPersonTvShow } from '@/services/TMDB/types/TMDBPerson';
+import transformPersonShows from '@/services/TMDB/utils/transformPersonShows/transformPersonShows';
+import { PersonShow } from '@/types/Person';
 
-describe('transformPersonSearchResultShows', () => {
+describe('transformShows', () => {
   it('should return correctly transformed data for a single movie', async () => {
-    const testMovie: TMDBPersonSearchResultMovie[] = [
+    const testMovie: TMDBPersonMovie[] = [
       {
         id: 1,
         media_type: 'movie',
@@ -15,7 +12,7 @@ describe('transformPersonSearchResultShows', () => {
       },
     ];
 
-    const expectedResult: PersonSearchResultShow[] = [
+    const expectedResult: PersonShow[] = [
       {
         id: testMovie[0].id,
         showType: testMovie[0].media_type,
@@ -23,12 +20,12 @@ describe('transformPersonSearchResultShows', () => {
       },
     ];
 
-    const transformedResults = transformPersonSearchResultShows(testMovie);
+    const transformedResults = transformPersonShows(testMovie);
     expect(transformedResults).toEqual(expectedResult);
   });
 
   it('should return correctly transformed data for multiple movies', async () => {
-    const testMovies: TMDBPersonSearchResultMovie[] = [
+    const testMovies: TMDBPersonMovie[] = [
       {
         id: 1,
         media_type: 'movie',
@@ -41,20 +38,18 @@ describe('transformPersonSearchResultShows', () => {
       },
     ];
 
-    const expectedResults: PersonSearchResultShow[] = testMovies.map(
-      ({ id, media_type, title }) => ({
-        id,
-        showType: media_type,
-        title,
-      })
-    );
+    const expectedResults: PersonShow[] = testMovies.map(({ id, media_type, title }) => ({
+      id,
+      showType: media_type,
+      title,
+    }));
 
-    const transformedResults = transformPersonSearchResultShows(testMovies);
+    const transformedResults = transformPersonShows(testMovies);
     expect(transformedResults).toEqual(expectedResults);
   });
 
   it('should return correctly transformed data for a single TV Show', async () => {
-    const testTvShow: TMDBPersonSearchResultTvShow[] = [
+    const testTvShow: TMDBPersonTvShow[] = [
       {
         id: 1,
         media_type: 'tv',
@@ -62,7 +57,7 @@ describe('transformPersonSearchResultShows', () => {
       },
     ];
 
-    const expectedResult: PersonSearchResultShow[] = [
+    const expectedResult: PersonShow[] = [
       {
         id: testTvShow[0].id,
         showType: testTvShow[0].media_type,
@@ -70,12 +65,12 @@ describe('transformPersonSearchResultShows', () => {
       },
     ];
 
-    const transformedResults = transformPersonSearchResultShows(testTvShow);
+    const transformedResults = transformPersonShows(testTvShow);
     expect(transformedResults).toEqual(expectedResult);
   });
 
   it('should return correctly transformed data for multiple movies', async () => {
-    const testTvShows: TMDBPersonSearchResultTvShow[] = [
+    const testTvShows: TMDBPersonTvShow[] = [
       {
         id: 1,
         media_type: 'tv',
@@ -88,20 +83,18 @@ describe('transformPersonSearchResultShows', () => {
       },
     ];
 
-    const expectedResults: PersonSearchResultShow[] = testTvShows.map(
-      ({ id, media_type, name }) => ({
-        id,
-        showType: media_type,
-        title: name,
-      })
-    );
+    const expectedResults: PersonShow[] = testTvShows.map(({ id, media_type, name }) => ({
+      id,
+      showType: media_type,
+      title: name,
+    }));
 
-    const transformedResults = transformPersonSearchResultShows(testTvShows);
+    const transformedResults = transformPersonShows(testTvShows);
     expect(transformedResults).toEqual(expectedResults);
   });
 
   it('should return correctly transformed data for mixed shows', async () => {
-    const testShows: (TMDBPersonSearchResultTvShow | TMDBPersonSearchResultMovie)[] = [
+    const testShows: (TMDBPersonTvShow | TMDBPersonMovie)[] = [
       {
         id: 1,
         media_type: 'tv',
@@ -114,7 +107,7 @@ describe('transformPersonSearchResultShows', () => {
       },
     ];
 
-    const expectedResults: PersonSearchResultShow[] = [
+    const expectedResults: PersonShow[] = [
       {
         id: 1,
         showType: 'tv',
@@ -127,7 +120,7 @@ describe('transformPersonSearchResultShows', () => {
       },
     ];
 
-    const transformedResults = transformPersonSearchResultShows(testShows);
+    const transformedResults = transformPersonShows(testShows);
     expect(transformedResults).toEqual(expectedResults);
   });
 });

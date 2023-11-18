@@ -1,13 +1,13 @@
+import { TMDBPerson } from '@/services/TMDB/types/TMDBPerson';
 import {
   TMDBMovieSearchResult,
-  TMDBPersonSearchResult,
   TMDBTvShowSearchResult,
 } from '@/services/TMDB/types/TMDBSearchResult';
 
 interface MockTMDBSearchResults {
   movie: TMDBMovieSearchResult[];
   tv: TMDBTvShowSearchResult[];
-  person: TMDBPersonSearchResult[];
+  person: TMDBPerson[];
 }
 
 const mockTMDBSearchResults: MockTMDBSearchResults = {

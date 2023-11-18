@@ -46,7 +46,7 @@ describe('DesktopNavItem', () => {
 
     await user.click(screen.getByRole('button', { name: expectedItem.label }));
 
-    expect(screen.getAllByRole('link')).toHaveLength(expectedItem.links.length);
+    expect(screen.getAllByRole('menuitem')).toHaveLength(expectedItem.links.length);
   });
 
   it('should render all links width correct "href" attribute', async () => {
@@ -63,7 +63,7 @@ describe('DesktopNavItem', () => {
     await user.click(screen.getByRole('button', { name: expectedItem.label }));
 
     expectedItem.links.forEach(({ name, href }) => {
-      expect(screen.getByRole('link', { name })).toHaveAttribute(
+      expect(screen.getByRole('menuitem', { name })).toHaveAttribute(
         'href',
         href === '/' ? expectedItem.path : `${expectedItem.path}${href}`
       );

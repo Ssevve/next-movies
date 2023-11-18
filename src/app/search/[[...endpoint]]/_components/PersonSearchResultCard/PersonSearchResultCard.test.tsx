@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react';
 
 import PersonSearchResultCard from '@/app/search/[[...endpoint]]/_components/PersonSearchResultCard/PersonSearchResultCard';
-import { PersonSearchResult } from '@/types/SearchResult';
+import { Person } from '@/types/Person';
 
-const searchResult: PersonSearchResult = {
+const searchResult: Person = {
   department: 'Acting',
   id: 1,
   imagePath: '/testPath',
@@ -22,7 +22,7 @@ const searchResult: PersonSearchResult = {
   ],
 };
 
-const renderPersonSearchResultCard = (props?: Partial<PersonSearchResult>) => {
+const renderPersonSearchResultCard = (props?: Partial<Person>) => {
   return render(<PersonSearchResultCard {...searchResult} {...props} />);
 };
 
@@ -43,11 +43,8 @@ describe('ShowSearchResultCard', () => {
     screen.getByTestId('no-image');
   });
 
-  it('should render all show titles', () => {
+  it('should render <PersonShows /> component', () => {
     render(<PersonSearchResultCard {...searchResult} />);
-
-    searchResult.shows.forEach(({ title }) => {
-      screen.getByText(new RegExp(title));
-    });
+    screen.getByText(searchResult.shows[0].title, { exact: false });
   });
 });

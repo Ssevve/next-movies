@@ -59,7 +59,7 @@ export const navItems: NavItem[] = [
         name: 'Popular people',
       },
     ],
-    path: '/people',
+    path: '/person',
   },
 ];
 

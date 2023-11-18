@@ -6,7 +6,7 @@ import mockTMDBSearchResults from '@/__mocks__/data/mockTMDBSearchResults';
 import { server } from '@/__mocks__/server';
 import getSearchResults from '@/services/TMDB/api/getSearchResults/getSearchResults';
 import { TMDBUrls } from '@/services/TMDB/config';
-import transformPersonSearchResult from '@/services/TMDB/utils/transformPersonSearchResult/transformPersonSearchResult';
+import transformPerson from '@/services/TMDB/utils/transformPerson/transformPerson';
 import transformShowSearchResult from '@/services/TMDB/utils/transformShowSearchResult/transformShowSearchResult';
 
 describe('getSearchResults', () => {
@@ -24,7 +24,7 @@ describe('getSearchResults', () => {
 });
 
 it('should return correct results for person endpoint', async () => {
-  const expectedPerson = transformPersonSearchResult(mockTMDBSearchResults.person[0]);
+  const expectedPerson = transformPerson(mockTMDBSearchResults.person[0]);
   const searchResults = await getSearchResults({ endpoint: 'person', query: 'Rich' });
   expect(searchResults.results).toStrictEqual([expectedPerson]);
 });

@@ -2,13 +2,11 @@ import PersonSearchResultCard from '@/app/search/[[...endpoint]]/_components/Per
 import ShowSearchResultCard from '@/app/search/[[...endpoint]]/_components/ShowSearchResultCard/ShowSearchResultCard';
 import Pagination from '@/components/Pagination/Pagination';
 import getSearchResults from '@/services/TMDB/api/getSearchResults/getSearchResults';
+import { Person } from '@/types/Person';
 import SearchEndpoint from '@/types/SearchEndpoint';
-import { PersonSearchResult } from '@/types/SearchResult';
-import { ShowSearchResult } from '@/types/SearchResult';
+import ShowSearchResult from '@/types/ShowSearchResult';
 
-function isShowSearchResult(
-  result: ShowSearchResult | PersonSearchResult
-): result is ShowSearchResult {
+function isShowSearchResult(result: ShowSearchResult | Person): result is ShowSearchResult {
   return 'title' in result;
 }
 
@@ -50,7 +48,6 @@ export default async function SearchResults({
               ) : (
                 <PersonSearchResultCard
                   department={result.department}
-                  id={result.id}
                   imagePath={result.imagePath}
                   name={result.name}
                   shows={result.shows}

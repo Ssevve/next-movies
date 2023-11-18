@@ -18,13 +18,13 @@ export default function Pagination({
 }: PaginationProps) {
   const searchParams = useSearchParams();
   const pathname = usePathname();
-  const { replace } = useRouter();
+  const router = useRouter();
 
   const goToPage = (page: number) => {
     const params = new URLSearchParams(searchParams);
     if (page) params.set('page', page.toString());
     else params.delete('page');
-    replace(`${pathname}?${params.toString()}`);
+    router.push(`${pathname}?${params.toString()}`);
   };
 
   const itemLimitExceeded = totalItemCount > PAGINATED_ITEMS_COUNT_LIMIT;

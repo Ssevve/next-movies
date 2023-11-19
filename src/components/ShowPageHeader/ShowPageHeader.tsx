@@ -70,7 +70,7 @@ export default function ShowPageHeader({
     ? getTMDBImagePath(poster.path, poster.width, poster.height)
     : '';
   const fullBackdropPath = backdrop.path ? getTMDBImagePath(backdrop.path) : '';
-
+  const hasExternalLinks = facebookHandle || twitterHandle || instagramHandle || homepage;
   return (
     <section className="relative w-screen">
       {fullBackdropPath && (
@@ -102,13 +102,15 @@ export default function ShowPageHeader({
 
         <section className="flex flex-1 flex-col flex-wrap justify-center gap-8 font-semibold">
           <section className="space-y-2">
-            <ShowExternalLinks
-              className="sm:mb-4"
-              facebookHandle={facebookHandle}
-              homepage={homepage}
-              instagramHandle={instagramHandle}
-              twitterHandle={twitterHandle}
-            />
+            {hasExternalLinks && (
+              <ShowExternalLinks
+                className="sm:mb-4"
+                facebookHandle={facebookHandle}
+                homepage={homepage}
+                instagramHandle={instagramHandle}
+                twitterHandle={twitterHandle}
+              />
+            )}
             {showType === 'movie' ? (
               <MovieMetadata
                 genres={genres}

@@ -19,10 +19,11 @@ export default function ShowMetadata({
   genres,
   children,
 }: ShowMetadataProps) {
+  const releaseYear = getReleaseYear(releaseDate);
   return (
     <>
       <h1 className="text-2xl font-bold  sm:text-3xl md:text-4xl lg:text-5xl">
-        {title} ({getReleaseYear(releaseDate)})
+        {title} {releaseYear && `(${releaseYear})`}
       </h1>
       <div className="flex w-full flex-col flex-wrap justify-center gap-4 leading-none sm:flex-row sm:justify-start sm:gap-2">
         <div className="flex gap-2">

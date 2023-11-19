@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useRef, useState } from 'react';
 
 import useLockedBody from '@/hooks/useLockedBody';
@@ -16,12 +16,16 @@ export default function YoutubeIframeModal({ videoKey }: YoutubeIframeModalProps
   const iframeWrapperRef = useRef(null);
   const router = useRouter();
   const [showVideo, setShowVideo] = useState(false);
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
 
   useLockedBody(!!videoKey);
 
   const close = () => {
     setShowVideo(false);
-    router.back();
+    const newParams = new URLSearchParams(searchParams);
+    newParams.delete('play');
+    router.push(`${pathname}?${newParams}`, { scroll: false });
   };
 
   useOnClickOutside(iframeWrapperRef, close);
@@ -37,6 +41,7 @@ export default function YoutubeIframeModal({ videoKey }: YoutubeIframeModalProps
               src={getYoutubeThumbnail(videoKey)}
               alt=""
               fill
+              onError={close}
             />
             <button
               aria-label="Play video"
@@ -60,6 +65,7 @@ export default function YoutubeIframeModal({ videoKey }: YoutubeIframeModalProps
             className="aspect-video h-full w-full p-0"
             allow="autoplay; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
+            onError={close}
           />
         )}
       </div>

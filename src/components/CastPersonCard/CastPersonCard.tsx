@@ -1,22 +1,19 @@
 import PersonImage from '@/components/PersonImage/PersonImage';
-import Hoverable from '@/components/ui/Hoverable';
 
-interface PersonCardProps {
+interface CastPersonCardProps {
   name: string;
   imagePath: string;
   children: React.ReactNode;
 }
 
-export default function CastPersonCard({ name, imagePath, children }: PersonCardProps) {
+export default function CastPersonCard({ name, imagePath, children }: CastPersonCardProps) {
   return (
-    <Hoverable>
+    <div>
+      <PersonImage imagePath={imagePath} alt={name} />
       <div>
-        <PersonImage imagePath={imagePath} alt={name} />
-        <div>
-          <h3 className="font-bold">{name}</h3>
-          <div className="text-sm">{children}</div>
-        </div>
+        <h3 className="font-bold">{name}</h3>
+        <div className="text-sm">{children}</div>
       </div>
-    </Hoverable>
+    </div>
   );
 }

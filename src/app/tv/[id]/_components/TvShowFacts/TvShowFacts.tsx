@@ -13,7 +13,7 @@ interface TvShowFacts extends ShowFactsProps {
 export default function TvShowFacts({ status, networks, type, originalLanguage }: TvShowFacts) {
   const hasMultipleNetworks = networks.length > 1;
   return (
-    <div className="flex w-full max-w-xl flex-col justify-between gap-8 sm:flex-row">
+    <div className="flex flex-col gap-8 py-8 sm:flex-row sm:items-center sm:gap-16">
       <ShowFacts status={status} originalLanguage={originalLanguage} />
       <div>
         <h3 className="font-semibold">Type</h3>

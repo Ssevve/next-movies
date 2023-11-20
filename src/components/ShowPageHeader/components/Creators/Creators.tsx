@@ -10,7 +10,7 @@ interface CreatorsProps {
 export default function Creators({ creators, showType }: CreatorsProps) {
   const isMovie = showType === 'movie';
   return creators.length ? (
-    <div>
+    <div className="w-full">
       <span>{isMovie ? 'Directed' : 'Created'} by:</span>
       <span className="ml-2 font-normal">{joinCreators(creators)}</span>
     </div>

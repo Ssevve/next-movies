@@ -8,7 +8,10 @@ interface MovieFactsProps extends ShowFactsProps {
 
 export default function MovieFacts({ status, budget, revenue, originalLanguage }: MovieFactsProps) {
   return (
-    <div className="flex w-full max-w-xl flex-col justify-between gap-8 sm:flex-row">
+    <div
+      className="flex flex-col gap-8
+    py-8 sm:flex-row sm:items-center sm:gap-16"
+    >
       <ShowFacts status={status} originalLanguage={originalLanguage} />
       <div>
         <h3 className="font-semibold">Budget</h3>

@@ -70,7 +70,7 @@ export default async function DetailedTvShowPage({
   const previewVideo = findTrailer(videos);
   const showEnded = status === 'Ended';
   return (
-    <section className="flex w-full flex-col gap-12">
+    <section className="flex w-full flex-col">
       {youtubeModalVideoKey && <YoutubeIframeModal videoKey={youtubeModalVideoKey} />}
       <ShowPageHeader
         backdrop={backdrop}
@@ -92,21 +92,25 @@ export default async function DetailedTvShowPage({
         overview={overview}
       />
 
-      <section className="container flex w-full flex-col gap-12 px-4">
-        <TvShowFacts
-          networks={networks}
-          type={type}
-          status={status}
-          originalLanguage={originalLanguage}
-        />
-        <ShowCast cast={cast} />
-        <RecentSeason
-          season={recentSeason}
-          showEnded={showEnded}
-          episode={showEnded ? lastEpisode : nextEpisode}
-        />
-        <ShowMedia posters={images.posters} backdrops={images.backdrops} videos={videos} />
-        <Recommendations shows={recommendations} />
+      <section className="container flex w-full flex-col gap-8 px-4">
+        <div className="-ml-4 w-screen pl-4 dark:bg-gradient-to-t dark:from-transparent dark:via-slate-800 dark:backdrop-blur-3xl">
+          <TvShowFacts
+            networks={networks}
+            type={type}
+            status={status}
+            originalLanguage={originalLanguage}
+          />
+        </div>
+        <div className="flex flex-col gap-12">
+          <ShowCast cast={cast} />
+          <RecentSeason
+            season={recentSeason}
+            showEnded={showEnded}
+            episode={showEnded ? lastEpisode : nextEpisode}
+          />
+          <ShowMedia posters={images.posters} backdrops={images.backdrops} videos={videos} />
+          <Recommendations shows={recommendations} />
+        </div>
       </section>
     </section>
   );

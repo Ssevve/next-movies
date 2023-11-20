@@ -73,7 +73,7 @@ export default function ShowPageHeader({
   const fullBackdropPath = backdrop.path ? getTMDBImagePath(backdrop.path) : '';
   const hasExternalLinks = facebookHandle || twitterHandle || instagramHandle || homepage;
   return (
-    <section className="relative w-screen">
+    <section className="relative w-full">
       {fullBackdropPath && (
         <Image
           src={fullBackdropPath}
@@ -83,7 +83,7 @@ export default function ShowPageHeader({
           className="-z-50 object-cover object-top opacity-20"
         />
       )}
-      <section className="container flex flex-col gap-8 px-4 py-8 md:flex-row">
+      <section className="container flex w-full flex-col gap-8 px-4 py-8 md:flex-row">
         <div className="mx-auto flex w-max flex-none shrink-0 items-center justify-center  md:justify-start">
           <div className="h-64 w-44 md:h-96 md:w-64">
             {fullPosterPath ? <ShowPoster poster={poster} showTitle={title} /> : <NoImage />}
@@ -143,7 +143,7 @@ export default function ShowPageHeader({
             )}
           </section>
           {overview && (
-            <div className="pr-4">
+            <div className="w-full pr-4">
               <ShowOverview overview={overview} />
             </div>
           )}

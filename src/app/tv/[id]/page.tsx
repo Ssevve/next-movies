@@ -41,75 +41,54 @@ export default async function DetailedTvShowPage({
   const youtubeModalVideoKey = searchParams?.play;
   const tvShowId = params.id;
 
-  const {
-    backdrop,
-    createdBy,
-    genres,
-    poster,
-    rating,
-    releaseDate,
-    tagline,
-    title,
-    userScore,
-    userScoreCount,
-    socialHandles,
-    homepage,
-    overview,
-    type,
-    networks,
-    videos,
-    status,
-    cast,
-    originalLanguage,
-    images,
-    recentSeason,
-    recommendations,
-    lastEpisode,
-    nextEpisode,
-  } = await getDetailedTvShow(Number(tvShowId));
-  const previewVideo = findTrailer(videos);
+  const tvShow = await getDetailedTvShow(Number(tvShowId));
+  const previewVideo = findTrailer(tvShow.videos);
   const showEnded = status === 'Ended';
   return (
     <section className="flex w-full flex-col">
       {youtubeModalVideoKey && <YoutubeIframeModal videoKey={youtubeModalVideoKey} />}
       <ShowPageHeader
-        backdrop={backdrop}
-        createdBy={createdBy}
-        genres={genres}
-        poster={poster}
-        rating={rating}
-        releaseDate={releaseDate}
-        tagline={tagline}
-        title={title}
-        userScore={userScore}
-        userScoreCount={userScoreCount}
+        backdrop={tvShow.backdrop}
+        createdBy={tvShow.createdBy}
+        genres={tvShow.genres}
+        poster={tvShow.poster}
+        rating={tvShow.rating}
+        releaseDate={tvShow.releaseDate}
+        tagline={tvShow.tagline}
+        title={tvShow.title}
+        userScore={tvShow.userScore}
+        userScoreCount={tvShow.userScoreCount}
         showType="tv"
         previewVideo={previewVideo}
-        facebookHandle={socialHandles.facebook}
-        twitterHandle={socialHandles.twitter}
-        homepage={homepage}
-        instagramHandle={socialHandles.instagram}
-        overview={overview}
+        facebookHandle={tvShow.socialHandles.facebook}
+        twitterHandle={tvShow.socialHandles.twitter}
+        homepage={tvShow.homepage}
+        instagramHandle={tvShow.socialHandles.instagram}
+        overview={tvShow.overview}
       />
 
       <section className="container flex w-full flex-col gap-8 px-4">
         <div className="-ml-4 w-screen pl-4 dark:bg-gradient-to-t dark:from-transparent dark:via-slate-800 dark:backdrop-blur-3xl">
           <TvShowFacts
-            networks={networks}
-            type={type}
+            networks={tvShow.networks}
+            type={tvShow.type}
             status={status}
-            originalLanguage={originalLanguage}
+            originalLanguage={tvShow.originalLanguage}
           />
         </div>
         <div className="flex flex-col gap-12">
-          <ShowCast cast={cast} />
+          <ShowCast cast={tvShow.cast} />
           <RecentSeason
-            season={recentSeason}
+            season={tvShow.recentSeason}
             showEnded={showEnded}
-            episode={showEnded ? lastEpisode : nextEpisode}
+            episode={showEnded ? tvShow.lastEpisode : tvShow.nextEpisode}
           />
-          <ShowMedia posters={images.posters} backdrops={images.backdrops} videos={videos} />
-          <Recommendations shows={recommendations} />
+          <ShowMedia
+            posters={tvShow.images.posters}
+            backdrops={tvShow.images.backdrops}
+            videos={tvShow.videos}
+          />
+          <Recommendations shows={tvShow.recommendations} />
         </div>
       </section>
     </section>

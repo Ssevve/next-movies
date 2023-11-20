@@ -15,10 +15,10 @@ export const metadata: Metadata = {
 
 export default async function TvShowsPage({ searchParams }: TvShowsPageProps) {
   const { page } = searchParams;
-  const TvShows = await getPopularShows('tv', Number(page) || 1);
+  const tvShows = await getPopularShows('tv', Number(page) || 1);
   return (
     <section className="container grid gap-12 px-4 pb-4 pt-12">
-      <PaginatedShows totalShows={TvShows.totalResults} shows={TvShows.results} />
+      <PaginatedShows totalShows={tvShows.totalResults} shows={tvShows.results} />
     </section>
   );
 }

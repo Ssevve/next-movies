@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
+import { notFound } from 'next/navigation';
 
 import MovieFacts from '@/app/movie/[id]/_components/MovieFacts/MovieFacts';
 import Recommendations from '@/components/Recommendations/Recommendations';
@@ -37,68 +38,49 @@ export default async function DetailedMoviePage({ searchParams, params }: Detail
   const youtubeModalVideoKey = searchParams?.play;
   const movieId = params.id;
 
-  const {
-    backdrop,
-    createdBy,
-    genres,
-    poster,
-    rating,
-    releaseDate,
-    tagline,
-    title,
-    userScore,
-    userScoreCount,
-    runtime,
-    socialHandles,
-    homepage,
-    overview,
-    budget,
-    revenue,
-    videos,
-    status,
-    cast,
-    originalLanguage,
-    images,
-    recommendations,
-  } = await getDetailedMovie(Number(movieId));
-  const previewVideo = findTrailer(videos);
+  const movie = await getDetailedMovie(Number(movieId));
+  const previewVideo = findTrailer(movie.videos);
   return (
     <section className="flex w-full flex-col">
       {youtubeModalVideoKey && <YoutubeIframeModal videoKey={youtubeModalVideoKey} />}
       <ShowPageHeader
-        backdrop={backdrop}
-        createdBy={createdBy}
-        genres={genres}
-        poster={poster}
-        rating={rating}
-        releaseDate={releaseDate}
-        tagline={tagline}
-        title={title}
-        userScore={userScore}
-        userScoreCount={userScoreCount}
+        backdrop={movie.backdrop}
+        createdBy={movie.createdBy}
+        genres={movie.genres}
+        poster={movie.poster}
+        rating={movie.rating}
+        releaseDate={movie.releaseDate}
+        tagline={movie.tagline}
+        title={movie.title}
+        userScore={movie.userScore}
+        userScoreCount={movie.userScoreCount}
         showType="movie"
         previewVideo={previewVideo}
-        facebookHandle={socialHandles.facebook}
-        twitterHandle={socialHandles.twitter}
-        homepage={homepage}
-        instagramHandle={socialHandles.instagram}
-        overview={overview}
-        runtime={runtime}
+        facebookHandle={movie.socialHandles.facebook}
+        twitterHandle={movie.socialHandles.twitter}
+        homepage={movie.homepage}
+        instagramHandle={movie.socialHandles.instagram}
+        overview={movie.overview}
+        runtime={movie.runtime}
       />
 
       <section className="container flex w-full flex-col gap-8 px-4">
         <div className="-ml-4 w-screen pl-4 dark:bg-gradient-to-t dark:from-transparent dark:via-slate-800">
           <MovieFacts
-            budget={budget}
-            revenue={revenue}
-            status={status}
-            originalLanguage={originalLanguage}
+            budget={movie.budget}
+            revenue={movie.revenue}
+            status={movie.status}
+            originalLanguage={movie.originalLanguage}
           />
         </div>
         <div className="flex flex-col gap-12">
-          <ShowCast cast={cast} />
-          <ShowMedia posters={images.posters} backdrops={images.backdrops} videos={videos} />
-          <Recommendations shows={recommendations} />
+          <ShowCast cast={movie.cast} />
+          <ShowMedia
+            posters={movie.images.posters}
+            backdrops={movie.images.backdrops}
+            videos={movie.videos}
+          />
+          <Recommendations shows={movie.recommendations} />
         </div>
       </section>
     </section>

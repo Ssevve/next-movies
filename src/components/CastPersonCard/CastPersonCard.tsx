@@ -10,7 +10,7 @@ export default function CastPersonCard({ name, imagePath, children }: CastPerson
   return (
     <div>
       <PersonImage imagePath={imagePath} alt={name} />
-      <div>
+      <div className="mt-2">
         <h3 className="font-bold">{name}</h3>
         <div className="text-sm">{children}</div>
       </div>

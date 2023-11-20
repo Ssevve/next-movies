@@ -8,7 +8,6 @@ interface ShowPosterProps {
   showTitle: string;
 }
 
-// TODO: tests, rename to ShowCardPoster?
 export default function ShowPoster({ poster, showTitle }: ShowPosterProps) {
   return (
     <Image

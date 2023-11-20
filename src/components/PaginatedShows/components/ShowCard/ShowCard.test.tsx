@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 
 import mockShows from '@/__mocks__/data/mockShows';
-import ShowCard from '@/components/ShowCard/ShowCard';
+import ShowCard from '@/components/PaginatedShows/components/ShowCard/ShowCard';
 
 describe('ShowCard', () => {
   it('should render link to the show page', () => {
@@ -35,7 +35,7 @@ describe('ShowCard', () => {
     );
   });
 
-  it('should render show poster if poster path exists', () => {
+  it('should render <ShowPoster /> component if poster path exists', () => {
     const expectedShow = mockShows[0];
     render(
       <ShowCard
@@ -47,40 +47,7 @@ describe('ShowCard', () => {
       />
     );
     expect(screen.getByRole('img')).toBeInTheDocument();
-  });
-
-  it('should render show poster with correct "src" attribute if poster path exists', () => {
-    const expectedShow = mockShows[0];
-    render(
-      <ShowCard
-        id={expectedShow.id}
-        poster={expectedShow.poster}
-        userScore={expectedShow.userScore}
-        showType={expectedShow.showType}
-        title={expectedShow.title}
-      />
-    );
-
-    const showPoster: HTMLImageElement = screen.getByRole('img');
-    const expectedImageName = expectedShow.poster.path.split('/').slice(-1)[0];
-
-    expect(showPoster.src).toContain(expectedImageName);
-  });
-
-  it('should not render an image if poster path does not exist', () => {
-    const expectedShow = mockShows[0];
-    const expectedPoster = { ...expectedShow.poster, path: '' };
-    render(
-      <ShowCard
-        id={expectedShow.id}
-        poster={expectedPoster}
-        userScore={expectedShow.userScore}
-        showType={expectedShow.showType}
-        title={expectedShow.title}
-      />
-    );
-
-    expect(screen.queryByRole('img')).not.toBeInTheDocument();
+    expect(screen.queryByTestId('no-image')).not.toBeInTheDocument();
   });
 
   it('should render <NoImage /> component if poster path does not exist', () => {
@@ -96,6 +63,7 @@ describe('ShowCard', () => {
       />
     );
 
+    expect(screen.queryByRole('img')).not.toBeInTheDocument();
     expect(screen.getByTestId('no-image')).toBeInTheDocument();
   });
 

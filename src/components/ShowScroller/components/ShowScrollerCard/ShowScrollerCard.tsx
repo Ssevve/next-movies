@@ -7,7 +7,7 @@ import UserScore from '@/components/UserScore/UserScore';
 import ImageType from '@/types/Image';
 import { ShowType } from '@/types/Show';
 
-interface ShowCardProps {
+export interface ShowScrollerCardProps {
   poster: ImageType;
   id: number;
   title: string;
@@ -17,7 +17,6 @@ interface ShowCardProps {
   showMetadata?: boolean;
 }
 
-// TODO: tests
 export default function ShowScrollerCard({
   poster,
   id,
@@ -25,7 +24,7 @@ export default function ShowScrollerCard({
   userScore,
   showType,
   releaseDate,
-}: ShowCardProps) {
+}: ShowScrollerCardProps) {
   return (
     <Hoverable className={'h-full min-w-[150px] pb-0'}>
       <Link href={`/${showType}/${id}`} className="flex h-full flex-col">

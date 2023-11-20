@@ -14,8 +14,8 @@ describe('Recommendations', () => {
     expect(screen.getByRole('heading', { name: 'Recommendations' })).toBeInTheDocument();
   });
 
-  it('should render correct amount of shows', async () => {
+  it('should render all shows', async () => {
     render(<Recommendations shows={mockShows} />);
-    expect(screen.getAllByTestId('show-card')).toHaveLength(mockShows.length);
+    mockShows.forEach(({ title }) => screen.getByText(title));
   });
 });

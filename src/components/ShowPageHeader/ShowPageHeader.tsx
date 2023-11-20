@@ -7,6 +7,7 @@ import Creators from '@/components/ShowPageHeader/components/Creators/Creators';
 import ShowExternalLinks from '@/components/ShowPageHeader/components/ShowExternalLinks/ShowExternalLinks';
 import ShowMetadata from '@/components/ShowPageHeader/components/ShowMetadata/ShowMetadata';
 import ShowOverview from '@/components/ShowPageHeader/components/ShowOverview/ShowOverview';
+import ShowPoster from '@/components/ShowPoster/ShowPoster';
 import UserScore from '@/components/UserScore/UserScore';
 import VideoLink from '@/components/VideoLink/VideoLink';
 import getTMDBImagePath from '@/services/TMDB/utils/getTMDBImagePath/getTMDBImagePath';
@@ -84,20 +85,9 @@ export default function ShowPageHeader({
       )}
       <section className="container flex flex-col gap-8 px-4 py-8 md:flex-row">
         <div className="mx-auto flex w-max flex-none shrink-0 items-center justify-center  md:justify-start">
-          {fullPosterPath ? (
-            <Image
-              src={fullPosterPath}
-              alt={title}
-              width={poster.width}
-              height={poster.height}
-              priority
-              className="h-64 w-44 md:h-96 md:w-64"
-            />
-          ) : (
-            <div className="h-64 w-44 md:h-96 md:w-64">
-              <NoImage />
-            </div>
-          )}
+          <div className="h-64 w-44 md:h-96 md:w-64">
+            {fullPosterPath ? <ShowPoster poster={poster} showTitle={title} /> : <NoImage />}
+          </div>
         </div>
 
         <section className="flex flex-1 flex-col flex-wrap justify-center gap-8 font-semibold">

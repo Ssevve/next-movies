@@ -1,5 +1,4 @@
 import Scroller, { ScrollerProps } from '@/components/Scroller/Scroller';
-import ShowCard from '@/components/ShowCard/ShowCard';
 import { Show } from '@/types/Show';
 
 import ShowScrollerCard from './components/ShowScrollerCard/ShowScrollerCard';
@@ -9,7 +8,6 @@ interface ShowScrollerProps extends Pick<ScrollerProps, 'limit'> {
   emptyMessage?: string;
 }
 
-// TODO: update tests
 export default function ShowScroller({
   shows,
   emptyMessage = 'No shows to display',
@@ -26,7 +24,7 @@ export default function ShowScroller({
           key={id}
           releaseDate={releaseDate}
           id={id}
-          poster={i === 1 ? { ...poster, path: '' } : poster}
+          poster={poster}
           userScore={userScore}
           showType={showType}
           title={title}

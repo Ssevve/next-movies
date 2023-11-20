@@ -1,7 +1,20 @@
 import Link from 'next/link';
 
-import ShowCard from '@/components/ShowCard/ShowCard';
-import ShowSearchResult from '@/types/ShowSearchResult';
+import NoImage from '@/components/NoImage';
+import ShowPoster from '@/components/ShowPoster/ShowPoster';
+import UserScore from '@/components/UserScore/UserScore';
+import Image from '@/types/Image';
+import { ShowType } from '@/types/Show';
+
+interface ShowSearchResultCardProps {
+  id: number;
+  poster: Image;
+  releaseDate: string;
+  showType: ShowType;
+  title: string;
+  userScore: number;
+  overview: string;
+}
 
 export default function ShowSearchResultCard({
   id,
@@ -11,18 +24,18 @@ export default function ShowSearchResultCard({
   title,
   userScore,
   overview,
-}: ShowSearchResult) {
+}: ShowSearchResultCardProps) {
   return (
-    <div className="flex flex-col items-center gap-2 sm:flex-row sm:items-start">
-      <ShowCard
-        id={id}
-        poster={poster}
-        releaseDate={releaseDate}
-        showType={showType}
-        title={title}
-        userScore={userScore}
-        showMetadata={false}
-      />
+    <div className="flex h-full flex-col items-center gap-2 sm:flex-row sm:items-start">
+      <Link
+        href={`/${showType}/${id}`}
+        className="flex h-full min-h-[265px] w-full min-w-[175px] max-w-[220px] flex-col"
+      >
+        <div className="relative h-full w-full">
+          {poster.path ? <ShowPoster poster={poster} showTitle={title} /> : <NoImage />}
+          <UserScore className="absolute -bottom-4 left-2 border" userScore={userScore} />
+        </div>
+      </Link>
       <div className="flex flex-1 flex-col gap-4 px-2">
         <div className="flex flex-col items-center gap-1 sm:items-start">
           <Link href={`/${showType}/${id}`}>

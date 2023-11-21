@@ -43,7 +43,7 @@ export default async function DetailedTvShowPage({
 
   const tvShow = await getDetailedTvShow(Number(tvShowId));
   const previewVideo = findTrailer(tvShow.videos);
-  const showEnded = status === 'Ended';
+  const showEnded = tvShow.status === 'Ended';
   return (
     <section className="flex w-full flex-col">
       {youtubeModalVideoKey && <YoutubeIframeModal videoKey={youtubeModalVideoKey} />}
@@ -68,15 +68,17 @@ export default async function DetailedTvShowPage({
       />
 
       <section className="container flex w-full flex-col gap-8 px-4">
-        <div className="-ml-4 w-screen pl-4 dark:bg-gradient-to-t dark:from-transparent dark:via-slate-800 dark:backdrop-blur-3xl">
-          <TvShowFacts
-            networks={tvShow.networks}
-            type={tvShow.type}
-            status={status}
-            originalLanguage={tvShow.originalLanguage}
-          />
+        <div className="absolute left-0 w-screen dark:bg-gradient-to-t dark:from-transparent dark:via-slate-800 dark:backdrop-blur-3xl">
+          <div className="container pl-4">
+            <TvShowFacts
+              networks={tvShow.networks}
+              type={tvShow.type}
+              status={tvShow.status}
+              originalLanguage={tvShow.originalLanguage}
+            />
+          </div>
         </div>
-        <div className="flex flex-col gap-12">
+        <div className="mt-96 flex flex-col gap-12 sm:mt-36">
           <ShowCast cast={tvShow.cast} />
           <RecentSeason
             season={tvShow.recentSeason}

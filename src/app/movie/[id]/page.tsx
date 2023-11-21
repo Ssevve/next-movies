@@ -65,15 +65,17 @@ export default async function DetailedMoviePage({ searchParams, params }: Detail
       />
 
       <section className="container flex w-full flex-col gap-8 px-4">
-        <div className="-ml-4 w-screen pl-4 dark:bg-gradient-to-t dark:from-transparent dark:via-slate-800">
-          <MovieFacts
-            budget={movie.budget}
-            revenue={movie.revenue}
-            status={movie.status}
-            originalLanguage={movie.originalLanguage}
-          />
+        <div className="absolute left-0 w-screen dark:bg-gradient-to-t dark:from-transparent dark:via-slate-800">
+          <div className="container pl-4">
+            <MovieFacts
+              budget={movie.budget}
+              revenue={movie.revenue}
+              status={movie.status}
+              originalLanguage={movie.originalLanguage}
+            />
+          </div>
         </div>
-        <div className="flex flex-col gap-12">
+        <div className="mt-96 flex flex-col gap-12 sm:mt-36">
           <ShowCast cast={movie.cast} />
           <ShowMedia
             posters={movie.images.posters}

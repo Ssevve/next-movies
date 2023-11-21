@@ -66,7 +66,7 @@ export default async function SearchPage({ searchParams, params }: SearchPagePro
         </div>
         <Suspense
           fallback={
-            <div className="mx-auto">
+            <div className="mx-auto mt-4 w-max sm:mt-0">
               <Spinner />
             </div>
           }

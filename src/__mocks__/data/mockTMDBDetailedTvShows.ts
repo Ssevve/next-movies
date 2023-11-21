@@ -91,18 +91,7 @@ const tvShowBase: Omit<TMDBDetailedTvShow, 'original_language' | 'id'> = {
       },
     ],
   },
-  keywords: {
-    results: [
-      {
-        id: 2231,
-        name: 'drug dealer',
-      },
-      {
-        id: 6259,
-        name: 'psychopath',
-      },
-    ],
-  },
+
   last_episode_to_air: {
     air_date: '2013-09-29',
     episode_number: 16,

@@ -74,6 +74,5 @@ export interface TMDBDetailedTvShow extends TMDBDetailedShow<TMDBTvShowStatus>, 
   last_episode_to_air: TMDBEpisode | null;
   next_episode_to_air: TMDBEpisode | null;
   content_ratings: TMDBContentRatings;
-  keywords: { results: { id: number; name: string }[] };
   recommendations: TMDBPaginatedResponse<TMDBTvShow>;
 }

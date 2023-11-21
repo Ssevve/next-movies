@@ -45,12 +45,7 @@ const movieBase: Omit<TMDBDetailedMovie, 'original_language' | 'id'> = {
   ],
   homepage: 'https://www.dc.com/bluebeetle',
   images: mockTMDBImages,
-  keywords: {
-    keywords: [
-      { id: 2898, name: 'armor' },
-      { id: 9715, name: 'superhero' },
-    ],
-  },
+
   overview:
     'Recent college grad Jaime Reyes returns home full of aspirations for his future, only to find that home is not quite as he left it. As he searches to find his purpose in the world, fate intervenes when Jaime unexpectedly finds himself in possession of an ancient relic of alien biotechnology: the Scarab.',
   poster_path: '/mXLOHHc1Zeuwsl4xYKjKh2280oL.jpg',

@@ -25,7 +25,6 @@ export default function transformDetailedTvShow(tvShow: TMDBDetailedTvShow): Det
       backdrops: transformImages(tvShow.images.backdrops),
       posters: transformImages(tvShow.images.posters),
     },
-    keywords: tvShow.keywords.results,
     lastEpisode: tvShow.last_episode_to_air
       ? transformDetailedTvShowEpisode(tvShow.last_episode_to_air)
       : null,

@@ -10,7 +10,6 @@ export default async function getDetailedTvShow(tvShowId: number): Promise<Detai
   const appendToResponseString = [
     'videos',
     'images',
-    'keywords',
     'external_ids',
     'recommendations',
     'aggregate_credits',

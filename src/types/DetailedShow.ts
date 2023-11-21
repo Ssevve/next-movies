@@ -40,7 +40,6 @@ export interface DetailedShow<C = CastPerson, S = TMDBShowStatus> extends Show {
   socialHandles: SocialHandles;
   originalLanguage: string;
   recommendations: Show[];
-  keywords: { id: number; name: string }[];
   tagline: string | null;
   overview: string;
   homepage: string;

@@ -62,16 +62,6 @@ const mockDetailedMovie: DetailedMovie = {
       },
     ],
   },
-  keywords: [
-    {
-      id: 1930,
-      name: 'kidnapping',
-    },
-    {
-      id: 6019,
-      name: 'human trafficking',
-    },
-  ],
   originalLanguage: 'en',
   overview:
     'The story of Tim Ballard, a former US government agent, who quits his job in order to devote his life to rescuing children from global sex traffickers.',

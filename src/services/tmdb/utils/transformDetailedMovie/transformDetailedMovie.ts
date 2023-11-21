@@ -23,7 +23,6 @@ export default function transformDetailedMovie(movie: TMDBDetailedMovie): Detail
       backdrops: transformImages(movie.images.backdrops),
       posters: transformImages(movie.images.posters),
     },
-    keywords: movie.keywords.keywords,
     originalLanguage: movie.original_language,
     overview: movie.overview || 'Overview not available.',
     poster: {

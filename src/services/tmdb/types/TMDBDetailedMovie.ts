@@ -34,7 +34,6 @@ export interface TMDBDetailedMovie extends TMDBDetailedShow<TMDBMovieStatus>, TM
     cast: TMDBMovieCastPerson[];
     crew: TMDBMovieCrewPerson[];
   };
-  keywords: { keywords: { id: number; name: string }[] };
   release_dates: TMDBReleaseDates;
   recommendations: TMDBPaginatedResponse<TMDBMovie>;
 }

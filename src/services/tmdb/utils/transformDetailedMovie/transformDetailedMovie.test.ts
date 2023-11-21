@@ -29,7 +29,6 @@ describe('transformDetailedMovie', () => {
         backdrops: transformImages(testMovie.images.backdrops),
         posters: transformImages(testMovie.images.posters),
       },
-      keywords: testMovie.keywords.keywords,
       originalLanguage: testMovie.original_language,
       overview: testMovie.overview!,
       poster: {
@@ -74,7 +73,6 @@ describe('transformDetailedMovie', () => {
         backdrops: transformImages(testMovie.images.backdrops),
         posters: transformImages(testMovie.images.posters),
       },
-      keywords: testMovie.keywords.keywords,
       originalLanguage: testMovie.original_language,
       overview: testMovie.overview!,
       poster: {
@@ -122,7 +120,6 @@ describe('transformDetailedMovie', () => {
         backdrops: transformImages(testMovie.images.backdrops),
         posters: transformImages(testMovie.images.posters),
       },
-      keywords: testMovie.keywords.keywords,
       originalLanguage: testMovie.original_language,
       overview: testMovie.overview!,
       poster: {
@@ -172,7 +169,6 @@ describe('transformDetailedMovie', () => {
         backdrops: transformImages(testMovie.images.backdrops),
         posters: transformImages(testMovie.images.posters),
       },
-      keywords: testMovie.keywords.keywords,
       originalLanguage: testMovie.original_language,
       overview: 'Overview not available.',
       poster: {
@@ -224,7 +220,6 @@ describe('transformDetailedMovie', () => {
         backdrops: transformImages(testMovie.images.backdrops),
         posters: transformImages(testMovie.images.posters),
       },
-      keywords: testMovie.keywords.keywords,
       originalLanguage: testMovie.original_language,
       overview: testMovie.overview!,
       poster: {

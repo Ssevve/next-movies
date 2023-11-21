@@ -10,7 +10,6 @@ export default async function getDetailedMovie(movieId: number): Promise<Detaile
   const appendToResponseString = [
     'videos',
     'images',
-    'keywords',
     'external_ids',
     'recommendations',
     'credits',
